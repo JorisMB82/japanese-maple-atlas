@@ -1,0 +1,50 @@
+[
+  {
+    "id": "E-RC001-001",
+    "type": "Editorial Synthesis",
+    "scope": "Pilot interface only",
+    "sourceId": "S-PILOT-001",
+    "note": "Replace with canonical RC evidence.",
+    "status": "provisional-pilot"
+  },
+  {
+    "id": "E-RC001-002",
+    "type": "Editorial Synthesis",
+    "scope": "Pilot interface only",
+    "sourceId": "S-PILOT-001",
+    "note": "Replace with canonical RC evidence.",
+    "status": "provisional-pilot"
+  },
+  {
+    "id": "E-RC002-001",
+    "type": "Editorial Synthesis",
+    "scope": "Pilot interface only",
+    "sourceId": "S-PILOT-001",
+    "note": "Replace with canonical RC evidence.",
+    "status": "provisional-pilot"
+  },
+  {
+    "id": "E-RC003-001",
+    "type": "Editorial Synthesis",
+    "scope": "Pilot interface only",
+    "sourceId": "S-PILOT-001",
+    "note": "Replace with canonical RC evidence.",
+    "status": "provisional-pilot"
+  },
+  {
+    "id": "E-RC004-001",
+    "type": "Editorial Synthesis",
+    "scope": "Pilot interface only",
+    "sourceId": "S-PILOT-001",
+    "note": "Replace with canonical RC evidence.",
+    "status": "provisional-pilot"
+  },
+  {
+    "id": "E-RC005-001",
+    "type": "Editorial Synthesis",
+    "scope": "Pilot interface only",
+    "sourceId": "S-PILOT-001",
+    "note": "Replace with canonical RC evidence.",
+    "status": "provisional-pilot"
+  }
+]

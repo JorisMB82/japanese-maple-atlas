@@ -1,12 +1,13 @@
 {
   "name": "japanese-maple-atlas-mvp",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "validate:data": "node scripts/validate-data.mjs"
+    "validate:data": "node scripts/validate-repository.mjs",
+    "validate:repository": "node scripts/validate-repository.mjs"
   },
   "dependencies": {
     "next": "14.2.5",

@@ -10,6 +10,6 @@ export default function RootLayout({ children }) {
   return <html lang="en"><body>
     <SiteHeader />
     <main>{children}</main>
-    <footer><div><strong>Japanese Maple Atlas</strong><p>Evidence-based cultivar knowledge, presented through a usable public interface.</p></div><div><span>Release 0.2</span><span>RC-001–RC-005 pilot</span><span>Provisional data clearly marked</span></div></footer>
+    <footer><div><strong>Japanese Maple Atlas</strong><p>Evidence-based cultivar knowledge, presented through a usable public interface.</p></div><div><span>Sprint 3</span><span>Normalized repository pilot</span><span>Provisional data clearly marked</span></div></footer>
   </body></html>;
 }

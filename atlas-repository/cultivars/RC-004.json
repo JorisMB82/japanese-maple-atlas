@@ -1,0 +1,39 @@
+{
+  "id": "RC-004",
+  "slug": "crimson-queen",
+  "cultivar": "Crimson Queen",
+  "scientificName": "Acer palmatum 'Crimson Queen'",
+  "taxonId": "TAX-APAL",
+  "status": "provisional-pilot",
+  "summary": "A red dissected cascading cultivar used to test compact weeping morphology and comparison workflows.",
+  "habit": "Cascading",
+  "leafForm": "Dissected",
+  "springColor": "Crimson-red",
+  "summerColor": "Dark red-purple",
+  "autumnColor": "Scarlet",
+  "bark": "Gray-brown",
+  "sizeClass": "Small tree",
+  "light": "Full Sun to Partial Shade",
+  "diagnosticTraits": [
+    "Cascading habit",
+    "Dissected red leaves",
+    "Compact silhouette"
+  ],
+  "assertionIds": [
+    "AST-000005"
+  ],
+  "relationshipIds": [
+    "REL-000002",
+    "REL-000003"
+  ],
+  "mediaIds": [
+    "MED-RC004-PLACEHOLDER"
+  ],
+  "sections": {
+    "identity": "Pending canonical RC-004 import.",
+    "morphology": "Pilot data exercises cascading and dissected morphology.",
+    "cultivation": "Pending approved assertion import.",
+    "history": "Pending canonical source import.",
+    "propagation": "Pending canonical wording."
+  }
+}

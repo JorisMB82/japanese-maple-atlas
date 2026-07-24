@@ -1,0 +1,45 @@
+{
+  "cultivars": [
+    "RC-001",
+    "RC-002",
+    "RC-003",
+    "RC-004",
+    "RC-005"
+  ],
+  "assertions": [
+    "AST-000001",
+    "AST-000002",
+    "AST-000003",
+    "AST-000004",
+    "AST-000005",
+    "AST-000006"
+  ],
+  "evidence": [
+    "EVD-000001",
+    "EVD-000002",
+    "EVD-000003",
+    "EVD-000004",
+    "EVD-000005",
+    "EVD-000006"
+  ],
+  "sources": [
+    "SRC-000001"
+  ],
+  "taxonomy": [
+    "TAX-APAL",
+    "TAX-ASHI"
+  ],
+  "relationships": [
+    "REL-000001",
+    "REL-000002",
+    "REL-000003",
+    "REL-000004"
+  ],
+  "media": [
+    "MED-RC001-PLACEHOLDER",
+    "MED-RC002-PLACEHOLDER",
+    "MED-RC003-PLACEHOLDER",
+    "MED-RC004-PLACEHOLDER",
+    "MED-RC005-PLACEHOLDER"
+  ]
+}

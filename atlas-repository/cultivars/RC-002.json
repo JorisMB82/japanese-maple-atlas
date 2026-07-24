@@ -1,0 +1,39 @@
+{
+  "id": "RC-002",
+  "slug": "seiryu",
+  "cultivar": "Seiryu",
+  "scientificName": "Acer palmatum 'Seiryu'",
+  "taxonId": "TAX-APAL",
+  "status": "provisional-pilot",
+  "summary": "An upright dissected-leaf cultivar used to test the separation of growth habit from leaf form.",
+  "habit": "Upright",
+  "leafForm": "Dissected",
+  "springColor": "Fresh green",
+  "summerColor": "Green",
+  "autumnColor": "Yellow-orange to red",
+  "bark": "Gray-brown",
+  "sizeClass": "Medium tree",
+  "light": "Partial Shade to Full Sun",
+  "diagnosticTraits": [
+    "Upright habit",
+    "Dissected green leaves",
+    "Strong autumn transition"
+  ],
+  "assertionIds": [
+    "AST-000003"
+  ],
+  "relationshipIds": [
+    "REL-000001",
+    "REL-000002"
+  ],
+  "mediaIds": [
+    "MED-RC002-PLACEHOLDER"
+  ],
+  "sections": {
+    "identity": "Pending canonical RC-002 import.",
+    "morphology": "Pilot representation emphasizes the unusual upright/dissected combination.",
+    "cultivation": "Pending approved assertion import.",
+    "history": "Pending canonical source import.",
+    "propagation": "Pending canonical wording."
+  }
+}

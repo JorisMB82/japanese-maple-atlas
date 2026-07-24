@@ -1,0 +1,8 @@
+import fs from 'node:fs';import path from 'node:path';
+const root=path.resolve('atlas-repository');const dirs=['cultivars','assertions','evidence','sources','taxonomy','relationships','media'];
+const read=d=>fs.readdirSync(path.join(root,d)).filter(f=>f.endsWith('.json')).map(f=>JSON.parse(fs.readFileSync(path.join(root,d,f),'utf8')));
+const db=Object.fromEntries(dirs.map(d=>[d,read(d)]));const maps=Object.fromEntries(Object.entries(db).map(([k,v])=>[k,new Map(v.map(x=>[x.id,x]))]));const issues=[];
+const unique=new Set();for(const [kind,items] of Object.entries(db))for(const item of items){if(unique.has(item.id))issues.push(`Duplicate ID ${item.id}`);unique.add(item.id);if(!item.id)issues.push(`${kind}: missing id`)}
+for(const c of db.cultivars){if(!maps.taxonomy.has(c.taxonId))issues.push(`${c.id}: missing ${c.taxonId}`);for(const id of c.assertionIds||[])if(!maps.assertions.has(id))issues.push(`${c.id}: missing ${id}`);for(const id of c.relationshipIds||[])if(!maps.relationships.has(id))issues.push(`${c.id}: missing ${id}`);for(const id of c.mediaIds||[])if(!maps.media.has(id))issues.push(`${c.id}: missing ${id}`)}
+for(const a of db.assertions)for(const id of a.evidenceIds||[])if(!maps.evidence.has(id))issues.push(`${a.id}: missing ${id}`);for(const e of db.evidence)if(!maps.sources.has(e.sourceId))issues.push(`${e.id}: missing ${e.sourceId}`);for(const r of db.relationships){if(!maps.cultivars.has(r.fromId))issues.push(`${r.id}: missing ${r.fromId}`);if(!maps.cultivars.has(r.toId))issues.push(`${r.id}: missing ${r.toId}`)}
+console.log(`Checked ${unique.size} repository objects.`);if(issues.length){console.error(issues.join('\n'));process.exit(1)}console.log('Repository integrity: PASS');

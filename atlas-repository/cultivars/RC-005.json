@@ -1,0 +1,38 @@
+{
+  "id": "RC-005",
+  "slug": "aureum",
+  "cultivar": "Aureum",
+  "scientificName": "Acer shirasawanum 'Aureum'",
+  "taxonId": "TAX-ASHI",
+  "status": "provisional-pilot",
+  "summary": "A golden-leaved full-moon maple used to test cross-species taxonomy, identity, and historical synonymy.",
+  "habit": "Rounded",
+  "leafForm": "Rounded Lobes",
+  "springColor": "Bright yellow-green",
+  "summerColor": "Golden green",
+  "autumnColor": "Orange-red",
+  "bark": "Gray-brown",
+  "sizeClass": "Small to medium tree",
+  "light": "Partial Shade",
+  "diagnosticTraits": [
+    "Golden foliage",
+    "Rounded leaf lobes",
+    "Acer shirasawanum taxonomy"
+  ],
+  "assertionIds": [
+    "AST-000006"
+  ],
+  "relationshipIds": [
+    "REL-000003"
+  ],
+  "mediaIds": [
+    "MED-RC005-PLACEHOLDER"
+  ],
+  "sections": {
+    "identity": "Pending canonical RC-005 import and synonym register.",
+    "morphology": "Pilot data exercises rounded lobes and golden foliage.",
+    "cultivation": "Pending approved assertion import.",
+    "history": "Historical and nomenclatural detail intentionally withheld pending canonical import.",
+    "propagation": "Pending canonical wording."
+  }
+}

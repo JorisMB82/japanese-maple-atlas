@@ -1,0 +1,8 @@
+{
+  "id": "REL-000002",
+  "fromId": "RC-002",
+  "toId": "RC-004",
+  "type": "shared-leaf-form",
+  "label": "Shared dissected foliage",
+  "status": "provisional-pilot"
+}

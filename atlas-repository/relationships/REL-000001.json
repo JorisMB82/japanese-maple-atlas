@@ -1,0 +1,8 @@
+{
+  "id": "REL-000001",
+  "fromId": "RC-001",
+  "toId": "RC-002",
+  "type": "contrasting-leaf-form",
+  "label": "Contrasting leaf form",
+  "status": "provisional-pilot"
+}

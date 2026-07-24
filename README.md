@@ -2,7 +2,7 @@
 
 An evidence-aware botanical knowledge platform for discovering, comparing, and inspecting Japanese maple cultivars.
 
-## Release 0.2
+## Sprint 3 / v0.3.0
 
 The pilot now provides a coherent product experience:
 
@@ -51,3 +51,8 @@ The static export is written to `out/`.
 ## Product principle
 
 The repository is the source of truth. The application is a derived interface that makes structured botanical knowledge searchable, comparable, and inspectable.
+
+
+## Knowledge repository
+
+Sprint 3 introduces `atlas-repository/` and the service layer in `lib/repository.js`. Run `npm run validate:repository` before deployment. The `/repository` route displays the current manifest and integrity status.

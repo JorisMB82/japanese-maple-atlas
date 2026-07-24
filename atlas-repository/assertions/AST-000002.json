@@ -1,0 +1,12 @@
+{
+  "id": "AST-000002",
+  "subjectId": "RC-001",
+  "domain": "Leaves",
+  "statement": "The pilot record uses persistent dark red-purple foliage as a primary discovery trait.",
+  "state": "Qualified",
+  "confidence": "Moderate",
+  "evidenceIds": [
+    "EVD-000002"
+  ],
+  "status": "provisional-pilot"
+}

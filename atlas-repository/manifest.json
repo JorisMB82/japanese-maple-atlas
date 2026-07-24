@@ -1,0 +1,16 @@
+{
+  "repositoryVersion": "0.3.0",
+  "release": "Sprint 3 \u2014 Knowledge Engine",
+  "generatedAt": "2026-07-24",
+  "objectCounts": {
+    "cultivars": 5,
+    "assertions": 6,
+    "evidence": 6,
+    "sources": 1,
+    "taxa": 2,
+    "relationships": 4,
+    "media": 5
+  },
+  "canonicality": "provisional-pilot",
+  "notes": "Normalized object model is operational; botanical content awaits frozen RC import."
+}

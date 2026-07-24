@@ -1,0 +1,40 @@
+{
+  "id": "RC-001",
+  "slug": "bloodgood",
+  "cultivar": "Bloodgood",
+  "scientificName": "Acer palmatum 'Bloodgood'",
+  "taxonId": "TAX-APAL",
+  "status": "provisional-pilot",
+  "summary": "An upright, broadly spreading red-leaved Japanese maple represented here as the baseline pilot record.",
+  "habit": "Broad Upright",
+  "leafForm": "Palmate",
+  "springColor": "Red-purple",
+  "summerColor": "Deep purple-red",
+  "autumnColor": "Crimson-red",
+  "bark": "Gray-brown",
+  "sizeClass": "Medium tree",
+  "light": "Full Sun to Partial Shade",
+  "diagnosticTraits": [
+    "Upright habit",
+    "Persistent dark foliage",
+    "Red autumn coloration"
+  ],
+  "assertionIds": [
+    "AST-000001",
+    "AST-000002"
+  ],
+  "relationshipIds": [
+    "REL-000001",
+    "REL-000004"
+  ],
+  "mediaIds": [
+    "MED-RC001-PLACEHOLDER"
+  ],
+  "sections": {
+    "identity": "Pilot identity record pending direct import from the frozen RC-001 Reference Standard.",
+    "morphology": "Structured pilot traits are included to exercise the interface and comparison engine.",
+    "cultivation": "Cultivation statements must be replaced by approved assertions from RC-001.",
+    "history": "Historical narrative intentionally withheld until canonical source import.",
+    "propagation": "Cultivar continuity is expected to rely on vegetative propagation; canonical wording remains pending."
+  }
+}

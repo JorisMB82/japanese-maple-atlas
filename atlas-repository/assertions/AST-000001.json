@@ -1,0 +1,12 @@
+{
+  "id": "AST-000001",
+  "subjectId": "RC-001",
+  "domain": "Habit",
+  "statement": "The cultivar is represented in the pilot as broad upright.",
+  "state": "Qualified",
+  "confidence": "Moderate",
+  "evidenceIds": [
+    "EVD-000001"
+  ],
+  "status": "provisional-pilot"
+}

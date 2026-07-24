@@ -1,0 +1,12 @@
+{
+  "id": "AST-000003",
+  "subjectId": "RC-002",
+  "domain": "Habit",
+  "statement": "The pilot distinguishes an upright habit from the cascading habit often associated with dissected foliage.",
+  "state": "Qualified",
+  "confidence": "Moderate",
+  "evidenceIds": [
+    "EVD-000003"
+  ],
+  "status": "provisional-pilot"
+}

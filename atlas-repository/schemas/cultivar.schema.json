@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Atlas Cultivar",
+  "type": "object",
+  "required": [
+    "id",
+    "slug",
+    "cultivar",
+    "taxonId",
+    "status",
+    "assertionIds",
+    "relationshipIds",
+    "mediaIds"
+  ],
+  "properties": {
+    "id": {
+      "pattern": "^RC-[0-9]{3}$"
+    },
+    "slug": {
+      "type": "string"
+    },
+    "cultivar": {
+      "type": "string"
+    },
+    "taxonId": {
+      "pattern": "^TAX-"
+    },
+    "assertionIds": {
+      "type": "array",
+      "items": {
+        "pattern": "^AST-"
+      }
+    },
+    "relationshipIds": {
+      "type": "array",
+      "items": {
+        "pattern": "^REL-"
+      }
+    },
+    "mediaIds": {
+      "type": "array",
+      "items": {
+        "pattern": "^MED-"
+      }
+    }
+  }
+}

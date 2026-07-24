@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Atlas Relationship",
+  "type": "object",
+  "required": [
+    "id",
+    "fromId",
+    "toId",
+    "type",
+    "label"
+  ],
+  "properties": {
+    "id": {
+      "pattern": "^REL-[0-9]{6}$"
+    },
+    "fromId": {
+      "pattern": "^RC-"
+    },
+    "toId": {
+      "pattern": "^RC-"
+    }
+  }
+}

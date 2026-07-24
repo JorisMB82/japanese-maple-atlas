@@ -1,0 +1,12 @@
+{
+  "id": "AST-000006",
+  "subjectId": "RC-005",
+  "domain": "Taxonomy",
+  "statement": "The pilot record belongs to Acer shirasawanum rather than Acer palmatum.",
+  "state": "Qualified",
+  "confidence": "High",
+  "evidenceIds": [
+    "EVD-000006"
+  ],
+  "status": "provisional-pilot"
+}

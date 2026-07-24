@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Atlas Assertion",
+  "type": "object",
+  "required": [
+    "id",
+    "subjectId",
+    "domain",
+    "statement",
+    "state",
+    "confidence",
+    "evidenceIds"
+  ],
+  "properties": {
+    "id": {
+      "pattern": "^AST-[0-9]{6}$"
+    },
+    "subjectId": {
+      "pattern": "^RC-[0-9]{3}$"
+    },
+    "evidenceIds": {
+      "type": "array",
+      "items": {
+        "pattern": "^EVD-"
+      }
+    }
+  }
+}

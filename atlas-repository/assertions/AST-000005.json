@@ -1,0 +1,12 @@
+{
+  "id": "AST-000005",
+  "subjectId": "RC-004",
+  "domain": "Habit",
+  "statement": "The pilot represents the cultivar as cascading rather than upright.",
+  "state": "Qualified",
+  "confidence": "Moderate",
+  "evidenceIds": [
+    "EVD-000005"
+  ],
+  "status": "provisional-pilot"
+}

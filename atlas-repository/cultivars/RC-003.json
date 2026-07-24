@@ -1,0 +1,38 @@
+{
+  "id": "RC-003",
+  "slug": "sango-kaku",
+  "cultivar": "Sango-kaku",
+  "scientificName": "Acer palmatum 'Sango-kaku'",
+  "taxonId": "TAX-APAL",
+  "status": "provisional-pilot",
+  "summary": "An upright cultivar used to test seasonal bark expression and multi-season ornamental identity.",
+  "habit": "Upright",
+  "leafForm": "Palmate",
+  "springColor": "Yellow-green with warm margins",
+  "summerColor": "Green",
+  "autumnColor": "Yellow",
+  "bark": "Coral-red young shoots",
+  "sizeClass": "Medium tree",
+  "light": "Full Sun to Partial Shade",
+  "diagnosticTraits": [
+    "Coral-red young bark",
+    "Upright habit",
+    "Yellow autumn coloration"
+  ],
+  "assertionIds": [
+    "AST-000004"
+  ],
+  "relationshipIds": [
+    "REL-000004"
+  ],
+  "mediaIds": [
+    "MED-RC003-PLACEHOLDER"
+  ],
+  "sections": {
+    "identity": "Pending canonical RC-003 import.",
+    "morphology": "Pilot data exercises bark and seasonal-expression fields.",
+    "cultivation": "Pending approved assertion import.",
+    "history": "Pending canonical source import.",
+    "propagation": "Pending canonical wording."
+  }
+}
