@@ -1,15 +1,15 @@
 import CultivarExplorer from '@/components/CultivarExplorer';
-import { getCultivars } from '@/lib/data';
+import { getCultivars, getRepositoryStats } from '@/lib/data';
 
 export default function Home() {
   const cultivars = getCultivars();
+  const stats = getRepositoryStats();
   return <>
-    <section className="hero">
-      <div className="kicker">Functional MVP · Pilot cohort</div>
-      <h1>Find, inspect, and compare Japanese maple cultivars.</h1>
-      <p>This interface turns the Atlas repository model into a usable product. Search and comparison are operational now; detailed assertions and evidence will be replaced with the frozen RC-001–RC-005 records during normalization.</p>
+    <section className="hero homeHero">
+      <div className="heroCopy"><div className="kicker">Release 0.2 · Working product</div><h1>Japanese maples, organized as evidence—not folklore.</h1><p>Discover cultivars by form, foliage, seasonal expression, and identity. Compare records side by side and inspect the assertions and evidence behind each profile.</p><div className="heroActions"><a className="button" href="#directory-heading">Explore cultivars</a><a className="button secondary" href="/compare">Compare records</a></div></div>
+      <aside className="heroPanel"><span className="panelEyebrow">Pilot repository</span><div className="statGrid"><div><strong>{stats.cultivars}</strong><span>Cultivars</span></div><div><strong>{stats.species}</strong><span>Species</span></div><div><strong>{stats.assertions}</strong><span>Assertions</span></div><div><strong>{stats.sources}</strong><span>Sources</span></div></div><p>The interface is operational. Botanical content remains provisional until the frozen RC files are normalized.</p></aside>
     </section>
-    <div className="notice"><strong>Data status:</strong> interface-complete pilot seed data. It is deliberately marked provisional and must not be treated as the canonical Reference Standards.</div>
+    <section className="valueStrip"><div><strong>Searchable</strong><span>Find traits and cultivar names quickly.</span></div><div><strong>Comparable</strong><span>Inspect differences across standardized fields.</span></div><div><strong>Traceable</strong><span>Drill from conclusions to evidence and sources.</span></div></section>
     <CultivarExplorer cultivars={cultivars} />
   </>;
 }

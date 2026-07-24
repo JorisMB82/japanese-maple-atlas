@@ -1,0 +1,22 @@
+'use client';
+import { usePathname } from 'next/navigation';
+
+const links = [
+  ['/', 'Explore'],
+  ['/compare', 'Compare'],
+  ['/sources', 'Sources'],
+  ['/about', 'About']
+];
+
+export default function SiteHeader() {
+  const pathname = usePathname();
+  return <header className="siteHeader">
+    <a className="brand" href="/" aria-label="Japanese Maple Atlas home">
+      <span className="brandMark" aria-hidden="true">楓</span>
+      <span><strong>Japanese Maple Atlas</strong><small>Evidence-based cultivar knowledge</small></span>
+    </a>
+    <nav aria-label="Primary navigation">
+      {links.map(([href,label]) => <a key={href} href={href} className={pathname === href ? 'active' : ''}>{label}</a>)}
+    </nav>
+  </header>;
+}

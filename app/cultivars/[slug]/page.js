@@ -1,49 +1,26 @@
 import { notFound } from 'next/navigation';
-import { getAllSlugs, getCultivar, getEvidence, getSource } from '@/lib/data';
+import { getAllSlugs, getCultivar } from '@/lib/data';
+import StatusBadge from '@/components/StatusBadge';
+import SeasonalTimeline from '@/components/SeasonalTimeline';
+import EvidencePanel from '@/components/EvidencePanel';
 
 export function generateStaticParams() { return getAllSlugs(); }
+export function generateMetadata({ params }) { const c=getCultivar(params.slug); return c ? { title: c.cultivar, description: c.summary } : {}; }
 
 export default function CultivarPage({ params }) {
   const c = getCultivar(params.slug);
   if (!c) notFound();
   return <>
-    <section className="profileHeader">
-      <div>
-        <div className="kicker">{c.id} · {c.status}</div>
-        <h1>{c.cultivar}</h1>
-        <p className="muted"><em>{c.scientificName}</em></p>
-        <p>{c.summary}</p>
-      </div>
-      <aside className="statBox">
-        <strong>Primary discovery traits</strong>
-        <div className="tags">{c.diagnosticTraits.map(t=><span className="tag" key={t}>{t}</span>)}</div>
-      </aside>
+    <nav className="breadcrumb" aria-label="Breadcrumb"><a href="/">Cultivars</a><span>›</span><span>{c.cultivar}</span></nav>
+    <section className="profileHero">
+      <div><div className="profileMeta"><span className="referenceId">{c.id}</span><StatusBadge status={c.status} /></div><p className="speciesName"><em>{c.species}</em></p><h1>{c.cultivar}</h1><p className="scientificName"><em>{c.scientificName}</em></p><p className="lead">{c.summary}</p><div className="heroActions"><a className="button" href={`/compare?a=${c.slug}`}>Compare cultivar</a><a className="button secondary" href="#evidence">Inspect evidence</a></div></div>
+      <aside className="identityCard"><span className="panelEyebrow">Identity snapshot</span><dl><dt>Species</dt><dd><em>{c.species}</em></dd><dt>Habit</dt><dd>{c.habit}</dd><dt>Leaf form</dt><dd>{c.leafForm}</dd><dt>Size</dt><dd>{c.sizeClass}</dd></dl></aside>
     </section>
-    <div className="notice"><strong>Normalization status:</strong> this profile is wired to structured JSON but still awaits direct replacement with the frozen Reference Standard.</div>
-    <section className="sections">
-      <article className="card"><h2>Identity & classification</h2><dl>
-        <dt>Reference ID</dt><dd>{c.id}</dd><dt>Species</dt><dd><em>{c.species}</em></dd><dt>Cultivar</dt><dd>{c.cultivar}</dd><dt>Status</dt><dd>{c.status}</dd>
-      </dl><p>{c.sections.identity}</p></article>
-      <article className="card"><h2>Trait summary</h2><dl>
-        <dt>Habit</dt><dd>{c.habit}</dd><dt>Leaf form</dt><dd>{c.leafForm}</dd><dt>Size class</dt><dd>{c.sizeClass}</dd><dt>Bark</dt><dd>{c.bark}</dd><dt>Light</dt><dd>{c.light}</dd>
-      </dl></article>
-      <article className="card"><h2>Seasonal expression</h2><dl>
-        <dt>Spring</dt><dd>{c.springColor}</dd><dt>Summer</dt><dd>{c.summerColor}</dd><dt>Autumn</dt><dd>{c.autumnColor}</dd>
-      </dl></article>
-      <article className="card"><h2>Cultivation</h2><p>{c.sections.cultivation}</p><h3>Propagation</h3><p>{c.sections.propagation}</p></article>
-      <article className="card"><h2>Morphology</h2><p>{c.sections.morphology}</p></article>
-      <article className="card"><h2>History</h2><p>{c.sections.history}</p></article>
-    </section>
-    <section className="card" style={{marginTop:'1rem'}}>
-      <h2>Assertion and evidence drill-down</h2>
-      {c.assertions.map(a => {
-        const evs = a.evidenceIds.map(getEvidence).filter(Boolean);
-        return <details key={a.id}><summary>{a.domain}: {a.text}</summary><div className="assertion">
-          <div className="assertionMeta"><span>ID {a.id}</span><span>State: {a.state}</span><span>Confidence: {a.confidence}</span></div>
-          {evs.map(e => { const s=getSource(e.sourceId); return <div key={e.id} className="card" style={{marginTop:'.8rem'}}><strong>{e.type}</strong><p>{e.note}</p><p className="muted">Scope: {e.scope}<br/>Source: {s?.title} — {s?.citation}</p></div>})}
-        </div></details>
-      })}
-    </section>
-    <p style={{marginTop:'1.2rem'}}><a className="button secondary" href={`/compare?a=${c.slug}`}>Compare this cultivar</a></p>
+    <div className="notice"><strong>Data status:</strong> the software workflow is functional; this profile still uses clearly marked pilot content pending canonical RC normalization.</div>
+    <section className="profileSection"><div className="sectionHeading"><div><div className="kicker">At a glance</div><h2>Diagnostic profile</h2></div></div><div className="diagnosticGrid">{c.diagnosticTraits.map((trait,index)=><article key={trait}><span>0{index+1}</span><strong>{trait}</strong></article>)}</div></section>
+    <section className="profileSection"><div className="sectionHeading"><div><div className="kicker">Across the year</div><h2>Seasonal expression</h2></div></div><SeasonalTimeline cultivar={c} /></section>
+    <section className="profileSection twoColumn"><article><div className="kicker">Morphology</div><h2>Form and foliage</h2><p>{c.sections.morphology}</p><dl className="traitDl"><dt>Habit</dt><dd>{c.habit}</dd><dt>Leaf form</dt><dd>{c.leafForm}</dd><dt>Bark</dt><dd>{c.bark}</dd></dl></article><article><div className="kicker">Growing context</div><h2>Cultivation and continuity</h2><p>{c.sections.cultivation}</p><dl className="traitDl"><dt>Light</dt><dd>{c.light}</dd><dt>Propagation</dt><dd>{c.sections.propagation}</dd></dl></article></section>
+    <section className="profileSection twoColumn"><article><div className="kicker">Repository identity</div><h2>Identity and classification</h2><p>{c.sections.identity}</p></article><article><div className="kicker">Historical record</div><h2>History</h2><p>{c.sections.history}</p></article></section>
+    <section className="profileSection" id="evidence"><div className="sectionHeading"><div><div className="kicker">Traceability</div><h2>Assertions and evidence</h2></div><p>{c.assertions.length} structured assertion{c.assertions.length === 1 ? '' : 's'}</p></div><EvidencePanel assertions={c.assertions} /></section>
   </>;
 }
