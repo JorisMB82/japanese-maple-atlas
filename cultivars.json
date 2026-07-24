@@ -1,0 +1,119 @@
+[
+  {
+    "id": "RC-001",
+    "slug": "bloodgood",
+    "cultivar": "Bloodgood",
+    "scientificName": "Acer palmatum 'Bloodgood'",
+    "species": "Acer palmatum",
+    "status": "provisional-pilot",
+    "summary": "An upright, broadly spreading red-leaved Japanese maple represented here as the baseline pilot record.",
+    "habit": "Broad Upright",
+    "leafForm": "Palmate",
+    "springColor": "Red-purple",
+    "summerColor": "Deep purple-red",
+    "autumnColor": "Crimson-red",
+    "bark": "Gray-brown",
+    "sizeClass": "Medium tree",
+    "light": "Full Sun to Partial Shade",
+    "diagnosticTraits": ["Upright habit", "Persistent dark foliage", "Red autumn coloration"],
+    "sections": {
+      "identity": "Pilot identity record pending direct import from the frozen RC-001 Reference Standard.",
+      "morphology": "Structured pilot traits are included to exercise the interface and comparison engine.",
+      "cultivation": "Cultivation statements must be replaced by approved assertions from RC-001.",
+      "history": "Historical narrative intentionally withheld until canonical source import.",
+      "propagation": "Cultivar continuity is expected to rely on vegetative propagation; canonical wording remains pending."
+    },
+    "assertions": [
+      {"id":"A-RC001-001","domain":"Habit","text":"The cultivar is represented in the pilot as broad upright.","state":"Qualified","confidence":"Moderate","evidenceIds":["E-RC001-001"]},
+      {"id":"A-RC001-002","domain":"Leaves","text":"The pilot record uses persistent dark red-purple foliage as a primary discovery trait.","state":"Qualified","confidence":"Moderate","evidenceIds":["E-RC001-002"]}
+    ]
+  },
+  {
+    "id": "RC-002",
+    "slug": "seiryu",
+    "cultivar": "Seiryu",
+    "scientificName": "Acer palmatum 'Seiryu'",
+    "species": "Acer palmatum",
+    "status": "provisional-pilot",
+    "summary": "An upright dissected-leaf cultivar used to test the separation of growth habit from leaf form.",
+    "habit": "Upright",
+    "leafForm": "Dissected",
+    "springColor": "Fresh green",
+    "summerColor": "Green",
+    "autumnColor": "Yellow-orange to red",
+    "bark": "Gray-brown",
+    "sizeClass": "Medium tree",
+    "light": "Partial Shade to Full Sun",
+    "diagnosticTraits": ["Upright habit", "Dissected green leaves", "Strong autumn transition"],
+    "sections": {"identity":"Pending canonical RC-002 import.","morphology":"Pilot representation emphasizes the unusual upright/dissected combination.","cultivation":"Pending approved assertion import.","history":"Pending canonical source import.","propagation":"Pending canonical wording."},
+    "assertions": [
+      {"id":"A-RC002-001","domain":"Habit","text":"The pilot distinguishes an upright habit from the cascading habit often associated with dissected foliage.","state":"Qualified","confidence":"Moderate","evidenceIds":["E-RC002-001"]}
+    ]
+  },
+  {
+    "id": "RC-003",
+    "slug": "sango-kaku",
+    "cultivar": "Sango-kaku",
+    "scientificName": "Acer palmatum 'Sango-kaku'",
+    "species": "Acer palmatum",
+    "status": "provisional-pilot",
+    "summary": "An upright cultivar used to test seasonal bark expression and multi-season ornamental identity.",
+    "habit": "Upright",
+    "leafForm": "Palmate",
+    "springColor": "Yellow-green with warm margins",
+    "summerColor": "Green",
+    "autumnColor": "Yellow",
+    "bark": "Coral-red young shoots",
+    "sizeClass": "Medium tree",
+    "light": "Full Sun to Partial Shade",
+    "diagnosticTraits": ["Coral-red young bark", "Upright habit", "Yellow autumn coloration"],
+    "sections": {"identity":"Pending canonical RC-003 import.","morphology":"Pilot data exercises bark and seasonal-expression fields.","cultivation":"Pending approved assertion import.","history":"Pending canonical source import.","propagation":"Pending canonical wording."},
+    "assertions": [
+      {"id":"A-RC003-001","domain":"Bark","text":"Young shoots are represented as coral-red, especially relevant during the leafless season.","state":"Qualified","confidence":"Moderate","evidenceIds":["E-RC003-001"]}
+    ]
+  },
+  {
+    "id": "RC-004",
+    "slug": "crimson-queen",
+    "cultivar": "Crimson Queen",
+    "scientificName": "Acer palmatum 'Crimson Queen'",
+    "species": "Acer palmatum",
+    "status": "provisional-pilot",
+    "summary": "A red dissected cascading cultivar used to test compact weeping morphology and comparison workflows.",
+    "habit": "Cascading",
+    "leafForm": "Dissected",
+    "springColor": "Crimson-red",
+    "summerColor": "Dark red-purple",
+    "autumnColor": "Scarlet",
+    "bark": "Gray-brown",
+    "sizeClass": "Small tree",
+    "light": "Full Sun to Partial Shade",
+    "diagnosticTraits": ["Cascading habit", "Dissected red leaves", "Compact silhouette"],
+    "sections": {"identity":"Pending canonical RC-004 import.","morphology":"Pilot data exercises cascading and dissected morphology.","cultivation":"Pending approved assertion import.","history":"Pending canonical source import.","propagation":"Pending canonical wording."},
+    "assertions": [
+      {"id":"A-RC004-001","domain":"Habit","text":"The pilot represents the cultivar as cascading rather than upright.","state":"Qualified","confidence":"Moderate","evidenceIds":["E-RC004-001"]}
+    ]
+  },
+  {
+    "id": "RC-005",
+    "slug": "aureum",
+    "cultivar": "Aureum",
+    "scientificName": "Acer shirasawanum 'Aureum'",
+    "species": "Acer shirasawanum",
+    "status": "provisional-pilot",
+    "summary": "A golden-leaved full-moon maple used to test cross-species taxonomy, identity, and historical synonymy.",
+    "habit": "Rounded",
+    "leafForm": "Rounded Lobes",
+    "springColor": "Bright yellow-green",
+    "summerColor": "Golden green",
+    "autumnColor": "Orange-red",
+    "bark": "Gray-brown",
+    "sizeClass": "Small to medium tree",
+    "light": "Partial Shade",
+    "diagnosticTraits": ["Golden foliage", "Rounded leaf lobes", "Acer shirasawanum taxonomy"],
+    "sections": {"identity":"Pending canonical RC-005 import and synonym register.","morphology":"Pilot data exercises rounded lobes and golden foliage.","cultivation":"Pending approved assertion import.","history":"Historical and nomenclatural detail intentionally withheld pending canonical import.","propagation":"Pending canonical wording."},
+    "assertions": [
+      {"id":"A-RC005-001","domain":"Taxonomy","text":"The pilot record belongs to Acer shirasawanum rather than Acer palmatum.","state":"Qualified","confidence":"High","evidenceIds":["E-RC005-001"]}
+    ]
+  }
+]

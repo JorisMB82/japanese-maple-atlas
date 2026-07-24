@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://japanese-maple-atlas.local/schemas/cultivar.schema.json",
+  "title": "Japanese Maple Atlas Cultivar",
+  "type": "object",
+  "required": ["id","slug","cultivar","scientificName","species","status","summary","habit","leafForm","sections","assertions"],
+  "properties": {
+    "id": {"type":"string","pattern":"^RC-[0-9]{3}$"},
+    "slug": {"type":"string","pattern":"^[a-z0-9-]+$"},
+    "cultivar": {"type":"string","minLength":1},
+    "scientificName": {"type":"string","minLength":1},
+    "species": {"type":"string","minLength":1},
+    "status": {"enum":["provisional-pilot","under-review","frozen","superseded"]},
+    "summary": {"type":"string"},
+    "habit": {"type":"string"},
+    "leafForm": {"type":"string"},
+    "sections": {"type":"object","required":["identity","morphology","cultivation","history","propagation"]},
+    "assertions": {"type":"array","items":{"type":"object","required":["id","domain","text","state","confidence","evidenceIds"]}}
+  },
+  "additionalProperties": true
+}
