@@ -1,0 +1,19 @@
+{
+  "id": "MED-RC-001-IDENTITY-001",
+  "cultivarId": "RC-001",
+  "mediaType": "atlas-illustration",
+  "role": "identity-plate",
+  "subject": "whole-plant-habit",
+  "season": "representative",
+  "status": "pilot-approved",
+  "assetPath": "/media/identity-plates/bloodgood.svg",
+  "thumbnailPath": "/media/identity-plates/bloodgood.svg",
+  "altText": "Standardized Atlas editorial illustration of Acer palmatum 'Bloodgood' showing a broad upright silhouette and representative foliage palette.",
+  "caption": "Bloodgood standardized Atlas identity plate.",
+  "credit": "Japanese Maple Atlas",
+  "creatorType": "procedural-editorial-illustration",
+  "rights": "Copyright retained; licensing decision pending",
+  "evidentiaryStatus": "illustrative-not-evidence",
+  "styleVersion": "atlas-identity-plate-v1",
+  "reviewNotes": "Pilot visual for interface and comparison testing. Must be reviewed against canonical cultivar descriptions before final publication."
+}

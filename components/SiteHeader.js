@@ -5,6 +5,7 @@ const links = [
   ['/', 'Explore'],
   ['/compare', 'Compare'],
   ['/sources', 'Sources'],
+  ['/media', 'Media'],
   ['/repository', 'Repository'],
   ['/about', 'About']
 ];

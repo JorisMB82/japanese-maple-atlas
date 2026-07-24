@@ -1,0 +1,104 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://japanese-maple-atlas.org/schemas/media.schema.json",
+  "title": "Atlas Media Object",
+  "type": "object",
+  "required": [
+    "id",
+    "cultivarId",
+    "mediaType",
+    "role",
+    "status",
+    "assetPath",
+    "altText",
+    "evidentiaryStatus"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^MED-RC-[0-9]{3}-[A-Z]+-[0-9]{3}$"
+    },
+    "cultivarId": {
+      "type": "string",
+      "pattern": "^RC-[0-9]{3}$"
+    },
+    "mediaType": {
+      "enum": [
+        "atlas-illustration",
+        "photograph",
+        "scan",
+        "diagram",
+        "map",
+        "specimen-image"
+      ]
+    },
+    "role": {
+      "enum": [
+        "identity-plate",
+        "habit",
+        "leaf",
+        "bark",
+        "samara",
+        "flower",
+        "seasonal",
+        "comparison",
+        "historical"
+      ]
+    },
+    "subject": {
+      "type": "string"
+    },
+    "season": {
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "reserved",
+        "draft",
+        "pilot-approved",
+        "approved",
+        "deprecated"
+      ]
+    },
+    "assetPath": {
+      "type": "string"
+    },
+    "thumbnailPath": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "altText": {
+      "type": "string",
+      "minLength": 20
+    },
+    "caption": {
+      "type": "string"
+    },
+    "credit": {
+      "type": "string"
+    },
+    "creatorType": {
+      "type": "string"
+    },
+    "rights": {
+      "type": "string"
+    },
+    "evidentiaryStatus": {
+      "enum": [
+        "illustrative-not-evidence",
+        "supporting-evidence",
+        "primary-evidence",
+        "context-only"
+      ]
+    },
+    "styleVersion": {
+      "type": "string"
+    },
+    "reviewNotes": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": true
+}

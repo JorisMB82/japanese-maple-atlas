@@ -1,6 +1,6 @@
 {
-  "repositoryVersion": "0.3.0",
-  "release": "Sprint 3 \u2014 Knowledge Engine",
+  "repositoryVersion": "0.5.0",
+  "release": "Sprint 5 — Media System",
   "generatedAt": "2026-07-24",
   "objectCounts": {
     "cultivars": 5,
@@ -12,5 +12,5 @@
     "media": 5
   },
   "canonicality": "provisional-pilot",
-  "notes": "Normalized object model is operational; botanical content awaits frozen RC import."
+  "notes": "Media is a first-class repository object. Five standardized editorial identity plates are operational; botanical content awaits frozen RC import."
 }
