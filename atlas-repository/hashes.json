@@ -224,6 +224,6 @@
     "atlas-repository/submissions/SUB-RC-005-V1.json": "528a958ba25c57bceaf0eb92e09bef407e9de4842651ba503aeda8fdd5937ea0",
     "atlas-repository/taxonomy/TAX-APAL.json": "e44084cdaa5f64bfa6f984902dae822fe54a75a952846fdce8cc0455e70a6ada",
     "atlas-repository/taxonomy/TAX-ASHI.json": "54783a75270b288d5400a32cedddd7babf168fe3776fa19d21526009ab5e241b",
-    "lib/repository-registry.js": "1d90820513353d304d1bb6d354b5bd8bdb8ed0e1ec177076f030cec334a8ab86"
+    "lib/repository-registry.js": "961f5ce0409b7ae8e97b5a9d7d03ca8aae0edd5bcb63df47ff99134eab539fd8"
   }
 }

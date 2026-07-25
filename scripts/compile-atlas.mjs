@@ -512,27 +512,7 @@ function buildCompilerOutputs(records, editorialInputs) {
   };
   outputs.set('atlas-repository/manifest.json', json(manifest));
 
-  function registrySection(name, folder, items) {
-    const imports = items.map((item, index) => `import ${name}${index} from '@/atlas-repository/${folder}/${item.id}.json';`).join('\n');
-    const values = items.map((_, index) => `${name}${index}`).join(',');
-    return `${imports}\nexport const ${name} = [${values}];`;
-  }
-  const registry = [
-    "// GENERATED FILE — DO NOT EDIT. Run `npm run compile:atlas`.",
-    "import manifest from '@/atlas-repository/manifest.json';",
-    registrySection('cultivars', 'cultivars', cultivarObjects),
-    registrySection('assertions', 'assertions', assertionObjects),
-    registrySection('evidence', 'evidence', evidenceObjects),
-    registrySection('sources', 'sources', sources),
-    registrySection('taxa', 'taxonomy', taxa),
-    registrySection('relationships', 'relationships', relationships),
-    registrySection('media', 'media', media),
-    registrySection('contributors', 'contributors', contributorObjects),
-    registrySection('submissions', 'submissions', submissionObjects),
-    registrySection('editorialWorkflows', 'editorial-workflows', workflowObjects),
-    registrySection('editorialReviews', 'editorial-reviews', reviewObjects),
-    'export { manifest };', ''
-  ].join('\n\n');
+  const registry = `// GENERATED FILE — DO NOT EDIT. Run \`npm run compile:atlas\`.\n\nimport fs from 'node:fs';\nimport path from 'node:path';\n\nconst repositoryRoot = path.join(process.cwd(), 'atlas-repository');\nconst loadJson = file => JSON.parse(fs.readFileSync(file, 'utf8'));\nconst loadDirectory = directory => {\n  const fullPath = path.join(repositoryRoot, directory);\n  return fs.readdirSync(fullPath)\n    .filter(file => file.endsWith('.json'))\n    .sort()\n    .map(file => loadJson(path.join(fullPath, file)));\n};\n\nexport const manifest = loadJson(path.join(repositoryRoot, 'manifest.json'));\nexport const cultivars = loadDirectory('cultivars');\nexport const assertions = loadDirectory('assertions');\nexport const evidence = loadDirectory('evidence');\nexport const sources = loadDirectory('sources');\nexport const taxa = loadDirectory('taxonomy');\nexport const relationships = loadDirectory('relationships');\nexport const media = loadDirectory('media');\nexport const contributors = loadDirectory('contributors');\nexport const submissions = loadDirectory('submissions');\nexport const editorialWorkflows = loadDirectory('editorial-workflows');\nexport const editorialReviews = loadDirectory('editorial-reviews');\n`;
   outputs.set('lib/repository-registry.js', registry);
 
   const generatedHashes = {};

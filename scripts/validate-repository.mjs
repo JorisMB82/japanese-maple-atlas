@@ -114,7 +114,9 @@ const calculatedHash = sha256(indexed.objects.slice().sort((a,b) => a.path.local
 if (indexed.objectCount === 203 && calculatedHash === manifest.repositoryHash && hashes.repositoryHash === manifest.repositoryHash) pass('repository hash'); else fail('repository hash', 'manifest, object index and hash registry disagree');
 
 const registry = fs.readFileSync(path.join(ROOT, 'lib', 'repository-registry.js'), 'utf8');
-for (const { object } of Object.values(db).flat()) if (!registry.includes(`${object.id}.json`)) errors.push(`Registry missing import for ${object.id}`);
+const registryCategories = ['cultivars','assertions','evidence','sources','taxonomy','relationships','media','contributors','submissions','editorial-workflows','editorial-reviews'];
+for (const category of registryCategories) if (!registry.includes(`loadDirectory('${category}')`)) errors.push(`Registry missing category ${category}`);
+if (!registry.includes("loadJson(path.join(repositoryRoot, 'manifest.json'))")) errors.push('Registry missing manifest loader');
 if (!errors.some(error => error.startsWith('Registry missing'))) pass('generated JavaScript registry');
 
 console.log('Japanese Maple Atlas — Sprint 7 validation');
