@@ -70,7 +70,8 @@ test('referenced Next.js static assets exist in the export', () => {
   for (const file of htmlFiles) {
     const html = fs.readFileSync(file, 'utf8');
     for (const match of html.matchAll(/(?:src|href)=["'](\/_next\/static\/[^"']+)["']/g)) {
-      const asset = path.join(OUT, match[1].replace(/^\//, ''));
+      const decodedPath = decodeURIComponent(match[1]).replace(/^\//, '');
+      const asset = path.join(OUT, decodedPath);
       if (!fs.existsSync(asset)) missing.add(match[1]);
     }
   }
