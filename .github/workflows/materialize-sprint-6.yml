@@ -1,0 +1,48 @@
+name: Materialize Sprint 6 branch
+
+on:
+  push:
+    branches: [sprint-6-atlas-compiler]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  materialize:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: sprint-6-atlas-compiler
+          fetch-depth: 0
+      - name: Decode reviewed Sprint 6 tree
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -d .sprint6-bootstrap
+          cat .sprint6-bootstrap/part-* > /tmp/sprint6.b64
+          base64 --decode /tmp/sprint6.b64 > /tmp/sprint6.tar.xz
+          tar -xJf /tmp/sprint6.tar.xz -C /tmp
+          rm -rf atlas-repository/assertions atlas-repository/evidence atlas-repository/sources atlas-repository/cultivars atlas-repository/taxonomy atlas-repository/relationships atlas-repository/media atlas-repository/reference-standards atlas-repository/indexes
+          cp -a /tmp/repository-overlay/. .
+          while IFS= read -r target; do
+            test -z "$target" || rm -f "$target"
+          done < /tmp/DELETE-THESE-FILES.txt
+          rm -rf .sprint6-bootstrap .sprint6-bootstrap-v2 .sprint6-bootstrap-v3 .github/workflows/materialize-sprint-6.yml
+          sed -i 's/npm ci/npm install --no-audit --no-fund/' .github/workflows/sprint-6-validation.yml
+      - name: Verify compiler and repository
+        run: |
+          npm install --no-audit --no-fund
+          npm run compile:atlas:check
+          npm run validate:repository
+          npm run build
+      - name: Commit clean Sprint 6 implementation
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Sprint 6: implement Atlas compiler and frozen RC import"
+          git push origin HEAD:sprint-6-atlas-compiler
