@@ -58,7 +58,7 @@ Sprint 10 does not alter the five frozen Reference Standards, compiled assertion
 - Quality-infrastructure validation: PASS.
 - Release manifest and Sprint 10 CI artifacts: PASS.
 - `package.json` and `package-lock.json`: synchronised at 0.10.0.
-- Vercel preview: provider build-rate limit encountered; the independent production build and static export completed successfully.
+- Vercel preview deployment: READY.
 - Temporary Sprint 10 synchronisation and patch workflows: removed.
 
 ## CI artifacts
