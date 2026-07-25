@@ -10,30 +10,30 @@ export default function Home() {
   return <>
     <section className="hero homeHero">
       <div>
-        <div className="kicker">Sprint 8 · semantic discovery</div>
+        <div className="kicker">Sprint 9 · knowledge graph</div>
         <h1>Japanese maples, organized as evidence—not folklore.</h1>
-        <p>Search canonical cultivar records through governed horticultural concepts, inspect why each result matched, and follow the evidence behind every profile.</p>
-        <div className="heroActions"><a className="button" href="#directory-heading">Search cultivars</a><a className="button secondary" href="/editorial">Inspect editorial workflow</a></div>
+        <p>Search canonical cultivar records, inspect why results matched, and explore the governed taxonomic, morphological and diagnostic relationships connecting the Atlas.</p>
+        <div className="heroActions"><a className="button" href="#directory-heading">Search cultivars</a><a className="button secondary" href="/graph">Explore knowledge graph</a></div>
       </div>
       <aside className="heroPanel">
         <span className="panelEyebrow">Governed knowledge repository</span>
         <div className="statGrid">
           <div><strong>{stats.cultivars}</strong><span>Cultivars</span></div>
           <div><strong>{stats.species}</strong><span>Species</span></div>
-          <div><strong>{stats.assertions}</strong><span>Assertions</span></div>
-          <div><strong>{stats.sources}</strong><span>Frozen sources</span></div>
+          <div><strong>{stats.graphNodes}</strong><span>Graph nodes</span></div>
+          <div><strong>{stats.graphEdges}</strong><span>Graph edges</span></div>
         </div>
-        <p>RC-001 through RC-005 remain frozen and hash-protected. Sprint 8 adds explainable semantic search without altering canonical botanical content.</p>
+        <p>RC-001 through RC-005 remain frozen and hash-protected. Sprint 9 adds evidence-linked relationships without altering canonical cultivar assertions.</p>
       </aside>
     </section>
 
     <div className="valueStrip">
-      <div><strong>Semantic</strong><span>Common horticultural language maps to governed repository concepts.</span></div>
-      <div><strong>Explainable</strong><span>Results identify the field or concept responsible for each match.</span></div>
-      <div><strong>Qualified</strong><span>Search broadens discovery without erasing climatic or evidentiary limits.</span></div>
+      <div><strong>Connected</strong><span>Cultivars and taxa are joined through explicit, controlled relationship types.</span></div>
+      <div><strong>Traceable</strong><span>Every graph edge links back to approved assertions and frozen sources.</span></div>
+      <div><strong>Qualified</strong><span>Shared traits and diagnostic comparisons remain separate from authentication claims.</span></div>
     </div>
 
-    <div className="notice"><strong>Search status:</strong> semantic interpretation improves discovery but does not create new botanical claims. The five cultivar records remain canonical compiled outputs.</div>
+    <div className="notice"><strong>Graph status:</strong> relationships organize approved knowledge and comparisons; they do not establish clonal identity, parentage or specimen authentication.</div>
 
     <CultivarExplorer cultivars={cultivars} facets={facets} examples={queryExamples()} />
   </>;
