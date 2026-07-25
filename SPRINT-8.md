@@ -2,33 +2,39 @@
 
 ## Status
 
-Implementation in progress on `sprint-8-advanced-search`.
+Implementation complete and ready for review.
 
-## Scope
+## Capability shipped
 
-- governed semantic search vocabulary;
-- weighted relevance scoring;
+- governed semantic vocabulary for habit, leaf form, seasonal colour, exposure, size and cultivation risk;
+- weighted and explainable relevance scoring;
 - AND, OR, quoted phrase, field and exclusion query support;
-- explainable match reasons;
-- contextual semantic facets;
+- contextual semantic facets and result counts;
 - URL-persisted discovery state;
-- controlled spelling and no-result suggestions;
+- controlled spelling and no-result recovery suggestions;
 - responsive semantic-search interface;
-- dedicated search validation and CI integration;
-- implementation documentation.
+- dedicated semantic-search validation and permanent CI integration;
+- updated application and implementation documentation.
 
 ## Architectural boundary
 
-Sprint 8 improves discovery over the existing canonical repository. It does not change the frozen Reference Standards or the 203 first-class objects produced by the Atlas Compiler in Sprint 7.
+Sprint 8 improves discovery over the existing canonical repository. It does not change the five frozen Reference Standards or the 203 first-class repository objects produced by the Atlas Compiler in Sprint 7. Search interpretation improves retrieval but does not create botanical assertions.
 
-## Completion gate
+## Final verification
 
-Sprint 8 is complete when:
+- Contributor input validation: PASS.
+- Atlas Compiler deterministic drift check: PASS.
+- Repository integrity validation: PASS.
+- Semantic search validation: PASS.
+- Production Next.js build: PASS.
+- Vercel preview deployment: READY.
+- `package.json` and `package-lock.json`: synchronised at application version 0.8.0.
+- Temporary lockfile workflow: removed.
 
-- semantic search validation passes with zero errors;
-- contributor and repository validation continue to pass;
-- compiler drift remains absent;
-- the production build succeeds;
-- the Vercel preview is healthy;
-- documentation is current;
-- the pull request is ready for review.
+## Review and merge
+
+Review pull request #3 and use **Squash and merge**. Suggested squash title:
+
+`Sprint 8: implement advanced search and semantic filtering`
+
+Sprint 9 should begin only after this review branch is merged into `main`.
