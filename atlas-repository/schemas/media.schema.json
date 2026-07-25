@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://japanese-maple-atlas.org/schemas/media.schema.json",
+  "title": "Atlas Media Object",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "id",
+    "cultivarId",
+    "mediaType",
+    "role",
+    "status",
+    "assetPath",
+    "altText",
+    "evidentiaryStatus"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^MED-RC-[0-9]{3}-[A-Z]+-[0-9]{3}$"
+    },
+    "cultivarId": {
+      "type": "string",
+      "pattern": "^RC-[0-9]{3}$"
+    },
+    "evidentiaryStatus": {
+      "enum": [
+        "illustrative-not-evidence",
+        "supporting-evidence",
+        "primary-evidence",
+        "context-only"
+      ]
+    }
+  }
+}

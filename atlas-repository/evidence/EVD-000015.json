@@ -1,0 +1,19 @@
+{
+  "id": "EVD-000015",
+  "evidenceType": "frozen-editorial-reference-standard",
+  "scope": "cultivar identity and freeze metadata",
+  "sourceId": "SRC-000003",
+  "status": "approved",
+  "note": "RC-003 At-a-glance and identity sections; compiled without converting unresolved or rejected propositions into approved facts.",
+  "assertionIds": [
+    "AST-000045",
+    "AST-000046",
+    "AST-000047",
+    "AST-000048"
+  ],
+  "sourceLocation": {
+    "path": "atlas-repository/reference-standards/RC-003.md",
+    "section": "At-a-glance and identity sections"
+  },
+  "sourceSha256": "f09482aad282c906978a4bdd3d4c19db6882cccfaa5af9f45fc0afd8bc263462"
+}

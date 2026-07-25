@@ -1,0 +1,18 @@
+{
+  "id": "EVD-000021",
+  "evidenceType": "frozen-editorial-reference-standard",
+  "scope": "diagnosis, authentication limits and confidence",
+  "sourceId": "SRC-000003",
+  "status": "approved",
+  "note": "RC-003 Identification and confidence sections; compiled without converting unresolved or rejected propositions into approved facts.",
+  "assertionIds": [
+    "AST-000064",
+    "AST-000065",
+    "AST-000066"
+  ],
+  "sourceLocation": {
+    "path": "atlas-repository/reference-standards/RC-003.md",
+    "section": "Identification and confidence sections"
+  },
+  "sourceSha256": "f09482aad282c906978a4bdd3d4c19db6882cccfaa5af9f45fc0afd8bc263462"
+}

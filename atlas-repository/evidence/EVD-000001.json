@@ -1,8 +1,19 @@
 {
   "id": "EVD-000001",
-  "evidenceType": "Editorial Synthesis",
-  "scope": "Pilot interface only",
+  "evidenceType": "frozen-editorial-reference-standard",
+  "scope": "cultivar identity and freeze metadata",
   "sourceId": "SRC-000001",
-  "note": "Replace with canonical RC evidence.",
-  "status": "provisional-pilot"
+  "status": "approved",
+  "note": "RC-001 At-a-glance and identity sections; compiled without converting unresolved or rejected propositions into approved facts.",
+  "assertionIds": [
+    "AST-000001",
+    "AST-000002",
+    "AST-000003",
+    "AST-000004"
+  ],
+  "sourceLocation": {
+    "path": "atlas-repository/reference-standards/RC-001.md",
+    "section": "At-a-glance and identity sections"
+  },
+  "sourceSha256": "c41bd23b2c5822130e2a343eead0f678a1e078bc5bc29b5d716c4c117739c932"
 }

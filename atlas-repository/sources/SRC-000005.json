@@ -1,0 +1,12 @@
+{
+  "id": "SRC-000005",
+  "title": "RC-005 — Acer shirasawanum 'Aureum' Reference Standard v1.0",
+  "citation": "Japanese Maple Atlas. RC-005 — Acer shirasawanum 'Aureum'. Frozen Reference Standard v1.0, July 24, 2026.",
+  "sourceType": "frozen-reference-standard",
+  "authority": "Japanese Maple Atlas",
+  "version": "Reference Standard v1.0",
+  "freezeDate": "July 24, 2026",
+  "path": "atlas-repository/reference-standards/RC-005.md",
+  "sha256": "0a4f92dbdfdd0d487a6f3236f12d6e280c64e0ca8329837cc6cd4a057dfad679",
+  "status": "frozen"
+}

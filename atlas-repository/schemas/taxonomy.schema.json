@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://japanese-maple-atlas.org/schemas/taxonomy.schema.json",
+  "title": "Atlas Taxon",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "id",
+    "scientificName",
+    "rank",
+    "status"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^TAX-[A-Z0-9]+$"
+    },
+    "rank": {
+      "const": "species"
+    },
+    "status": {
+      "const": "accepted"
+    }
+  }
+}

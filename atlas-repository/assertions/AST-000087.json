@@ -1,0 +1,18 @@
+{
+  "id": "AST-000087",
+  "subjectId": "RC-004",
+  "domain": "diagnosis",
+  "predicate": "authentication-limit",
+  "statement": "Appearance or a nursery label alone does not establish authenticated clonal identity.",
+  "state": "approved-qualified",
+  "confidence": "moderate",
+  "evidenceIds": [
+    "EVD-000028"
+  ],
+  "sourceScope": "cultivar-specific editorial synthesis",
+  "generatedFrom": {
+    "sourceId": "SRC-000004",
+    "referenceStandard": "RC-004",
+    "compilerVersion": "1.0.0"
+  }
+}

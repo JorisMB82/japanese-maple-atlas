@@ -1,0 +1,18 @@
+{
+  "id": "AST-000015",
+  "subjectId": "RC-001",
+  "domain": "cultivation",
+  "predicate": "exposure",
+  "statement": "Exposure: Sun to partial shade, with climatic qualification.",
+  "state": "approved",
+  "confidence": "high",
+  "evidenceIds": [
+    "EVD-000005"
+  ],
+  "sourceScope": "cultivar-specific or explicitly qualified inherited guidance",
+  "generatedFrom": {
+    "sourceId": "SRC-000001",
+    "referenceStandard": "RC-001",
+    "compilerVersion": "1.0.0"
+  }
+}

@@ -4,35 +4,71 @@
   "cultivar": "Aureum",
   "scientificName": "Acer shirasawanum 'Aureum'",
   "taxonId": "TAX-ASHI",
-  "status": "provisional-pilot",
-  "summary": "A golden-leaved full-moon maple used to test cross-species taxonomy, identity, and historical synonymy.",
-  "habit": "Rounded",
-  "leafForm": "Rounded Lobes",
-  "springColor": "Bright yellow-green",
-  "summerColor": "Golden green",
-  "autumnColor": "Orange-red",
-  "bark": "Gray-brown",
-  "sizeClass": "Small to medium tree",
-  "light": "Partial Shade",
+  "status": "frozen-reference-standard",
+  "canonicality": "canonical-compiled",
+  "summary": "Acer shirasawanum 'Aureum' is a frozen Atlas reference cultivar. Habit: Bushy, upright-rounded to broadly rounded; often multistemmed. Leaf form: Rounded, orbicular to suborbicular and fan-like. Spring foliage: Bright yellow to golden yellow, sometimes edged or tinged red. Summer foliage: Bright yellow, yellow-green or greenish yellow depending on exposure and climate. Autumn foliage: Yellow-gold, orange, orange-red or red-purple; may be weak or curtailed by scorch or early browning. Rounded, shallowly lobed yellow to yellow-green foliage.",
+  "habit": "Bushy, upright-rounded to broadly rounded; often multistemmed",
+  "leafForm": "Rounded, orbicular to suborbicular and fan-like",
+  "springColor": "Bright yellow to golden yellow, sometimes edged or tinged red",
+  "summerColor": "Bright yellow, yellow-green or greenish yellow depending on exposure and climate",
+  "autumnColor": "Yellow-gold, orange, orange-red or red-purple; may be weak or curtailed by scorch or early browning",
+  "bark": "Bark is not the principal governed ornamental character.",
+  "sizeClass": "Small tree",
+  "light": "Partial shade generally preferred; full sun only where heat and moisture conditions permit",
   "diagnosticTraits": [
-    "Golden foliage",
-    "Rounded leaf lobes",
-    "Acer shirasawanum taxonomy"
+    "Bushy, upright-rounded to broadly rounded; often multistemmed",
+    "Rounded, orbicular to suborbicular and fan-like",
+    "Rounded, shallowly lobed yellow to yellow-green foliage"
   ],
   "assertionIds": [
-    "AST-000006"
+    "AST-000089",
+    "AST-000090",
+    "AST-000091",
+    "AST-000092",
+    "AST-000093",
+    "AST-000094",
+    "AST-000095",
+    "AST-000096",
+    "AST-000097",
+    "AST-000098",
+    "AST-000099",
+    "AST-000100",
+    "AST-000101",
+    "AST-000102",
+    "AST-000103",
+    "AST-000104",
+    "AST-000105",
+    "AST-000106",
+    "AST-000107",
+    "AST-000108",
+    "AST-000109",
+    "AST-000110"
   ],
   "relationshipIds": [
-    "REL-000003"
+    "REL-000004"
   ],
   "mediaIds": [
-    "MED-RC005-PLACEHOLDER"
+    "MED-RC-005-IDENTITY-001"
   ],
   "sections": {
-    "identity": "Pending canonical RC-005 import and synonym register.",
-    "morphology": "Pilot data exercises rounded lobes and golden foliage.",
-    "cultivation": "Pending approved assertion import.",
-    "history": "Historical and nomenclatural detail intentionally withheld pending canonical import.",
-    "propagation": "Pending canonical wording."
+    "identity": "The accepted Atlas identity is Acer shirasawanum 'Aureum'. It is governed as named cultivar under Acer shirasawanum. The Reference Standard is approved and frozen and source-hash protected.",
+    "morphology": "Bushy, upright-rounded to broadly rounded; often multistemmed. Rounded, orbicular to suborbicular and fan-like. Bark context: Bark is not the principal governed ornamental character.",
+    "cultivation": "Partial shade generally preferred; full sun only where heat and moisture conditions permit. Moist, organically rich and well-drained; acidic to neutral. Commonly USDA zones 5 or 6 through 7; RHS H6.",
+    "history": "Reported introduced into Holland from Japan around 1865 and into England by 1881. Historical claims retain the qualifications and unresolved propositions recorded in the frozen Reference Standard.",
+    "propagation": "Vegetative propagation required; grafting is customary but may be difficult. Seed-derived material must not automatically inherit the named cultivar identity.",
+    "diagnosis": "Rounded, shallowly lobed yellow to yellow-green foliage. Appearance or a nursery label alone does not establish authenticated clonal identity."
+  },
+  "referenceStandard": {
+    "id": "RC-005",
+    "version": "Reference Standard v1.0",
+    "freezeDate": "July 24, 2026",
+    "sourceId": "SRC-000005",
+    "path": "atlas-repository/reference-standards/RC-005.md",
+    "sha256": "0a4f92dbdfdd0d487a6f3236f12d6e280c64e0ca8329837cc6cd4a057dfad679"
+  },
+  "compiler": {
+    "name": "Atlas Compiler",
+    "version": "1.0.0",
+    "generatedAt": "2026-07-24"
   }
 }

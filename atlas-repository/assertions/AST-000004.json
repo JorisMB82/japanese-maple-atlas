@@ -1,12 +1,18 @@
 {
   "id": "AST-000004",
-  "subjectId": "RC-003",
-  "domain": "Bark",
-  "statement": "Young shoots are represented as coral-red, especially relevant during the leafless season.",
-  "state": "Qualified",
-  "confidence": "Moderate",
+  "subjectId": "RC-001",
+  "domain": "identity",
+  "predicate": "freeze-status",
+  "statement": "The source record is frozen reference standard as 1.0.",
+  "state": "approved",
+  "confidence": "high",
   "evidenceIds": [
-    "EVD-000004"
+    "EVD-000001"
   ],
-  "status": "provisional-pilot"
+  "sourceScope": "cultivar-specific editorial synthesis",
+  "generatedFrom": {
+    "sourceId": "SRC-000001",
+    "referenceStandard": "RC-001",
+    "compilerVersion": "1.0.0"
+  }
 }

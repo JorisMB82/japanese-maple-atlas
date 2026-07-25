@@ -1,8 +1,18 @@
 {
   "id": "EVD-000004",
-  "evidenceType": "Editorial Synthesis",
-  "scope": "Pilot interface only",
+  "evidenceType": "frozen-editorial-reference-standard",
+  "scope": "published horticultural dimensions",
   "sourceId": "SRC-000001",
-  "note": "Replace with canonical RC evidence.",
-  "status": "provisional-pilot"
+  "status": "approved",
+  "note": "RC-001 Size and growth sections; compiled without converting unresolved or rejected propositions into approved facts.",
+  "assertionIds": [
+    "AST-000010",
+    "AST-000011",
+    "AST-000012"
+  ],
+  "sourceLocation": {
+    "path": "atlas-repository/reference-standards/RC-001.md",
+    "section": "Size and growth sections"
+  },
+  "sourceSha256": "c41bd23b2c5822130e2a343eead0f678a1e078bc5bc29b5d716c4c117739c932"
 }

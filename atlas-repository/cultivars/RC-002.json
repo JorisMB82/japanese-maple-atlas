@@ -4,36 +4,72 @@
   "cultivar": "Seiryu",
   "scientificName": "Acer palmatum 'Seiryu'",
   "taxonId": "TAX-APAL",
-  "status": "provisional-pilot",
-  "summary": "An upright dissected-leaf cultivar used to test the separation of growth habit from leaf form.",
-  "habit": "Upright",
-  "leafForm": "Dissected",
-  "springColor": "Fresh green",
-  "summerColor": "Green",
-  "autumnColor": "Yellow-orange to red",
-  "bark": "Gray-brown",
-  "sizeClass": "Medium tree",
-  "light": "Partial Shade to Full Sun",
+  "status": "frozen-reference-standard",
+  "canonicality": "canonical-compiled",
+  "summary": "Acer palmatum 'Seiryu' is a frozen Atlas reference cultivar. Habit: Upright; erect, vase-shaped to broadly columnar. Leaf form: Deeply dissected; horticulturally associated with the dissectum or laceleaf group. Spring foliage: Light green, commonly with reddish tips or margins. Summer foliage: Green to medium green. Autumn foliage: Variable gold, yellow, orange, red and crimson. Strongly characteristic; not independently authenticating.",
+  "habit": "Upright; erect, vase-shaped to broadly columnar",
+  "leafForm": "Deeply dissected; horticulturally associated with the dissectum or laceleaf group",
+  "springColor": "Light green, commonly with reddish tips or margins",
+  "summerColor": "Green to medium green",
+  "autumnColor": "Variable gold, yellow, orange, red and crimson",
+  "bark": "Bark is not the principal governed ornamental character.",
+  "sizeClass": "Small tree",
+  "light": "Full sun to partial shade, with regional qualifications",
   "diagnosticTraits": [
-    "Upright habit",
-    "Dissected green leaves",
-    "Strong autumn transition"
+    "Upright; erect, vase-shaped to broadly columnar",
+    "Deeply dissected; horticulturally associated with the dissectum or laceleaf group",
+    "Strongly characteristic; not independently authenticating"
   ],
   "assertionIds": [
-    "AST-000003"
+    "AST-000023",
+    "AST-000024",
+    "AST-000025",
+    "AST-000026",
+    "AST-000027",
+    "AST-000028",
+    "AST-000029",
+    "AST-000030",
+    "AST-000031",
+    "AST-000032",
+    "AST-000033",
+    "AST-000034",
+    "AST-000035",
+    "AST-000036",
+    "AST-000037",
+    "AST-000038",
+    "AST-000039",
+    "AST-000040",
+    "AST-000041",
+    "AST-000042",
+    "AST-000043",
+    "AST-000044"
   ],
   "relationshipIds": [
     "REL-000001",
     "REL-000002"
   ],
   "mediaIds": [
-    "MED-RC002-PLACEHOLDER"
+    "MED-RC-002-IDENTITY-001"
   ],
   "sections": {
-    "identity": "Pending canonical RC-002 import.",
-    "morphology": "Pilot representation emphasizes the unusual upright/dissected combination.",
-    "cultivation": "Pending approved assertion import.",
-    "history": "Pending canonical source import.",
-    "propagation": "Pending canonical wording."
+    "identity": "The accepted Atlas identity is Acer palmatum 'Seiryu'. It is governed as named cultivar maintained vegetatively under Acer palmatum. The Reference Standard is approved and frozen and source-hash protected.",
+    "morphology": "Upright; erect, vase-shaped to broadly columnar. Deeply dissected; horticulturally associated with the dissectum or laceleaf group. Bark context: Bark is not the principal governed ornamental character.",
+    "cultivation": "Full sun to partial shade, with regional qualifications. Moist but well-drained; acidic to neutral conditions commonly recommended. USDA zones 5–8, with regional qualification.",
+    "history": "Selector, naming author, date of selection and original introduction unresolved. Historical claims retain the qualifications and unresolved propositions recorded in the frozen Reference Standard.",
+    "propagation": "Grafting or softwood cuttings; seedlings do not preserve cultivar identity. Seed-derived material must not automatically inherit the named cultivar identity.",
+    "diagnosis": "Strongly characteristic; not independently authenticating. Appearance or a nursery label alone does not establish authenticated clonal identity."
+  },
+  "referenceStandard": {
+    "id": "RC-002",
+    "version": "Reference Standard v1.0",
+    "freezeDate": "July 24, 2026",
+    "sourceId": "SRC-000002",
+    "path": "atlas-repository/reference-standards/RC-002.md",
+    "sha256": "39cb2882f7e55ba0ed07d6102dcca4f322f353bb829cb3f6ab08a2950da1efc5"
+  },
+  "compiler": {
+    "name": "Atlas Compiler",
+    "version": "1.0.0",
+    "generatedAt": "2026-07-24"
   }
 }

@@ -1,7 +1,12 @@
 {
   "id": "SRC-000001",
-  "title": "MVP pilot seed record",
-  "sourceType": "Internal provisional data",
-  "citation": "Not a canonical botanical source. Replace during RC normalization.",
-  "status": "provisional-pilot"
+  "title": "RC-001 — Acer palmatum 'Bloodgood' Reference Standard v1.0",
+  "citation": "Japanese Maple Atlas. RC-001 — Acer palmatum 'Bloodgood'. Frozen Reference Standard v1.0, July 24, 2026.",
+  "sourceType": "frozen-reference-standard",
+  "authority": "Japanese Maple Atlas",
+  "version": "1.0",
+  "freezeDate": "July 24, 2026",
+  "path": "atlas-repository/reference-standards/RC-001.md",
+  "sha256": "c41bd23b2c5822130e2a343eead0f678a1e078bc5bc29b5d716c4c117739c932",
+  "status": "frozen"
 }

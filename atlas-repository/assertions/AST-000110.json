@@ -1,0 +1,18 @@
+{
+  "id": "AST-000110",
+  "subjectId": "RC-005",
+  "domain": "confidence",
+  "predicate": "reference-standard-confidence",
+  "statement": "Reference-standard confidence: High.",
+  "state": "approved-qualified",
+  "confidence": "high",
+  "evidenceIds": [
+    "EVD-000035"
+  ],
+  "sourceScope": "cultivar-specific editorial synthesis",
+  "generatedFrom": {
+    "sourceId": "SRC-000005",
+    "referenceStandard": "RC-005",
+    "compilerVersion": "1.0.0"
+  }
+}

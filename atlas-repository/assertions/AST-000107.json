@@ -1,0 +1,18 @@
+{
+  "id": "AST-000107",
+  "subjectId": "RC-005",
+  "domain": "history",
+  "predicate": "provenance",
+  "statement": "Historical provenance: Reported introduced into Holland from Japan around 1865 and into England by 1881.",
+  "state": "approved-qualified",
+  "confidence": "moderate",
+  "evidenceIds": [
+    "EVD-000034"
+  ],
+  "sourceScope": "cultivar-specific editorial synthesis",
+  "generatedFrom": {
+    "sourceId": "SRC-000005",
+    "referenceStandard": "RC-005",
+    "compilerVersion": "1.0.0"
+  }
+}

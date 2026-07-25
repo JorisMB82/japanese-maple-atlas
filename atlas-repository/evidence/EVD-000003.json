@@ -1,8 +1,18 @@
 {
   "id": "EVD-000003",
-  "evidenceType": "Editorial Synthesis",
-  "scope": "Pilot interface only",
+  "evidenceType": "frozen-editorial-reference-standard",
+  "scope": "cultivar seasonal expression",
   "sourceId": "SRC-000001",
-  "note": "Replace with canonical RC evidence.",
-  "status": "provisional-pilot"
+  "status": "approved",
+  "note": "RC-001 Seasonal foliage sections; compiled without converting unresolved or rejected propositions into approved facts.",
+  "assertionIds": [
+    "AST-000007",
+    "AST-000008",
+    "AST-000009"
+  ],
+  "sourceLocation": {
+    "path": "atlas-repository/reference-standards/RC-001.md",
+    "section": "Seasonal foliage sections"
+  },
+  "sourceSha256": "c41bd23b2c5822130e2a343eead0f678a1e078bc5bc29b5d716c4c117739c932"
 }

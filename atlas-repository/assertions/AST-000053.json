@@ -1,0 +1,18 @@
+{
+  "id": "AST-000053",
+  "subjectId": "RC-003",
+  "domain": "seasonal-expression",
+  "predicate": "autumn-foliage",
+  "statement": "Autumn foliage: Predominantly yellow to golden yellow, sometimes with orange or reddish tones.",
+  "state": "approved",
+  "confidence": "high",
+  "evidenceIds": [
+    "EVD-000017"
+  ],
+  "sourceScope": "cultivar-specific editorial synthesis",
+  "generatedFrom": {
+    "sourceId": "SRC-000003",
+    "referenceStandard": "RC-003",
+    "compilerVersion": "1.0.0"
+  }
+}

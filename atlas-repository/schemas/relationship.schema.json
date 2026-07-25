@@ -1,23 +1,32 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "Atlas Relationship",
+  "$id": "https://japanese-maple-atlas.org/schemas/relationship.schema.json",
+  "title": "Atlas Cultivar Relationship",
   "type": "object",
+  "additionalProperties": false,
   "required": [
     "id",
     "fromId",
     "toId",
     "type",
-    "label"
+    "label",
+    "status"
   ],
   "properties": {
     "id": {
+      "type": "string",
       "pattern": "^REL-[0-9]{6}$"
     },
     "fromId": {
-      "pattern": "^RC-"
+      "type": "string",
+      "pattern": "^RC-[0-9]{3}$"
     },
     "toId": {
-      "pattern": "^RC-"
+      "type": "string",
+      "pattern": "^RC-[0-9]{3}$"
+    },
+    "status": {
+      "const": "approved"
     }
   }
 }

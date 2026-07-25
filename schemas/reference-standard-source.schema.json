@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://japanese-maple-atlas.org/schemas/source.schema.json",
+  "title": "Frozen Reference Standard Source",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "title",
+    "citation",
+    "sourceType",
+    "authority",
+    "version",
+    "freezeDate",
+    "path",
+    "sha256",
+    "status"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^SRC-[0-9]{6}$"
+    },
+    "sourceType": {
+      "const": "frozen-reference-standard"
+    },
+    "status": {
+      "const": "frozen"
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  }
+}

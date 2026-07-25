@@ -1,0 +1,18 @@
+{
+  "id": "AST-000059",
+  "subjectId": "RC-003",
+  "domain": "cultivation",
+  "predicate": "exposure",
+  "statement": "Exposure: Full sun to partial shade, subject to regional heat and moisture conditions.",
+  "state": "approved",
+  "confidence": "high",
+  "evidenceIds": [
+    "EVD-000019"
+  ],
+  "sourceScope": "cultivar-specific or explicitly qualified inherited guidance",
+  "generatedFrom": {
+    "sourceId": "SRC-000003",
+    "referenceStandard": "RC-003",
+    "compilerVersion": "1.0.0"
+  }
+}

@@ -8,12 +8,12 @@
   "status": "pilot-approved",
   "assetPath": "/media/identity-plates/aureum.svg",
   "thumbnailPath": "/media/identity-plates/aureum.svg",
-  "altText": "Standardized Atlas editorial illustration of Acer shirasawanum 'Aureum' showing a rounded silhouette and representative foliage palette.",
+  "altText": "Standardized Atlas editorial illustration of Acer shirasawanum 'Aureum', based on the frozen Reference Standard but not diagnostic evidence.",
   "caption": "Aureum standardized Atlas identity plate.",
   "credit": "Japanese Maple Atlas",
   "creatorType": "procedural-editorial-illustration",
   "rights": "Copyright retained; licensing decision pending",
   "evidentiaryStatus": "illustrative-not-evidence",
   "styleVersion": "atlas-identity-plate-v1",
-  "reviewNotes": "Pilot visual for interface and comparison testing. Must be reviewed against canonical cultivar descriptions before final publication."
+  "reviewNotes": "Reviewed for consistency with RC-005; remains illustrative and must not be used as cultivar authentication evidence."
 }

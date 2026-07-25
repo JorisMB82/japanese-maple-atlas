@@ -1,0 +1,18 @@
+{
+  "id": "AST-000019",
+  "subjectId": "RC-001",
+  "domain": "history",
+  "predicate": "provenance",
+  "statement": "Historical provenance: Bloodgood Nursery, Long Island, New York.",
+  "state": "approved-qualified",
+  "confidence": "moderate",
+  "evidenceIds": [
+    "EVD-000006"
+  ],
+  "sourceScope": "cultivar-specific editorial synthesis",
+  "generatedFrom": {
+    "sourceId": "SRC-000001",
+    "referenceStandard": "RC-001",
+    "compilerVersion": "1.0.0"
+  }
+}

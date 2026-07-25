@@ -1,0 +1,12 @@
+{
+  "id": "SRC-000004",
+  "title": "RC-004 — Acer palmatum 'Crimson Queen' Reference Standard v1.0",
+  "citation": "Japanese Maple Atlas. RC-004 — Acer palmatum 'Crimson Queen'. Frozen Reference Standard v1.0, July 24, 2026.",
+  "sourceType": "frozen-reference-standard",
+  "authority": "Japanese Maple Atlas",
+  "version": "Reference Standard v1.0",
+  "freezeDate": "July 24, 2026",
+  "path": "atlas-repository/reference-standards/RC-004.md",
+  "sha256": "9ecc6be6a2639327d6ac24ba4ed395f6037d4b2597fa0bc1bf6f19364d2a604a",
+  "status": "frozen"
+}

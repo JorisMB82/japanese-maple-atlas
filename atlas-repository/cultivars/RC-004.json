@@ -4,36 +4,71 @@
   "cultivar": "Crimson Queen",
   "scientificName": "Acer palmatum 'Crimson Queen'",
   "taxonId": "TAX-APAL",
-  "status": "provisional-pilot",
-  "summary": "A red dissected cascading cultivar used to test compact weeping morphology and comparison workflows.",
-  "habit": "Cascading",
-  "leafForm": "Dissected",
-  "springColor": "Crimson-red",
-  "summerColor": "Dark red-purple",
-  "autumnColor": "Scarlet",
-  "bark": "Gray-brown",
+  "status": "frozen-reference-standard",
+  "canonicality": "canonical-compiled",
+  "summary": "Acer palmatum 'Crimson Queen' is a frozen Atlas reference cultivar. Habit: Arching, pendulous, cascading and broadly mounding. Leaf form: Deeply dissected, narrow-lobed and lace-like. Spring foliage: Deep red to reddish purple. Summer foliage: Reddish purple, with comparatively strong color retention. Autumn foliage: Scarlet, crimson, red, orange, purple or bronze. Leaf scorch under drought, hot sun or drying winds.",
+  "habit": "Arching, pendulous, cascading and broadly mounding",
+  "leafForm": "Deeply dissected, narrow-lobed and lace-like",
+  "springColor": "Deep red to reddish purple",
+  "summerColor": "Reddish purple, with comparatively strong color retention",
+  "autumnColor": "Scarlet, crimson, red, orange, purple or bronze",
+  "bark": "Bark is not the principal governed ornamental character.",
   "sizeClass": "Small tree",
-  "light": "Full Sun to Partial Shade",
+  "light": "Full sun to partial shade, with regional heat qualifications",
   "diagnosticTraits": [
-    "Cascading habit",
-    "Dissected red leaves",
-    "Compact silhouette"
+    "Arching, pendulous, cascading and broadly mounding",
+    "Deeply dissected, narrow-lobed and lace-like",
+    "Leaf scorch under drought, hot sun or drying winds"
   ],
   "assertionIds": [
-    "AST-000005"
+    "AST-000067",
+    "AST-000068",
+    "AST-000069",
+    "AST-000070",
+    "AST-000071",
+    "AST-000072",
+    "AST-000073",
+    "AST-000074",
+    "AST-000075",
+    "AST-000076",
+    "AST-000077",
+    "AST-000078",
+    "AST-000079",
+    "AST-000080",
+    "AST-000081",
+    "AST-000082",
+    "AST-000083",
+    "AST-000084",
+    "AST-000085",
+    "AST-000086",
+    "AST-000087",
+    "AST-000088"
   ],
   "relationshipIds": [
-    "REL-000002",
-    "REL-000003"
+    "REL-000002"
   ],
   "mediaIds": [
-    "MED-RC004-PLACEHOLDER"
+    "MED-RC-004-IDENTITY-001"
   ],
   "sections": {
-    "identity": "Pending canonical RC-004 import.",
-    "morphology": "Pilot data exercises cascading and dissected morphology.",
-    "cultivation": "Pending approved assertion import.",
-    "history": "Pending canonical source import.",
-    "propagation": "Pending canonical wording."
+    "identity": "The accepted Atlas identity is Acer palmatum 'Crimson Queen'. It is governed as deciduous shrub or small tree under Acer palmatum. The Reference Standard is approved and frozen and source-hash protected.",
+    "morphology": "Arching, pendulous, cascading and broadly mounding. Deeply dissected, narrow-lobed and lace-like. Bark context: Bark is not the principal governed ornamental character.",
+    "cultivation": "Full sun to partial shade, with regional heat qualifications. Moist, organically rich and well-drained. RHS H6; commonly USDA zones 5–8.",
+    "history": "Insufficiently documented. Historical claims retain the qualifications and unresolved propositions recorded in the frozen Reference Standard.",
+    "propagation": "Grafting or softwood cuttings. Seed-derived material must not automatically inherit the named cultivar identity.",
+    "diagnosis": "Leaf scorch under drought, hot sun or drying winds. Appearance or a nursery label alone does not establish authenticated clonal identity."
+  },
+  "referenceStandard": {
+    "id": "RC-004",
+    "version": "Reference Standard v1.0",
+    "freezeDate": "July 24, 2026",
+    "sourceId": "SRC-000004",
+    "path": "atlas-repository/reference-standards/RC-004.md",
+    "sha256": "9ecc6be6a2639327d6ac24ba4ed395f6037d4b2597fa0bc1bf6f19364d2a604a"
+  },
+  "compiler": {
+    "name": "Atlas Compiler",
+    "version": "1.0.0",
+    "generatedAt": "2026-07-24"
   }
 }

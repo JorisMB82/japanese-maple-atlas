@@ -1,16 +1,28 @@
 {
-  "repositoryVersion": "0.5.0",
-  "release": "Sprint 5 — Media System",
+  "repositoryVersion": "0.6.0",
+  "release": "Sprint 6 — Atlas Compiler",
   "generatedAt": "2026-07-24",
+  "compiler": {
+    "name": "Atlas Compiler",
+    "version": "1.0.0",
+    "deterministic": true
+  },
+  "source": {
+    "type": "frozen-reference-standard-cohort",
+    "records": 5,
+    "inputHash": "4fae1794648cd22b62876fdfb077c0b27cc618142cab837e9df8d06d2c2697ab"
+  },
   "objectCounts": {
     "cultivars": 5,
-    "assertions": 6,
-    "evidence": 6,
-    "sources": 1,
+    "assertions": 110,
+    "evidence": 35,
+    "sources": 5,
     "taxa": 2,
     "relationships": 4,
     "media": 5
   },
-  "canonicality": "provisional-pilot",
-  "notes": "Media is a first-class repository object. Five standardized editorial identity plates are operational; botanical content awaits frozen RC import."
+  "objectTotal": 166,
+  "repositoryHash": "ef23c5062a0393a94ba666ab64f05e78dc650dde4cad85b8b010945cadf8ae91",
+  "canonicality": "canonical-compiled",
+  "notes": "RC-001 through RC-005 are compiled from frozen Reference Standards. Generated repository objects must not be edited directly."
 }

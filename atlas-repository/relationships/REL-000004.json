@@ -1,8 +1,8 @@
 {
   "id": "REL-000004",
-  "fromId": "RC-001",
-  "toId": "RC-003",
-  "type": "shared-growth-scale",
-  "label": "Comparable upright medium-tree form",
-  "status": "provisional-pilot"
+  "fromId": "RC-005",
+  "toId": "RC-001",
+  "type": "cross-species-contrast",
+  "label": "Cross-species reference contrast",
+  "status": "approved"
 }

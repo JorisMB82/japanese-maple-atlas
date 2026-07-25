@@ -3,17 +3,17 @@
   "cultivarId": "RC-003",
   "mediaType": "atlas-illustration",
   "role": "identity-plate",
-  "subject": "whole-plant-habit",
+  "subject": "young-stem-and-habit",
   "season": "representative",
   "status": "pilot-approved",
   "assetPath": "/media/identity-plates/sango-kaku.svg",
   "thumbnailPath": "/media/identity-plates/sango-kaku.svg",
-  "altText": "Standardized Atlas editorial illustration of Acer palmatum 'Sango-kaku' showing a upright silhouette and representative foliage palette.",
+  "altText": "Standardized Atlas editorial illustration of Acer palmatum 'Sango-kaku', based on the frozen Reference Standard but not diagnostic evidence.",
   "caption": "Sango-kaku standardized Atlas identity plate.",
   "credit": "Japanese Maple Atlas",
   "creatorType": "procedural-editorial-illustration",
   "rights": "Copyright retained; licensing decision pending",
   "evidentiaryStatus": "illustrative-not-evidence",
   "styleVersion": "atlas-identity-plate-v1",
-  "reviewNotes": "Pilot visual for interface and comparison testing. Must be reviewed against canonical cultivar descriptions before final publication."
+  "reviewNotes": "Reviewed for consistency with RC-003; remains illustrative and must not be used as cultivar authentication evidence."
 }

@@ -1,8 +1,17 @@
 {
   "id": "EVD-000006",
-  "evidenceType": "Editorial Synthesis",
-  "scope": "Pilot interface only",
+  "evidenceType": "frozen-editorial-reference-standard",
+  "scope": "cultivar continuity and historical provenance",
   "sourceId": "SRC-000001",
-  "note": "Replace with canonical RC evidence.",
-  "status": "provisional-pilot"
+  "status": "approved",
+  "note": "RC-001 Propagation and history sections; compiled without converting unresolved or rejected propositions into approved facts.",
+  "assertionIds": [
+    "AST-000018",
+    "AST-000019"
+  ],
+  "sourceLocation": {
+    "path": "atlas-repository/reference-standards/RC-001.md",
+    "section": "Propagation and history sections"
+  },
+  "sourceSha256": "c41bd23b2c5822130e2a343eead0f678a1e078bc5bc29b5d716c4c117739c932"
 }
