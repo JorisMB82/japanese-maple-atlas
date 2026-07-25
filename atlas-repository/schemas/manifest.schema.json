@@ -11,6 +11,7 @@
     "compiler",
     "source",
     "editorial",
+    "graph",
     "objectCounts",
     "objectTotal",
     "repositoryHash",
@@ -18,41 +19,44 @@
     "notes"
   ],
   "properties": {
-    "repositoryVersion": {
-      "const": "0.7.0"
-    },
-    "release": {
-      "type": "string"
-    },
-    "generatedAt": {
-      "type": "string"
-    },
+    "repositoryVersion": { "const": "0.9.0" },
+    "release": { "type": "string" },
+    "generatedAt": { "type": "string" },
     "compiler": {
       "type": "object",
-      "required": [
-        "name",
-        "version",
-        "deterministic"
-      ]
+      "required": ["name", "version", "deterministic"],
+      "properties": {
+        "name": { "const": "Atlas Compiler" },
+        "version": { "const": "1.2.0" },
+        "deterministic": { "const": true }
+      }
     },
     "source": {
       "type": "object",
-      "required": [
-        "type",
-        "records",
-        "inputHash"
-      ]
+      "required": ["type", "records", "inputHash"],
+      "properties": {
+        "records": { "const": 5 },
+        "inputHash": { "type": "string", "pattern": "^[a-f0-9]{64}$" }
+      }
     },
     "editorial": {
       "type": "object",
-      "required": [
-        "contributors",
-        "submissions",
-        "workflows",
-        "reviews",
-        "lifecycleStages",
-        "reviewPasses"
-      ]
+      "required": ["contributors", "submissions", "workflows", "reviews", "lifecycleStages", "reviewPasses"]
+    },
+    "graph": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["nodes", "edges", "relationshipTypes", "categories", "graphHash"],
+      "properties": {
+        "nodes": { "const": 7 },
+        "edges": { "const": 26 },
+        "relationshipTypes": { "const": 10 },
+        "categories": {
+          "type": "object",
+          "required": ["taxonomy", "morphology", "architecture", "seasonal-expression", "cultivation", "diagnosis"]
+        },
+        "graphHash": { "type": "string", "pattern": "^[a-f0-9]{64}$" }
+      }
     },
     "objectCounts": {
       "type": "object",
@@ -63,6 +67,7 @@
         "sources",
         "taxa",
         "relationships",
+        "relationshipTypes",
         "media",
         "contributors",
         "submissions",
@@ -70,18 +75,9 @@
         "editorialReviews"
       ]
     },
-    "objectTotal": {
-      "const": 203
-    },
-    "repositoryHash": {
-      "type": "string",
-      "pattern": "^[a-f0-9]{64}$"
-    },
-    "canonicality": {
-      "const": "canonical-compiled"
-    },
-    "notes": {
-      "type": "string"
-    }
+    "objectTotal": { "const": 235 },
+    "repositoryHash": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "canonicality": { "const": "canonical-compiled" },
+    "notes": { "type": "string" }
   }
 }
