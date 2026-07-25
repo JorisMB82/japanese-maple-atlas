@@ -24,8 +24,8 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          test -d .sprint6-bootstrap
-          cat .sprint6-bootstrap/part-* | tr -d '\r\n ' > /tmp/sprint6.b64
+          test -d .sprint6-bootstrap-v2
+          cat .sprint6-bootstrap-v2/part-* | tr -d '\r\n ' > /tmp/sprint6.b64
           base64 -d /tmp/sprint6.b64 > /tmp/sprint6.tar.xz
           xz -t /tmp/sprint6.tar.xz
           tar -xJf /tmp/sprint6.tar.xz -C /tmp
