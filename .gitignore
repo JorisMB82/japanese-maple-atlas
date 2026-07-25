@@ -141,3 +141,7 @@ dist
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 .vite/
+
+# Sprint 9.5 generated quality evidence
+quality-reports/
+release-artifacts/
