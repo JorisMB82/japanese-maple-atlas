@@ -137,16 +137,19 @@ export default function AtlasExplorerWorkspace({ cultivars, facets, manifest }) 
   const [state, setState] = useState(() => normaliseExplorerState({}, slugs));
   const [savedViews, setSavedViews] = useState([]);
   const [message, setMessage] = useState('');
+  const [ready, setReady] = useState(false);
 
   useEffect(() => {
     setState(parseExplorerSearchParams(window.location.search, slugs));
     setSavedViews(readSavedViews());
+    setReady(true);
   }, [slugs]);
 
   useEffect(() => {
+    if (!ready) return;
     const query = serialiseExplorerState(state, slugs);
     window.history.replaceState({}, '', `${window.location.pathname}${query ? `?${query}` : ''}${window.location.hash}`);
-  }, [slugs, state]);
+  }, [ready, slugs, state]);
 
   const filteredHydrated = useMemo(() => sortCultivars(filterCultivars(cultivars, explorerFilterState(state)), state.sort), [cultivars, state]);
   const records = useMemo(() => filteredHydrated.map(projectCultivarForExplorer), [filteredHydrated]);
