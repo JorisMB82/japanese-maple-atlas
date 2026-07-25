@@ -20,4 +20,5 @@ jobs:
       - run: npm run validate:contributions
       - run: npm run compile:atlas:check
       - run: npm run validate:repository
+      - run: npm run validate:search
       - run: npm run build
