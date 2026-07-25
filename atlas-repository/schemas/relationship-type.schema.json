@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://japanese-maple-atlas.org/schemas/relationship-type.schema.json",
+  "title": "Atlas Knowledge Graph Relationship Type",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "code",
+    "label",
+    "inverseLabel",
+    "category",
+    "directionality",
+    "description",
+    "allowedNodePairs",
+    "evidenceRequired",
+    "status",
+    "version",
+    "generatedFrom"
+  ],
+  "properties": {
+    "id": { "type": "string", "pattern": "^RLT-[A-Z0-9-]+$" },
+    "code": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+    "label": { "type": "string", "minLength": 3 },
+    "inverseLabel": { "type": "string", "minLength": 3 },
+    "category": { "enum": ["taxonomy", "morphology", "architecture", "seasonal-expression", "cultivation", "diagnosis"] },
+    "directionality": { "enum": ["directed", "symmetric"] },
+    "description": { "type": "string", "minLength": 40 },
+    "allowedNodePairs": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "enum": ["cultivar:cultivar", "cultivar:taxon", "taxon:cultivar", "taxon:taxon"] }
+    },
+    "evidenceRequired": { "const": true },
+    "status": { "const": "approved" },
+    "version": { "type": "string" },
+    "generatedFrom": {
+      "type": "object",
+      "required": ["path", "sha256", "compilerVersion"]
+    }
+  }
+}
