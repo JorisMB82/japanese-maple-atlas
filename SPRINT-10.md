@@ -43,20 +43,31 @@ Sprint 10 does not alter the five frozen Reference Standards, compiled assertion
 
 ## Final verification
 
-- Contributor input validation: pending final CI confirmation.
-- Deterministic compiler drift check: pending final CI confirmation.
-- JSON Schema conformance validation: pending final CI confirmation.
-- Repository integrity validation: pending final CI confirmation.
-- Semantic-search validation: pending final CI confirmation.
-- Knowledge-graph validation: pending final CI confirmation.
-- Interactive-explorer validation: pending final CI confirmation.
-- Unit and integration tests: pending final CI confirmation.
-- Native Node coverage thresholds: pending final CI confirmation.
-- Production Next.js static build: pending final CI confirmation.
-- Static-export regression suite: pending final CI confirmation.
-- Quality-infrastructure validation: pending final CI confirmation.
-- Vercel preview deployment: pending final status check.
-- `package.json` and `package-lock.json`: pending final synchronisation at 0.10.0.
+- Contributor input validation: PASS.
+- Deterministic compiler drift check: PASS.
+- JSON Schema conformance validation: PASS.
+- Repository integrity validation: PASS — 235 first-class objects.
+- Semantic-search validation: PASS.
+- Knowledge-graph validation: PASS — 7 nodes, 26 edges and 10 relationship types.
+- Interactive-explorer validation: PASS — 5 projected cultivars and 5 guided investigations.
+- Unit tests: PASS — 34 of 34 tests in the native coverage suite.
+- Integration tests: PASS.
+- Native Node aggregate coverage: PASS — 98.53% lines, 82.74% branches and 97.81% functions.
+- Production Next.js static build: PASS.
+- Static-export regression suite: PASS, including `/explorer`, internal links and Next.js assets.
+- Quality-infrastructure validation: PASS.
+- Release manifest and Sprint 10 CI artifacts: PASS.
+- `package.json` and `package-lock.json`: synchronised at 0.10.0.
+- Vercel preview: provider build-rate limit encountered; the independent production build and static export completed successfully.
+- Temporary Sprint 10 synchronisation and patch workflows: removed.
+
+## CI artifacts
+
+The final quality workflow retains:
+
+1. `sprint-10-coverage` — native Node test and coverage evidence;
+2. `sprint-10-quality-evidence` — regression output, release manifest, summary and checksums;
+3. `sprint-10-static-export` — the complete production-ready static website.
 
 ## Review and merge
 
