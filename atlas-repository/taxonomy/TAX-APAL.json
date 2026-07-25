@@ -1,7 +1,8 @@
 {
   "id": "TAX-APAL",
-  "rank": "species",
   "scientificName": "Acer palmatum",
+  "rank": "species",
+  "status": "accepted",
   "commonName": "Japanese maple",
-  "status": "accepted"
+  "authority": "Thunb."
 }

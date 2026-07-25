@@ -1,20 +1,23 @@
 {
   "name": "japanese-maple-atlas-mvp",
-  "version": "0.3.0",
+  "version": "0.6.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
+    "compile:atlas": "node scripts/compile-atlas.mjs",
+    "compile:atlas:check": "node scripts/compile-atlas.mjs --check",
+    "compile:check": "npm run compile:atlas:check",
     "validate:data": "node scripts/validate-repository.mjs",
-    "validate:repository": "node scripts/validate-repository.mjs"
+    "validate:repository": "node scripts/validate-repository.mjs",
+    "test": "npm run compile:atlas:check && npm run validate:repository",
+    "verify": "npm test && npm run build",
+    "prebuild": "npm run compile:atlas:check && npm run validate:repository",
+    "build": "next build",
+    "start": "next start"
   },
   "dependencies": {
     "next": "14.2.5",
     "react": "18.3.1",
     "react-dom": "18.3.1"
-  },
-  "devDependencies": {
-    "ajv": "8.17.1"
   }
 }

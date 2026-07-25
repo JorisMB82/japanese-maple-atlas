@@ -1,0 +1,12 @@
+{
+  "id": "SRC-000003",
+  "title": "RC-003 — Acer palmatum 'Sango-kaku' Reference Standard v1.0",
+  "citation": "Japanese Maple Atlas. RC-003 — Acer palmatum 'Sango-kaku'. Frozen Reference Standard v1.0, July 24, 2026.",
+  "sourceType": "frozen-reference-standard",
+  "authority": "Japanese Maple Atlas",
+  "version": "Reference Standard v1.0",
+  "freezeDate": "July 24, 2026",
+  "path": "atlas-repository/reference-standards/RC-003.md",
+  "sha256": "f09482aad282c906978a4bdd3d4c19db6882cccfaa5af9f45fc0afd8bc263462",
+  "status": "frozen"
+}

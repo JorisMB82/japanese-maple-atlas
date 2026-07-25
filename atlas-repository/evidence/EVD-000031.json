@@ -1,0 +1,18 @@
+{
+  "id": "EVD-000031",
+  "evidenceType": "frozen-editorial-reference-standard",
+  "scope": "cultivar seasonal expression",
+  "sourceId": "SRC-000005",
+  "status": "approved",
+  "note": "RC-005 Seasonal foliage sections; compiled without converting unresolved or rejected propositions into approved facts.",
+  "assertionIds": [
+    "AST-000095",
+    "AST-000096",
+    "AST-000097"
+  ],
+  "sourceLocation": {
+    "path": "atlas-repository/reference-standards/RC-005.md",
+    "section": "Seasonal foliage sections"
+  },
+  "sourceSha256": "0a4f92dbdfdd0d487a6f3236f12d6e280c64e0ca8329837cc6cd4a057dfad679"
+}

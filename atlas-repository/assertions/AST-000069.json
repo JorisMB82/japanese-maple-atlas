@@ -1,0 +1,18 @@
+{
+  "id": "AST-000069",
+  "subjectId": "RC-004",
+  "domain": "identity",
+  "predicate": "entity-type",
+  "statement": "The entity is governed as deciduous shrub or small tree.",
+  "state": "approved",
+  "confidence": "high",
+  "evidenceIds": [
+    "EVD-000022"
+  ],
+  "sourceScope": "cultivar-specific editorial synthesis",
+  "generatedFrom": {
+    "sourceId": "SRC-000004",
+    "referenceStandard": "RC-004",
+    "compilerVersion": "1.0.0"
+  }
+}

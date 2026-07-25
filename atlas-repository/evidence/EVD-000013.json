@@ -1,0 +1,17 @@
+{
+  "id": "EVD-000013",
+  "evidenceType": "frozen-editorial-reference-standard",
+  "scope": "cultivar continuity and historical provenance",
+  "sourceId": "SRC-000002",
+  "status": "approved",
+  "note": "RC-002 Propagation and history sections; compiled without converting unresolved or rejected propositions into approved facts.",
+  "assertionIds": [
+    "AST-000040",
+    "AST-000041"
+  ],
+  "sourceLocation": {
+    "path": "atlas-repository/reference-standards/RC-002.md",
+    "section": "Propagation and history sections"
+  },
+  "sourceSha256": "39cb2882f7e55ba0ed07d6102dcca4f322f353bb829cb3f6ab08a2950da1efc5"
+}

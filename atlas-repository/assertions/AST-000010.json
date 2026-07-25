@@ -1,0 +1,18 @@
+{
+  "id": "AST-000010",
+  "subjectId": "RC-001",
+  "domain": "dimensions",
+  "predicate": "height",
+  "statement": "Published height context: Approximately 15–20 feet in North American institutional sources.",
+  "state": "approved-qualified",
+  "confidence": "high",
+  "evidenceIds": [
+    "EVD-000004"
+  ],
+  "sourceScope": "cultivar-specific editorial synthesis",
+  "generatedFrom": {
+    "sourceId": "SRC-000001",
+    "referenceStandard": "RC-001",
+    "compilerVersion": "1.0.0"
+  }
+}

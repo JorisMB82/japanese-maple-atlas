@@ -4,35 +4,71 @@
   "cultivar": "Sango-kaku",
   "scientificName": "Acer palmatum 'Sango-kaku'",
   "taxonId": "TAX-APAL",
-  "status": "provisional-pilot",
-  "summary": "An upright cultivar used to test seasonal bark expression and multi-season ornamental identity.",
-  "habit": "Upright",
-  "leafForm": "Palmate",
-  "springColor": "Yellow-green with warm margins",
+  "status": "frozen-reference-standard",
+  "canonicality": "canonical-compiled",
+  "summary": "Acer palmatum 'Sango-kaku' is a frozen Atlas reference cultivar. Habit: Upright, vase-shaped small tree or large shrub. Leaf form: Palmate, usually five- to seven-lobed; not a dissected laceleaf cultivar. Spring foliage: Pinkish yellow, yellow-green or light green, sometimes with reddish margins. Summer foliage: Green. Autumn foliage: Predominantly yellow to golden yellow, sometimes with orange or reddish tones. Coral-pink to coral-red young bark, strongest in winter.",
+  "habit": "Upright, vase-shaped small tree or large shrub",
+  "leafForm": "Palmate, usually five- to seven-lobed; not a dissected laceleaf cultivar",
+  "springColor": "Pinkish yellow, yellow-green or light green, sometimes with reddish margins",
   "summerColor": "Green",
-  "autumnColor": "Yellow",
-  "bark": "Coral-red young shoots",
-  "sizeClass": "Medium tree",
-  "light": "Full Sun to Partial Shade",
+  "autumnColor": "Predominantly yellow to golden yellow, sometimes with orange or reddish tones",
+  "bark": "Coral-pink to coral-red young bark, strongest in winter",
+  "sizeClass": "Large shrub / small tree",
+  "light": "Full sun to partial shade, subject to regional heat and moisture conditions",
   "diagnosticTraits": [
-    "Coral-red young bark",
-    "Upright habit",
-    "Yellow autumn coloration"
+    "Upright, vase-shaped small tree or large shrub",
+    "Palmate, usually five- to seven-lobed; not a dissected laceleaf cultivar",
+    "Coral-pink to coral-red young bark, strongest in winter"
   ],
   "assertionIds": [
-    "AST-000004"
+    "AST-000045",
+    "AST-000046",
+    "AST-000047",
+    "AST-000048",
+    "AST-000049",
+    "AST-000050",
+    "AST-000051",
+    "AST-000052",
+    "AST-000053",
+    "AST-000054",
+    "AST-000055",
+    "AST-000056",
+    "AST-000057",
+    "AST-000058",
+    "AST-000059",
+    "AST-000060",
+    "AST-000061",
+    "AST-000062",
+    "AST-000063",
+    "AST-000064",
+    "AST-000065",
+    "AST-000066"
   ],
   "relationshipIds": [
-    "REL-000004"
+    "REL-000003"
   ],
   "mediaIds": [
-    "MED-RC003-PLACEHOLDER"
+    "MED-RC-003-IDENTITY-001"
   ],
   "sections": {
-    "identity": "Pending canonical RC-003 import.",
-    "morphology": "Pilot data exercises bark and seasonal-expression fields.",
-    "cultivation": "Pending approved assertion import.",
-    "history": "Pending canonical source import.",
-    "propagation": "Pending canonical wording."
+    "identity": "The accepted Atlas identity is Acer palmatum 'Sango-kaku'. It is governed as named cultivar under Acer palmatum. The Reference Standard is approved and frozen and source-hash protected.",
+    "morphology": "Upright, vase-shaped small tree or large shrub. Palmate, usually five- to seven-lobed; not a dissected laceleaf cultivar. Bark context: Coral-pink to coral-red young bark, strongest in winter.",
+    "cultivation": "Full sun to partial shade, subject to regional heat and moisture conditions. Moist, well-drained; acidic to neutral conditions generally preferred. Commonly listed for USDA zones 5–8.",
+    "history": "Japanese selection; detailed selector, original date and earliest primary record unresolved. Historical claims retain the qualifications and unresolved propositions recorded in the frozen Reference Standard.",
+    "propagation": "Vegetative propagation, most commonly grafting. Seed-derived material must not automatically inherit the named cultivar identity.",
+    "diagnosis": "Coral-pink to coral-red young bark, strongest in winter. Appearance or a nursery label alone does not establish authenticated clonal identity."
+  },
+  "referenceStandard": {
+    "id": "RC-003",
+    "version": "Reference Standard v1.0",
+    "freezeDate": "July 24, 2026",
+    "sourceId": "SRC-000003",
+    "path": "atlas-repository/reference-standards/RC-003.md",
+    "sha256": "f09482aad282c906978a4bdd3d4c19db6882cccfaa5af9f45fc0afd8bc263462"
+  },
+  "compiler": {
+    "name": "Atlas Compiler",
+    "version": "1.0.0",
+    "generatedAt": "2026-07-24"
   }
 }

@@ -1,0 +1,20 @@
+{
+  "id": "EVD-000019",
+  "evidenceType": "frozen-editorial-reference-standard",
+  "scope": "reproductive and cultivation guidance",
+  "sourceId": "SRC-000003",
+  "status": "approved",
+  "note": "RC-003 Flowers, fruit, cultivation and hardiness sections; compiled without converting unresolved or rejected propositions into approved facts.",
+  "assertionIds": [
+    "AST-000057",
+    "AST-000058",
+    "AST-000059",
+    "AST-000060",
+    "AST-000061"
+  ],
+  "sourceLocation": {
+    "path": "atlas-repository/reference-standards/RC-003.md",
+    "section": "Flowers, fruit, cultivation and hardiness sections"
+  },
+  "sourceSha256": "f09482aad282c906978a4bdd3d4c19db6882cccfaa5af9f45fc0afd8bc263462"
+}

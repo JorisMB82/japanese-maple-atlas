@@ -1,52 +1,81 @@
-[
-  {
-    "id": "RC-001",
-    "slug": "bloodgood",
-    "name": "Bloodgood",
-    "taxonId": "TAX-APAL",
-    "habit": "Broad Upright",
-    "leafForm": "Palmate",
-    "light": "Full Sun to Partial Shade",
-    "terms": "bloodgood acer palmatum 'bloodgood' an upright, broadly spreading red-leaved japanese maple represented here as the baseline pilot record. broad upright palmate red-purple deep purple-red crimson-red upright habit persistent dark foliage red autumn coloration"
-  },
-  {
-    "id": "RC-002",
-    "slug": "seiryu",
-    "name": "Seiryu",
-    "taxonId": "TAX-APAL",
-    "habit": "Upright",
-    "leafForm": "Dissected",
-    "light": "Partial Shade to Full Sun",
-    "terms": "seiryu acer palmatum 'seiryu' an upright dissected-leaf cultivar used to test the separation of growth habit from leaf form. upright dissected fresh green green yellow-orange to red upright habit dissected green leaves strong autumn transition"
-  },
-  {
-    "id": "RC-003",
-    "slug": "sango-kaku",
-    "name": "Sango-kaku",
-    "taxonId": "TAX-APAL",
-    "habit": "Upright",
-    "leafForm": "Palmate",
-    "light": "Full Sun to Partial Shade",
-    "terms": "sango-kaku acer palmatum 'sango-kaku' an upright cultivar used to test seasonal bark expression and multi-season ornamental identity. upright palmate yellow-green with warm margins green yellow coral-red young bark upright habit yellow autumn coloration"
-  },
-  {
-    "id": "RC-004",
-    "slug": "crimson-queen",
-    "name": "Crimson Queen",
-    "taxonId": "TAX-APAL",
-    "habit": "Cascading",
-    "leafForm": "Dissected",
-    "light": "Full Sun to Partial Shade",
-    "terms": "crimson queen acer palmatum 'crimson queen' a red dissected cascading cultivar used to test compact weeping morphology and comparison workflows. cascading dissected crimson-red dark red-purple scarlet cascading habit dissected red leaves compact silhouette"
-  },
-  {
-    "id": "RC-005",
-    "slug": "aureum",
-    "name": "Aureum",
-    "taxonId": "TAX-ASHI",
-    "habit": "Rounded",
-    "leafForm": "Rounded Lobes",
-    "light": "Partial Shade",
-    "terms": "aureum acer shirasawanum 'aureum' a golden-leaved full-moon maple used to test cross-species taxonomy, identity, and historical synonymy. rounded rounded lobes bright yellow-green golden green orange-red golden foliage rounded leaf lobes acer shirasawanum taxonomy"
-  }
-]
+{
+  "version": "1.0.0",
+  "repositoryHash": "ef23c5062a0393a94ba666ab64f05e78dc650dde4cad85b8b010945cadf8ae91",
+  "records": [
+    {
+      "id": "RC-001",
+      "slug": "bloodgood",
+      "cultivar": "Bloodgood",
+      "scientificName": "Acer palmatum 'Bloodgood'",
+      "text": "Acer palmatum 'Bloodgood' is a frozen Atlas reference cultivar. Habit: Upright-growing, broadening small tree or large shrub. Leaf form: Non-dissected; normally five to seven lobes. Spring foliage: Reddish purple. Summer foliage: Dark red-purple to wine-red. Autumn foliage: Bright red to crimson. Moderate at best. Upright-growing, broadening small tree or large shrub Non-dissected; normally five to seven lobes Reddish purple Dark red-purple to wine-red Bright red to crimson Gray-brown mature bark; bark is not the principal governed ornamental character. Sun to partial shade, with climatic qualification Upright-growing, broadening small tree or large shrub Non-dissected; normally five to seven lobes Moderate at best",
+      "facets": {
+        "taxonId": "TAX-APAL",
+        "habit": "Upright-growing, broadening small tree or large shrub",
+        "leafForm": "Non-dissected; normally five to seven lobes",
+        "light": "Sun to partial shade, with climatic qualification",
+        "sizeClass": "Large shrub / small tree",
+        "status": "frozen-reference-standard"
+      }
+    },
+    {
+      "id": "RC-002",
+      "slug": "seiryu",
+      "cultivar": "Seiryu",
+      "scientificName": "Acer palmatum 'Seiryu'",
+      "text": "Acer palmatum 'Seiryu' is a frozen Atlas reference cultivar. Habit: Upright; erect, vase-shaped to broadly columnar. Leaf form: Deeply dissected; horticulturally associated with the dissectum or laceleaf group. Spring foliage: Light green, commonly with reddish tips or margins. Summer foliage: Green to medium green. Autumn foliage: Variable gold, yellow, orange, red and crimson. Strongly characteristic; not independently authenticating. Upright; erect, vase-shaped to broadly columnar Deeply dissected; horticulturally associated with the dissectum or laceleaf group Light green, commonly with reddish tips or margins Green to medium green Variable gold, yellow, orange, red and crimson Bark is not the principal governed ornamental character. Full sun to partial shade, with regional qualifications Upright; erect, vase-shaped to broadly columnar Deeply dissected; horticulturally associated with the dissectum or laceleaf group Strongly characteristic; not independently authenticating",
+      "facets": {
+        "taxonId": "TAX-APAL",
+        "habit": "Upright; erect, vase-shaped to broadly columnar",
+        "leafForm": "Deeply dissected; horticulturally associated with the dissectum or laceleaf group",
+        "light": "Full sun to partial shade, with regional qualifications",
+        "sizeClass": "Small tree",
+        "status": "frozen-reference-standard"
+      }
+    },
+    {
+      "id": "RC-003",
+      "slug": "sango-kaku",
+      "cultivar": "Sango-kaku",
+      "scientificName": "Acer palmatum 'Sango-kaku'",
+      "text": "Acer palmatum 'Sango-kaku' is a frozen Atlas reference cultivar. Habit: Upright, vase-shaped small tree or large shrub. Leaf form: Palmate, usually five- to seven-lobed; not a dissected laceleaf cultivar. Spring foliage: Pinkish yellow, yellow-green or light green, sometimes with reddish margins. Summer foliage: Green. Autumn foliage: Predominantly yellow to golden yellow, sometimes with orange or reddish tones. Coral-pink to coral-red young bark, strongest in winter. Upright, vase-shaped small tree or large shrub Palmate, usually five- to seven-lobed; not a dissected laceleaf cultivar Pinkish yellow, yellow-green or light green, sometimes with reddish margins Green Predominantly yellow to golden yellow, sometimes with orange or reddish tones Coral-pink to coral-red young bark, strongest in winter Full sun to partial shade, subject to regional heat and moisture conditions Upright, vase-shaped small tree or large shrub Palmate, usually five- to seven-lobed; not a dissected laceleaf cultivar Coral-pink to coral-red young bark, strongest in winter",
+      "facets": {
+        "taxonId": "TAX-APAL",
+        "habit": "Upright, vase-shaped small tree or large shrub",
+        "leafForm": "Palmate, usually five- to seven-lobed; not a dissected laceleaf cultivar",
+        "light": "Full sun to partial shade, subject to regional heat and moisture conditions",
+        "sizeClass": "Large shrub / small tree",
+        "status": "frozen-reference-standard"
+      }
+    },
+    {
+      "id": "RC-004",
+      "slug": "crimson-queen",
+      "cultivar": "Crimson Queen",
+      "scientificName": "Acer palmatum 'Crimson Queen'",
+      "text": "Acer palmatum 'Crimson Queen' is a frozen Atlas reference cultivar. Habit: Arching, pendulous, cascading and broadly mounding. Leaf form: Deeply dissected, narrow-lobed and lace-like. Spring foliage: Deep red to reddish purple. Summer foliage: Reddish purple, with comparatively strong color retention. Autumn foliage: Scarlet, crimson, red, orange, purple or bronze. Leaf scorch under drought, hot sun or drying winds. Arching, pendulous, cascading and broadly mounding Deeply dissected, narrow-lobed and lace-like Deep red to reddish purple Reddish purple, with comparatively strong color retention Scarlet, crimson, red, orange, purple or bronze Bark is not the principal governed ornamental character. Full sun to partial shade, with regional heat qualifications Arching, pendulous, cascading and broadly mounding Deeply dissected, narrow-lobed and lace-like Leaf scorch under drought, hot sun or drying winds",
+      "facets": {
+        "taxonId": "TAX-APAL",
+        "habit": "Arching, pendulous, cascading and broadly mounding",
+        "leafForm": "Deeply dissected, narrow-lobed and lace-like",
+        "light": "Full sun to partial shade, with regional heat qualifications",
+        "sizeClass": "Small tree",
+        "status": "frozen-reference-standard"
+      }
+    },
+    {
+      "id": "RC-005",
+      "slug": "aureum",
+      "cultivar": "Aureum",
+      "scientificName": "Acer shirasawanum 'Aureum'",
+      "text": "Acer shirasawanum 'Aureum' is a frozen Atlas reference cultivar. Habit: Bushy, upright-rounded to broadly rounded; often multistemmed. Leaf form: Rounded, orbicular to suborbicular and fan-like. Spring foliage: Bright yellow to golden yellow, sometimes edged or tinged red. Summer foliage: Bright yellow, yellow-green or greenish yellow depending on exposure and climate. Autumn foliage: Yellow-gold, orange, orange-red or red-purple; may be weak or curtailed by scorch or early browning. Rounded, shallowly lobed yellow to yellow-green foliage. Bushy, upright-rounded to broadly rounded; often multistemmed Rounded, orbicular to suborbicular and fan-like Bright yellow to golden yellow, sometimes edged or tinged red Bright yellow, yellow-green or greenish yellow depending on exposure and climate Yellow-gold, orange, orange-red or red-purple; may be weak or curtailed by scorch or early browning Bark is not the principal governed ornamental character. Partial shade generally preferred; full sun only where heat and moisture conditions permit Bushy, upright-rounded to broadly rounded; often multistemmed Rounded, orbicular to suborbicular and fan-like Rounded, shallowly lobed yellow to yellow-green foliage",
+      "facets": {
+        "taxonId": "TAX-ASHI",
+        "habit": "Bushy, upright-rounded to broadly rounded; often multistemmed",
+        "leafForm": "Rounded, orbicular to suborbicular and fan-like",
+        "light": "Partial shade generally preferred; full sun only where heat and moisture conditions permit",
+        "sizeClass": "Small tree",
+        "status": "frozen-reference-standard"
+      }
+    }
+  ]
+}

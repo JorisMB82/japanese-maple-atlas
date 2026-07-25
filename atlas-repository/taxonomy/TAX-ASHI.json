@@ -1,7 +1,8 @@
 {
   "id": "TAX-ASHI",
-  "rank": "species",
   "scientificName": "Acer shirasawanum",
-  "commonName": "Full-moon maple",
-  "status": "accepted"
+  "rank": "species",
+  "status": "accepted",
+  "commonName": "Shirasawa maple",
+  "authority": "Koidz."
 }

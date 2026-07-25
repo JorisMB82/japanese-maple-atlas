@@ -1,0 +1,18 @@
+{
+  "id": "AST-000085",
+  "subjectId": "RC-004",
+  "domain": "history",
+  "predicate": "provenance",
+  "statement": "Historical provenance: Insufficiently documented.",
+  "state": "approved-qualified",
+  "confidence": "moderate",
+  "evidenceIds": [
+    "EVD-000027"
+  ],
+  "sourceScope": "cultivar-specific editorial synthesis",
+  "generatedFrom": {
+    "sourceId": "SRC-000004",
+    "referenceStandard": "RC-004",
+    "compilerVersion": "1.0.0"
+  }
+}

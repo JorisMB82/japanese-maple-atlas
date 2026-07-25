@@ -1,0 +1,18 @@
+{
+  "id": "AST-000039",
+  "subjectId": "RC-002",
+  "domain": "cultivation",
+  "predicate": "hardiness",
+  "statement": "Hardiness: USDA zones 5–8, with regional qualification.",
+  "state": "approved",
+  "confidence": "high",
+  "evidenceIds": [
+    "EVD-000012"
+  ],
+  "sourceScope": "cultivar-specific or explicitly qualified inherited guidance",
+  "generatedFrom": {
+    "sourceId": "SRC-000002",
+    "referenceStandard": "RC-002",
+    "compilerVersion": "1.0.0"
+  }
+}

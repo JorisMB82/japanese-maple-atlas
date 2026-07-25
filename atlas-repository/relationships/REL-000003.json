@@ -1,8 +1,8 @@
 {
   "id": "REL-000003",
-  "fromId": "RC-004",
-  "toId": "RC-005",
-  "type": "contrasting-habit",
-  "label": "Contrasting habit and taxonomy",
-  "status": "provisional-pilot"
+  "fromId": "RC-003",
+  "toId": "RC-001",
+  "type": "upright-palmatum-comparison",
+  "label": "Upright Acer palmatum comparison",
+  "status": "approved"
 }

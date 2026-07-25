@@ -1,0 +1,17 @@
+{
+  "id": "EVD-000009",
+  "evidenceType": "frozen-editorial-reference-standard",
+  "scope": "cultivar morphology and architecture",
+  "sourceId": "SRC-000002",
+  "status": "approved",
+  "note": "RC-002 Morphology and architecture sections; compiled without converting unresolved or rejected propositions into approved facts.",
+  "assertionIds": [
+    "AST-000027",
+    "AST-000028"
+  ],
+  "sourceLocation": {
+    "path": "atlas-repository/reference-standards/RC-002.md",
+    "section": "Morphology and architecture sections"
+  },
+  "sourceSha256": "39cb2882f7e55ba0ed07d6102dcca4f322f353bb829cb3f6ab08a2950da1efc5"
+}

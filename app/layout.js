@@ -13,7 +13,7 @@ export default function RootLayout({ children }) {
     <main>{children}</main>
     <footer>
       <div><strong>Japanese Maple Atlas</strong><p>Evidence-based cultivar knowledge, presented through a usable public interface.</p></div>
-      <div><span>Sprint 5</span><span>First-class media system</span><span>Editorial illustrations clearly labelled</span></div>
+      <div><span>Sprint 6</span><span>Deterministic Atlas Compiler</span><span>Frozen Reference Standards are canonical</span></div>
     </footer>
   </body></html>;
 }

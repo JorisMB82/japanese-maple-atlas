@@ -1,0 +1,18 @@
+{
+  "id": "AST-000035",
+  "subjectId": "RC-002",
+  "domain": "reproduction",
+  "predicate": "flowers",
+  "statement": "Flowers: Small, red to reddish purple, in spring.",
+  "state": "approved",
+  "confidence": "high",
+  "evidenceIds": [
+    "EVD-000012"
+  ],
+  "sourceScope": "cultivar-specific editorial synthesis",
+  "generatedFrom": {
+    "sourceId": "SRC-000002",
+    "referenceStandard": "RC-002",
+    "compilerVersion": "1.0.0"
+  }
+}

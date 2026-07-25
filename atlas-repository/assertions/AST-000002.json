@@ -1,12 +1,18 @@
 {
   "id": "AST-000002",
   "subjectId": "RC-001",
-  "domain": "Leaves",
-  "statement": "The pilot record uses persistent dark red-purple foliage as a primary discovery trait.",
-  "state": "Qualified",
-  "confidence": "Moderate",
+  "domain": "identity",
+  "predicate": "accepted-species",
+  "statement": "The accepted species placement is Acer palmatum.",
+  "state": "approved",
+  "confidence": "high",
   "evidenceIds": [
-    "EVD-000002"
+    "EVD-000001"
   ],
-  "status": "provisional-pilot"
+  "sourceScope": "cultivar-specific editorial synthesis",
+  "generatedFrom": {
+    "sourceId": "SRC-000001",
+    "referenceStandard": "RC-001",
+    "compilerVersion": "1.0.0"
+  }
 }

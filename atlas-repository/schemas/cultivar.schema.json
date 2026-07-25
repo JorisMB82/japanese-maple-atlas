@@ -1,47 +1,78 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "Atlas Cultivar",
+  "$id": "https://japanese-maple-atlas.org/schemas/cultivar.schema.json",
+  "title": "Compiled Atlas Cultivar",
   "type": "object",
+  "additionalProperties": true,
   "required": [
     "id",
     "slug",
     "cultivar",
+    "scientificName",
     "taxonId",
     "status",
+    "canonicality",
+    "summary",
+    "habit",
+    "leafForm",
+    "springColor",
+    "summerColor",
+    "autumnColor",
     "assertionIds",
     "relationshipIds",
-    "mediaIds"
+    "mediaIds",
+    "sections",
+    "referenceStandard",
+    "compiler"
   ],
   "properties": {
     "id": {
+      "type": "string",
       "pattern": "^RC-[0-9]{3}$"
     },
-    "slug": {
-      "type": "string"
+    "status": {
+      "const": "frozen-reference-standard"
     },
-    "cultivar": {
-      "type": "string"
-    },
-    "taxonId": {
-      "pattern": "^TAX-"
+    "canonicality": {
+      "const": "canonical-compiled"
     },
     "assertionIds": {
       "type": "array",
+      "minItems": 22,
+      "maxItems": 22,
+      "uniqueItems": true,
       "items": {
-        "pattern": "^AST-"
+        "type": "string",
+        "pattern": "^AST-[0-9]{6}$"
       }
     },
     "relationshipIds": {
       "type": "array",
+      "uniqueItems": true,
       "items": {
-        "pattern": "^REL-"
+        "type": "string",
+        "pattern": "^REL-[0-9]{6}$"
       }
     },
     "mediaIds": {
       "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
       "items": {
+        "type": "string",
         "pattern": "^MED-"
       }
+    },
+    "referenceStandard": {
+      "type": "object",
+      "required": [
+        "id",
+        "version",
+        "freezeDate",
+        "sourceId",
+        "path",
+        "sha256"
+      ]
     }
   }
 }

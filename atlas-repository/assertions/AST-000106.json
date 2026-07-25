@@ -1,0 +1,18 @@
+{
+  "id": "AST-000106",
+  "subjectId": "RC-005",
+  "domain": "cultivar-continuity",
+  "predicate": "propagation",
+  "statement": "Propagation and continuity: Vegetative propagation required; grafting is customary but may be difficult.",
+  "state": "approved",
+  "confidence": "high",
+  "evidenceIds": [
+    "EVD-000034"
+  ],
+  "sourceScope": "cultivar-specific editorial synthesis",
+  "generatedFrom": {
+    "sourceId": "SRC-000005",
+    "referenceStandard": "RC-005",
+    "compilerVersion": "1.0.0"
+  }
+}

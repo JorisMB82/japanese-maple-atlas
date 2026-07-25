@@ -1,0 +1,18 @@
+{
+  "id": "EVD-000032",
+  "evidenceType": "frozen-editorial-reference-standard",
+  "scope": "published horticultural dimensions",
+  "sourceId": "SRC-000005",
+  "status": "approved",
+  "note": "RC-005 Size and growth sections; compiled without converting unresolved or rejected propositions into approved facts.",
+  "assertionIds": [
+    "AST-000098",
+    "AST-000099",
+    "AST-000100"
+  ],
+  "sourceLocation": {
+    "path": "atlas-repository/reference-standards/RC-005.md",
+    "section": "Size and growth sections"
+  },
+  "sourceSha256": "0a4f92dbdfdd0d487a6f3236f12d6e280c64e0ca8329837cc6cd4a057dfad679"
+}

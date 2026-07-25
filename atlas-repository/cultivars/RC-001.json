@@ -4,37 +4,73 @@
   "cultivar": "Bloodgood",
   "scientificName": "Acer palmatum 'Bloodgood'",
   "taxonId": "TAX-APAL",
-  "status": "provisional-pilot",
-  "summary": "An upright, broadly spreading red-leaved Japanese maple represented here as the baseline pilot record.",
-  "habit": "Broad Upright",
-  "leafForm": "Palmate",
-  "springColor": "Red-purple",
-  "summerColor": "Deep purple-red",
-  "autumnColor": "Crimson-red",
-  "bark": "Gray-brown",
-  "sizeClass": "Medium tree",
-  "light": "Full Sun to Partial Shade",
+  "status": "frozen-reference-standard",
+  "canonicality": "canonical-compiled",
+  "summary": "Acer palmatum 'Bloodgood' is a frozen Atlas reference cultivar. Habit: Upright-growing, broadening small tree or large shrub. Leaf form: Non-dissected; normally five to seven lobes. Spring foliage: Reddish purple. Summer foliage: Dark red-purple to wine-red. Autumn foliage: Bright red to crimson. Moderate at best.",
+  "habit": "Upright-growing, broadening small tree or large shrub",
+  "leafForm": "Non-dissected; normally five to seven lobes",
+  "springColor": "Reddish purple",
+  "summerColor": "Dark red-purple to wine-red",
+  "autumnColor": "Bright red to crimson",
+  "bark": "Gray-brown mature bark; bark is not the principal governed ornamental character.",
+  "sizeClass": "Large shrub / small tree",
+  "light": "Sun to partial shade, with climatic qualification",
   "diagnosticTraits": [
-    "Upright habit",
-    "Persistent dark foliage",
-    "Red autumn coloration"
+    "Upright-growing, broadening small tree or large shrub",
+    "Non-dissected; normally five to seven lobes",
+    "Moderate at best"
   ],
   "assertionIds": [
     "AST-000001",
-    "AST-000002"
+    "AST-000002",
+    "AST-000003",
+    "AST-000004",
+    "AST-000005",
+    "AST-000006",
+    "AST-000007",
+    "AST-000008",
+    "AST-000009",
+    "AST-000010",
+    "AST-000011",
+    "AST-000012",
+    "AST-000013",
+    "AST-000014",
+    "AST-000015",
+    "AST-000016",
+    "AST-000017",
+    "AST-000018",
+    "AST-000019",
+    "AST-000020",
+    "AST-000021",
+    "AST-000022"
   ],
   "relationshipIds": [
     "REL-000001",
+    "REL-000003",
     "REL-000004"
   ],
   "mediaIds": [
-    "MED-RC001-PLACEHOLDER"
+    "MED-RC-001-IDENTITY-001"
   ],
   "sections": {
-    "identity": "Pilot identity record pending direct import from the frozen RC-001 Reference Standard.",
-    "morphology": "Structured pilot traits are included to exercise the interface and comparison engine.",
-    "cultivation": "Cultivation statements must be replaced by approved assertions from RC-001.",
-    "history": "Historical narrative intentionally withheld until canonical source import.",
-    "propagation": "Cultivar continuity is expected to rely on vegetative propagation; canonical wording remains pending."
+    "identity": "The accepted Atlas identity is Acer palmatum 'Bloodgood'. It is governed as cultivar under Acer palmatum. The Reference Standard is frozen reference standard and source-hash protected.",
+    "morphology": "Upright-growing, broadening small tree or large shrub. Non-dissected; normally five to seven lobes. Bark context: Gray-brown mature bark; bark is not the principal governed ornamental character.",
+    "cultivation": "Sun to partial shade, with climatic qualification. Moist but freely draining soil. Commonly listed for USDA zones 5–8.",
+    "history": "Bloodgood Nursery, Long Island, New York. Historical claims retain the qualifications and unresolved propositions recorded in the frozen Reference Standard.",
+    "propagation": "Vegetative, including grafting and cuttings. Seed-derived material must not automatically inherit the named cultivar identity.",
+    "diagnosis": "Moderate at best. Appearance or a nursery label alone does not establish authenticated clonal identity."
+  },
+  "referenceStandard": {
+    "id": "RC-001",
+    "version": "1.0",
+    "freezeDate": "July 24, 2026",
+    "sourceId": "SRC-000001",
+    "path": "atlas-repository/reference-standards/RC-001.md",
+    "sha256": "c41bd23b2c5822130e2a343eead0f678a1e078bc5bc29b5d716c4c117739c932"
+  },
+  "compiler": {
+    "name": "Atlas Compiler",
+    "version": "1.0.0",
+    "generatedAt": "2026-07-24"
   }
 }

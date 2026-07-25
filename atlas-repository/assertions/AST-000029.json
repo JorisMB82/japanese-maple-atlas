@@ -1,0 +1,18 @@
+{
+  "id": "AST-000029",
+  "subjectId": "RC-002",
+  "domain": "seasonal-expression",
+  "predicate": "spring-foliage",
+  "statement": "Spring foliage: Light green, commonly with reddish tips or margins.",
+  "state": "approved",
+  "confidence": "high",
+  "evidenceIds": [
+    "EVD-000010"
+  ],
+  "sourceScope": "cultivar-specific editorial synthesis",
+  "generatedFrom": {
+    "sourceId": "SRC-000002",
+    "referenceStandard": "RC-002",
+    "compilerVersion": "1.0.0"
+  }
+}

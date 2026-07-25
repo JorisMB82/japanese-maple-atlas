@@ -1,0 +1,12 @@
+{
+  "id": "SRC-000002",
+  "title": "RC-002 — Acer palmatum 'Seiryu' Reference Standard v1.0",
+  "citation": "Japanese Maple Atlas. RC-002 — Acer palmatum 'Seiryu'. Frozen Reference Standard v1.0, July 24, 2026.",
+  "sourceType": "frozen-reference-standard",
+  "authority": "Japanese Maple Atlas",
+  "version": "Reference Standard v1.0",
+  "freezeDate": "July 24, 2026",
+  "path": "atlas-repository/reference-standards/RC-002.md",
+  "sha256": "39cb2882f7e55ba0ed07d6102dcca4f322f353bb829cb3f6ab08a2950da1efc5",
+  "status": "frozen"
+}
