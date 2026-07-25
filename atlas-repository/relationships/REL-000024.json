@@ -1,0 +1,44 @@
+{
+  "id": "REL-000024",
+  "typeId": "RLT-DIAGNOSTIC-COMPARISON",
+  "fromId": "RC-001",
+  "toId": "RC-003",
+  "label": "Upright Acer palmatum diagnostic comparison",
+  "inverseLabel": "Upright Acer palmatum diagnostic comparison",
+  "strength": 4,
+  "confidence": "high",
+  "rationale": "Both are upright Acer palmatum cultivars, but Bloodgood is primarily recognized through red-purple foliage and Sango-kaku through coral young stems and green foliage.",
+  "properties": {
+    "sharedTraits": [
+      "upright habit",
+      "Acer palmatum"
+    ],
+    "contrastingTraits": [
+      "red-purple foliage",
+      "coral young stems"
+    ],
+    "authenticationLimit": "comparison is descriptive, not clonal authentication"
+  },
+  "type": "diagnostic-comparison",
+  "category": "diagnosis",
+  "directionality": "symmetric",
+  "fromType": "cultivar",
+  "toType": "cultivar",
+  "status": "approved",
+  "version": "1.0.0",
+  "evidenceAssertionIds": [
+    "AST-000005",
+    "AST-000020",
+    "AST-000049",
+    "AST-000064"
+  ],
+  "sourceIds": [
+    "SRC-000001",
+    "SRC-000003"
+  ],
+  "generatedFrom": {
+    "path": "atlas-repository/relationship-standards/relationships.json",
+    "sha256": "1439473ee3574dfc2de5275d7a526b1a05b09a24e825401dc486cbd4739eabb0",
+    "compilerVersion": "1.2.0"
+  }
+}

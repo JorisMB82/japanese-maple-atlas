@@ -1,16 +1,16 @@
 {
-  "repositoryVersion": "0.7.0",
-  "release": "Sprint 7 — Editorial workflow and contributor pipeline",
+  "repositoryVersion": "0.9.0",
+  "release": "Sprint 9 — Knowledge graph and cultivar relationships",
   "generatedAt": "2026-07-25",
   "compiler": {
     "name": "Atlas Compiler",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "deterministic": true
   },
   "source": {
     "type": "frozen-reference-standard-cohort",
     "records": 5,
-    "inputHash": "8c532ec2a8618e1a6e16ad10346a33f542b7c91bafba0af24157d883e173a846"
+    "inputHash": "0a26583b49d13f17d324e8b26c72dbcc943c2d034213edf25a05dbca24821646"
   },
   "editorial": {
     "contributors": 2,
@@ -20,21 +20,36 @@
     "lifecycleStages": 12,
     "reviewPasses": 5
   },
+  "graph": {
+    "nodes": 7,
+    "edges": 26,
+    "relationshipTypes": 10,
+    "categories": {
+      "taxonomy": 15,
+      "morphology": 4,
+      "architecture": 3,
+      "seasonal-expression": 1,
+      "diagnosis": 2,
+      "cultivation": 1
+    },
+    "graphHash": "15f2e580a9bbd6bc09d80501cbf3faae83b8bf5b04f582119ebbf3960be50071"
+  },
   "objectCounts": {
     "cultivars": 5,
     "assertions": 110,
     "evidence": 35,
     "sources": 5,
     "taxa": 2,
-    "relationships": 4,
+    "relationships": 26,
+    "relationshipTypes": 10,
     "media": 5,
     "contributors": 2,
     "submissions": 5,
     "editorialWorkflows": 5,
     "editorialReviews": 25
   },
-  "objectTotal": 203,
-  "repositoryHash": "8fd96345757d5888e1e8d1a68529c103467c3d49525ad38cfe35ec70bd1a492c",
+  "objectTotal": 235,
+  "repositoryHash": "a0ca2ee5e21122937003887086f376e49e598dc9575c5c04623a569e0b1962f4",
   "canonicality": "canonical-compiled",
-  "notes": "RC-001 through RC-005 remain canonical compiled records. Sprint 7 adds a governed repository-native editorial workflow and contributor pipeline."
+  "notes": "RC-001 through RC-005 remain canonical compiled records. Sprint 9 adds governed, evidence-linked taxonomic, morphological, architectural, seasonal, cultivation and diagnostic relationships."
 }

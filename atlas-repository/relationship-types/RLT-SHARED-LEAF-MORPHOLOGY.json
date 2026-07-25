@@ -1,0 +1,20 @@
+{
+  "id": "RLT-SHARED-LEAF-MORPHOLOGY",
+  "code": "shared-leaf-morphology",
+  "label": "Shared leaf morphology",
+  "inverseLabel": "Shared leaf morphology",
+  "category": "morphology",
+  "directionality": "symmetric",
+  "description": "Connects cultivars that share a governed leaf-morphology character while keeping whole-plant architecture independent.",
+  "allowedNodePairs": [
+    "cultivar:cultivar"
+  ],
+  "evidenceRequired": true,
+  "status": "approved",
+  "version": "1.0.0",
+  "generatedFrom": {
+    "path": "atlas-repository/relationship-standards/relationship-types.json",
+    "sha256": "60de9e4280234ba499f84b0b79c0c865dfe5d84574011cbeb2537908a4de4847",
+    "compilerVersion": "1.2.0"
+  }
+}

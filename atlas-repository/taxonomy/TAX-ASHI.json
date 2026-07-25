@@ -4,5 +4,8 @@
   "rank": "species",
   "status": "accepted",
   "commonName": "Shirasawa maple",
-  "authority": "Koidz."
+  "authority": "Koidz.",
+  "relationshipIds": [
+    "REL-000005"
+  ]
 }

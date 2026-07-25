@@ -21,4 +21,5 @@ jobs:
       - run: npm run compile:atlas:check
       - run: npm run validate:repository
       - run: npm run validate:search
+      - run: npm run validate:graph
       - run: npm run build

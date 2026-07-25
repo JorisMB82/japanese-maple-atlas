@@ -1,32 +1,64 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://japanese-maple-atlas.org/schemas/relationship.schema.json",
-  "title": "Atlas Cultivar Relationship",
+  "title": "Atlas Knowledge Graph Relationship",
   "type": "object",
   "additionalProperties": false,
   "required": [
     "id",
+    "typeId",
+    "type",
+    "category",
+    "directionality",
     "fromId",
     "toId",
-    "type",
+    "fromType",
+    "toType",
     "label",
-    "status"
+    "inverseLabel",
+    "strength",
+    "confidence",
+    "rationale",
+    "status",
+    "version",
+    "evidenceAssertionIds",
+    "sourceIds",
+    "properties",
+    "generatedFrom"
   ],
   "properties": {
-    "id": {
-      "type": "string",
-      "pattern": "^REL-[0-9]{6}$"
+    "id": { "type": "string", "pattern": "^REL-[0-9]{6}$" },
+    "typeId": { "type": "string", "pattern": "^RLT-[A-Z0-9-]+$" },
+    "type": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+    "category": { "enum": ["taxonomy", "morphology", "architecture", "seasonal-expression", "cultivation", "diagnosis"] },
+    "directionality": { "enum": ["directed", "symmetric"] },
+    "fromId": { "type": "string", "pattern": "^(RC-[0-9]{3}|TAX-[A-Z0-9]+)$" },
+    "toId": { "type": "string", "pattern": "^(RC-[0-9]{3}|TAX-[A-Z0-9]+)$" },
+    "fromType": { "enum": ["cultivar", "taxon"] },
+    "toType": { "enum": ["cultivar", "taxon"] },
+    "label": { "type": "string", "minLength": 3 },
+    "inverseLabel": { "type": "string", "minLength": 3 },
+    "strength": { "type": "integer", "minimum": 1, "maximum": 5 },
+    "confidence": { "enum": ["high", "moderate", "low"] },
+    "rationale": { "type": "string", "minLength": 40 },
+    "status": { "const": "approved" },
+    "version": { "type": "string" },
+    "evidenceAssertionIds": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "type": "string", "pattern": "^AST-[0-9]{6}$" }
     },
-    "fromId": {
-      "type": "string",
-      "pattern": "^RC-[0-9]{3}$"
+    "sourceIds": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "type": "string", "pattern": "^SRC-[0-9]{6}$" }
     },
-    "toId": {
-      "type": "string",
-      "pattern": "^RC-[0-9]{3}$"
-    },
-    "status": {
-      "const": "approved"
+    "properties": { "type": "object" },
+    "generatedFrom": {
+      "type": "object",
+      "required": ["path", "sha256", "compilerVersion"]
     }
   }
 }

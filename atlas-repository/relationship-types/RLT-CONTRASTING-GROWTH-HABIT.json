@@ -1,0 +1,20 @@
+{
+  "id": "RLT-CONTRASTING-GROWTH-HABIT",
+  "code": "contrasting-growth-habit",
+  "label": "Contrasting growth habit",
+  "inverseLabel": "Contrasting growth habit",
+  "category": "architecture",
+  "directionality": "symmetric",
+  "description": "Connects cultivars whose whole-plant architectures are diagnostically different, independently of leaf morphology.",
+  "allowedNodePairs": [
+    "cultivar:cultivar"
+  ],
+  "evidenceRequired": true,
+  "status": "approved",
+  "version": "1.0.0",
+  "generatedFrom": {
+    "path": "atlas-repository/relationship-standards/relationship-types.json",
+    "sha256": "60de9e4280234ba499f84b0b79c0c865dfe5d84574011cbeb2537908a4de4847",
+    "compilerVersion": "1.2.0"
+  }
+}

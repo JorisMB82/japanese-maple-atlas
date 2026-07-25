@@ -4,5 +4,11 @@
   "rank": "species",
   "status": "accepted",
   "commonName": "Japanese maple",
-  "authority": "Thunb."
+  "authority": "Thunb.",
+  "relationshipIds": [
+    "REL-000001",
+    "REL-000002",
+    "REL-000003",
+    "REL-000004"
+  ]
 }

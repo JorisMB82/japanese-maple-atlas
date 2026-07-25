@@ -2,12 +2,14 @@ import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
 import os from 'node:os';
+import { buildKnowledgeGraphIndex, nodeTypeForId } from '../lib/knowledge-graph.mjs';
 
 const ROOT = path.resolve(import.meta.dirname, '..');
 const REPOSITORY = path.join(ROOT, 'atlas-repository');
 const INPUT_DIR = path.join(REPOSITORY, 'reference-standards');
 const EDITORIAL_INPUT_DIR = path.join(ROOT, 'editorial-inbox');
-const COMPILER_VERSION = '1.1.0';
+const GRAPH_INPUT_DIR = path.join(REPOSITORY, 'relationship-standards');
+const COMPILER_VERSION = '1.2.0';
 const RELEASE_DATE = '2026-07-25';
 const BOTANICAL_COMPILER_VERSION = '1.0.0';
 const BOTANICAL_RELEASE_DATE = '2026-07-24';
@@ -71,6 +73,40 @@ function collectEditorialInputs() {
     if (!WORKFLOW_STAGES.includes(submission.workflow.currentStage)) throw new Error(`${submission.id}: invalid workflow stage ${submission.workflow.currentStage}`);
   }
   return { contributors, submissions };
+}
+
+function collectGraphInputs() {
+  const typeInputPath = path.join(GRAPH_INPUT_DIR, 'relationship-types.json');
+  const relationshipInputPath = path.join(GRAPH_INPUT_DIR, 'relationships.json');
+  const typeRaw = fs.readFileSync(typeInputPath, 'utf8');
+  const relationshipRaw = fs.readFileSync(relationshipInputPath, 'utf8');
+  const typeDocument = JSON.parse(typeRaw);
+  const relationshipDocument = JSON.parse(relationshipRaw);
+  if (typeDocument.status !== 'approved' || relationshipDocument.status !== 'approved') throw new Error('Graph input documents must be approved');
+  if (!Array.isArray(typeDocument.types) || !Array.isArray(relationshipDocument.relationships)) throw new Error('Graph input documents are malformed');
+  const typeIds = new Set();
+  for (const type of typeDocument.types) {
+    if (!/^RLT-[A-Z0-9-]+$/.test(type.id || '')) throw new Error(`Invalid relationship type id ${type.id}`);
+    if (typeIds.has(type.id)) throw new Error(`Duplicate relationship type ${type.id}`);
+    typeIds.add(type.id);
+    for (const key of ['code','label','inverseLabel','category','directionality','description','allowedNodePairs','evidenceRequired','status','version']) if (!(key in type)) throw new Error(`${type.id}: missing ${key}`);
+  }
+  const relationshipIds = new Set();
+  for (const relationship of relationshipDocument.relationships) {
+    if (!/^REL-\d{6}$/.test(relationship.id || '')) throw new Error(`Invalid relationship id ${relationship.id}`);
+    if (relationshipIds.has(relationship.id)) throw new Error(`Duplicate relationship ${relationship.id}`);
+    relationshipIds.add(relationship.id);
+    if (!typeIds.has(relationship.typeId)) throw new Error(`${relationship.id}: unknown relationship type ${relationship.typeId}`);
+    for (const key of ['fromId','toId','label','inverseLabel','strength','confidence','rationale','evidenceSelectors','properties']) if (!(key in relationship)) throw new Error(`${relationship.id}: missing ${key}`);
+    if (relationship.fromId === relationship.toId) throw new Error(`${relationship.id}: self relationships are not allowed`);
+    if (!Number.isInteger(relationship.strength) || relationship.strength < 1 || relationship.strength > 5) throw new Error(`${relationship.id}: strength must be an integer from 1 to 5`);
+  }
+  return {
+    types: typeDocument.types,
+    relationships: relationshipDocument.relationships,
+    typeInput: { inputPath: typeInputPath, inputSha256: sha256(typeRaw) },
+    relationshipInput: { inputPath: relationshipInputPath, inputSha256: sha256(relationshipRaw) }
+  };
 }
 
 const RECORD_CONFIG = {
@@ -304,7 +340,7 @@ const evidenceGroups = [
   { key: 'diagnosis', assertions: [19, 20, 21], scope: 'diagnosis, authentication limits and confidence', section: 'Identification and confidence sections' }
 ];
 
-function buildCompilerOutputs(records, editorialInputs) {
+function buildCompilerOutputs(records, editorialInputs, graphInputs) {
   const outputs = new Map();
   const objects = [];
   let assertionCounter = 1;
@@ -401,22 +437,48 @@ function buildCompilerOutputs(records, editorialInputs) {
     cultivarObjects.push(cultivar);
   }
 
-  const relationships = [
-    { id: 'REL-000001', fromId: 'RC-001', toId: 'RC-002', type: 'contrasting-leaf-form', label: 'Contrasting leaf form', status: 'approved' },
-    { id: 'REL-000002', fromId: 'RC-002', toId: 'RC-004', type: 'shared-dissected-contrasting-habit', label: 'Shared dissected foliage; contrasting architecture', status: 'approved' },
-    { id: 'REL-000003', fromId: 'RC-003', toId: 'RC-001', type: 'upright-palmatum-comparison', label: 'Upright Acer palmatum comparison', status: 'approved' },
-    { id: 'REL-000004', fromId: 'RC-005', toId: 'RC-001', type: 'cross-species-contrast', label: 'Cross-species reference contrast', status: 'approved' }
+  const taxa = [
+    { id: 'TAX-APAL', scientificName: 'Acer palmatum', rank: 'species', status: 'accepted', commonName: 'Japanese maple', authority: 'Thunb.', relationshipIds: [] },
+    { id: 'TAX-ASHI', scientificName: 'Acer shirasawanum', rank: 'species', status: 'accepted', commonName: 'Shirasawa maple', authority: 'Koidz.', relationshipIds: [] }
   ];
+
+  const relationshipTypeInputPath = path.relative(ROOT, graphInputs.typeInput.inputPath).replaceAll(path.sep, '/');
+  const relationshipInputPath = path.relative(ROOT, graphInputs.relationshipInput.inputPath).replaceAll(path.sep, '/');
+  const relationshipTypes = graphInputs.types.map(type => ({
+    ...type,
+    generatedFrom: { path: relationshipTypeInputPath, sha256: graphInputs.typeInput.inputSha256, compilerVersion: COMPILER_VERSION }
+  }));
+  const relationshipTypeById = new Map(relationshipTypes.map(type => [type.id, type]));
+  const assertionBySelector = new Map(assertionObjects.map(assertion => [`${assertion.subjectId}:${assertion.predicate}`, assertion]));
+  const relationships = graphInputs.relationships.map(specification => {
+    const type = relationshipTypeById.get(specification.typeId);
+    const evidenceAssertionIds = specification.evidenceSelectors.map(selector => {
+      const assertion = assertionBySelector.get(`${selector.subjectId}:${selector.predicate}`);
+      if (!assertion) throw new Error(`${specification.id}: missing evidence selector ${selector.subjectId}:${selector.predicate}`);
+      return assertion.id;
+    });
+    const sourceIds = [...new Set(evidenceAssertionIds.map(id => assertionObjects.find(assertion => assertion.id === id)?.generatedFrom?.sourceId).filter(Boolean))];
+    const { evidenceSelectors, ...governedSpecification } = specification;
+    return {
+      ...governedSpecification,
+      type: type.code,
+      category: type.category,
+      directionality: type.directionality,
+      fromType: nodeTypeForId(specification.fromId),
+      toType: nodeTypeForId(specification.toId),
+      status: 'approved',
+      version: '1.0.0',
+      evidenceAssertionIds,
+      sourceIds,
+      generatedFrom: { path: relationshipInputPath, sha256: graphInputs.relationshipInput.inputSha256, compilerVersion: COMPILER_VERSION }
+    };
+  });
   for (const relationship of relationships) {
     cultivarObjects.find(item => item.id === relationship.fromId)?.relationshipIds.push(relationship.id);
     cultivarObjects.find(item => item.id === relationship.toId)?.relationshipIds.push(relationship.id);
+    taxa.find(item => item.id === relationship.fromId)?.relationshipIds.push(relationship.id);
+    taxa.find(item => item.id === relationship.toId)?.relationshipIds.push(relationship.id);
   }
-
-  const taxa = [
-    { id: 'TAX-APAL', scientificName: 'Acer palmatum', rank: 'species', status: 'accepted', commonName: 'Japanese maple', authority: 'Thunb.' },
-    { id: 'TAX-ASHI', scientificName: 'Acer shirasawanum', rank: 'species', status: 'accepted', commonName: 'Shirasawa maple', authority: 'Koidz.' }
-  ];
-
   const plateConfig = {
     'RC-001': ['bloodgood.svg', 'whole-plant-habit'], 'RC-002': ['seiryu.svg', 'whole-plant-habit'],
     'RC-003': ['sango-kaku.svg', 'young-stem-and-habit'], 'RC-004': ['crimson-queen.svg', 'whole-plant-habit'],
@@ -472,7 +534,7 @@ function buildCompilerOutputs(records, editorialInputs) {
 
   const categories = [
     ['cultivars', cultivarObjects], ['assertions', assertionObjects], ['evidence', evidenceObjects], ['sources', sources],
-    ['taxonomy', taxa], ['relationships', relationships], ['media', media],
+    ['taxonomy', taxa], ['relationships', relationships], ['relationship-types', relationshipTypes], ['media', media],
     ['contributors', contributorObjects], ['submissions', submissionObjects], ['editorial-workflows', workflowObjects], ['editorial-reviews', reviewObjects]
   ];
   for (const [folder, items] of categories) {
@@ -485,16 +547,21 @@ function buildCompilerOutputs(records, editorialInputs) {
     }
   }
 
-  const countKey = folder => ({ taxonomy: 'taxa', 'editorial-workflows': 'editorialWorkflows', 'editorial-reviews': 'editorialReviews' }[folder] || folder);
+  const countKey = folder => ({ taxonomy: 'taxa', 'relationship-types': 'relationshipTypes', 'editorial-workflows': 'editorialWorkflows', 'editorial-reviews': 'editorialReviews' }[folder] || folder);
   const objectCounts = Object.fromEntries(categories.map(([folder, items]) => [countKey(folder), items.length]));
   const objectTotal = Object.values(objectCounts).reduce((sum, count) => sum + count, 0);
-  if (objectTotal !== 203) throw new Error(`Compiler invariant failed: expected 203 repository objects, generated ${objectTotal}`);
+  if (objectTotal !== 235) throw new Error(`Compiler invariant failed: expected 235 repository objects, generated ${objectTotal}`);
   const repositoryHash = sha256(objects.slice().sort((a, b) => a.path.localeCompare(b.path)).map(item => `${item.path}:${item.sha256}`).join('\n'));
   const editorialInputHashes = [...editorialInputs.contributors, ...editorialInputs.submissions].map(item => `${path.relative(ROOT, item.inputPath).replaceAll(path.sep, '/')}:${item.inputSha256}`);
-  const inputHash = sha256([...records.map(record => `${record.id}:${record.inputSha256}`), ...editorialInputHashes].sort().join('\n'));
+  const graphInputHashes = [graphInputs.typeInput, graphInputs.relationshipInput].map(item => `${path.relative(ROOT, item.inputPath).replaceAll(path.sep, '/')}:${item.inputSha256}`);
+  const inputHash = sha256([...records.map(record => `${record.id}:${record.inputSha256}`), ...editorialInputHashes, ...graphInputHashes].sort().join('\n'));
 
   const objectIndex = { version: '1.0.0', repositoryHash, objectCount: objectTotal, objects: objects.slice().sort((a, b) => a.id.localeCompare(b.id)) };
   outputs.set('atlas-repository/indexes/object-index.json', json(objectIndex));
+  const graphIndex = buildKnowledgeGraphIndex({ cultivars: cultivarObjects, taxa, relationships, relationshipTypes, repositoryHash });
+  graphIndex.graphHash = sha256(graphIndex.graphHashPayload);
+  delete graphIndex.graphHashPayload;
+  outputs.set('atlas-repository/indexes/graph-index.json', json(graphIndex));
   const searchIndex = cultivarObjects.map(cultivar => ({
     id: cultivar.id, slug: cultivar.slug, cultivar: cultivar.cultivar, scientificName: cultivar.scientificName,
     text: [cultivar.summary, cultivar.habit, cultivar.leafForm, cultivar.springColor, cultivar.summerColor, cultivar.autumnColor, cultivar.bark, cultivar.light, ...cultivar.diagnosticTraits].map(stripMarkdown).join(' '),
@@ -503,23 +570,25 @@ function buildCompilerOutputs(records, editorialInputs) {
   outputs.set('atlas-repository/indexes/search-index.json', json({ version: '1.0.0', repositoryHash, records: searchIndex }));
 
   const manifest = {
-    repositoryVersion: '0.7.0', release: 'Sprint 7 — Editorial workflow and contributor pipeline', generatedAt: RELEASE_DATE,
+    repositoryVersion: '0.9.0', release: 'Sprint 9 — Knowledge graph and cultivar relationships', generatedAt: RELEASE_DATE,
     compiler: { name: 'Atlas Compiler', version: COMPILER_VERSION, deterministic: true },
     source: { type: 'frozen-reference-standard-cohort', records: records.length, inputHash },
     editorial: { contributors: contributorObjects.length, submissions: submissionObjects.length, workflows: workflowObjects.length, reviews: reviewObjects.length, lifecycleStages: WORKFLOW_STAGES.length, reviewPasses: REVIEW_PASSES.length },
+    graph: { nodes: graphIndex.nodeCount, edges: graphIndex.edgeCount, relationshipTypes: relationshipTypes.length, categories: graphIndex.stats.categories, graphHash: graphIndex.graphHash },
     objectCounts, objectTotal, repositoryHash, canonicality: 'canonical-compiled',
-    notes: 'RC-001 through RC-005 remain canonical compiled records. Sprint 7 adds a governed repository-native editorial workflow and contributor pipeline.'
+    notes: 'RC-001 through RC-005 remain canonical compiled records. Sprint 9 adds governed, evidence-linked taxonomic, morphological, architectural, seasonal, cultivation and diagnostic relationships.'
   };
   outputs.set('atlas-repository/manifest.json', json(manifest));
 
-  const registry = `// GENERATED FILE — DO NOT EDIT. Run \`npm run compile:atlas\`.\n\nimport fs from 'node:fs';\nimport path from 'node:path';\n\nconst repositoryRoot = path.join(process.cwd(), 'atlas-repository');\nconst loadJson = file => JSON.parse(fs.readFileSync(file, 'utf8'));\nconst loadDirectory = directory => {\n  const fullPath = path.join(repositoryRoot, directory);\n  return fs.readdirSync(fullPath)\n    .filter(file => file.endsWith('.json'))\n    .sort()\n    .map(file => loadJson(path.join(fullPath, file)));\n};\n\nexport const manifest = loadJson(path.join(repositoryRoot, 'manifest.json'));\nexport const cultivars = loadDirectory('cultivars');\nexport const assertions = loadDirectory('assertions');\nexport const evidence = loadDirectory('evidence');\nexport const sources = loadDirectory('sources');\nexport const taxa = loadDirectory('taxonomy');\nexport const relationships = loadDirectory('relationships');\nexport const media = loadDirectory('media');\nexport const contributors = loadDirectory('contributors');\nexport const submissions = loadDirectory('submissions');\nexport const editorialWorkflows = loadDirectory('editorial-workflows');\nexport const editorialReviews = loadDirectory('editorial-reviews');\n`;
+  const registry = `// GENERATED FILE — DO NOT EDIT. Run \`npm run compile:atlas\`.\n\nimport fs from 'node:fs';\nimport path from 'node:path';\n\nconst repositoryRoot = path.join(process.cwd(), 'atlas-repository');\nconst loadJson = file => JSON.parse(fs.readFileSync(file, 'utf8'));\nconst loadDirectory = directory => {\n  const fullPath = path.join(repositoryRoot, directory);\n  return fs.readdirSync(fullPath)\n    .filter(file => file.endsWith('.json'))\n    .sort()\n    .map(file => loadJson(path.join(fullPath, file)));\n};\n\nexport const manifest = loadJson(path.join(repositoryRoot, 'manifest.json'));\nexport const cultivars = loadDirectory('cultivars');\nexport const assertions = loadDirectory('assertions');\nexport const evidence = loadDirectory('evidence');\nexport const sources = loadDirectory('sources');\nexport const taxa = loadDirectory('taxonomy');\nexport const relationships = loadDirectory('relationships');\nexport const relationshipTypes = loadDirectory('relationship-types');\nexport const media = loadDirectory('media');\nexport const contributors = loadDirectory('contributors');\nexport const submissions = loadDirectory('submissions');\nexport const editorialWorkflows = loadDirectory('editorial-workflows');\nexport const editorialReviews = loadDirectory('editorial-reviews');\nexport const graphIndex = loadJson(path.join(repositoryRoot, 'indexes', 'graph-index.json'));\n`;
   outputs.set('lib/repository-registry.js', registry);
 
   const generatedHashes = {};
   for (const [relative, content] of [...outputs.entries()].sort(([a], [b]) => a.localeCompare(b))) generatedHashes[relative] = sha256(content);
   const editorialHashInputs = [...editorialInputs.contributors, ...editorialInputs.submissions].map(item => [path.relative(ROOT, item.inputPath).replaceAll(path.sep, '/'), item.inputSha256]);
   const sourceHashInputs = records.map(record => [path.relative(ROOT, record.inputPath).replaceAll(path.sep, '/'), record.inputSha256]);
-  outputs.set('atlas-repository/hashes.json', json({ algorithm: 'sha256', compilerVersion: COMPILER_VERSION, inputHash, repositoryHash, inputs: Object.fromEntries([...sourceHashInputs, ...editorialHashInputs]), generated: generatedHashes }));
+  const graphHashInputs = [graphInputs.typeInput, graphInputs.relationshipInput].map(item => [path.relative(ROOT, item.inputPath).replaceAll(path.sep, '/'), item.inputSha256]);
+  outputs.set('atlas-repository/hashes.json', json({ algorithm: 'sha256', compilerVersion: COMPILER_VERSION, inputHash, repositoryHash, inputs: Object.fromEntries([...sourceHashInputs, ...editorialHashInputs, ...graphHashInputs]), generated: generatedHashes }));
 
   return { outputs, manifest, records };
 }
@@ -533,7 +602,7 @@ function collectInputs() {
   });
 }
 
-const generatedObjectDirs = ['cultivars', 'assertions', 'evidence', 'sources', 'taxonomy', 'relationships', 'media', 'contributors', 'submissions', 'editorial-workflows', 'editorial-reviews', 'indexes'];
+const generatedObjectDirs = ['cultivars', 'assertions', 'evidence', 'sources', 'taxonomy', 'relationships', 'relationship-types', 'media', 'contributors', 'submissions', 'editorial-workflows', 'editorial-reviews', 'indexes'];
 function writeOutputs(outputs) {
   for (const dir of generatedObjectDirs) {
     const target = path.join(REPOSITORY, dir);
@@ -570,7 +639,8 @@ function checkOutputs(outputs) {
 
 try {
   const editorialInputs = collectEditorialInputs();
-  const result = buildCompilerOutputs(collectInputs(), editorialInputs);
+  const graphInputs = collectGraphInputs();
+  const result = buildCompilerOutputs(collectInputs(), editorialInputs, graphInputs);
   if (CHECK_MODE) checkOutputs(result.outputs); else writeOutputs(result.outputs);
   console.log(`Atlas Compiler ${COMPILER_VERSION}: ${CHECK_MODE ? 'CHECK PASS' : 'COMPILE PASS'}`);
   console.log(`Frozen Reference Standards: ${result.records.length}`);

@@ -1,6 +1,6 @@
 {
   "name": "japanese-maple-atlas-mvp",
-  "version": "0.8.0",
+  "version": "0.9.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -10,9 +10,10 @@
     "validate:data": "node scripts/validate-repository.mjs",
     "validate:repository": "node scripts/validate-repository.mjs",
     "validate:search": "node scripts/validate-search.mjs",
-    "test": "npm run validate:contributions && npm run compile:atlas:check && npm run validate:repository && npm run validate:search",
+    "validate:graph": "node scripts/validate-graph.mjs",
+    "test": "npm run validate:contributions && npm run compile:atlas:check && npm run validate:repository && npm run validate:search && npm run validate:graph",
     "verify": "npm test && npm run build",
-    "prebuild": "npm run validate:contributions && npm run compile:atlas:check && npm run validate:repository && npm run validate:search",
+    "prebuild": "npm run validate:contributions && npm run compile:atlas:check && npm run validate:repository && npm run validate:search && npm run validate:graph",
     "build": "next build",
     "start": "next start",
     "contribution:new": "node scripts/create-contribution.mjs",

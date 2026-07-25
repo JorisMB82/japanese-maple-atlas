@@ -1,8 +1,33 @@
 {
   "id": "REL-000003",
+  "typeId": "RLT-BELONGS-TO-TAXON",
   "fromId": "RC-003",
-  "toId": "RC-001",
-  "type": "upright-palmatum-comparison",
-  "label": "Upright Acer palmatum comparison",
-  "status": "approved"
+  "toId": "TAX-APAL",
+  "label": "Sango-kaku belongs to Acer palmatum",
+  "inverseLabel": "Acer palmatum includes Sango-kaku",
+  "strength": 5,
+  "confidence": "high",
+  "rationale": "The frozen Reference Standard governs Sango-kaku under the accepted species Acer palmatum.",
+  "properties": {
+    "scope": "accepted taxonomy",
+    "inheritance": "qualified"
+  },
+  "type": "belongs-to-taxon",
+  "category": "taxonomy",
+  "directionality": "directed",
+  "fromType": "cultivar",
+  "toType": "taxon",
+  "status": "approved",
+  "version": "1.0.0",
+  "evidenceAssertionIds": [
+    "AST-000046"
+  ],
+  "sourceIds": [
+    "SRC-000003"
+  ],
+  "generatedFrom": {
+    "path": "atlas-repository/relationship-standards/relationships.json",
+    "sha256": "1439473ee3574dfc2de5275d7a526b1a05b09a24e825401dc486cbd4739eabb0",
+    "compilerVersion": "1.2.0"
+  }
 }

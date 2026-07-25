@@ -2,21 +2,22 @@
 
 An evidence-aware botanical knowledge platform for discovering, comparing and governing Japanese maple cultivar knowledge.
 
-## Sprint 8 / application v0.8.0
+## Sprint 9 / application and repository v0.9.0
 
-The Atlas now provides advanced, explainable semantic discovery over the governed repository:
+The Atlas now provides a governed, evidence-linked cultivar knowledge graph:
 
-- ordinary horticultural terms map to controlled search concepts;
-- exact, quoted, fielded, excluded and OR queries are supported;
-- relevance scoring prioritises cultivar identity and diagnostic fields;
-- every result can explain why it matched;
-- semantic filters cover habit, leaf form, colour, exposure, scale and cultivation risk;
-- contextual facet counts prevent dead-end filter combinations;
-- discovery state is bookmarkable through the URL;
-- no-result suggestions are limited to governed vocabulary;
-- search behaviour is covered by dedicated validation and permanent CI.
+- five cultivar nodes and two accepted taxon nodes;
+- twenty-six first-class relationship objects;
+- ten controlled relationship types;
+- taxonomic, morphological, architectural, seasonal, cultivation and diagnostic relationship categories;
+- explicit directionality, inverse labels, strength and confidence;
+- assertion and source links for every graph edge;
+- deterministic adjacency and traversal indexes;
+- shortest-path and related-cultivar services;
+- an interactive public graph explorer;
+- dedicated graph validation integrated into permanent CI.
 
-The five frozen Reference Standards and the 203 first-class Sprint 7 repository objects remain unchanged. Search interpretation improves retrieval but does not create new botanical assertions.
+The five frozen Reference Standards remain the canonical botanical source. Graph relationships organize approved comparisons and taxonomic links without creating new cultivar identity claims or authenticating specimens.
 
 ## Repository principle
 
@@ -30,10 +31,11 @@ npm run validate:contributions
 npm run compile:atlas:check
 npm run validate:repository
 npm run validate:search
+npm run validate:graph
 npm run dev
 ```
 
-Open `http://localhost:3000`.
+Open `http://localhost:3000`. The graph explorer is available at `http://localhost:3000/graph`.
 
 ## Search examples
 
@@ -63,7 +65,7 @@ npm run compile:atlas
 npm test
 ```
 
-Do not edit generated JSON under `atlas-repository/` or `lib/repository-registry.js` directly.
+Do not edit generated JSON under `atlas-repository/` or `lib/repository-registry.js` directly. Relationship proposals must enter through the governed relationship standards or contributor workflow and retain evidence selectors, rationale, uncertainty and review history.
 
 ## Production build
 
@@ -75,15 +77,19 @@ The static export is written to `out/`.
 
 ## Repository structure
 
-- `atlas-repository/reference-standards/` — frozen canonical compiler inputs
+- `atlas-repository/reference-standards/` — frozen canonical cultivar inputs
+- `atlas-repository/relationship-standards/` — governed relationship vocabulary and relationship specifications
 - `editorial-inbox/` — governed contributor and submission inputs
-- `atlas-repository/` — generated knowledge, editorial objects, indexes, hashes and schemas
+- `atlas-repository/relationships/` — generated graph edge objects
+- `atlas-repository/relationship-types/` — generated controlled relationship types
+- `atlas-repository/indexes/graph-index.json` — generated nodes, edges, adjacency and graph statistics
+- `lib/knowledge-graph.mjs` — deterministic graph construction, traversal and ranking services
 - `lib/search-vocabulary.mjs` — governed semantic concepts and aliases
 - `lib/search-engine.mjs` — query parsing, relevance, explainability and facets
-- `scripts/validate-search.mjs` — semantic-search validation
-- `scripts/compile-atlas.mjs` — deterministic compiler
+- `scripts/compile-atlas.mjs` — deterministic repository and graph compiler
 - `scripts/validate-contributions.mjs` — contributor-input validation
 - `scripts/validate-repository.mjs` — repository integrity validation
-- `app/` — public, editorial and contribution routes
-- `components/` — reusable interface components
-- `docs/` — architecture, editorial, search, contributor and implementation records
+- `scripts/validate-search.mjs` — semantic-search validation
+- `scripts/validate-graph.mjs` — graph schema, evidence, traversal and integrity validation
+- `app/graph/` — interactive graph application route
+- `docs/` — architecture, editorial, search, graph, contributor and implementation records

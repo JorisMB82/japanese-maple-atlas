@@ -1,0 +1,20 @@
+{
+  "id": "RLT-CROSS-TAXON-REFERENCE",
+  "code": "cross-taxon-reference",
+  "label": "Cross-taxon reference",
+  "inverseLabel": "Cross-taxon reference",
+  "category": "taxonomy",
+  "directionality": "symmetric",
+  "description": "Creates an explicit comparison bridge between cultivars placed in different accepted species; it does not imply synonymy or close genetic affinity.",
+  "allowedNodePairs": [
+    "cultivar:cultivar"
+  ],
+  "evidenceRequired": true,
+  "status": "approved",
+  "version": "1.0.0",
+  "generatedFrom": {
+    "path": "atlas-repository/relationship-standards/relationship-types.json",
+    "sha256": "60de9e4280234ba499f84b0b79c0c865dfe5d84574011cbeb2537908a4de4847",
+    "compilerVersion": "1.2.0"
+  }
+}

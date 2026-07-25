@@ -1,0 +1,20 @@
+{
+  "id": "RLT-SAME-TAXON-PEER",
+  "code": "same-taxon-peer",
+  "label": "Same-taxon peer",
+  "inverseLabel": "Same-taxon peer",
+  "category": "taxonomy",
+  "directionality": "symmetric",
+  "description": "Connects two cultivar entities governed under the same accepted species while preserving their separate cultivar identities.",
+  "allowedNodePairs": [
+    "cultivar:cultivar"
+  ],
+  "evidenceRequired": true,
+  "status": "approved",
+  "version": "1.0.0",
+  "generatedFrom": {
+    "path": "atlas-repository/relationship-standards/relationship-types.json",
+    "sha256": "60de9e4280234ba499f84b0b79c0c865dfe5d84574011cbeb2537908a4de4847",
+    "compilerVersion": "1.2.0"
+  }
+}
