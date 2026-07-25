@@ -46,8 +46,9 @@ RC-001 through RC-005 remain compiled from the frozen Reference Standards. Sprin
 - Semantic search validation: PASS.
 - Knowledge graph validation: PASS — 7 nodes, 26 edges, 10 relationship types.
 - Production Next.js build: PASS.
-- Vercel preview deployment: subject to final post-cleanup status check.
+- Vercel preview deployment: READY.
 - `package.json` and `package-lock.json`: synchronised at version 0.9.0.
+- Temporary finalisation workflow and helper: removed.
 
 ## Review and merge
 
