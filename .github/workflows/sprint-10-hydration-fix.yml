@@ -1,0 +1,49 @@
+name: Sprint 10 explorer hydration fix
+
+on:
+  push:
+    branches:
+      - sprint-10-interactive-atlas-explorer
+    paths:
+      - .github/workflows/sprint-10-hydration-fix.yml
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: sprint-10-interactive-atlas-explorer
+      - name: Guard initial URL hydration
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          file = Path('components/AtlasExplorerWorkspace.js')
+          source = file.read_text()
+          source = source.replace(
+              "  const [savedViews, setSavedViews] = useState([]);\n  const [message, setMessage] = useState('');",
+              "  const [savedViews, setSavedViews] = useState([]);\n  const [message, setMessage] = useState('');\n  const [ready, setReady] = useState(false);"
+          )
+          source = source.replace(
+              "    setSavedViews(readSavedViews());\n  }, [slugs]);",
+              "    setSavedViews(readSavedViews());\n    setReady(true);\n  }, [slugs]);"
+          )
+          source = source.replace(
+              "  useEffect(() => {\n    const query = serialiseExplorerState(state, slugs);",
+              "  useEffect(() => {\n    if (!ready) return;\n    const query = serialiseExplorerState(state, slugs);"
+          )
+          source = source.replace("  }, [slugs, state]);", "  }, [ready, slugs, state]);", 1)
+          if source == file.read_text():
+              raise SystemExit('No explorer hydration patch was applied')
+          file.write_text(source)
+          PY
+      - name: Publish URL hydration guard
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add components/AtlasExplorerWorkspace.js
+          git commit -m "Preserve shared explorer URL state during hydration"
+          git push origin HEAD:sprint-10-interactive-atlas-explorer
