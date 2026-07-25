@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://japanese-maple-atlas.org/schemas/graph-index.schema.json",
+  "title": "Atlas Knowledge Graph Index",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "version",
+    "repositoryHash",
+    "graphHash",
+    "nodeCount",
+    "edgeCount",
+    "nodes",
+    "edges",
+    "adjacency",
+    "stats"
+  ],
+  "properties": {
+    "version": { "const": "1.0.0" },
+    "repositoryHash": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "graphHash": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "nodeCount": { "const": 7 },
+    "edgeCount": { "const": 26 },
+    "nodes": {
+      "type": "array",
+      "minItems": 7,
+      "maxItems": 7,
+      "items": {
+        "type": "object",
+        "required": ["id", "nodeType", "label", "status"]
+      }
+    },
+    "edges": {
+      "type": "array",
+      "minItems": 26,
+      "maxItems": 26,
+      "items": {
+        "type": "object",
+        "required": ["id", "fromId", "toId", "typeId", "category", "directionality", "strength", "confidence", "evidenceAssertionIds"]
+      }
+    },
+    "adjacency": {
+      "type": "object",
+      "required": ["RC-001", "RC-002", "RC-003", "RC-004", "RC-005", "TAX-APAL", "TAX-ASHI"]
+    },
+    "stats": {
+      "type": "object",
+      "required": ["cultivarNodes", "taxonNodes", "relationshipTypes", "categories", "types", "cultivarPairs", "connectedComponents", "allCultivarsConnected"],
+      "properties": {
+        "cultivarNodes": { "const": 5 },
+        "taxonNodes": { "const": 2 },
+        "relationshipTypes": { "const": 10 },
+        "connectedComponents": { "const": 1 },
+        "allCultivarsConnected": { "const": true }
+      }
+    }
+  }
+}
