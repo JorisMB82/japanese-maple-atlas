@@ -1,60 +1,217 @@
 'use client';
 
 import { useEffect, useMemo, useState } from 'react';
+import {
+  createContextualFacetCounts,
+  describeSearchQuery,
+  filterCultivars,
+  sortCultivars,
+  suggestSearchTerms
+} from '@/lib/search';
 import StatusBadge from './StatusBadge';
 import MediaPlate from './MediaPlate';
 
-const FILTERS = [['species','Species'],['habit','Habit'],['leafForm','Leaf form'],['light','Light'],['sizeClass','Size'],['autumnColor','Autumn colour']];
-const initialState={query:'',species:'All',habit:'All',leafForm:'All',light:'All',sizeClass:'All',autumnColor:'All',sort:'relevance'};
-const normalize=value=>value||'All';
-const includes=(value,expected)=>expected==='All'||String(value||'').toLowerCase().includes(String(expected).toLowerCase());
+const SEMANTIC_FILTERS = [
+  ['habit', 'Growth habit'],
+  ['leaf', 'Leaf form'],
+  ['colour', 'Colour character'],
+  ['exposure', 'Light tolerance'],
+  ['size', 'Plant scale'],
+  ['risk', 'Cultivation risk']
+];
 
-function readUrlState(){
- if(typeof window==='undefined')return initialState;
- const p=new URLSearchParams(window.location.search);
- return {...initialState,query:p.get('q')||'',species:normalize(p.get('species')),habit:normalize(p.get('habit')),leafForm:normalize(p.get('leaf')),light:normalize(p.get('light')),sizeClass:normalize(p.get('size')),autumnColor:normalize(p.get('autumn')),sort:p.get('sort')||'relevance'};
-}
-function writeUrlState(s){
- const p=new URLSearchParams();
- if(s.query)p.set('q',s.query); if(s.species!=='All')p.set('species',s.species); if(s.habit!=='All')p.set('habit',s.habit);
- if(s.leafForm!=='All')p.set('leaf',s.leafForm); if(s.light!=='All')p.set('light',s.light); if(s.sizeClass!=='All')p.set('size',s.sizeClass);
- if(s.autumnColor!=='All')p.set('autumn',s.autumnColor); if(s.sort!=='relevance')p.set('sort',s.sort);
- window.history.replaceState({},'',`${window.location.pathname}${p.toString()?`?${p}`:''}${window.location.hash}`);
-}
-function score(c,q){
- if(!q.trim())return 0; const terms=q.toLowerCase().match(/(?:[^\s"]+|"[^"]*")+/g)||[];
- const hay=[c.id,c.cultivar,c.scientificName,c.species,c.summary,c.habit,c.leafForm,c.light,c.sizeClass,c.springColor,c.summerColor,c.autumnColor,c.bark,...(c.diagnosticTraits||[])].join(' ').toLowerCase();
- let total=0;
- for(const raw of terms){
-  const term=raw.replace(/^"|"$/g,''); const sep=term.indexOf(':');
-  if(sep>0){const fieldName=term.slice(0,sep),value=term.slice(sep+1),map={species:'species',habit:'habit',leaf:'leafForm',light:'light',size:'sizeClass',autumn:'autumnColor',bark:'bark'},field=map[fieldName];if(!field||!String(c[field]||'').toLowerCase().includes(value))return-1;total+=45;continue;}
-  if(!hay.includes(term))return-1;if(c.cultivar.toLowerCase()===term||c.id.toLowerCase()===term)total+=120;else if(c.cultivar.toLowerCase().startsWith(term))total+=80;else if(c.cultivar.toLowerCase().includes(term))total+=55;else total+=10;
- } return total;
+const initialState = {
+  query: '',
+  species: 'All',
+  habit: 'All',
+  leaf: 'All',
+  colour: 'All',
+  exposure: 'All',
+  size: 'All',
+  risk: 'All',
+  sort: 'relevance'
+};
+
+const URL_KEYS = { query: 'q', species: 'species', habit: 'habit', leaf: 'leaf', colour: 'colour', exposure: 'exposure', size: 'size', risk: 'risk', sort: 'sort' };
+const VALID_SORTS = new Set(['relevance', 'reference', 'name', 'species']);
+const FIELD_LABELS = {
+  id: 'reference ID', cultivar: 'cultivar name', scientificName: 'scientific name', species: 'species',
+  summary: 'profile summary', habit: 'growth habit', leafForm: 'leaf form', light: 'light guidance',
+  sizeClass: 'plant scale', springColor: 'spring colour', summerColor: 'summer colour',
+  autumnColor: 'autumn colour', bark: 'bark', diagnosticTraits: 'diagnostic traits', status: 'record status'
+};
+
+function readUrlState() {
+  if (typeof window === 'undefined') return initialState;
+  const params = new URLSearchParams(window.location.search);
+  const state = { ...initialState };
+
+  for (const key of Object.keys(initialState)) {
+    const value = params.get(URL_KEYS[key]);
+    if (key === 'query') state[key] = value || '';
+    else if (key === 'sort') state[key] = value && VALID_SORTS.has(value) ? value : initialState.sort;
+    else state[key] = value || initialState[key];
+  }
+  return state;
 }
 
-export default function CultivarExplorer({cultivars,facets={},examples=[]}){
- const[state,setState]=useState(initialState);const[compare,setCompare]=useState([]);
- useEffect(()=>{setState(readUrlState());try{setCompare(JSON.parse(localStorage.getItem('atlas-compare')||'[]').slice(0,2));}catch{setCompare([])}},[]);
- useEffect(()=>{if(typeof window!=='undefined')writeUrlState(state)},[state]);
- useEffect(()=>{if(typeof window!=='undefined')localStorage.setItem('atlas-compare',JSON.stringify(compare))},[compare]);
- const filtered=useMemo(()=>cultivars.map(c=>({...c,_score:score(c,state.query)})).filter(c=>c._score>=0).filter(c=>includes(c.species,state.species)&&includes(c.habit,state.habit)&&includes(c.leafForm,state.leafForm)&&includes(c.light,state.light)&&includes(c.sizeClass,state.sizeClass)&&includes(c.autumnColor,state.autumnColor)).sort((a,b)=>state.sort==='name'?a.cultivar.localeCompare(b.cultivar):state.sort==='species'?a.species.localeCompare(b.species)||a.cultivar.localeCompare(b.cultivar):state.sort==='reference'?a.id.localeCompare(b.id):b._score-a._score||a.id.localeCompare(b.id)),[cultivars,state]);
- const activeFilters=FILTERS.filter(([k])=>state[k]!=='All'),active=state.query||activeFilters.length||state.sort!=='relevance';
- const update=(k,v)=>setState(s=>({...s,[k]:v})),reset=()=>setState(initialState);
- const toggle=slug=>setCompare(c=>c.includes(slug)?c.filter(x=>x!==slug):c.length>=2?[c[1],slug]:[...c,slug]);
- const compareUrl=compare.length?`/compare?a=${compare[0]||''}${compare[1]?`&b=${compare[1]}`:''}`:'/compare';
- return <section aria-labelledby="directory-heading">
-  <div className="sectionHeading"><div><div className="kicker">Repository discovery</div><h2 id="directory-heading">Cultivar explorer</h2></div><p>{filtered.length} of {cultivars.length} records</p></div>
-  <div className="searchPanel advancedSearchPanel">
-   <label className="searchField"><span>Search names, traits, colours, and structured fields</span><input aria-label="Search cultivars" placeholder='Try “red upright” or habit:weeping' value={state.query} onChange={e=>update('query',e.target.value)}/></label>
-   {examples.length>0&&<div className="queryExamples"><span>Examples:</span>{examples.map(x=><button type="button" className="queryChip" key={x} onClick={()=>update('query',x)}>{x}</button>)}</div>}
-   <div className="filterGrid filterGridSix">{FILTERS.map(([k,l])=><label key={k}><span>{l}</span><select value={state[k]} onChange={e=>update(k,e.target.value)}><option>All</option>{(facets[k]||[]).map(o=><option key={o}>{o}</option>)}</select></label>)}</div>
-   <div className="searchToolbar"><label className="sortControl"><span>Sort</span><select value={state.sort} onChange={e=>update('sort',e.target.value)}><option value="relevance">Relevance</option><option value="reference">Reference ID</option><option value="name">Cultivar name</option><option value="species">Species</option></select></label>{active&&<button className="textButton" type="button" onClick={reset}>Clear discovery state</button>}</div>
-  </div>
-  {compare.length>0&&<div className="compareTray"><div><strong>Comparison tray</strong><span>{compare.length}/2 selected</span></div><div className="compareTrayNames">{compare.map(slug=><button type="button" key={slug} onClick={()=>toggle(slug)}>{cultivars.find(c=>c.slug===slug)?.cultivar||slug} ×</button>)}</div><a className={`button ${compare.length<2?'secondary':''}`} href={compareUrl}>{compare.length===2?'Compare selected':'Choose one more'}</a></div>}
-  {filtered.length?<div className="cultivarGrid">{filtered.map(c=><article className="cultivarCard discoveryCard mediaCultivarCard" key={c.id}>
-   <div className="cardTop"><span className="referenceId">{c.id}</span><StatusBadge status={c.status}/></div>
-   <a className="cardMainLink" href={`/cultivars/${c.slug}`}><MediaPlate media={c.primaryMedia} cultivar={c} compact/><p className="speciesName"><em>{c.species}</em></p><h3>{c.cultivar}</h3><p>{c.summary}</p><div className="traitLine"><span>{c.habit}</span><span>{c.leafForm}</span><span>{c.autumnColor}</span></div></a>
-   <div className="cardFooterActions"><a href={`/cultivars/${c.slug}`}>Open profile →</a><button type="button" className={compare.includes(c.slug)?'selectedCompare':''} onClick={()=>toggle(c.slug)}>{compare.includes(c.slug)?'Selected ✓':'Add to compare'}</button></div>
-  </article>)}</div>:<div className="empty card"><h3>No matching cultivars</h3><p>Try a broader term or remove a filter.</p><button type="button" onClick={reset}>Reset discovery</button></div>}
- </section>;
+function writeUrlState(state) {
+  const params = new URLSearchParams();
+  for (const [key, value] of Object.entries(state)) {
+    if (key === 'query' && value) params.set(URL_KEYS[key], value);
+    else if (key !== 'query' && value !== 'All' && !(key === 'sort' && value === 'relevance')) params.set(URL_KEYS[key], value);
+  }
+  window.history.replaceState({}, '', `${window.location.pathname}${params.toString() ? `?${params}` : ''}${window.location.hash}`);
+}
+
+function conceptLabel(facets, category, conceptId) {
+  return (facets.semantic?.[category] || []).find(option => option.id === conceptId)?.label || conceptId;
+}
+
+function reasonLabel(reason) {
+  if (reason.semantic && reason.conceptLabel) return reason.conceptLabel;
+  return `Matched ${FIELD_LABELS[reason.field] || reason.field}`;
+}
+
+export default function CultivarExplorer({ cultivars, facets = {}, examples = [] }) {
+  const [state, setState] = useState(initialState);
+  const [compare, setCompare] = useState([]);
+  const [showAdvanced, setShowAdvanced] = useState(false);
+
+  useEffect(() => {
+    const urlState = readUrlState();
+    setState(urlState);
+    setShowAdvanced(['colour', 'exposure', 'size', 'risk'].some(key => urlState[key] !== 'All'));
+    try { setCompare(JSON.parse(localStorage.getItem('atlas-compare') || '[]').slice(0, 2)); }
+    catch { setCompare([]); }
+  }, []);
+
+  useEffect(() => { if (typeof window !== 'undefined') writeUrlState(state); }, [state]);
+  useEffect(() => { if (typeof window !== 'undefined') localStorage.setItem('atlas-compare', JSON.stringify(compare)); }, [compare]);
+
+  const filtered = useMemo(
+    () => sortCultivars(filterCultivars(cultivars, state), state.sort),
+    [cultivars, state]
+  );
+  const contextualCounts = useMemo(
+    () => createContextualFacetCounts(cultivars, state),
+    [cultivars, state]
+  );
+  const queryAnalysis = useMemo(() => describeSearchQuery(state.query), [state.query]);
+  const suggestions = useMemo(() => suggestSearchTerms(state.query), [state.query]);
+
+  const activeFilters = [
+    ...(state.species !== 'All' ? [{ key: 'species', label: state.species }] : []),
+    ...SEMANTIC_FILTERS.filter(([key]) => state[key] !== 'All').map(([key, label]) => ({
+      key,
+      label: `${label}: ${conceptLabel(facets, key, state[key])}`
+    }))
+  ];
+  const active = Boolean(state.query || activeFilters.length || state.sort !== 'relevance');
+  const update = (key, value) => setState(current => ({ ...current, [key]: value }));
+  const clearFilter = key => update(key, 'All');
+  const reset = () => setState(initialState);
+  const toggle = slug => setCompare(current => current.includes(slug)
+    ? current.filter(item => item !== slug)
+    : current.length >= 2 ? [current[1], slug] : [...current, slug]);
+  const compareUrl = compare.length ? `/compare?a=${compare[0] || ''}${compare[1] ? `&b=${compare[1]}` : ''}` : '/compare';
+
+  return <section aria-labelledby="directory-heading">
+    <div className="sectionHeading">
+      <div><div className="kicker">Semantic repository discovery</div><h2 id="directory-heading">Cultivar explorer</h2></div>
+      <p aria-live="polite">{filtered.length} of {cultivars.length} records</p>
+    </div>
+
+    <div className="searchPanel semanticSearchPanel">
+      <div className="searchLeadRow">
+        <label className="searchField">
+          <span>Search names, traits, colours and governed concepts</span>
+          <input
+            aria-label="Search cultivars"
+            placeholder='Try “laceleaf upright”, “weeping red” or leaf:laceleaf -habit:cascading'
+            value={state.query}
+            onChange={event => update('query', event.target.value)}
+          />
+        </label>
+        <label className="speciesFilter">
+          <span>Species</span>
+          <select value={state.species} onChange={event => update('species', event.target.value)}>
+            <option>All</option>
+            {(facets.species || []).map(species => <option key={species} value={species}>{species} ({contextualCounts.species?.[species] || 0})</option>)}
+          </select>
+        </label>
+      </div>
+
+      {queryAnalysis.labels.length > 0 && <div className="queryInterpretation" aria-live="polite">
+        <strong>Interpreted as</strong>
+        {queryAnalysis.labels.map(label => <span key={label}>{label}</span>)}
+        {queryAnalysis.exclusions.map(exclusion => <span className="excludedQuery" key={exclusion}>Exclude {exclusion.replace(/^-/, '')}</span>)}
+      </div>}
+
+      {examples.length > 0 && <div className="queryExamples">
+        <span>Examples:</span>
+        {examples.map(example => <button type="button" className="queryChip" key={example} onClick={() => update('query', example)}>{example}</button>)}
+      </div>}
+
+      <div className="semanticFilterGrid">
+        {SEMANTIC_FILTERS.slice(0, showAdvanced ? SEMANTIC_FILTERS.length : 2).map(([key, label]) => <label key={key}>
+          <span>{label}</span>
+          <select value={state[key]} onChange={event => update(key, event.target.value)}>
+            <option value="All">All</option>
+            {(facets.semantic?.[key] || []).map(option => {
+              const count = contextualCounts[key]?.[option.id] || 0;
+              return <option key={option.id} value={option.id} disabled={count === 0 && state[key] !== option.id}>{option.label} ({count})</option>;
+            })}
+          </select>
+        </label>)}
+      </div>
+
+      <div className="searchToolbar">
+        <div className="searchToolbarLeft">
+          <button className="textButton" type="button" onClick={() => setShowAdvanced(value => !value)}>{showAdvanced ? 'Hide advanced filters' : 'Show advanced filters'}</button>
+          {active && <button className="textButton" type="button" onClick={reset}>Clear discovery state</button>}
+        </div>
+        <label className="sortControl">
+          <span>Sort</span>
+          <select value={state.sort} onChange={event => update('sort', event.target.value)}>
+            <option value="relevance">Relevance</option>
+            <option value="reference">Reference ID</option>
+            <option value="name">Cultivar name</option>
+            <option value="species">Species</option>
+          </select>
+        </label>
+      </div>
+
+      {activeFilters.length > 0 && <div className="activeFilterBar" aria-label="Active filters">
+        <span>Active filters</span>
+        {activeFilters.map(filter => <button type="button" key={filter.key} onClick={() => clearFilter(filter.key)}>{filter.label} ×</button>)}
+      </div>}
+    </div>
+
+    {compare.length > 0 && <div className="compareTray">
+      <div><strong>Comparison tray</strong><span>{compare.length}/2 selected</span></div>
+      <div className="compareTrayNames">{compare.map(slug => <button type="button" key={slug} onClick={() => toggle(slug)}>{cultivars.find(cultivar => cultivar.slug === slug)?.cultivar || slug} ×</button>)}</div>
+      <a className={`button ${compare.length < 2 ? 'secondary' : ''}`} href={compareUrl}>{compare.length === 2 ? 'Compare selected' : 'Choose one more'}</a>
+    </div>}
+
+    {filtered.length ? <div className="cultivarGrid">{filtered.map(cultivar => <article className="cultivarCard discoveryCard mediaCultivarCard" key={cultivar.id}>
+      <div className="cardTop"><span className="referenceId">{cultivar.id}</span><StatusBadge status={cultivar.status} /></div>
+      <a className="cardMainLink" href={`/cultivars/${cultivar.slug}`}>
+        <MediaPlate media={cultivar.primaryMedia} cultivar={cultivar} compact />
+        <p className="speciesName"><em>{cultivar.species}</em></p>
+        <h3>{cultivar.cultivar}</h3>
+        <p>{cultivar.summary}</p>
+        {cultivar._searchMeta?.matchReasons?.length > 0 && <div className="matchReasonLine" aria-label="Why this record matched">
+          {cultivar._searchMeta.matchReasons.slice(0, 3).map((reason, index) => <span key={`${reason.field}-${index}`}>{reasonLabel(reason)}</span>)}
+        </div>}
+        <div className="traitLine"><span>{cultivar.habit}</span><span>{cultivar.leafForm}</span><span>{cultivar.autumnColor}</span></div>
+      </a>
+      <div className="cardFooterActions"><a href={`/cultivars/${cultivar.slug}`}>Open profile →</a><button type="button" className={compare.includes(cultivar.slug) ? 'selectedCompare' : ''} onClick={() => toggle(cultivar.slug)}>{compare.includes(cultivar.slug) ? 'Selected ✓' : 'Add to compare'}</button></div>
+    </article>)}</div> : <div className="empty card searchEmptyState">
+      <h3>No matching cultivars</h3>
+      <p>The current query and filters do not match a governed record. Broaden the query, remove a filter, or try one of these controlled concepts.</p>
+      <div className="searchSuggestions">{suggestions.map(suggestion => <button type="button" key={`${suggestion.query}-${suggestion.label}`} onClick={() => update('query', suggestion.query)}><strong>{suggestion.label}</strong><span>{suggestion.query}</span></button>)}</div>
+      <button type="button" onClick={reset}>Reset discovery</button>
+    </div>}
+  </section>;
 }
