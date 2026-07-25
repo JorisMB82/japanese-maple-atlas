@@ -23,7 +23,7 @@ replaceRange(
 
 const validatorReplacement = `const registry = fs.readFileSync(path.join(ROOT, 'lib', 'repository-registry.js'), 'utf8');
 const registryCategories = ['cultivars','assertions','evidence','sources','taxonomy','relationships','media','contributors','submissions','editorial-workflows','editorial-reviews'];
-for (const category of registryCategories) if (!registry.includes(\`loadDirectory('\\${category}')\`)) errors.push(\`Registry missing category \\${category}\`);
+for (const category of registryCategories) if (!registry.includes(\`loadDirectory('\${category}')\`)) errors.push(\`Registry missing category \${category}\`);
 if (!registry.includes("loadJson(path.join(repositoryRoot, 'manifest.json'))")) errors.push('Registry missing manifest loader');
 if (!errors.some(error => error.startsWith('Registry missing'))) pass('generated JavaScript registry');
 `;
