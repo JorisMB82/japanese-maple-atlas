@@ -16,7 +16,7 @@ export default function RootLayout({ children }) {
     <main>{children}</main>
     <footer>
       <div><strong>Japanese Maple Atlas</strong><p>Evidence-based cultivar knowledge, presented through a usable public interface.</p></div>
-      <div><span>Sprint 9</span><span>Knowledge graph operational</span><span>Cultivar relationships remain governed, evidence-linked and explainable</span></div>
+      <div><span>Sprint 9.5</span><span>Testing and quality infrastructure operational</span><span>Repository, schemas, coverage, production export and releases are governed by automated quality gates</span></div>
     </footer>
   </body></html>;
 }
