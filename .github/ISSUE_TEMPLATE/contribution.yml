@@ -1,0 +1,59 @@
+name: Evidence or editorial contribution
+description: Propose evidence, a correction, qualification, relationship or new record.
+title: "[Contribution]: "
+labels: ["editorial", "contribution"]
+body:
+  - type: dropdown
+    id: contribution_type
+    attributes:
+      label: Contribution type
+      options:
+        - Evidence addition
+        - Correction
+        - Qualification or uncertainty update
+        - New cultivar record
+        - Relationship proposal
+        - Media contribution
+        - Governance change
+    validations:
+      required: true
+  - type: input
+    id: target
+    attributes:
+      label: Target repository object
+      description: Use a stable ID such as RC-001, AST-000001 or SRC-000001. Use NEW when proposing a new record.
+      placeholder: RC-001
+    validations:
+      required: true
+  - type: textarea
+    id: proposed_change
+    attributes:
+      label: Proposed change
+      description: State the claim or change precisely. Separate evidence from interpretation.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence and citation
+      description: Provide full citation, page or section, observation context, specimen/accession provenance, and access date where applicable.
+    validations:
+      required: true
+  - type: textarea
+    id: uncertainty
+    attributes:
+      label: Scope, uncertainty and conflicts
+      description: Explain geographic, seasonal, specimen, source-authority or authentication limits and any conflicting evidence.
+    validations:
+      required: true
+  - type: checkboxes
+    id: attestations
+    attributes:
+      label: Contributor attestations
+      options:
+        - label: I have distinguished evidence from interpretation.
+          required: true
+        - label: I have disclosed material uncertainty and conflicts.
+          required: true
+        - label: I have the right to contribute any attached media or text.
+          required: true

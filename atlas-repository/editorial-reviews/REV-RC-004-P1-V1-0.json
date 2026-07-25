@@ -1,0 +1,19 @@
+{
+  "id": "REV-RC-004-P1-V1-0",
+  "workflowId": "EDW-RC-004-V1-0",
+  "submissionId": "SUB-RC-004-V1",
+  "targetId": "RC-004",
+  "passNumber": 1,
+  "code": "botanical-accuracy",
+  "lens": "Botanical accuracy",
+  "result": "pass",
+  "exitCriterion": "Every botanical claim has evidence or explicit uncertainty.",
+  "completedAt": "2026-07-24",
+  "reviewerContributorId": "CTR-EDITOR-IN-CHIEF",
+  "status": "complete",
+  "generatedFrom": {
+    "path": "editorial-inbox/submissions/SUB-RC-004-V1.json",
+    "sha256": "15c519fd68002bb8e983c7fcca4652f9e69f75417999f3e90cce0fa783e6bda6",
+    "compilerVersion": "1.1.0"
+  }
+}

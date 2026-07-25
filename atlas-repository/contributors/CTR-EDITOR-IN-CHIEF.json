@@ -1,0 +1,23 @@
+{
+  "id": "CTR-EDITOR-IN-CHIEF",
+  "displayName": "Japanese Maple Atlas Editor-in-Chief",
+  "contributorType": "project-role",
+  "roles": [
+    "editor-in-chief",
+    "botanical-reviewer",
+    "governance-reviewer"
+  ],
+  "status": "active",
+  "authorityScope": [
+    "editorial-approval",
+    "freeze-decision",
+    "governance-verification"
+  ],
+  "createdAt": "2026-07-24",
+  "version": "1.0",
+  "generatedFrom": {
+    "path": "editorial-inbox/contributors/CTR-EDITOR-IN-CHIEF.json",
+    "sha256": "6dd8b6d351045501bda3381d910f9d1b833bbed9730181c1bfaa0a7fb3dcea44",
+    "compilerVersion": "1.1.0"
+  }
+}
