@@ -50,7 +50,12 @@ const releaseWorkflow = exists('.github/workflows/release-readiness.yml') ? fs.r
 for (const token of ['workflow_dispatch', 'refs/tags/v', 'release:manifest', 'upload-artifact', 'gh release create']) check(releaseWorkflow.includes(token), `release workflow includes ${token}`);
 
 for (const file of gates.releaseFiles) check(exists(file), `release file ${file} exists`);
-for (const temporary of ['scripts/finalize-sprint9.py', 'scripts/finalize-sprint95.py', '.github/workflows/sprint-9-5-finalize.yml']) check(!exists(temporary), `temporary file removed: ${temporary}`);
+for (const temporary of [
+  'scripts/finalize-sprint9.py',
+  'scripts/finalize-sprint95.py',
+  '.github/workflows/sprint-9-5-finalize.yml',
+  '.github/workflows/sprint-9-5-lock-sync.yml'
+]) check(!exists(temporary), `temporary file removed: ${temporary}`);
 
 const outputExists = exists('out');
 check(outputExists, 'production static export exists', 'run npm run build before npm run validate:quality');
