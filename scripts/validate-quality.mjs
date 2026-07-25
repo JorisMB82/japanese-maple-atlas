@@ -31,21 +31,25 @@ for (const file of [
   'tests/unit/search-engine.test.mjs',
   'tests/unit/knowledge-graph.test.mjs',
   'tests/unit/json-schema-validator.test.mjs',
+  'tests/unit/atlas-explorer.test.mjs',
   'tests/integration/repository-regression.test.mjs',
   'tests/integration/compiler-determinism.test.mjs',
   'tests/integration/schema-conformance.test.mjs',
   'tests/regression/static-export.test.mjs',
   'scripts/validate-schemas.mjs',
+  'scripts/validate-explorer.mjs',
   'scripts/run-coverage.mjs',
   'scripts/generate-release-manifest.mjs',
   '.github/workflows/repository-validation.yml',
   '.github/workflows/release-readiness.yml',
   'docs/QA-001_Testing-and-Quality-Infrastructure_v1.0.md',
-  'SPRINT-9.5.md'
+  'docs/EXPLORER-001_Interactive-Atlas-Explorer_v1.0.md',
+  'SPRINT-9.5.md',
+  'SPRINT-10.md'
 ]) check(exists(file), `required quality file ${file}`);
 
 const workflow = exists('.github/workflows/repository-validation.yml') ? fs.readFileSync(path.join(ROOT, '.github/workflows/repository-validation.yml'), 'utf8') : '';
-for (const command of ['npm ci', 'validate:schemas', 'test:coverage', 'test:regression', 'validate:quality']) check(workflow.includes(command), `CI includes ${command}`);
+for (const command of ['npm ci', 'validate:schemas', 'validate:explorer', 'test:coverage', 'test:regression', 'validate:quality']) check(workflow.includes(command), `CI includes ${command}`);
 const releaseWorkflow = exists('.github/workflows/release-readiness.yml') ? fs.readFileSync(path.join(ROOT, '.github/workflows/release-readiness.yml'), 'utf8') : '';
 for (const token of ['workflow_dispatch', 'refs/tags/v', 'release:manifest', 'upload-artifact', 'gh release create']) check(releaseWorkflow.includes(token), `release workflow includes ${token}`);
 
@@ -53,8 +57,10 @@ for (const file of gates.releaseFiles) check(exists(file), `release file ${file}
 for (const temporary of [
   'scripts/finalize-sprint9.py',
   'scripts/finalize-sprint95.py',
+  'scripts/finalize-sprint10.mjs',
   '.github/workflows/sprint-9-5-finalize.yml',
-  '.github/workflows/sprint-9-5-lock-sync.yml'
+  '.github/workflows/sprint-9-5-lock-sync.yml',
+  '.github/workflows/sprint-10-lock-sync.yml'
 ]) check(!exists(temporary), `temporary file removed: ${temporary}`);
 
 const outputExists = exists('out');
@@ -69,7 +75,7 @@ if (outputExists) {
   }
 }
 
-console.log('Japanese Maple Atlas — Sprint 9.5 quality infrastructure validation');
+console.log('Japanese Maple Atlas — Sprint 10 quality infrastructure validation');
 for (const line of checks) console.log(line);
 if (failures.length) {
   console.error(`\nErrors: ${failures.length}`);
