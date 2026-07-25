@@ -1,0 +1,42 @@
+name: Sprint 9.5 lock synchronisation
+
+on:
+  push:
+    branches:
+      - sprint-9-5-testing-quality
+    paths:
+      - .github/workflows/sprint-9-5-lock-sync.yml
+
+permissions:
+  contents: write
+
+jobs:
+  synchronise:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: sprint-9-5-testing-quality
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - run: npm install --package-lock-only --ignore-scripts --no-audit --no-fund
+      - name: Ignore generated quality and release artifacts
+        shell: bash
+        run: |
+          grep -qxF 'quality-reports/' .gitignore || printf '\n# Sprint 9.5 generated quality evidence\nquality-reports/\n' >> .gitignore
+          grep -qxF 'release-artifacts/' .gitignore || printf 'release-artifacts/\n' >> .gitignore
+      - name: Publish synchronised files
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add package-lock.json .gitignore
+          if git diff --cached --quiet; then
+            echo 'No lockfile or ignore changes required.'
+            exit 0
+          fi
+          git commit -m "Sprint 9.5: synchronise lockfile and generated artifact ignores"
+          git push origin HEAD:sprint-9-5-testing-quality
