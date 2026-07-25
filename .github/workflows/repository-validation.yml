@@ -32,6 +32,7 @@ jobs:
       - run: npm run validate:repository
       - run: npm run validate:search
       - run: npm run validate:graph
+      - run: npm run validate:explorer
       - run: npm run test:unit
       - run: npm run test:integration
 
@@ -50,7 +51,7 @@ jobs:
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: sprint-9-5-coverage
+          name: sprint-10-coverage
           path: quality-reports/coverage.txt
           if-no-files-found: error
           retention-days: 30
@@ -79,7 +80,7 @@ jobs:
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: sprint-9-5-quality-evidence
+          name: sprint-10-quality-evidence
           path: |
             quality-reports/
             release-artifacts/
@@ -88,7 +89,7 @@ jobs:
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: sprint-9-5-static-export
+          name: sprint-10-static-export
           path: out/
           if-no-files-found: error
           retention-days: 14
