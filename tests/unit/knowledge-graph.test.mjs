@@ -76,9 +76,9 @@ test('shortest paths handle identical, missing, filtered and bounded endpoints',
   const direct = findShortestPath(graph, 'RC-002', 'RC-004');
   assert.equal(direct.length, 1);
   assert.deepEqual(direct.nodeIds, ['RC-002', 'RC-004']);
-  const taxonomyOnly = findShortestPath(graph, 'RC-001', 'RC-004', { categories: ['taxonomy'] });
-  assert.equal(taxonomyOnly.length, 2);
-  assert.ok(taxonomyOnly.nodeIds.includes('TAX-APAL'));
+  const taxonBridge = findShortestPath(graph, 'RC-001', 'RC-004', { typeIds: ['RLT-BELONGS-TO-TAXON'] });
+  assert.equal(taxonBridge.length, 2);
+  assert.ok(taxonBridge.nodeIds.includes('TAX-APAL'));
   assert.equal(findShortestPath(graph, 'RC-001', 'RC-004', { categories: ['cultivation'], maxDepth: 1 }), null);
   assert.equal(findShortestPath(graph, 'RC-001', 'RC-004', { typeIds: ['RLT-SHARED-LEAF-MORPHOLOGY'] }), null);
 });
