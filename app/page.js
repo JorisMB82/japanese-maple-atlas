@@ -10,10 +10,10 @@ export default function Home() {
   return <>
     <section className="hero homeHero">
       <div>
-        <div className="kicker">Sprint 9 · knowledge graph</div>
+        <div className="kicker">Sprint 10 · interactive Atlas explorer</div>
         <h1>Japanese maples, organized as evidence—not folklore.</h1>
-        <p>Search canonical cultivar records, inspect why results matched, and explore the governed taxonomic, morphological and diagnostic relationships connecting the Atlas.</p>
-        <div className="heroActions"><a className="button" href="#directory-heading">Search cultivars</a><a className="button secondary" href="/graph">Explore knowledge graph</a></div>
+        <p>Search canonical cultivar records here, or open the integrated explorer to move across traits, seasonal expression, relationships, evidence and research sets in one workspace.</p>
+        <div className="heroActions"><a className="button" href="/explorer">Open interactive explorer</a><a className="button secondary" href="#directory-heading">Quick search</a><a className="button secondary" href="/graph">Explore knowledge graph</a></div>
       </div>
       <aside className="heroPanel">
         <span className="panelEyebrow">Governed knowledge repository</span>
@@ -23,17 +23,17 @@ export default function Home() {
           <div><strong>{stats.graphNodes}</strong><span>Graph nodes</span></div>
           <div><strong>{stats.graphEdges}</strong><span>Graph edges</span></div>
         </div>
-        <p>RC-001 through RC-005 remain frozen and hash-protected. Sprint 9 adds evidence-linked relationships without altering canonical cultivar assertions.</p>
+        <p>RC-001 through RC-005 remain frozen and hash-protected. Sprint 10 adds an interactive research workspace without altering canonical repository knowledge.</p>
       </aside>
     </section>
 
     <div className="valueStrip">
-      <div><strong>Connected</strong><span>Cultivars and taxa are joined through explicit, controlled relationship types.</span></div>
-      <div><strong>Traceable</strong><span>Every graph edge links back to approved assertions and frozen sources.</span></div>
-      <div><strong>Qualified</strong><span>Shared traits and diagnostic comparisons remain separate from authentication claims.</span></div>
+      <div><strong>Investigate</strong><span>Use semantic filters, analysis lenses and multiple views over the same governed records.</span></div>
+      <div><strong>Connect</strong><span>Move directly between cultivar profiles, comparison, graph relationships and evidence context.</span></div>
+      <div><strong>Preserve boundaries</strong><span>Saved views and exports are derivative workspace state, never silent repository edits.</span></div>
     </div>
 
-    <div className="notice"><strong>Graph status:</strong> relationships organize approved knowledge and comparisons; they do not establish clonal identity, parentage or specimen authentication.</div>
+    <div className="notice"><strong>Explorer status:</strong> the integrated workspace is available at <a href="/explorer">/explorer</a>. Relationships and comparisons remain qualified and do not establish clonal identity or specimen authentication.</div>
 
     <CultivarExplorer cultivars={cultivars} facets={facets} examples={queryExamples()} />
   </>;

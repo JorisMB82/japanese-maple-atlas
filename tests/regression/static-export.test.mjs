@@ -43,7 +43,12 @@ test('production export contains every governed public route', () => {
 });
 
 test('critical pages retain their release-defining content', () => {
-  assert.match(fs.readFileSync(routeFile('/'), 'utf8'), /evidence/i);
+  assert.match(fs.readFileSync(routeFile('/'), 'utf8'), /interactive explorer/i);
+  const explorer = fs.readFileSync(routeFile('/explorer'), 'utf8');
+  assert.match(explorer, /integrated research workspace/i);
+  assert.match(explorer, /Guided investigations/i);
+  assert.match(explorer, /Trait matrix/i);
+  assert.match(explorer, /Research set/i);
   assert.match(fs.readFileSync(routeFile('/graph'), 'utf8'), /knowledge graph/i);
   assert.match(fs.readFileSync(routeFile('/repository'), 'utf8'), /235/);
   assert.match(fs.readFileSync(routeFile('/editorial'), 'utf8'), /editorial/i);
