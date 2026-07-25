@@ -63,18 +63,25 @@ jobs:
           cache: npm
       - run: npm ci --no-audit --no-fund
       - run: npm run build
-      - run: npm run test:regression
+      - name: Run static export regression suite
+        shell: bash
+        run: |
+          set -o pipefail
+          mkdir -p quality-reports
+          npm run test:regression 2>&1 | tee quality-reports/regression.txt
       - run: npm run validate:quality
       - run: npm run release:manifest
       - uses: actions/upload-artifact@v4
+        if: always()
         with:
           name: sprint-9-5-quality-evidence
           path: |
             quality-reports/
             release-artifacts/
-          if-no-files-found: error
+          if-no-files-found: warn
           retention-days: 30
       - uses: actions/upload-artifact@v4
+        if: always()
         with:
           name: sprint-9-5-static-export
           path: out/
