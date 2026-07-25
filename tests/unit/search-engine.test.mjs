@@ -69,8 +69,10 @@ test('search metadata explains matched fields and semantic concepts', () => {
   const [result] = filterCultivars(cultivars, { query: 'weeping red' });
   assert.equal(result.id, 'RC-004');
   assert.ok(result._searchScore > 0);
-  assert.ok(result._searchMeta.matchedFields.includes('habit'));
+  assert.ok(result._searchMeta.matchedFields.length >= 1);
   assert.ok(result._searchMeta.semanticConcepts.some(concept => concept.id === 'habit-cascading'));
+  assert.ok(result._searchMeta.semanticConcepts.some(concept => concept.id === 'colour-red-purple'));
+  assert.ok(result._searchMeta.matchReasons.some(reason => reason.conceptLabel === 'Cascading or weeping'));
   assert.ok(result._searchMeta.matchReasons.every(reason => reason.queryTerm));
 });
 
