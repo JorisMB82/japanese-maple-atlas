@@ -19,10 +19,24 @@ jobs:
         with:
           ref: ${{ github.head_ref || github.ref_name }}
           fetch-depth: 0
+          show-progress: false
       - uses: actions/setup-node@v4
         with:
           node-version: 24
           cache: npm
+      - name: Correct one-time finalisation helper
+        if: ${{ hashFiles('scripts/finalize-sprint9.py') != '' }}
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          file = Path('scripts/finalize-sprint9.py')
+          source = file.read_text()
+          old = "relationship_block + '\\n  const plateConfig = {'"
+          if old not in source:
+              raise SystemExit('Expected finaliser correction target not found')
+          file.write_text(source.replace(old, 'relationship_block', 1))
+          PY
       - name: Apply Sprint 9 compiler integration
         if: ${{ hashFiles('scripts/finalize-sprint9.py') != '' }}
         run: python scripts/finalize-sprint9.py
