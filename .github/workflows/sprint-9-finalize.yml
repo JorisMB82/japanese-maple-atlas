@@ -1,0 +1,51 @@
+name: Sprint 9 finalise
+
+on:
+  push:
+    branches:
+      - sprint-9-knowledge-graph
+    paths:
+      - .github/workflows/sprint-9-finalize.yml
+
+permissions:
+  contents: write
+
+jobs:
+  finalise:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: sprint-9-knowledge-graph
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - name: Apply Sprint 9 compiler integration
+        run: python scripts/finalize-sprint9.py
+      - name: Synchronise application lockfile
+        run: npm install --no-audit --no-fund
+      - name: Compile repository and graph outputs
+        run: npm run compile:atlas
+      - name: Validate contributor inputs
+        run: npm run validate:contributions
+      - name: Verify deterministic compiler output
+        run: npm run compile:atlas:check
+      - name: Validate repository integrity
+        run: npm run validate:repository
+      - name: Validate semantic search
+        run: npm run validate:search
+      - name: Validate knowledge graph
+        run: npm run validate:graph
+      - name: Build production application
+        run: npm run build
+      - name: Publish verified Sprint 9 outputs
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Sprint 9: compile graph outputs and verify production build"
+          git push origin HEAD:sprint-9-knowledge-graph
