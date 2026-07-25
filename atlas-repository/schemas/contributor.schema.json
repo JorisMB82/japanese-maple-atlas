@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Contributor",
+  "type": "object",
+  "required": [
+    "id",
+    "displayName",
+    "contributorType",
+    "roles",
+    "status",
+    "authorityScope",
+    "createdAt",
+    "version",
+    "generatedFrom"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^CTR-[A-Z0-9-]+$"
+    },
+    "displayName": {
+      "type": "string",
+      "minLength": 3
+    },
+    "contributorType": {
+      "enum": [
+        "project-role",
+        "person",
+        "organisation",
+        "system-agent"
+      ]
+    },
+    "roles": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      }
+    },
+    "status": {
+      "enum": [
+        "active",
+        "inactive",
+        "suspended"
+      ]
+    },
+    "authorityScope": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "createdAt": {
+      "type": "string"
+    },
+    "version": {
+      "type": "string"
+    },
+    "generatedFrom": {
+      "type": "object"
+    }
+  },
+  "additionalProperties": true
+}

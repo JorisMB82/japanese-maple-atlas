@@ -1,0 +1,17 @@
+{
+  "id": "CTR-ATLAS-COMPILER",
+  "displayName": "Atlas Compiler",
+  "contributorType": "system-agent",
+  "roles": [
+    "compiler",
+    "integrity-validator"
+  ],
+  "status": "active",
+  "authorityScope": [
+    "deterministic-generation",
+    "schema-validation",
+    "hash-verification"
+  ],
+  "createdAt": "2026-07-24",
+  "version": "1.0"
+}

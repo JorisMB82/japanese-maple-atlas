@@ -1,0 +1,18 @@
+{
+  "id": "CTR-EDITOR-IN-CHIEF",
+  "displayName": "Japanese Maple Atlas Editor-in-Chief",
+  "contributorType": "project-role",
+  "roles": [
+    "editor-in-chief",
+    "botanical-reviewer",
+    "governance-reviewer"
+  ],
+  "status": "active",
+  "authorityScope": [
+    "editorial-approval",
+    "freeze-decision",
+    "governance-verification"
+  ],
+  "createdAt": "2026-07-24",
+  "version": "1.0"
+}

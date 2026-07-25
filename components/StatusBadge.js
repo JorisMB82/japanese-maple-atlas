@@ -1,23 +1,3 @@
-const labels = {
-  'provisional-pilot': 'Provisional pilot',
-  'canonical': 'Canonical',
-  'canonical-compiled': 'Canonical compiled',
-  'frozen-reference-standard': 'Frozen standard',
-  'frozen': 'Frozen',
-  'approved': 'Approved',
-  'pilot-approved': 'Pilot approved',
-  'under-review': 'Under review'
-};
-
-const visualStatus = {
-  'canonical-compiled': 'canonical',
-  'frozen-reference-standard': 'canonical',
-  'frozen': 'canonical',
-  'approved': 'canonical',
-  'pilot-approved': 'canonical'
-};
-
-export default function StatusBadge({ status }) {
-  const cssStatus = visualStatus[status] || status;
-  return <span className={`statusBadge status-${cssStatus}`}>{labels[status] || status}</span>;
-}
+const labels={'provisional-pilot':'Provisional pilot','canonical':'Canonical','canonical-compiled':'Canonical compiled','frozen-reference-standard':'Frozen standard','frozen':'Frozen','approved':'Approved','accepted':'Accepted','pilot-approved':'Pilot approved','under-review':'Under review','draft':'Draft','active':'Active','blocked':'Blocked','complete':'Complete','pass':'Pass','pass-qualified':'Pass qualified','fail':'Fail','pending':'Pending','needs-revision':'Needs revision','rejected':'Rejected','submitted':'Submitted','triage':'Triage'};
+const visualStatus={'canonical-compiled':'canonical','frozen-reference-standard':'canonical','frozen':'canonical','approved':'canonical','accepted':'canonical','pilot-approved':'canonical','complete':'canonical','pass':'canonical','pass-qualified':'under-review','draft':'provisional-pilot','pending':'provisional-pilot','needs-revision':'under-review','active':'under-review','submitted':'under-review','triage':'under-review','fail':'rejected'};
+export default function StatusBadge({status}){const css=visualStatus[status]||status;return <span className={`statusBadge status-${css}`}>{labels[status]||status}</span>}
