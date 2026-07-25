@@ -1,0 +1,34 @@
+{
+  "id": "REL-000005",
+  "typeId": "RLT-BELONGS-TO-TAXON",
+  "fromId": "RC-005",
+  "toId": "TAX-ASHI",
+  "label": "Aureum belongs to Acer shirasawanum",
+  "inverseLabel": "Acer shirasawanum includes Aureum",
+  "strength": 5,
+  "confidence": "high",
+  "rationale": "The frozen Reference Standard governs Aureum under the accepted species Acer shirasawanum while preserving its historical placement under Acer japonicum formulations.",
+  "properties": {
+    "scope": "accepted taxonomy",
+    "inheritance": "qualified",
+    "historicalPlacement": "Acer japonicum formulations preserved separately"
+  },
+  "type": "belongs-to-taxon",
+  "category": "taxonomy",
+  "directionality": "directed",
+  "fromType": "cultivar",
+  "toType": "taxon",
+  "status": "approved",
+  "version": "1.0.0",
+  "evidenceAssertionIds": [
+    "AST-000090"
+  ],
+  "sourceIds": [
+    "SRC-000005"
+  ],
+  "generatedFrom": {
+    "path": "atlas-repository/relationship-standards/relationships.json",
+    "sha256": "1439473ee3574dfc2de5275d7a526b1a05b09a24e825401dc486cbd4739eabb0",
+    "compilerVersion": "1.2.0"
+  }
+}

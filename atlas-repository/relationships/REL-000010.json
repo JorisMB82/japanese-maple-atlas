@@ -1,0 +1,37 @@
+{
+  "id": "REL-000010",
+  "typeId": "RLT-SAME-TAXON-PEER",
+  "fromId": "RC-002",
+  "toId": "RC-004",
+  "label": "Acer palmatum peer cultivars",
+  "inverseLabel": "Acer palmatum peer cultivars",
+  "strength": 4,
+  "confidence": "high",
+  "rationale": "Both cultivars are governed under Acer palmatum and are especially useful for demonstrating that dissected leaf morphology and cascading architecture are independent dimensions.",
+  "properties": {
+    "sharedTraits": [
+      "accepted species"
+    ],
+    "teachingUse": "morphology-versus-architecture comparison"
+  },
+  "type": "same-taxon-peer",
+  "category": "taxonomy",
+  "directionality": "symmetric",
+  "fromType": "cultivar",
+  "toType": "cultivar",
+  "status": "approved",
+  "version": "1.0.0",
+  "evidenceAssertionIds": [
+    "AST-000024",
+    "AST-000068"
+  ],
+  "sourceIds": [
+    "SRC-000002",
+    "SRC-000004"
+  ],
+  "generatedFrom": {
+    "path": "atlas-repository/relationship-standards/relationships.json",
+    "sha256": "1439473ee3574dfc2de5275d7a526b1a05b09a24e825401dc486cbd4739eabb0",
+    "compilerVersion": "1.2.0"
+  }
+}

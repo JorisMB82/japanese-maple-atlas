@@ -1,0 +1,20 @@
+{
+  "id": "RLT-CONTRASTING-LEAF-MORPHOLOGY",
+  "code": "contrasting-leaf-morphology",
+  "label": "Contrasting leaf morphology",
+  "inverseLabel": "Contrasting leaf morphology",
+  "category": "morphology",
+  "directionality": "symmetric",
+  "description": "Connects cultivars whose governed leaf forms provide a useful diagnostic contrast.",
+  "allowedNodePairs": [
+    "cultivar:cultivar"
+  ],
+  "evidenceRequired": true,
+  "status": "approved",
+  "version": "1.0.0",
+  "generatedFrom": {
+    "path": "atlas-repository/relationship-standards/relationship-types.json",
+    "sha256": "60de9e4280234ba499f84b0b79c0c865dfe5d84574011cbeb2537908a4de4847",
+    "compilerVersion": "1.2.0"
+  }
+}

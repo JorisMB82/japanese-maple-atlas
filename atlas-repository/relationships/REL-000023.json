@@ -1,0 +1,38 @@
+{
+  "id": "REL-000023",
+  "typeId": "RLT-CONTRASTING-LEAF-MORPHOLOGY",
+  "fromId": "RC-003",
+  "toId": "RC-005",
+  "label": "Palmate versus rounded full-moon foliage",
+  "inverseLabel": "Rounded full-moon versus palmate foliage",
+  "strength": 5,
+  "confidence": "high",
+  "rationale": "The pair provides a strong cross-species leaf-outline contrast between palmate Acer palmatum foliage and rounded, shallowly lobed Acer shirasawanum foliage.",
+  "properties": {
+    "contrastingTraits": [
+      "palmate leaf outline",
+      "rounded full-moon leaf outline"
+    ],
+    "teachingUse": "species-level morphology"
+  },
+  "type": "contrasting-leaf-morphology",
+  "category": "morphology",
+  "directionality": "symmetric",
+  "fromType": "cultivar",
+  "toType": "cultivar",
+  "status": "approved",
+  "version": "1.0.0",
+  "evidenceAssertionIds": [
+    "AST-000050",
+    "AST-000094"
+  ],
+  "sourceIds": [
+    "SRC-000003",
+    "SRC-000005"
+  ],
+  "generatedFrom": {
+    "path": "atlas-repository/relationship-standards/relationships.json",
+    "sha256": "1439473ee3574dfc2de5275d7a526b1a05b09a24e825401dc486cbd4739eabb0",
+    "compilerVersion": "1.2.0"
+  }
+}

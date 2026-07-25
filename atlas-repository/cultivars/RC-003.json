@@ -45,7 +45,15 @@
     "AST-000066"
   ],
   "relationshipIds": [
-    "REL-000003"
+    "REL-000003",
+    "REL-000007",
+    "REL-000009",
+    "REL-000011",
+    "REL-000014",
+    "REL-000018",
+    "REL-000022",
+    "REL-000023",
+    "REL-000024"
   ],
   "mediaIds": [
     "MED-RC-003-IDENTITY-001"

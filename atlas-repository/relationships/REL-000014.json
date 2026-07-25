@@ -1,0 +1,41 @@
+{
+  "id": "REL-000014",
+  "typeId": "RLT-CROSS-TAXON-REFERENCE",
+  "fromId": "RC-005",
+  "toId": "RC-003",
+  "label": "Cross-species reference contrast",
+  "inverseLabel": "Cross-species reference contrast",
+  "strength": 3,
+  "confidence": "high",
+  "rationale": "Aureum and Sango-kaku provide a cross-species comparison of rounded golden foliage against palmate green foliage and coral young stems.",
+  "properties": {
+    "contrastingTraits": [
+      "accepted species",
+      "leaf outline",
+      "principal ornamental character"
+    ],
+    "teachingUse": "cross-species morphology"
+  },
+  "type": "cross-taxon-reference",
+  "category": "taxonomy",
+  "directionality": "symmetric",
+  "fromType": "cultivar",
+  "toType": "cultivar",
+  "status": "approved",
+  "version": "1.0.0",
+  "evidenceAssertionIds": [
+    "AST-000090",
+    "AST-000046",
+    "AST-000094",
+    "AST-000050"
+  ],
+  "sourceIds": [
+    "SRC-000005",
+    "SRC-000003"
+  ],
+  "generatedFrom": {
+    "path": "atlas-repository/relationship-standards/relationships.json",
+    "sha256": "1439473ee3574dfc2de5275d7a526b1a05b09a24e825401dc486cbd4739eabb0",
+    "compilerVersion": "1.2.0"
+  }
+}

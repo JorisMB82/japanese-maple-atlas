@@ -1,0 +1,41 @@
+{
+  "id": "REL-000026",
+  "typeId": "RLT-SHARED-CULTIVATION-PREFERENCE",
+  "fromId": "RC-004",
+  "toId": "RC-005",
+  "label": "Shared preference for protected exposure",
+  "inverseLabel": "Shared preference for protected exposure",
+  "strength": 3,
+  "confidence": "moderate",
+  "rationale": "Both records favor partial shade or protected exposure and moist, well-drained soil, with explicit qualification for heat, sun, drought or drying conditions.",
+  "properties": {
+    "sharedTraits": [
+      "partial shade preference",
+      "moist well-drained soil",
+      "heat or drying qualification"
+    ],
+    "qualification": "cultivation advice remains climate- and site-dependent"
+  },
+  "type": "shared-cultivation-preference",
+  "category": "cultivation",
+  "directionality": "symmetric",
+  "fromType": "cultivar",
+  "toType": "cultivar",
+  "status": "approved",
+  "version": "1.0.0",
+  "evidenceAssertionIds": [
+    "AST-000081",
+    "AST-000082",
+    "AST-000103",
+    "AST-000104"
+  ],
+  "sourceIds": [
+    "SRC-000004",
+    "SRC-000005"
+  ],
+  "generatedFrom": {
+    "path": "atlas-repository/relationship-standards/relationships.json",
+    "sha256": "1439473ee3574dfc2de5275d7a526b1a05b09a24e825401dc486cbd4739eabb0",
+    "compilerVersion": "1.2.0"
+  }
+}

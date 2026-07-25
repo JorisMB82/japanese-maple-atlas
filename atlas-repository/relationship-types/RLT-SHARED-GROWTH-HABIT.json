@@ -1,0 +1,20 @@
+{
+  "id": "RLT-SHARED-GROWTH-HABIT",
+  "code": "shared-growth-habit",
+  "label": "Shared growth habit",
+  "inverseLabel": "Shared growth habit",
+  "category": "architecture",
+  "directionality": "symmetric",
+  "description": "Connects cultivars with a materially shared whole-plant architectural pattern.",
+  "allowedNodePairs": [
+    "cultivar:cultivar"
+  ],
+  "evidenceRequired": true,
+  "status": "approved",
+  "version": "1.0.0",
+  "generatedFrom": {
+    "path": "atlas-repository/relationship-standards/relationship-types.json",
+    "sha256": "60de9e4280234ba499f84b0b79c0c865dfe5d84574011cbeb2537908a4de4847",
+    "compilerVersion": "1.2.0"
+  }
+}

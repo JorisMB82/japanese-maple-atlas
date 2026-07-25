@@ -1,0 +1,38 @@
+{
+  "id": "REL-000017",
+  "typeId": "RLT-CONTRASTING-GROWTH-HABIT",
+  "fromId": "RC-002",
+  "toId": "RC-004",
+  "label": "Upright versus cascading architecture",
+  "inverseLabel": "Cascading versus upright architecture",
+  "strength": 5,
+  "confidence": "high",
+  "rationale": "Seiryu is governed as upright, whereas Crimson Queen is governed as arching, pendulous, cascading and broadly mounding.",
+  "properties": {
+    "contrastingTraits": [
+      "upright crown",
+      "cascading crown"
+    ],
+    "teachingUse": "orthogonality of leaf form and architecture"
+  },
+  "type": "contrasting-growth-habit",
+  "category": "architecture",
+  "directionality": "symmetric",
+  "fromType": "cultivar",
+  "toType": "cultivar",
+  "status": "approved",
+  "version": "1.0.0",
+  "evidenceAssertionIds": [
+    "AST-000027",
+    "AST-000071"
+  ],
+  "sourceIds": [
+    "SRC-000002",
+    "SRC-000004"
+  ],
+  "generatedFrom": {
+    "path": "atlas-repository/relationship-standards/relationships.json",
+    "sha256": "1439473ee3574dfc2de5275d7a526b1a05b09a24e825401dc486cbd4739eabb0",
+    "compilerVersion": "1.2.0"
+  }
+}

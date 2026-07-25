@@ -1,0 +1,41 @@
+{
+  "id": "REL-000012",
+  "typeId": "RLT-CROSS-TAXON-REFERENCE",
+  "fromId": "RC-005",
+  "toId": "RC-001",
+  "label": "Cross-species reference contrast",
+  "inverseLabel": "Cross-species reference contrast",
+  "strength": 4,
+  "confidence": "high",
+  "rationale": "Aureum and Bloodgood provide a high-value contrast between Acer shirasawanum and Acer palmatum, rounded golden foliage and palmate red-purple foliage.",
+  "properties": {
+    "contrastingTraits": [
+      "accepted species",
+      "leaf outline",
+      "seasonal colour"
+    ],
+    "teachingUse": "cross-species identification"
+  },
+  "type": "cross-taxon-reference",
+  "category": "taxonomy",
+  "directionality": "symmetric",
+  "fromType": "cultivar",
+  "toType": "cultivar",
+  "status": "approved",
+  "version": "1.0.0",
+  "evidenceAssertionIds": [
+    "AST-000090",
+    "AST-000002",
+    "AST-000094",
+    "AST-000006"
+  ],
+  "sourceIds": [
+    "SRC-000005",
+    "SRC-000001"
+  ],
+  "generatedFrom": {
+    "path": "atlas-repository/relationship-standards/relationships.json",
+    "sha256": "1439473ee3574dfc2de5275d7a526b1a05b09a24e825401dc486cbd4739eabb0",
+    "compilerVersion": "1.2.0"
+  }
+}

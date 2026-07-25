@@ -1,0 +1,20 @@
+{
+  "id": "RLT-BELONGS-TO-TAXON",
+  "code": "belongs-to-taxon",
+  "label": "Belongs to taxon",
+  "inverseLabel": "Includes cultivar",
+  "category": "taxonomy",
+  "directionality": "directed",
+  "description": "Links a cultivar entity to its accepted taxon without implying that every taxon-level assertion automatically applies to the cultivar.",
+  "allowedNodePairs": [
+    "cultivar:taxon"
+  ],
+  "evidenceRequired": true,
+  "status": "approved",
+  "version": "1.0.0",
+  "generatedFrom": {
+    "path": "atlas-repository/relationship-standards/relationship-types.json",
+    "sha256": "60de9e4280234ba499f84b0b79c0c865dfe5d84574011cbeb2537908a4de4847",
+    "compilerVersion": "1.2.0"
+  }
+}

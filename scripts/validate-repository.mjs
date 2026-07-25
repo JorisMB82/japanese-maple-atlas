@@ -18,8 +18,9 @@ const categoryConfig = {
   assertions: { dir: 'assertions', pattern: /^AST-\d{6}$/, required: ['id','subjectId','domain','predicate','statement','state','confidence','evidenceIds','generatedFrom'] },
   evidence: { dir: 'evidence', pattern: /^EVD-\d{6}$/, required: ['id','evidenceType','scope','sourceId','status','note','assertionIds','sourceSha256'] },
   sources: { dir: 'sources', pattern: /^SRC-\d{6}$/, required: ['id','title','citation','sourceType','version','freezeDate','path','sha256','status'] },
-  taxa: { dir: 'taxonomy', pattern: /^TAX-[A-Z0-9]+$/, required: ['id','scientificName','rank','status'] },
-  relationships: { dir: 'relationships', pattern: /^REL-\d{6}$/, required: ['id','fromId','toId','type','label','status'] },
+  taxa: { dir: 'taxonomy', pattern: /^TAX-[A-Z0-9]+$/, required: ['id','scientificName','rank','status','relationshipIds'] },
+  relationships: { dir: 'relationships', pattern: /^REL-\d{6}$/, required: ['id','typeId','type','category','directionality','fromId','toId','fromType','toType','label','inverseLabel','strength','confidence','rationale','status','evidenceAssertionIds','sourceIds','properties','generatedFrom'] },
+  relationshipTypes: { dir: 'relationship-types', pattern: /^RLT-[A-Z0-9-]+$/, required: ['id','code','label','inverseLabel','category','directionality','description','allowedNodePairs','evidenceRequired','status','version','generatedFrom'] },
   media: { dir: 'media', pattern: /^MED-RC-\d{3}-IDENTITY-\d{3}$/, required: ['id','cultivarId','mediaType','role','status','assetPath','altText','evidentiaryStatus'] },
   contributors: { dir: 'contributors', pattern: /^CTR-[A-Z0-9-]+$/, required: ['id','displayName','contributorType','roles','status','authorityScope','generatedFrom'] },
   submissions: { dir: 'submissions', pattern: /^SUB-[A-Z0-9-]+$/, required: ['id','targetType','targetId','contributorId','contributionType','title','summary','status','workflowId','reviewIds','generatedFrom'] },
@@ -46,8 +47,8 @@ for (const [category, config] of Object.entries(categoryConfig)) {
 
 const maps = Object.fromEntries(Object.entries(db).map(([category, items]) => [category, new Map(items.map(({ object }) => [object.id, object]))]));
 const objectTotal = Object.values(db).reduce((sum, items) => sum + items.length, 0);
-if (objectTotal === 203 && manifest.objectTotal === 203) pass('repository object total'); else fail('repository object total', `manifest=${manifest.objectTotal}, actual=${objectTotal}, expected=203`);
-if (manifest.repositoryVersion === '0.7.0' && manifest.release.includes('Sprint 7')) pass('Sprint 7 manifest'); else fail('Sprint 7 manifest', `${manifest.repositoryVersion} ${manifest.release}`);
+if (objectTotal === 235 && manifest.objectTotal === 235) pass('repository object total'); else fail('repository object total', `manifest=${manifest.objectTotal}, actual=${objectTotal}, expected=235`);
+if (manifest.repositoryVersion === '0.9.0' && manifest.release.includes('Sprint 9')) pass('Sprint 9 manifest'); else fail('Sprint 9 manifest', `${manifest.repositoryVersion} ${manifest.release}`);
 if (manifest.canonicality === 'canonical-compiled') pass('canonicality'); else fail('canonicality', manifest.canonicality);
 
 for (const cultivar of maps.cultivars.values()) {
@@ -58,6 +59,7 @@ for (const cultivar of maps.cultivars.values()) {
   for (const id of cultivar.mediaIds) if (!maps.media.has(id)) errors.push(`${cultivar.id}: missing media ${id}`);
   if (cultivar.status !== 'frozen-reference-standard') errors.push(`${cultivar.id}: non-frozen status ${cultivar.status}`);
 }
+for (const taxon of maps.taxa.values()) for (const id of taxon.relationshipIds) if (!maps.relationships.has(id)) errors.push(`${taxon.id}: missing relationship ${id}`);
 for (const assertion of maps.assertions.values()) {
   if (!maps.cultivars.has(assertion.subjectId)) errors.push(`${assertion.id}: missing subject ${assertion.subjectId}`);
   for (const id of assertion.evidenceIds) if (!maps.evidence.has(id)) errors.push(`${assertion.id}: missing evidence ${id}`);
@@ -67,7 +69,15 @@ for (const evidence of maps.evidence.values()) {
   for (const id of evidence.assertionIds) if (!maps.assertions.has(id)) errors.push(`${evidence.id}: missing assertion ${id}`);
 }
 for (const relationship of maps.relationships.values()) {
-  if (!maps.cultivars.has(relationship.fromId) || !maps.cultivars.has(relationship.toId)) errors.push(`${relationship.id}: invalid cultivar relationship`);
+  const from = byId.get(relationship.fromId);
+  const to = byId.get(relationship.toId);
+  const type = maps.relationshipTypes.get(relationship.typeId);
+  if (!from || !to) errors.push(`${relationship.id}: invalid graph endpoint`);
+  if (!type) errors.push(`${relationship.id}: missing relationship type ${relationship.typeId}`);
+  if (relationship.fromId === relationship.toId) errors.push(`${relationship.id}: self relationship`);
+  if (relationship.strength < 1 || relationship.strength > 5) errors.push(`${relationship.id}: invalid strength`);
+  for (const id of relationship.evidenceAssertionIds) if (!maps.assertions.has(id)) errors.push(`${relationship.id}: missing evidence assertion ${id}`);
+  for (const id of relationship.sourceIds) if (!maps.sources.has(id)) errors.push(`${relationship.id}: missing source ${id}`);
 }
 for (const media of maps.media.values()) if (!maps.cultivars.has(media.cultivarId)) errors.push(`${media.id}: missing cultivar ${media.cultivarId}`);
 
@@ -83,9 +93,7 @@ for (const workflow of maps.editorialWorkflows.values()) {
   if (!maps.contributors.has(workflow.editorContributorId)) errors.push(`${workflow.id}: missing editor ${workflow.editorContributorId}`);
   if (workflow.stages.length !== 12 || workflow.stages.map(item => item.stage).join('|') !== workflowStages.join('|')) errors.push(`${workflow.id}: invalid 12-stage lifecycle`);
   for (const id of workflow.reviewIds) if (!maps.editorialReviews.has(id)) errors.push(`${workflow.id}: missing review ${id}`);
-  if (workflow.status === 'frozen') {
-    if (workflow.currentStage !== 'freeze' || workflow.reviewIds.length !== 5 || workflow.stages.some(stage => stage.status !== 'complete')) errors.push(`${workflow.id}: frozen workflow is incomplete`);
-  }
+  if (workflow.status === 'frozen' && (workflow.currentStage !== 'freeze' || workflow.reviewIds.length !== 5 || workflow.stages.some(stage => stage.status !== 'complete'))) errors.push(`${workflow.id}: frozen workflow is incomplete`);
 }
 for (const review of maps.editorialReviews.values()) {
   if (!maps.editorialWorkflows.has(review.workflowId)) errors.push(`${review.id}: missing workflow ${review.workflowId}`);
@@ -93,14 +101,14 @@ for (const review of maps.editorialReviews.values()) {
   if (!maps.contributors.has(review.reviewerContributorId)) errors.push(`${review.id}: missing reviewer ${review.reviewerContributorId}`);
   if (review.passNumber < 1 || review.passNumber > 5) errors.push(`${review.id}: invalid pass number`);
 }
-if (!errors.some(error => /missing|invalid|Duplicate|incomplete|expected 22|non-frozen/.test(error))) pass('schema and cross references');
+if (!errors.some(error => /missing|invalid|Duplicate|incomplete|expected 22|non-frozen|self relationship/.test(error))) pass('schemas and cross references');
 
 let inputHashesValid = true;
 for (const [relative, expected] of Object.entries(hashes.inputs)) {
   const file = path.join(ROOT, relative);
   if (!fs.existsSync(file) || sha256(fs.readFileSync(file)) !== expected) { errors.push(`Input hash mismatch: ${relative}`); inputHashesValid = false; }
 }
-if (inputHashesValid) pass('source and editorial input hashes'); else checks.push(['source and editorial input hashes','FAIL']);
+if (inputHashesValid) pass('source, editorial and graph input hashes'); else checks.push(['source, editorial and graph input hashes','FAIL']);
 
 let generatedHashesValid = true;
 for (const [relative, expected] of Object.entries(hashes.generated)) {
@@ -111,18 +119,23 @@ if (generatedHashesValid) pass('generated file hashes'); else checks.push(['gene
 
 const indexed = readJson(path.join(REPO, 'indexes', 'object-index.json'));
 const calculatedHash = sha256(indexed.objects.slice().sort((a,b) => a.path.localeCompare(b.path)).map(item => `${item.path}:${item.sha256}`).join('\n'));
-if (indexed.objectCount === 203 && calculatedHash === manifest.repositoryHash && hashes.repositoryHash === manifest.repositoryHash) pass('repository hash'); else fail('repository hash', 'manifest, object index and hash registry disagree');
+if (indexed.objectCount === 235 && calculatedHash === manifest.repositoryHash && hashes.repositoryHash === manifest.repositoryHash) pass('repository hash'); else fail('repository hash', 'manifest, object index and hash registry disagree');
+
+const graph = readJson(path.join(REPO, 'indexes', 'graph-index.json'));
+if (graph.nodeCount === 7 && graph.edgeCount === 26 && graph.stats.relationshipTypes === 10 && manifest.graph.graphHash === graph.graphHash) pass('knowledge graph index'); else fail('knowledge graph index', 'graph index and manifest disagree');
 
 const registry = fs.readFileSync(path.join(ROOT, 'lib', 'repository-registry.js'), 'utf8');
-const registryCategories = ['cultivars','assertions','evidence','sources','taxonomy','relationships','media','contributors','submissions','editorial-workflows','editorial-reviews'];
+const registryCategories = ['cultivars','assertions','evidence','sources','taxonomy','relationships','relationship-types','media','contributors','submissions','editorial-workflows','editorial-reviews'];
 for (const category of registryCategories) if (!registry.includes(`loadDirectory('${category}')`)) errors.push(`Registry missing category ${category}`);
 if (!registry.includes("loadJson(path.join(repositoryRoot, 'manifest.json'))")) errors.push('Registry missing manifest loader');
+if (!registry.includes("loadJson(path.join(repositoryRoot, 'indexes', 'graph-index.json'))")) errors.push('Registry missing graph index loader');
 if (!errors.some(error => error.startsWith('Registry missing'))) pass('generated JavaScript registry');
 
-console.log('Japanese Maple Atlas — Sprint 7 validation');
+console.log('Japanese Maple Atlas — Sprint 9 repository validation');
 console.log(`Compiler: ${manifest.compiler.name} ${manifest.compiler.version}`);
 console.log(`Frozen inputs: ${manifest.source.records}`);
-console.log(`Editorial workflows: ${manifest.editorial.workflows}`);
+console.log(`Graph nodes: ${manifest.graph.nodes}`);
+console.log(`Graph edges: ${manifest.graph.edges}`);
 console.log(`Repository objects: ${objectTotal}`);
 for (const [label, result] of checks) console.log(`${result.padEnd(4)}  ${label}`);
 if (errors.length) {
