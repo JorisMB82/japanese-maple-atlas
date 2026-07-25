@@ -26,7 +26,12 @@ jobs:
           node-version: 24
           cache: npm
       - run: npm ci --no-audit --no-fund
-      - run: npm run verify:repository
+      - run: npm run validate:contributions
+      - run: npm run compile:atlas:check
+      - run: npm run validate:schemas
+      - run: npm run validate:repository
+      - run: npm run validate:search
+      - run: npm run validate:graph
       - run: npm run test:unit
       - run: npm run test:integration
 
