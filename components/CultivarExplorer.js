@@ -32,8 +32,8 @@ const initialState = {
   sort: 'relevance'
 };
 
-const normalise = value => value || 'All';
 const URL_KEYS = { query: 'q', species: 'species', habit: 'habit', leaf: 'leaf', colour: 'colour', exposure: 'exposure', size: 'size', risk: 'risk', sort: 'sort' };
+const VALID_SORTS = new Set(['relevance', 'reference', 'name', 'species']);
 const FIELD_LABELS = {
   id: 'reference ID', cultivar: 'cultivar name', scientificName: 'scientific name', species: 'species',
   summary: 'profile summary', habit: 'growth habit', leafForm: 'leaf form', light: 'light guidance',
@@ -44,10 +44,15 @@ const FIELD_LABELS = {
 function readUrlState() {
   if (typeof window === 'undefined') return initialState;
   const params = new URLSearchParams(window.location.search);
-  return Object.fromEntries(Object.entries(initialState).map(([key, fallback]) => [
-    key,
-    key === 'query' ? params.get(URL_KEYS[key]) || '' : normalise(params.get(URL_KEYS[key])) || fallback
-  ]));
+  const state = { ...initialState };
+
+  for (const key of Object.keys(initialState)) {
+    const value = params.get(URL_KEYS[key]);
+    if (key === 'query') state[key] = value || '';
+    else if (key === 'sort') state[key] = value && VALID_SORTS.has(value) ? value : initialState.sort;
+    else state[key] = value || initialState[key];
+  }
+  return state;
 }
 
 function writeUrlState(state) {
