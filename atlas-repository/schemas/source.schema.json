@@ -21,15 +21,39 @@
       "type": "string",
       "pattern": "^SRC-[0-9]{6}$"
     },
+    "title": {
+      "type": "string",
+      "minLength": 10
+    },
+    "citation": {
+      "type": "string",
+      "minLength": 10
+    },
     "sourceType": {
       "const": "frozen-reference-standard"
     },
-    "status": {
-      "const": "frozen"
+    "authority": {
+      "type": "string",
+      "minLength": 3
+    },
+    "version": {
+      "type": "string",
+      "minLength": 3
+    },
+    "freezeDate": {
+      "type": "string",
+      "minLength": 4
+    },
+    "path": {
+      "type": "string",
+      "pattern": "^atlas-repository/reference-standards/RC-[0-9]{3}\\.md$"
     },
     "sha256": {
       "type": "string",
       "pattern": "^[a-f0-9]{64}$"
+    },
+    "status": {
+      "const": "frozen"
     }
   }
 }

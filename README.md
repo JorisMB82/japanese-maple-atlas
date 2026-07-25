@@ -2,40 +2,49 @@
 
 An evidence-aware botanical knowledge platform for discovering, comparing and governing Japanese maple cultivar knowledge.
 
-## Sprint 9 / application and repository v0.9.0
+## Sprint 9.5 / application v0.9.5
 
-The Atlas now provides a governed, evidence-linked cultivar knowledge graph:
+Sprint 9.5 establishes the permanent testing and quality infrastructure governing the Atlas:
 
-- five cultivar nodes and two accepted taxon nodes;
-- twenty-six first-class relationship objects;
-- ten controlled relationship types;
-- taxonomic, morphological, architectural, seasonal, cultivation and diagnostic relationship categories;
-- explicit directionality, inverse labels, strength and confidence;
-- assertion and source links for every graph edge;
-- deterministic adjacency and traversal indexes;
-- shortest-path and related-cultivar services;
-- an interactive public graph explorer;
-- dedicated graph validation integrated into permanent CI.
+- native Node unit tests for search, graph and schema behaviour;
+- integration tests for repository closure, hashes and compiler determinism;
+- JSON Schema validation across fourteen repository object classes and indexes;
+- production static-export route, link, content and asset regression tests;
+- governed line, function and branch coverage thresholds;
+- multi-job GitHub Actions quality gates;
+- release manifests, SHA-256 checksums and packaged static exports;
+- manual and version-tag release automation.
 
-The five frozen Reference Standards remain the canonical botanical source. Graph relationships organize approved comparisons and taxonomic links without creating new cultivar identity claims or authenticating specimens.
+The repository data remains at v0.9.0 with 235 first-class objects. The five frozen Reference Standards and the Sprint 9 knowledge graph are unchanged; Sprint 9.5 adds the quality system that protects them and future work.
 
 ## Repository principle
 
 The repository is the source of truth. The application is a derived interface. Contributions enter through governed inputs and only approved, validated repository knowledge may reach publication outputs.
 
-## Run locally
+## Install and run locally
 
 ```bash
-npm install
-npm run validate:contributions
-npm run compile:atlas:check
-npm run validate:repository
-npm run validate:search
-npm run validate:graph
+npm ci
 npm run dev
 ```
 
 Open `http://localhost:3000`. The graph explorer is available at `http://localhost:3000/graph`.
+
+## Quality commands
+
+```bash
+npm run verify:repository   # contributor, compiler, schema, repository, search and graph checks
+npm run test:unit           # pure service behaviour
+npm run test:integration    # repository, compiler and schema boundaries
+npm run test:coverage       # governed native Node coverage thresholds
+npm run build               # validated production static export
+npm run test:regression     # exported routes, links, content and assets
+npm run validate:quality    # quality-infrastructure and release invariants
+npm run verify              # complete local release-readiness sequence
+npm run release:manifest    # release evidence and SHA-256 checksums
+```
+
+Coverage thresholds and release invariants are governed in `quality/quality-gates.json`. The production static export is written to `out/`; release evidence is written to `release-artifacts/`.
 
 ## Search examples
 
@@ -62,18 +71,16 @@ Then complete the generated file under `editorial-inbox/submissions/` and run:
 
 ```bash
 npm run compile:atlas
-npm test
+npm run verify
 ```
 
 Do not edit generated JSON under `atlas-repository/` or `lib/repository-registry.js` directly. Relationship proposals must enter through the governed relationship standards or contributor workflow and retain evidence selectors, rationale, uncertainty and review history.
 
-## Production build
+## Continuous integration and releases
 
-```bash
-npm run build
-```
+Every pull request and `main` update runs repository validation, schema conformance, unit and integration tests, coverage thresholds, the production build and static-export regression tests. Quality and release evidence are retained as GitHub Actions artifacts.
 
-The static export is written to `out/`.
+The release-readiness workflow can be run manually. A pushed `v*` tag executes the complete verification chain, packages the static export, generates checksums and creates a GitHub release from the verified tag.
 
 ## Repository structure
 
@@ -83,13 +90,17 @@ The static export is written to `out/`.
 - `atlas-repository/relationships/` — generated graph edge objects
 - `atlas-repository/relationship-types/` — generated controlled relationship types
 - `atlas-repository/indexes/graph-index.json` — generated nodes, edges, adjacency and graph statistics
+- `quality/quality-gates.json` — governed thresholds, routes and regression invariants
+- `tests/unit/` — search, graph and schema-validator behaviour
+- `tests/integration/` — repository, compiler and schema boundary tests
+- `tests/regression/` — production static-export regression tests
 - `lib/knowledge-graph.mjs` — deterministic graph construction, traversal and ranking services
-- `lib/search-vocabulary.mjs` — governed semantic concepts and aliases
 - `lib/search-engine.mjs` — query parsing, relevance, explainability and facets
+- `lib/json-schema-validator.mjs` — dependency-free schema validation engine
 - `scripts/compile-atlas.mjs` — deterministic repository and graph compiler
-- `scripts/validate-contributions.mjs` — contributor-input validation
-- `scripts/validate-repository.mjs` — repository integrity validation
-- `scripts/validate-search.mjs` — semantic-search validation
-- `scripts/validate-graph.mjs` — graph schema, evidence, traversal and integrity validation
-- `app/graph/` — interactive graph application route
-- `docs/` — architecture, editorial, search, graph, contributor and implementation records
+- `scripts/validate-schemas.mjs` — repository-wide schema conformance
+- `scripts/validate-quality.mjs` — quality infrastructure verification
+- `scripts/generate-release-manifest.mjs` — release evidence and checksums
+- `.github/workflows/repository-validation.yml` — pull-request and production quality gates
+- `.github/workflows/release-readiness.yml` — validated artifact and tagged-release automation
+- `docs/QA-001_Testing-and-Quality-Infrastructure_v1.0.md` — quality architecture and operations
