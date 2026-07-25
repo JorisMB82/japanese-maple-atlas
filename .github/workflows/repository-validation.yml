@@ -7,58 +7,19 @@ on:
     branches: [main]
   workflow_dispatch:
 
-permissions:
-  contents: write
-  pull-requests: read
-
 jobs:
   validate-and-build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        with:
-          ref: ${{ github.head_ref || github.ref_name }}
-          fetch-depth: 0
-          show-progress: false
       - uses: actions/setup-node@v4
         with:
           node-version: 24
           cache: npm
-      - name: Correct one-time finalisation helper
-        if: ${{ hashFiles('scripts/finalize-sprint9.py') != '' }}
-        shell: bash
-        run: |
-          python - <<'PY'
-          from pathlib import Path
-          file = Path('scripts/finalize-sprint9.py')
-          source = file.read_text()
-          old = "relationship_block + '\\n  const plateConfig = {'"
-          if old not in source:
-              raise SystemExit('Expected finaliser correction target not found')
-          file.write_text(source.replace(old, 'relationship_block', 1))
-          PY
-      - name: Apply Sprint 9 compiler integration
-        if: ${{ hashFiles('scripts/finalize-sprint9.py') != '' }}
-        run: python scripts/finalize-sprint9.py
-      - name: Install dependencies
-        run: npm install --no-audit --no-fund
-      - name: Compile Sprint 9 generated outputs
-        if: ${{ hashFiles('scripts/finalize-sprint9.py') != '' }}
-        run: npm run compile:atlas
+      - run: npm install --no-audit --no-fund
       - run: npm run validate:contributions
       - run: npm run compile:atlas:check
       - run: npm run validate:repository
       - run: npm run validate:search
       - run: npm run validate:graph
       - run: npm run build
-      - name: Publish verified Sprint 9 outputs
-        if: ${{ hashFiles('scripts/finalize-sprint9.py') != '' }}
-        shell: bash
-        run: |
-          set -euo pipefail
-          rm scripts/finalize-sprint9.py
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -A
-          git commit -m "Sprint 9: compile graph outputs and verify production build"
-          git push origin HEAD:${{ github.head_ref }}
