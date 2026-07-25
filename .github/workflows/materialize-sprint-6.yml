@@ -31,12 +31,11 @@ jobs:
           tar -xJf /tmp/sprint6.tar.xz -C /tmp
           test -d /tmp/repository-overlay
           rm -rf atlas-repository/assertions atlas-repository/evidence atlas-repository/sources atlas-repository/cultivars atlas-repository/taxonomy atlas-repository/relationships atlas-repository/media atlas-repository/reference-standards atlas-repository/indexes
-          cp -a /tmp/repository-overlay/. .
+          rsync -a --exclude='.github/' /tmp/repository-overlay/ ./
           while IFS= read -r target; do
             test -z "$target" || rm -f "$target"
           done < /tmp/DELETE-THESE-FILES.txt
-          rm -rf .sprint6-bootstrap .sprint6-bootstrap-v2 .sprint6-bootstrap-v3 .github/workflows/materialize-sprint-6.yml
-          sed -i 's/npm ci/npm install --no-audit --no-fund/' .github/workflows/sprint-6-validation.yml
+          rm -rf .sprint6-bootstrap .sprint6-bootstrap-v2 .sprint6-bootstrap-v3
       - name: Verify compiler and repository
         run: |
           npm install --no-audit --no-fund
