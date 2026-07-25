@@ -7,51 +7,18 @@ on:
     branches: [main]
   workflow_dispatch:
 
-permissions:
-  contents: write
-
 jobs:
   validate-and-build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        with:
-          ref: ${{ github.head_ref || github.ref_name }}
-          fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           node-version: 24
           cache: npm
-      - name: Apply semantic context fix
-        run: node scripts/apply-sprint8-search-fix.mjs
-      - name: Publish semantic context fix
-        shell: bash
-        run: |
-          set -euo pipefail
-          rm -f scripts/apply-sprint8-search-fix.mjs
-          rm -f .github/workflows/search-diagnostic.yml
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -A
-          git commit -m "Fix semantic matching in negated botanical contexts"
-          git push origin HEAD:${{ github.head_ref || github.ref_name }}
       - run: npm install --no-audit --no-fund
       - run: npm run validate:contributions
       - run: npm run compile:atlas:check
       - run: npm run validate:repository
-      - name: Validate semantic search
-        run: |
-          set -o pipefail
-          npm run validate:search 2>&1 | tee search-validation.log
-      - name: Build production application
-        run: |
-          set -o pipefail
-          npm run build 2>&1 | tee production-build.log
-      - name: Upload Sprint 8 diagnostics
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: sprint-8-validation-diagnostics
-          path: |
-            search-validation.log
-            production-build.log
+      - run: npm run validate:search
+      - run: npm run build
