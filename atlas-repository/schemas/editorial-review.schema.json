@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Editorial review pass",
+  "type": "object",
+  "required": [
+    "id",
+    "workflowId",
+    "submissionId",
+    "targetId",
+    "passNumber",
+    "code",
+    "lens",
+    "result",
+    "exitCriterion",
+    "reviewerContributorId",
+    "status",
+    "generatedFrom"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^REV-"
+    },
+    "passNumber": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 5
+    },
+    "result": {
+      "enum": [
+        "pass",
+        "pass-qualified",
+        "fail",
+        "not-applicable",
+        "pending"
+      ]
+    },
+    "status": {
+      "enum": [
+        "open",
+        "complete"
+      ]
+    },
+    "generatedFrom": {
+      "type": "object"
+    }
+  },
+  "additionalProperties": true
+}

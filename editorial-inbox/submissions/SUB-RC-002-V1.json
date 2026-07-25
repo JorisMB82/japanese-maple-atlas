@@ -1,0 +1,64 @@
+{
+  "id": "SUB-RC-002-V1",
+  "targetType": "cultivar",
+  "targetId": "RC-002",
+  "contributorId": "CTR-EDITOR-IN-CHIEF",
+  "contributionType": "reference-standard-baseline",
+  "title": "RC-002 frozen Reference Standard v1.0 baseline",
+  "summary": "Historical editorial submission reconstructed from the frozen Reference Standard workflow and preserved as the Sprint 7 baseline audit trail.",
+  "status": "accepted",
+  "submittedAt": "2026-07-24",
+  "acceptedAt": "2026-07-24",
+  "version": "1.0",
+  "evidenceProvided": true,
+  "uncertaintyDisclosed": true,
+  "rightsConfirmed": true,
+  "workflow": {
+    "status": "frozen",
+    "currentStage": "freeze",
+    "startedAt": "2026-07-24",
+    "completedAt": "2026-07-24",
+    "reviewPasses": [
+      {
+        "passNumber": 1,
+        "code": "botanical-accuracy",
+        "lens": "Botanical accuracy",
+        "result": "pass",
+        "exitCriterion": "Every botanical claim has evidence or explicit uncertainty.",
+        "completedAt": "2026-07-24"
+      },
+      {
+        "passNumber": 2,
+        "code": "evidence-traceability",
+        "lens": "Evidence traceability",
+        "result": "pass",
+        "exitCriterion": "Every approved statement remains linked to evidence and source scope.",
+        "completedAt": "2026-07-24"
+      },
+      {
+        "passNumber": 3,
+        "code": "terminology-consistency",
+        "lens": "Terminology and consistency",
+        "result": "pass",
+        "exitCriterion": "Controlled terms and identifiers are internally consistent.",
+        "completedAt": "2026-07-24"
+      },
+      {
+        "passNumber": 4,
+        "code": "editorial-quality",
+        "lens": "Editorial quality and readability",
+        "result": "pass",
+        "exitCriterion": "The record is precise, balanced, readable and non-promotional.",
+        "completedAt": "2026-07-24"
+      },
+      {
+        "passNumber": 5,
+        "code": "governance-release",
+        "lens": "Governance and release readiness",
+        "result": "pass",
+        "exitCriterion": "Metadata, versioning, review history and freeze criteria are complete.",
+        "completedAt": "2026-07-24"
+      }
+    ]
+  }
+}

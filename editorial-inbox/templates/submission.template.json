@@ -1,0 +1,21 @@
+{
+  "id": "SUB-DRAFT-YYYYMMDD-SLUG",
+  "targetType": "cultivar",
+  "targetId": "RC-000",
+  "contributorId": "CTR-CONTRIBUTOR-ID",
+  "contributionType": "evidence-addition",
+  "title": "Concise contribution title",
+  "summary": "Describe the proposed change and why it improves repository truth.",
+  "status": "draft",
+  "submittedAt": "YYYY-MM-DD",
+  "version": "0.1",
+  "evidenceProvided": false,
+  "uncertaintyDisclosed": false,
+  "rightsConfirmed": false,
+  "workflow": {
+    "status": "draft",
+    "currentStage": "evidence-collection",
+    "startedAt": "YYYY-MM-DD",
+    "reviewPasses": []
+  }
+}

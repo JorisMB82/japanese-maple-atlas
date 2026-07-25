@@ -1,0 +1,19 @@
+{
+  "id": "REV-RC-002-P4-V1-0",
+  "workflowId": "EDW-RC-002-V1-0",
+  "submissionId": "SUB-RC-002-V1",
+  "targetId": "RC-002",
+  "passNumber": 4,
+  "code": "editorial-quality",
+  "lens": "Editorial quality and readability",
+  "result": "pass",
+  "exitCriterion": "The record is precise, balanced, readable and non-promotional.",
+  "completedAt": "2026-07-24",
+  "reviewerContributorId": "CTR-EDITOR-IN-CHIEF",
+  "status": "complete",
+  "generatedFrom": {
+    "path": "editorial-inbox/submissions/SUB-RC-002-V1.json",
+    "sha256": "358ac292919ba5be8b3e03aeed791248d865a36b635469c84f3bd48d9a979339",
+    "compilerVersion": "1.1.0"
+  }
+}

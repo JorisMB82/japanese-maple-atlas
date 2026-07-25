@@ -1,0 +1,19 @@
+{
+  "id": "REV-RC-005-P5-V1-0",
+  "workflowId": "EDW-RC-005-V1-0",
+  "submissionId": "SUB-RC-005-V1",
+  "targetId": "RC-005",
+  "passNumber": 5,
+  "code": "governance-release",
+  "lens": "Governance and release readiness",
+  "result": "pass",
+  "exitCriterion": "Metadata, versioning, review history and freeze criteria are complete.",
+  "completedAt": "2026-07-24",
+  "reviewerContributorId": "CTR-EDITOR-IN-CHIEF",
+  "status": "complete",
+  "generatedFrom": {
+    "path": "editorial-inbox/submissions/SUB-RC-005-V1.json",
+    "sha256": "e5f2a8716b153b22464444c45fcc47952b4a83b57c14701c5b28018a2f95b329",
+    "compilerVersion": "1.1.0"
+  }
+}

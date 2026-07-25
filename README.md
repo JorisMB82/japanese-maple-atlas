@@ -1,26 +1,29 @@
 # Japanese Maple Atlas
 
-An evidence-aware botanical knowledge platform for discovering, comparing, and inspecting Japanese maple cultivars.
+An evidence-aware botanical knowledge platform for discovering, comparing and governing Japanese maple cultivar knowledge.
 
-## Sprint 6 / v0.6.0
+## Sprint 7 / v0.7.0
 
-The Atlas Compiler now makes the frozen Reference Standards the operational source of truth.
+The Atlas now provides a repository-native editorial workflow and contributor pipeline:
 
-- RC-001 through RC-005 are preserved as frozen Markdown inputs;
-- canonical cultivar records are compiled, not manually duplicated;
-- 110 assertions link to 35 evidence objects and five frozen sources;
-- generated files are protected by SHA-256 hashes and drift checks;
-- the manifest reports 166 first-class repository objects;
-- the existing discovery, comparison, profile, evidence, relationship, and media interfaces consume the generated repository.
+- five frozen Reference Standards remain the canonical botanical source;
+- the deterministic Atlas Compiler produces 203 first-class repository objects;
+- contributors, submissions, twelve-stage workflows and five-pass reviews are governed objects;
+- contributor inputs are source controlled and SHA-256 protected;
+- GitHub issue forms and pull-request templates structure external contributions;
+- draft and incomplete work cannot silently modify canonical publication content;
+- the application exposes editorial and contribution interfaces;
+- repository validation checks contributor identity, workflow completeness, review links, hashes and generated drift.
 
-## Data status
+## Repository principle
 
-RC-001 through RC-005 are canonical compiled records derived from frozen Reference Standard v1.0 documents. Identity plates remain editorial illustrations and are not diagnostic evidence.
+The repository is the source of truth. The application is a derived interface. Contributions enter through governed inputs and only approved, validated repository knowledge may reach publication outputs.
 
 ## Run locally
 
 ```bash
 npm install
+npm run validate:contributions
 npm run compile:atlas:check
 npm run validate:repository
 npm run dev
@@ -28,14 +31,24 @@ npm run dev
 
 Open `http://localhost:3000`.
 
-## Compile after an approved RC revision
+## Create a contribution
+
+```bash
+npm run contribution:new -- \
+  --target RC-001 \
+  --type evidence-addition \
+  --title "Add verified observation" \
+  --contributor CTR-CONTRIBUTOR-ID
+```
+
+Then complete the generated file under `editorial-inbox/submissions/` and run:
 
 ```bash
 npm run compile:atlas
 npm test
 ```
 
-Do not edit generated repository JSON or `lib/repository-registry.js` directly.
+Do not edit generated JSON under `atlas-repository/` or `lib/repository-registry.js` directly.
 
 ## Production build
 
@@ -47,15 +60,12 @@ The static export is written to `out/`.
 
 ## Repository structure
 
-- `atlas-repository/reference-standards/` — frozen compiler inputs
-- `atlas-repository/` — generated normalized knowledge objects, indexes, manifest, hashes, and schemas
+- `atlas-repository/reference-standards/` — frozen canonical compiler inputs
+- `editorial-inbox/` — governed contributor and submission inputs
+- `atlas-repository/` — generated knowledge, editorial objects, indexes, hashes and schemas
 - `scripts/compile-atlas.mjs` — deterministic compiler
-- `scripts/validate-repository.mjs` — integrity and canonicality validation
-- `app/` — routes and page composition
-- `components/` — reusable product interface components
-- `lib/` — generated registry and repository query helpers
-- `docs/` — architecture, compiler, implementation, media, and normalization records
-
-## Product principle
-
-The repository is the source of truth. The application is a derived interface that makes governed botanical knowledge searchable, comparable, and inspectable.
+- `scripts/validate-contributions.mjs` — contributor-input validation
+- `scripts/validate-repository.mjs` — repository integrity validation
+- `app/` — public, editorial and contribution routes
+- `components/` — reusable interface components
+- `docs/` — architecture, editorial, contributor and implementation records

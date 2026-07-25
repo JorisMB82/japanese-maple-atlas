@@ -6,8 +6,11 @@ import os from 'node:os';
 const ROOT = path.resolve(import.meta.dirname, '..');
 const REPOSITORY = path.join(ROOT, 'atlas-repository');
 const INPUT_DIR = path.join(REPOSITORY, 'reference-standards');
-const COMPILER_VERSION = '1.0.0';
-const RELEASE_DATE = '2026-07-24';
+const EDITORIAL_INPUT_DIR = path.join(ROOT, 'editorial-inbox');
+const COMPILER_VERSION = '1.1.0';
+const RELEASE_DATE = '2026-07-25';
+const BOTANICAL_COMPILER_VERSION = '1.0.0';
+const BOTANICAL_RELEASE_DATE = '2026-07-24';
 const CHECK_MODE = process.argv.includes('--check');
 
 const JSON_INDENT = 2;
@@ -28,6 +31,47 @@ const sentence = value => {
   return /[.!?]$/.test(text) ? text : `${text}.`;
 };
 const stableSlug = value => stripMarkdown(value).normalize('NFKD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+
+const WORKFLOW_STAGES = [
+  'evidence-collection', 'evidence-evaluation', 'assertion-extraction', 'assertion-matrix',
+  'approved-register', 'unresolved-register', 'rejected-register', 'editorial-synthesis',
+  'five-pass-review', 'corrected-reference-standard', 'editorial-verification', 'freeze'
+];
+const REVIEW_PASSES = [
+  [1, 'botanical-accuracy', 'Botanical accuracy'],
+  [2, 'evidence-traceability', 'Evidence traceability'],
+  [3, 'terminology-consistency', 'Terminology and consistency'],
+  [4, 'editorial-quality', 'Editorial quality and readability'],
+  [5, 'governance-release', 'Governance and release readiness']
+];
+
+function readEditorialJson(dir) {
+  if (!fs.existsSync(dir)) return [];
+  return fs.readdirSync(dir).filter(file => file.endsWith('.json')).sort().map(file => {
+    const inputPath = path.join(dir, file);
+    const raw = fs.readFileSync(inputPath, 'utf8');
+    return { inputPath, inputSha256: sha256(raw), data: JSON.parse(raw) };
+  });
+}
+
+function collectEditorialInputs() {
+  const contributors = readEditorialJson(path.join(EDITORIAL_INPUT_DIR, 'contributors'));
+  const submissions = readEditorialJson(path.join(EDITORIAL_INPUT_DIR, 'submissions'));
+  const contributorIds = new Set(contributors.map(item => item.data.id));
+  for (const item of contributors) {
+    const c = item.data;
+    if (!/^CTR-[A-Z0-9-]+$/.test(c.id || '')) throw new Error(`Invalid contributor id in ${item.inputPath}`);
+    for (const key of ['displayName','contributorType','roles','status','authorityScope','createdAt','version']) if (!(key in c)) throw new Error(`${c.id}: missing ${key}`);
+  }
+  for (const item of submissions) {
+    const submission = item.data;
+    if (!/^SUB-[A-Z0-9-]+$/.test(submission.id || '')) throw new Error(`Invalid submission id in ${item.inputPath}`);
+    for (const key of ['targetType','targetId','contributorId','contributionType','title','summary','status','submittedAt','version','workflow']) if (!(key in submission)) throw new Error(`${submission.id}: missing ${key}`);
+    if (!contributorIds.has(submission.contributorId)) throw new Error(`${submission.id}: unknown contributor ${submission.contributorId}`);
+    if (!WORKFLOW_STAGES.includes(submission.workflow.currentStage)) throw new Error(`${submission.id}: invalid workflow stage ${submission.workflow.currentStage}`);
+  }
+  return { contributors, submissions };
+}
 
 const RECORD_CONFIG = {
   'RC-001': {
@@ -260,7 +304,7 @@ const evidenceGroups = [
   { key: 'diagnosis', assertions: [19, 20, 21], scope: 'diagnosis, authentication limits and confidence', section: 'Identification and confidence sections' }
 ];
 
-function buildCompilerOutputs(records) {
+function buildCompilerOutputs(records, editorialInputs) {
   const outputs = new Map();
   const objects = [];
   let assertionCounter = 1;
@@ -301,7 +345,7 @@ function buildCompilerOutputs(records) {
         confidence: domain === 'history' ? 'moderate' : domain === 'diagnosis' ? 'moderate' : 'high',
         evidenceIds: [evidenceId],
         sourceScope: domain === 'cultivation' ? 'cultivar-specific or explicitly qualified inherited guidance' : 'cultivar-specific editorial synthesis',
-        generatedFrom: { sourceId: record.sourceId, referenceStandard: record.id, compilerVersion: COMPILER_VERSION }
+        generatedFrom: { sourceId: record.sourceId, referenceStandard: record.id, compilerVersion: BOTANICAL_COMPILER_VERSION }
       };
     });
     assertionObjects.push(...perRecordAssertions);
@@ -352,7 +396,7 @@ function buildCompilerOutputs(records) {
         path: path.relative(ROOT, record.inputPath).replaceAll(path.sep, '/'),
         sha256: record.inputSha256
       },
-      compiler: { name: 'Atlas Compiler', version: COMPILER_VERSION, generatedAt: RELEASE_DATE }
+      compiler: { name: 'Atlas Compiler', version: BOTANICAL_COMPILER_VERSION, generatedAt: BOTANICAL_RELEASE_DATE }
     };
     cultivarObjects.push(cultivar);
   }
@@ -390,9 +434,46 @@ function buildCompilerOutputs(records) {
     };
   });
 
+  const contributorObjects = editorialInputs.contributors.map(({ data, inputPath, inputSha256 }) => ({
+    ...data,
+    generatedFrom: { path: path.relative(ROOT, inputPath).replaceAll(path.sep, '/'), sha256: inputSha256, compilerVersion: COMPILER_VERSION }
+  }));
+  const submissionObjects = [];
+  const workflowObjects = [];
+  const reviewObjects = [];
+  for (const { data: submission, inputPath, inputSha256 } of editorialInputs.submissions) {
+    const workflowId = `EDW-${submission.targetId}-V${submission.version.replace(/\./g, '-')}`;
+    const reviewIds = [];
+    for (const pass of submission.workflow.reviewPasses || []) {
+      const id = `REV-${submission.targetId}-P${pass.passNumber}-V${submission.version.replace(/\./g, '-')}`;
+      reviewIds.push(id);
+      reviewObjects.push({
+        id, workflowId, submissionId: submission.id, targetId: submission.targetId, passNumber: pass.passNumber,
+        code: pass.code, lens: pass.lens, result: pass.result, exitCriterion: pass.exitCriterion, completedAt: pass.completedAt,
+        reviewerContributorId: 'CTR-EDITOR-IN-CHIEF', status: pass.result === 'pass' ? 'complete' : 'open',
+        generatedFrom: { path: path.relative(ROOT, inputPath).replaceAll(path.sep, '/'), sha256: inputSha256, compilerVersion: COMPILER_VERSION }
+      });
+    }
+    const currentIndex = WORKFLOW_STAGES.indexOf(submission.workflow.currentStage);
+    const stages = WORKFLOW_STAGES.map((stage, index) => ({
+      stage, order: index + 1, status: submission.workflow.status === 'frozen' || index < currentIndex ? 'complete' : index === currentIndex ? 'active' : 'pending'
+    }));
+    workflowObjects.push({
+      id: workflowId, submissionId: submission.id, targetType: submission.targetType, targetId: submission.targetId,
+      status: submission.workflow.status, currentStage: submission.workflow.currentStage, stages, reviewIds,
+      editorContributorId: 'CTR-EDITOR-IN-CHIEF', startedAt: submission.workflow.startedAt, completedAt: submission.workflow.completedAt || null,
+      version: submission.version, generatedFrom: { path: path.relative(ROOT, inputPath).replaceAll(path.sep, '/'), sha256: inputSha256, compilerVersion: COMPILER_VERSION }
+    });
+    submissionObjects.push({
+      ...submission, workflowId, reviewIds,
+      generatedFrom: { path: path.relative(ROOT, inputPath).replaceAll(path.sep, '/'), sha256: inputSha256, compilerVersion: COMPILER_VERSION }
+    });
+  }
+
   const categories = [
     ['cultivars', cultivarObjects], ['assertions', assertionObjects], ['evidence', evidenceObjects], ['sources', sources],
-    ['taxonomy', taxa], ['relationships', relationships], ['media', media]
+    ['taxonomy', taxa], ['relationships', relationships], ['media', media],
+    ['contributors', contributorObjects], ['submissions', submissionObjects], ['editorial-workflows', workflowObjects], ['editorial-reviews', reviewObjects]
   ];
   for (const [folder, items] of categories) {
     for (const item of items) {
@@ -404,11 +485,13 @@ function buildCompilerOutputs(records) {
     }
   }
 
-  const objectCounts = Object.fromEntries(categories.map(([folder, items]) => [folder === 'taxonomy' ? 'taxa' : folder, items.length]));
+  const countKey = folder => ({ taxonomy: 'taxa', 'editorial-workflows': 'editorialWorkflows', 'editorial-reviews': 'editorialReviews' }[folder] || folder);
+  const objectCounts = Object.fromEntries(categories.map(([folder, items]) => [countKey(folder), items.length]));
   const objectTotal = Object.values(objectCounts).reduce((sum, count) => sum + count, 0);
-  if (objectTotal !== 166) throw new Error(`Compiler invariant failed: expected 166 repository objects, generated ${objectTotal}`);
+  if (objectTotal !== 203) throw new Error(`Compiler invariant failed: expected 203 repository objects, generated ${objectTotal}`);
   const repositoryHash = sha256(objects.slice().sort((a, b) => a.path.localeCompare(b.path)).map(item => `${item.path}:${item.sha256}`).join('\n'));
-  const inputHash = sha256(records.map(record => `${record.id}:${record.inputSha256}`).join('\n'));
+  const editorialInputHashes = [...editorialInputs.contributors, ...editorialInputs.submissions].map(item => `${path.relative(ROOT, item.inputPath).replaceAll(path.sep, '/')}:${item.inputSha256}`);
+  const inputHash = sha256([...records.map(record => `${record.id}:${record.inputSha256}`), ...editorialInputHashes].sort().join('\n'));
 
   const objectIndex = { version: '1.0.0', repositoryHash, objectCount: objectTotal, objects: objects.slice().sort((a, b) => a.id.localeCompare(b.id)) };
   outputs.set('atlas-repository/indexes/object-index.json', json(objectIndex));
@@ -420,36 +503,23 @@ function buildCompilerOutputs(records) {
   outputs.set('atlas-repository/indexes/search-index.json', json({ version: '1.0.0', repositoryHash, records: searchIndex }));
 
   const manifest = {
-    repositoryVersion: '0.6.0', release: 'Sprint 6 — Atlas Compiler', generatedAt: RELEASE_DATE,
+    repositoryVersion: '0.7.0', release: 'Sprint 7 — Editorial workflow and contributor pipeline', generatedAt: RELEASE_DATE,
     compiler: { name: 'Atlas Compiler', version: COMPILER_VERSION, deterministic: true },
     source: { type: 'frozen-reference-standard-cohort', records: records.length, inputHash },
+    editorial: { contributors: contributorObjects.length, submissions: submissionObjects.length, workflows: workflowObjects.length, reviews: reviewObjects.length, lifecycleStages: WORKFLOW_STAGES.length, reviewPasses: REVIEW_PASSES.length },
     objectCounts, objectTotal, repositoryHash, canonicality: 'canonical-compiled',
-    notes: 'RC-001 through RC-005 are compiled from frozen Reference Standards. Generated repository objects must not be edited directly.'
+    notes: 'RC-001 through RC-005 remain canonical compiled records. Sprint 7 adds a governed repository-native editorial workflow and contributor pipeline.'
   };
   outputs.set('atlas-repository/manifest.json', json(manifest));
 
-  function registrySection(name, folder, items) {
-    const imports = items.map((item, index) => `import ${name}${index} from '@/atlas-repository/${folder}/${item.id}.json';`).join('\n');
-    const values = items.map((_, index) => `${name}${index}`).join(',');
-    return `${imports}\nexport const ${name} = [${values}];`;
-  }
-  const registry = [
-    "// GENERATED FILE — DO NOT EDIT. Run `npm run compile:atlas`.",
-    "import manifest from '@/atlas-repository/manifest.json';",
-    registrySection('cultivars', 'cultivars', cultivarObjects),
-    registrySection('assertions', 'assertions', assertionObjects),
-    registrySection('evidence', 'evidence', evidenceObjects),
-    registrySection('sources', 'sources', sources),
-    registrySection('taxa', 'taxonomy', taxa),
-    registrySection('relationships', 'relationships', relationships),
-    registrySection('media', 'media', media),
-    'export { manifest };', ''
-  ].join('\n\n');
+  const registry = `// GENERATED FILE — DO NOT EDIT. Run \`npm run compile:atlas\`.\n\nimport fs from 'node:fs';\nimport path from 'node:path';\n\nconst repositoryRoot = path.join(process.cwd(), 'atlas-repository');\nconst loadJson = file => JSON.parse(fs.readFileSync(file, 'utf8'));\nconst loadDirectory = directory => {\n  const fullPath = path.join(repositoryRoot, directory);\n  return fs.readdirSync(fullPath)\n    .filter(file => file.endsWith('.json'))\n    .sort()\n    .map(file => loadJson(path.join(fullPath, file)));\n};\n\nexport const manifest = loadJson(path.join(repositoryRoot, 'manifest.json'));\nexport const cultivars = loadDirectory('cultivars');\nexport const assertions = loadDirectory('assertions');\nexport const evidence = loadDirectory('evidence');\nexport const sources = loadDirectory('sources');\nexport const taxa = loadDirectory('taxonomy');\nexport const relationships = loadDirectory('relationships');\nexport const media = loadDirectory('media');\nexport const contributors = loadDirectory('contributors');\nexport const submissions = loadDirectory('submissions');\nexport const editorialWorkflows = loadDirectory('editorial-workflows');\nexport const editorialReviews = loadDirectory('editorial-reviews');\n`;
   outputs.set('lib/repository-registry.js', registry);
 
   const generatedHashes = {};
   for (const [relative, content] of [...outputs.entries()].sort(([a], [b]) => a.localeCompare(b))) generatedHashes[relative] = sha256(content);
-  outputs.set('atlas-repository/hashes.json', json({ algorithm: 'sha256', compilerVersion: COMPILER_VERSION, inputHash, repositoryHash, inputs: Object.fromEntries(records.map(record => [path.relative(ROOT, record.inputPath).replaceAll(path.sep, '/'), record.inputSha256])), generated: generatedHashes }));
+  const editorialHashInputs = [...editorialInputs.contributors, ...editorialInputs.submissions].map(item => [path.relative(ROOT, item.inputPath).replaceAll(path.sep, '/'), item.inputSha256]);
+  const sourceHashInputs = records.map(record => [path.relative(ROOT, record.inputPath).replaceAll(path.sep, '/'), record.inputSha256]);
+  outputs.set('atlas-repository/hashes.json', json({ algorithm: 'sha256', compilerVersion: COMPILER_VERSION, inputHash, repositoryHash, inputs: Object.fromEntries([...sourceHashInputs, ...editorialHashInputs]), generated: generatedHashes }));
 
   return { outputs, manifest, records };
 }
@@ -463,7 +533,7 @@ function collectInputs() {
   });
 }
 
-const generatedObjectDirs = ['cultivars', 'assertions', 'evidence', 'sources', 'taxonomy', 'relationships', 'media', 'indexes'];
+const generatedObjectDirs = ['cultivars', 'assertions', 'evidence', 'sources', 'taxonomy', 'relationships', 'media', 'contributors', 'submissions', 'editorial-workflows', 'editorial-reviews', 'indexes'];
 function writeOutputs(outputs) {
   for (const dir of generatedObjectDirs) {
     const target = path.join(REPOSITORY, dir);
@@ -499,7 +569,8 @@ function checkOutputs(outputs) {
 }
 
 try {
-  const result = buildCompilerOutputs(collectInputs());
+  const editorialInputs = collectEditorialInputs();
+  const result = buildCompilerOutputs(collectInputs(), editorialInputs);
   if (CHECK_MODE) checkOutputs(result.outputs); else writeOutputs(result.outputs);
   console.log(`Atlas Compiler ${COMPILER_VERSION}: ${CHECK_MODE ? 'CHECK PASS' : 'COMPILE PASS'}`);
   console.log(`Frozen Reference Standards: ${result.records.length}`);

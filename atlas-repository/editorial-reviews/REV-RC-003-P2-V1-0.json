@@ -1,0 +1,19 @@
+{
+  "id": "REV-RC-003-P2-V1-0",
+  "workflowId": "EDW-RC-003-V1-0",
+  "submissionId": "SUB-RC-003-V1",
+  "targetId": "RC-003",
+  "passNumber": 2,
+  "code": "evidence-traceability",
+  "lens": "Evidence traceability",
+  "result": "pass",
+  "exitCriterion": "Every approved statement remains linked to evidence and source scope.",
+  "completedAt": "2026-07-24",
+  "reviewerContributorId": "CTR-EDITOR-IN-CHIEF",
+  "status": "complete",
+  "generatedFrom": {
+    "path": "editorial-inbox/submissions/SUB-RC-003-V1.json",
+    "sha256": "328c9c65569c561c2969e9c3535adb9e5d727ff51736702de62bc1c33be6c69f",
+    "compilerVersion": "1.1.0"
+  }
+}

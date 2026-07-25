@@ -1,0 +1,8 @@
+import StatusBadge from './StatusBadge';
+const human=value=>String(value).replaceAll('-',' ').replace(/\b\w/g,c=>c.toUpperCase());
+export default function EditorialPipeline({workflows,reviews,submissions,contributors}){
+ const reviewsByWorkflow=new Map(workflows.map(w=>[w.id,reviews.filter(r=>r.workflowId===w.id).sort((a,b)=>a.passNumber-b.passNumber)]));
+ const submissionsById=new Map(submissions.map(s=>[s.id,s]));
+ const contributorsById=new Map(contributors.map(c=>[c.id,c]));
+ return <div className="workflowGrid">{workflows.map(workflow=>{const submission=submissionsById.get(workflow.submissionId);const editor=contributorsById.get(workflow.editorContributorId);const workflowReviews=reviewsByWorkflow.get(workflow.id)||[];return <article className="workflowCard" key={workflow.id}><div className="workflowHeader"><div><code>{workflow.id}</code><h2>{workflow.targetId}</h2><p>{submission?.title}</p></div><StatusBadge status={workflow.status}/></div><div className="stageRail" aria-label={`Editorial lifecycle for ${workflow.targetId}`}>{workflow.stages.map(stage=><div className={`stage stage-${stage.status}`} key={stage.stage}><span>{String(stage.order).padStart(2,'0')}</span><strong>{human(stage.stage)}</strong></div>)}</div><div className="reviewPasses"><div className="kicker">Five-pass review</div>{workflowReviews.map(review=><div className="reviewRow" key={review.id}><span>{review.passNumber}</span><strong>{review.lens}</strong><StatusBadge status={review.result}/></div>)}</div><dl className="compactDl"><dt>Submission</dt><dd>{submission?.id}</dd><dt>Editor</dt><dd>{editor?.displayName}</dd><dt>Current stage</dt><dd>{human(workflow.currentStage)}</dd><dt>Version</dt><dd>{workflow.version}</dd></dl></article>})}</div>
+}

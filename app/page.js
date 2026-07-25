@@ -10,20 +10,20 @@ export default function Home() {
   return <>
     <section className="hero homeHero">
       <div>
-        <div className="kicker">Sprint 6 · Atlas Compiler</div>
+        <div className="kicker">Sprint 7 · editorial workflow</div>
         <h1>Japanese maples, organized as evidence—not folklore.</h1>
-        <p>Search canonical cultivar records compiled deterministically from frozen Reference Standards, compare normalized traits, and inspect the governed assertions behind every profile.</p>
-        <div className="heroActions"><a className="button" href="#directory-heading">Explore cultivars</a><a className="button secondary" href="/repository">Inspect repository</a></div>
+        <p>Explore canonical cultivar records, inspect their evidence, and follow the governed editorial workflows that protect repository truth.</p>
+        <div className="heroActions"><a className="button" href="#directory-heading">Explore cultivars</a><a className="button secondary" href="/editorial">Inspect editorial workflow</a></div>
       </div>
       <aside className="heroPanel">
-        <span className="panelEyebrow">Canonical compiled repository</span>
+        <span className="panelEyebrow">Governed knowledge repository</span>
         <div className="statGrid">
           <div><strong>{stats.cultivars}</strong><span>Cultivars</span></div>
           <div><strong>{stats.species}</strong><span>Species</span></div>
           <div><strong>{stats.assertions}</strong><span>Assertions</span></div>
           <div><strong>{stats.sources}</strong><span>Frozen sources</span></div>
         </div>
-        <p>RC-001 through RC-005 are compiled from frozen Reference Standard v1.0 inputs with deterministic hashes and drift validation.</p>
+        <p>RC-001 through RC-005 remain frozen and hash-protected. Sprint 7 adds contributor, submission, workflow and review objects without changing canonical botanical content.</p>
       </aside>
     </section>
 

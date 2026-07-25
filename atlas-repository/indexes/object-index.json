@@ -1,7 +1,7 @@
 {
   "version": "1.0.0",
-  "repositoryHash": "ef23c5062a0393a94ba666ab64f05e78dc650dde4cad85b8b010945cadf8ae91",
-  "objectCount": 166,
+  "repositoryHash": "8fd96345757d5888e1e8d1a68529c103467c3d49525ad38cfe35ec70bd1a492c",
+  "objectCount": 203,
   "objects": [
     {
       "type": "assertions",
@@ -664,6 +664,48 @@
       "sha256": "79f1202fc3588e6fcfb0faad7d2fb2e04e71e092ee935e37c1a4ae9fec5e1605"
     },
     {
+      "type": "contributors",
+      "id": "CTR-ATLAS-COMPILER",
+      "path": "atlas-repository/contributors/CTR-ATLAS-COMPILER.json",
+      "sha256": "4b08fbbc7387381e106c0ecc2de7dd23bbae8616a386281cce2d7a5861842c9b"
+    },
+    {
+      "type": "contributors",
+      "id": "CTR-EDITOR-IN-CHIEF",
+      "path": "atlas-repository/contributors/CTR-EDITOR-IN-CHIEF.json",
+      "sha256": "42be3bd3fb3dc5d8bc66ab383d3973afedbf77598e1378d780b65a7fd3ce1216"
+    },
+    {
+      "type": "editorial-workflows",
+      "id": "EDW-RC-001-V1-0",
+      "path": "atlas-repository/editorial-workflows/EDW-RC-001-V1-0.json",
+      "sha256": "a765361e0e4a35b4ab0c781d16580363d53a3a90a5fc526ea563e762735837ed"
+    },
+    {
+      "type": "editorial-workflows",
+      "id": "EDW-RC-002-V1-0",
+      "path": "atlas-repository/editorial-workflows/EDW-RC-002-V1-0.json",
+      "sha256": "a1707997b02531d40abbbb96e7bb2830c17747aa272f4e97522e3881491ec9ef"
+    },
+    {
+      "type": "editorial-workflows",
+      "id": "EDW-RC-003-V1-0",
+      "path": "atlas-repository/editorial-workflows/EDW-RC-003-V1-0.json",
+      "sha256": "a9a49311156957596ea6866f766032aca8eb05d8dd939e28390d80323d478df3"
+    },
+    {
+      "type": "editorial-workflows",
+      "id": "EDW-RC-004-V1-0",
+      "path": "atlas-repository/editorial-workflows/EDW-RC-004-V1-0.json",
+      "sha256": "1c1747dd1067fca6887857fc5bac2446ccb73cb5e457e2f676749c40d1a4963c"
+    },
+    {
+      "type": "editorial-workflows",
+      "id": "EDW-RC-005-V1-0",
+      "path": "atlas-repository/editorial-workflows/EDW-RC-005-V1-0.json",
+      "sha256": "9f61d6284a6cfeb8a88f294bb942ae7236f094f7caaf0d8e467973b69a4f1402"
+    },
+    {
       "type": "evidence",
       "id": "EVD-000001",
       "path": "atlas-repository/evidence/EVD-000001.json",
@@ -958,6 +1000,156 @@
       "sha256": "a556b3fb551a024ec6b5f4063b95c50acbec71e3a8505470a9cc853b208ae139"
     },
     {
+      "type": "editorial-reviews",
+      "id": "REV-RC-001-P1-V1-0",
+      "path": "atlas-repository/editorial-reviews/REV-RC-001-P1-V1-0.json",
+      "sha256": "2079dfc624beae0bd16764ddf8879fa70461ceec10b0e86b0e90f7b4cbda4602"
+    },
+    {
+      "type": "editorial-reviews",
+      "id": "REV-RC-001-P2-V1-0",
+      "path": "atlas-repository/editorial-reviews/REV-RC-001-P2-V1-0.json",
+      "sha256": "22725f0a742920def45c05da8a292773b59d6172571b3d0795441c52194500c1"
+    },
+    {
+      "type": "editorial-reviews",
+      "id": "REV-RC-001-P3-V1-0",
+      "path": "atlas-repository/editorial-reviews/REV-RC-001-P3-V1-0.json",
+      "sha256": "948f9f8b375e24b3515244b4083eaa69877e13b402d4f4f73ed86323af1ed106"
+    },
+    {
+      "type": "editorial-reviews",
+      "id": "REV-RC-001-P4-V1-0",
+      "path": "atlas-repository/editorial-reviews/REV-RC-001-P4-V1-0.json",
+      "sha256": "5060534f8d2ac7ef37ee285a4ad320a5b93b9176fbc5357f1d8bc9120c03c4cd"
+    },
+    {
+      "type": "editorial-reviews",
+      "id": "REV-RC-001-P5-V1-0",
+      "path": "atlas-repository/editorial-reviews/REV-RC-001-P5-V1-0.json",
+      "sha256": "7358e5f7ece82321e62f028e793913b9d062c7b3ab1eeeeb8cf6f9e3c9d46d1e"
+    },
+    {
+      "type": "editorial-reviews",
+      "id": "REV-RC-002-P1-V1-0",
+      "path": "atlas-repository/editorial-reviews/REV-RC-002-P1-V1-0.json",
+      "sha256": "1df11a3f81d4c8346104f0e68714c4ba54297b272b2d54496cb2021363c9eec6"
+    },
+    {
+      "type": "editorial-reviews",
+      "id": "REV-RC-002-P2-V1-0",
+      "path": "atlas-repository/editorial-reviews/REV-RC-002-P2-V1-0.json",
+      "sha256": "ce7a12d3fcdb0efef8ebf9703dea4bedf16ef542154b668e076f8e9512436525"
+    },
+    {
+      "type": "editorial-reviews",
+      "id": "REV-RC-002-P3-V1-0",
+      "path": "atlas-repository/editorial-reviews/REV-RC-002-P3-V1-0.json",
+      "sha256": "2f74339b296d4a3c99cd6468579e2e70cfb05064b15cccdef29514500af85409"
+    },
+    {
+      "type": "editorial-reviews",
+      "id": "REV-RC-002-P4-V1-0",
+      "path": "atlas-repository/editorial-reviews/REV-RC-002-P4-V1-0.json",
+      "sha256": "5e85f8d8e47f64b17d8a8ae322ba95b6afa64d3e9f0546f1ed027d405ff41e38"
+    },
+    {
+      "type": "editorial-reviews",
+      "id": "REV-RC-002-P5-V1-0",
+      "path": "atlas-repository/editorial-reviews/REV-RC-002-P5-V1-0.json",
+      "sha256": "f30b853b7c95a3cc4efbd55bb97d9f6c203a9657c4afa1f3fcb36e88cc5f3cf7"
+    },
+    {
+      "type": "editorial-reviews",
+      "id": "REV-RC-003-P1-V1-0",
+      "path": "atlas-repository/editorial-reviews/REV-RC-003-P1-V1-0.json",
+      "sha256": "655e685a9dc826dac82035ef09d26f6d92241d93d673b2d5053e453c761b3f50"
+    },
+    {
+      "type": "editorial-reviews",
+      "id": "REV-RC-003-P2-V1-0",
+      "path": "atlas-repository/editorial-reviews/REV-RC-003-P2-V1-0.json",
+      "sha256": "1ee80e0f75833f0f059498455d366aecfc59b19f807301dd914490bb75c0c694"
+    },
+    {
+      "type": "editorial-reviews",
+      "id": "REV-RC-003-P3-V1-0",
+      "path": "atlas-repository/editorial-reviews/REV-RC-003-P3-V1-0.json",
+      "sha256": "35bc24dbe9935250e102b6885faed4f57cb897c1e5ad60d34ef98613289ff8c2"
+    },
+    {
+      "type": "editorial-reviews",
+      "id": "REV-RC-003-P4-V1-0",
+      "path": "atlas-repository/editorial-reviews/REV-RC-003-P4-V1-0.json",
+      "sha256": "32fee59943ba13e5f456335db4d389df616426c3f06d9d1a5ddbdc575b6ef880"
+    },
+    {
+      "type": "editorial-reviews",
+      "id": "REV-RC-003-P5-V1-0",
+      "path": "atlas-repository/editorial-reviews/REV-RC-003-P5-V1-0.json",
+      "sha256": "c7d808e7c94910250b8b59fe4cf06ddad96536d99af9e52504b9f6c5d076a24b"
+    },
+    {
+      "type": "editorial-reviews",
+      "id": "REV-RC-004-P1-V1-0",
+      "path": "atlas-repository/editorial-reviews/REV-RC-004-P1-V1-0.json",
+      "sha256": "c02a683a2b961e079f2714249105085a6e042a8d9fb0b387b94129519694048a"
+    },
+    {
+      "type": "editorial-reviews",
+      "id": "REV-RC-004-P2-V1-0",
+      "path": "atlas-repository/editorial-reviews/REV-RC-004-P2-V1-0.json",
+      "sha256": "8b99b5008adaab045b368bb2981c2f45e117339968373d1cadebd98c0c4b8ad4"
+    },
+    {
+      "type": "editorial-reviews",
+      "id": "REV-RC-004-P3-V1-0",
+      "path": "atlas-repository/editorial-reviews/REV-RC-004-P3-V1-0.json",
+      "sha256": "4a6a5b4e7f7b1a6879e59f10ab2293bdbef570a83387a9552ec1bbda9346e729"
+    },
+    {
+      "type": "editorial-reviews",
+      "id": "REV-RC-004-P4-V1-0",
+      "path": "atlas-repository/editorial-reviews/REV-RC-004-P4-V1-0.json",
+      "sha256": "7ce245fb164aa1a4e9524f66af1a6427a3a8c55e02b9106c656517eaa43a7c51"
+    },
+    {
+      "type": "editorial-reviews",
+      "id": "REV-RC-004-P5-V1-0",
+      "path": "atlas-repository/editorial-reviews/REV-RC-004-P5-V1-0.json",
+      "sha256": "b116f286c683abf43e5977fed8c657162cf2c7492e747263b511ec4eb4add342"
+    },
+    {
+      "type": "editorial-reviews",
+      "id": "REV-RC-005-P1-V1-0",
+      "path": "atlas-repository/editorial-reviews/REV-RC-005-P1-V1-0.json",
+      "sha256": "a86ee14ed30a69ff7cef69ea5e521e615488b5390d354166b5b4008d9d91b1dd"
+    },
+    {
+      "type": "editorial-reviews",
+      "id": "REV-RC-005-P2-V1-0",
+      "path": "atlas-repository/editorial-reviews/REV-RC-005-P2-V1-0.json",
+      "sha256": "564833ec683f28c640fbef748c16fbb92c0a1ec23cfcda4e3d96f5b6e55c235c"
+    },
+    {
+      "type": "editorial-reviews",
+      "id": "REV-RC-005-P3-V1-0",
+      "path": "atlas-repository/editorial-reviews/REV-RC-005-P3-V1-0.json",
+      "sha256": "a515cf6be45590378120f58c0bc9a402b329ff85a984a5215cf71b3c4261d5cb"
+    },
+    {
+      "type": "editorial-reviews",
+      "id": "REV-RC-005-P4-V1-0",
+      "path": "atlas-repository/editorial-reviews/REV-RC-005-P4-V1-0.json",
+      "sha256": "558c09c259b7e2e073492918975629e9674aca6158b048287269c1d722b47e86"
+    },
+    {
+      "type": "editorial-reviews",
+      "id": "REV-RC-005-P5-V1-0",
+      "path": "atlas-repository/editorial-reviews/REV-RC-005-P5-V1-0.json",
+      "sha256": "04e3edde66143a6e8e4908a9ac4721f4e6b3e4e50075553388f43ec6a769fe23"
+    },
+    {
       "type": "sources",
       "id": "SRC-000001",
       "path": "atlas-repository/sources/SRC-000001.json",
@@ -986,6 +1178,36 @@
       "id": "SRC-000005",
       "path": "atlas-repository/sources/SRC-000005.json",
       "sha256": "6923dbf58268ddd201bfadb73ea9511209cf69509d3f605fe3e8d4a5e6c0a02f"
+    },
+    {
+      "type": "submissions",
+      "id": "SUB-RC-001-V1",
+      "path": "atlas-repository/submissions/SUB-RC-001-V1.json",
+      "sha256": "e0274e482fdedd5cd8f416c7fb31969a959d54b3521b267540d27915913aaca0"
+    },
+    {
+      "type": "submissions",
+      "id": "SUB-RC-002-V1",
+      "path": "atlas-repository/submissions/SUB-RC-002-V1.json",
+      "sha256": "2d1e237077ef23140be7c66ee53b28b3e1e497ca0cd53ec65abc71e830b296fd"
+    },
+    {
+      "type": "submissions",
+      "id": "SUB-RC-003-V1",
+      "path": "atlas-repository/submissions/SUB-RC-003-V1.json",
+      "sha256": "c4d831390bdadcc9d9430be33dbdf7f058fc37c593af6d373af85fe1ab342528"
+    },
+    {
+      "type": "submissions",
+      "id": "SUB-RC-004-V1",
+      "path": "atlas-repository/submissions/SUB-RC-004-V1.json",
+      "sha256": "1366914bc386e744b183ba8fa93b334ba1808bf9c30bd694ebed6b44a28165d8"
+    },
+    {
+      "type": "submissions",
+      "id": "SUB-RC-005-V1",
+      "path": "atlas-repository/submissions/SUB-RC-005-V1.json",
+      "sha256": "528a958ba25c57bceaf0eb92e09bef407e9de4842651ba503aeda8fdd5937ea0"
     },
     {
       "type": "taxonomy",

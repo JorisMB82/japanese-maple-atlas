@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Editorial submission",
+  "type": "object",
+  "required": [
+    "id",
+    "targetType",
+    "targetId",
+    "contributorId",
+    "contributionType",
+    "title",
+    "summary",
+    "status",
+    "submittedAt",
+    "version",
+    "workflowId",
+    "reviewIds",
+    "generatedFrom"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^SUB-[A-Z0-9-]+$"
+    },
+    "targetType": {
+      "enum": [
+        "cultivar",
+        "taxon",
+        "assertion",
+        "evidence",
+        "source",
+        "media",
+        "relationship",
+        "governance-document"
+      ]
+    },
+    "targetId": {
+      "type": "string"
+    },
+    "contributorId": {
+      "type": "string",
+      "pattern": "^CTR-"
+    },
+    "contributionType": {
+      "enum": [
+        "reference-standard-baseline",
+        "new-record",
+        "evidence-addition",
+        "correction",
+        "qualification",
+        "media-contribution",
+        "relationship-proposal",
+        "governance-change"
+      ]
+    },
+    "status": {
+      "enum": [
+        "draft",
+        "submitted",
+        "triage",
+        "needs-revision",
+        "under-review",
+        "accepted",
+        "rejected",
+        "withdrawn"
+      ]
+    },
+    "reviewIds": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "generatedFrom": {
+      "type": "object"
+    }
+  },
+  "additionalProperties": true
+}

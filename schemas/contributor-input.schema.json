@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Contributor registry input",
+  "type": "object",
+  "required": [
+    "id",
+    "displayName",
+    "contributorType",
+    "roles",
+    "status",
+    "authorityScope",
+    "createdAt",
+    "version"
+  ],
+  "additionalProperties": true
+}

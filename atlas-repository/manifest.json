@@ -1,16 +1,24 @@
 {
-  "repositoryVersion": "0.6.0",
-  "release": "Sprint 6 — Atlas Compiler",
-  "generatedAt": "2026-07-24",
+  "repositoryVersion": "0.7.0",
+  "release": "Sprint 7 — Editorial workflow and contributor pipeline",
+  "generatedAt": "2026-07-25",
   "compiler": {
     "name": "Atlas Compiler",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "deterministic": true
   },
   "source": {
     "type": "frozen-reference-standard-cohort",
     "records": 5,
-    "inputHash": "4fae1794648cd22b62876fdfb077c0b27cc618142cab837e9df8d06d2c2697ab"
+    "inputHash": "8c532ec2a8618e1a6e16ad10346a33f542b7c91bafba0af24157d883e173a846"
+  },
+  "editorial": {
+    "contributors": 2,
+    "submissions": 5,
+    "workflows": 5,
+    "reviews": 25,
+    "lifecycleStages": 12,
+    "reviewPasses": 5
   },
   "objectCounts": {
     "cultivars": 5,
@@ -19,10 +27,14 @@
     "sources": 5,
     "taxa": 2,
     "relationships": 4,
-    "media": 5
+    "media": 5,
+    "contributors": 2,
+    "submissions": 5,
+    "editorialWorkflows": 5,
+    "editorialReviews": 25
   },
-  "objectTotal": 166,
-  "repositoryHash": "ef23c5062a0393a94ba666ab64f05e78dc650dde4cad85b8b010945cadf8ae91",
+  "objectTotal": 203,
+  "repositoryHash": "8fd96345757d5888e1e8d1a68529c103467c3d49525ad38cfe35ec70bd1a492c",
   "canonicality": "canonical-compiled",
-  "notes": "RC-001 through RC-005 are compiled from frozen Reference Standards. Generated repository objects must not be edited directly."
+  "notes": "RC-001 through RC-005 remain canonical compiled records. Sprint 7 adds a governed repository-native editorial workflow and contributor pipeline."
 }

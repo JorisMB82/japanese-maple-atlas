@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Editorial workflow",
+  "type": "object",
+  "required": [
+    "id",
+    "submissionId",
+    "targetType",
+    "targetId",
+    "status",
+    "currentStage",
+    "stages",
+    "reviewIds",
+    "editorContributorId",
+    "version",
+    "generatedFrom"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^EDW-"
+    },
+    "status": {
+      "enum": [
+        "draft",
+        "active",
+        "blocked",
+        "approved",
+        "frozen",
+        "revised",
+        "superseded",
+        "deprecated"
+      ]
+    },
+    "currentStage": {
+      "enum": [
+        "evidence-collection",
+        "evidence-evaluation",
+        "assertion-extraction",
+        "assertion-matrix",
+        "approved-register",
+        "unresolved-register",
+        "rejected-register",
+        "editorial-synthesis",
+        "five-pass-review",
+        "corrected-reference-standard",
+        "editorial-verification",
+        "freeze"
+      ]
+    },
+    "stages": {
+      "type": "array",
+      "minItems": 12,
+      "maxItems": 12
+    },
+    "reviewIds": {
+      "type": "array"
+    },
+    "generatedFrom": {
+      "type": "object"
+    }
+  },
+  "additionalProperties": true
+}

@@ -1,5 +1,6 @@
 import './globals.css';
 import './media.css';
+import './editorial.css';
 import SiteHeader from '@/components/SiteHeader';
 
 export const metadata = {
@@ -13,7 +14,7 @@ export default function RootLayout({ children }) {
     <main>{children}</main>
     <footer>
       <div><strong>Japanese Maple Atlas</strong><p>Evidence-based cultivar knowledge, presented through a usable public interface.</p></div>
-      <div><span>Sprint 6</span><span>Deterministic Atlas Compiler</span><span>Frozen Reference Standards are canonical</span></div>
+      <div><span>Sprint 7</span><span>Editorial workflow operational</span><span>Contributions are governed and reviewable</span></div>
     </footer>
   </body></html>;
 }
