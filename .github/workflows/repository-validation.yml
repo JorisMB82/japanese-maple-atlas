@@ -1,4 +1,4 @@
-name: Repository validation
+name: Repository quality gates
 
 on:
   pull_request:
@@ -7,19 +7,76 @@ on:
     branches: [main]
   workflow_dispatch:
 
+concurrency:
+  group: quality-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
 jobs:
-  validate-and-build:
+  repository-and-tests:
+    name: Repository, schemas and tests
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: 24
           cache: npm
-      - run: npm install --no-audit --no-fund
-      - run: npm run validate:contributions
-      - run: npm run compile:atlas:check
-      - run: npm run validate:repository
-      - run: npm run validate:search
-      - run: npm run validate:graph
+      - run: npm ci --no-audit --no-fund
+      - run: npm run verify:repository
+      - run: npm run test:unit
+      - run: npm run test:integration
+
+  coverage:
+    name: Native Node coverage thresholds
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci --no-audit --no-fund
+      - run: npm run test:coverage
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: sprint-9-5-coverage
+          path: quality-reports/coverage.txt
+          if-no-files-found: error
+          retention-days: 30
+
+  production-build:
+    name: Production build and static regression
+    needs: [repository-and-tests, coverage]
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci --no-audit --no-fund
       - run: npm run build
+      - run: npm run test:regression
+      - run: npm run validate:quality
+      - run: npm run release:manifest
+      - uses: actions/upload-artifact@v4
+        with:
+          name: sprint-9-5-quality-evidence
+          path: |
+            quality-reports/
+            release-artifacts/
+          if-no-files-found: error
+          retention-days: 30
+      - uses: actions/upload-artifact@v4
+        with:
+          name: sprint-9-5-static-export
+          path: out/
+          if-no-files-found: error
+          retention-days: 14
