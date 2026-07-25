@@ -25,9 +25,11 @@ jobs:
         run: |
           set -euo pipefail
           test -d .sprint6-bootstrap
-          cat .sprint6-bootstrap/part-* > /tmp/sprint6.b64
-          base64 --decode /tmp/sprint6.b64 > /tmp/sprint6.tar.xz
+          cat .sprint6-bootstrap/part-* | tr -d '\r\n ' > /tmp/sprint6.b64
+          base64 -d /tmp/sprint6.b64 > /tmp/sprint6.tar.xz
+          xz -t /tmp/sprint6.tar.xz
           tar -xJf /tmp/sprint6.tar.xz -C /tmp
+          test -d /tmp/repository-overlay
           rm -rf atlas-repository/assertions atlas-repository/evidence atlas-repository/sources atlas-repository/cultivars atlas-repository/taxonomy atlas-repository/relationships atlas-repository/media atlas-repository/reference-standards atlas-repository/indexes
           cp -a /tmp/repository-overlay/. .
           while IFS= read -r target; do
