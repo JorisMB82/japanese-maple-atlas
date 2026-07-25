@@ -2,7 +2,7 @@
 
 ## Status
 
-Implementation in progress. This record will be frozen after the final CI, production-build and release-readiness checks pass.
+Implementation complete and ready for review.
 
 ## Capability implemented
 
@@ -28,24 +28,35 @@ Sprint 9.5 does not alter the five frozen Reference Standards or the Sprint 9 re
 
 ## Final verification
 
-Pending final branch execution:
+- Contributor input validation: PASS.
+- Deterministic compiler drift check: PASS.
+- JSON Schema conformance validation: PASS across fourteen governed object and index classes.
+- Repository integrity validation: PASS — 235 first-class objects.
+- Semantic-search validation: PASS.
+- Knowledge-graph validation: PASS — 7 nodes, 26 edges and 10 relationship types.
+- Native Node unit coverage suite: PASS — 27 of 27 tests.
+- Aggregate covered-code results: 99.51% lines, 86.50% branches and 98.06% functions.
+- Integration test suite: PASS, including isolated fresh compilation and repeated-build determinism.
+- Production Next.js static build: PASS.
+- Static-export regression suite: PASS — 4 of 4 route, content, link and asset checks.
+- Quality-infrastructure self-validation: PASS.
+- Release evidence generation: PASS — 58 static export files and 65 checksummed release files.
+- Vercel preview deployment: READY.
+- `package.json` and `package-lock.json`: synchronised at 0.9.5.
 
-- repository and contributor validation;
-- deterministic compiler drift check;
-- fourteen-schema conformance validation;
-- semantic-search validation;
-- knowledge-graph validation;
-- unit and integration tests;
-- native coverage thresholds;
-- production Next.js build;
-- static-export regression suite;
-- quality-infrastructure validation;
-- release-manifest generation;
-- Vercel preview deployment.
+## CI artifacts
+
+The quality workflow retains three downloadable ZIP artifacts:
+
+1. `sprint-9-5-coverage` — the complete native Node test and coverage report;
+2. `sprint-9-5-quality-evidence` — regression results, release manifest, release summary and SHA-256 checksum inventory;
+3. `sprint-9-5-static-export` — the complete production-ready static website generated under `out/`.
+
+These ZIP files are validation and release evidence. They do not replace the Git repository or the Vercel deployment.
 
 ## Review and merge
 
-When all checks pass, review the Sprint 9.5 pull request and use **Squash and merge** with:
+Review pull request #5 and use **Squash and merge** with:
 
 `Sprint 9.5: establish testing and quality infrastructure`
 
