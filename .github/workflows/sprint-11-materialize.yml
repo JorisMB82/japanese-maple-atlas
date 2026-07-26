@@ -49,14 +49,22 @@ jobs:
           gzip --test /tmp/sprint11.patch.gz
           gzip --decompress --stdout /tmp/sprint11.patch.gz > /tmp/sprint11.patch
           echo "61030548f0de289bc148c2e8c52415d8040e98830ea04ea6ce6c6e10efdbcf03  /tmp/sprint11.patch" | sha256sum --check --strict
-      - name: Apply and publish verified Sprint 11 tree
+      - name: Validate patch application
+        shell: bash
+        run: git apply --check /tmp/sprint11.patch
+      - name: Apply verified patch
+        shell: bash
+        run: git apply --index /tmp/sprint11.patch
+      - name: Remove transfer payloads
+        shell: bash
+        run: git rm -r .sprint11-bootstrap .sprint11-correct
+      - name: Commit materialized Sprint 11 tree
         shell: bash
         run: |
           set -euo pipefail
-          git apply --check /tmp/sprint11.patch
-          git apply --index /tmp/sprint11.patch
-          git rm -r .sprint11-bootstrap .sprint11-correct .github/workflows/sprint-11-materialize.yml
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git commit -m "Sprint 11: generalise compiler and lock RC-020 roadmap"
-          git push origin HEAD:agent/sprint-11-compiler-generalisation
+      - name: Push materialized branch
+        shell: bash
+        run: git push origin HEAD:agent/sprint-11-compiler-generalisation
