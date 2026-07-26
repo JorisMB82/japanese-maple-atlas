@@ -6,6 +6,9 @@ on:
       - agent/sprint-11-compiler-generalisation
     paths:
       - '.sprint11-bootstrap/**'
+  pull_request:
+    branches:
+      - main
   workflow_dispatch:
 
 permissions:
