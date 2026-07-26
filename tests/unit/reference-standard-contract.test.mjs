@@ -26,12 +26,17 @@ test('canonical RC-006 parses without a cultivar-specific compiler branch', () =
 
 test('canonical records reject missing governed metadata and sections', () => {
   const id = 'RC-006';
-  const malformed = syntheticReferenceStandard(id)
-    .replace('**Compiler profile:** canonical-rc-v1  \n', '')
-    .replace('# 13. Rejected claims\n', '# 13. Unsupported heading\n');
+  const source = syntheticReferenceStandard(id);
+  const missingMetadata = source.replace('**Compiler profile:** canonical-rc-v1\n', '');
+  const missingSection = source.replace('# 17. Rejected claims\n', '# 17. Unsupported heading\n');
+
   assert.throws(
-    () => buildRecord(path.join(ROOT, 'synthetic', `${id}.md`), malformed, 6, governance, syntheticSupport(id, ROOT)),
-    /missing canonical metadata|missing canonical sections/
+    () => buildRecord(path.join(ROOT, 'synthetic', `${id}.md`), missingMetadata, 6, governance, syntheticSupport(id, ROOT)),
+    /missing canonical metadata/
+  );
+  assert.throws(
+    () => buildRecord(path.join(ROOT, 'synthetic', `${id}.md`), missingSection, 6, governance, syntheticSupport(id, ROOT)),
+    /missing canonical sections/
   );
 });
 
