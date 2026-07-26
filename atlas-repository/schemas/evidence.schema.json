@@ -22,7 +22,7 @@
     },
     "sourceId": {
       "type": "string",
-      "pattern": "^SRC-[0-9]{6}$"
+      "pattern": "^SRC-(?:[0-9]{6}|RC-[0-9]{3}-[0-9]{3})$"
     },
     "status": {
       "const": "approved"
@@ -39,6 +39,32 @@
     "sourceSha256": {
       "type": "string",
       "pattern": "^[a-f0-9]{64}$"
+    },
+    "sourceIds": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^SRC-(?:[0-9]{6}|RC-[0-9]{3}-[0-9]{3})$"
+      }
+    },
+    "sourceLocations": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "sourceId"
+        ],
+        "properties": {
+          "sourceId": {
+            "type": "string",
+            "pattern": "^SRC-(?:[0-9]{6}|RC-[0-9]{3}-[0-9]{3})$"
+          }
+        }
+      },
+      "additionalProperties": true
     }
   }
 }

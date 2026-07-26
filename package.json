@@ -1,14 +1,17 @@
 {
   "name": "japanese-maple-atlas-mvp",
-  "version": "0.10.1",
+  "version": "0.11.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "compile:atlas": "node scripts/compile-atlas.mjs",
     "compile:atlas:check": "node scripts/compile-atlas.mjs --check",
+    "compile:atlas:dry-run": "node scripts/compile-atlas.mjs --dry-run",
+    "compile:atlas:preflight": "node scripts/compile-atlas.mjs --preflight",
     "compile:check": "npm run compile:atlas:check",
     "contribution:new": "node scripts/create-contribution.mjs",
     "validate:contributions": "node scripts/validate-contributions.mjs",
+    "validate:reference-standards": "node scripts/compile-atlas.mjs --preflight",
     "validate:data": "node scripts/validate-repository.mjs",
     "validate:repository": "node scripts/validate-repository.mjs",
     "validate:schemas": "node scripts/validate-schemas.mjs",
@@ -16,7 +19,8 @@
     "validate:graph": "node scripts/validate-graph.mjs",
     "validate:explorer": "node scripts/validate-explorer.mjs",
     "validate:quality": "node scripts/validate-quality.mjs",
-    "verify:repository": "npm run validate:contributions && npm run compile:atlas:check && npm run validate:schemas && npm run validate:repository && npm run validate:search && npm run validate:graph && npm run validate:explorer",
+    "validate:scale": "node scripts/scale-test-compiler.mjs",
+    "verify:repository": "npm run validate:contributions && npm run validate:reference-standards && npm run compile:atlas:check && npm run validate:schemas && npm run validate:repository && npm run validate:search && npm run validate:graph && npm run validate:explorer",
     "test:unit": "node scripts/run-test-suite.mjs unit",
     "test:integration": "node scripts/run-test-suite.mjs integration",
     "test:regression": "node scripts/run-test-suite.mjs regression",
@@ -25,7 +29,7 @@
     "prebuild": "npm run verify:repository",
     "build": "next build",
     "start": "next start",
-    "verify": "npm run test && npm run test:coverage && npm run build && npm run test:regression && npm run validate:quality",
+    "verify": "npm run test && npm run test:coverage && npm run validate:scale && npm run build && npm run test:regression && npm run validate:quality",
     "release:manifest": "node scripts/generate-release-manifest.mjs"
   },
   "dependencies": {

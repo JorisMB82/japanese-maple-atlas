@@ -1,0 +1,256 @@
+{
+  "version": "1.0.0",
+  "status": "approved",
+  "effectiveFromRecord": "RC-006",
+  "compilerProfile": "canonical-rc-v1",
+  "approvedStatusPatterns": [
+    "approved and frozen",
+    "approved, frozen",
+    "frozen",
+    "frozen reference standard"
+  ],
+  "requiredMetadata": {
+    "reference cultivar id": [
+      "reference cultivar id",
+      "record identifier"
+    ],
+    "accepted working name": [
+      "accepted working name",
+      "accepted name"
+    ],
+    "entity type": [
+      "entity type",
+      "plant type"
+    ],
+    "record status": [
+      "record status",
+      "status"
+    ],
+    "version": [
+      "version",
+      "record version"
+    ],
+    "freeze date": [
+      "freeze date"
+    ],
+    "compiler profile": [
+      "compiler profile"
+    ],
+    "approval decision": [
+      "approval decision",
+      "decision record"
+    ]
+  },
+  "requiredSections": {
+    "identity": [
+      "cultivar identity and nomenclature"
+    ],
+    "namingVariants": [
+      "naming variants and synonyms",
+      "synonyms and spelling variants"
+    ],
+    "botanicalDescription": [
+      "botanical description"
+    ],
+    "architecture": [
+      "whole-plant architecture"
+    ],
+    "leafMorphology": [
+      "leaf morphology"
+    ],
+    "seasonal": [
+      "seasonal characteristics"
+    ],
+    "horticulture": [
+      "horticultural information"
+    ],
+    "history": [
+      "historical provenance"
+    ],
+    "propagation": [
+      "propagation and cultivar continuity"
+    ],
+    "diagnosis": [
+      "diagnostic framework"
+    ],
+    "confidence": [
+      "confidence profile"
+    ],
+    "relationships": [
+      "relationship register",
+      "cultivar relationships"
+    ],
+    "sources": [
+      "source and evidence register",
+      "evidence and source register"
+    ],
+    "media": [
+      "media register",
+      "visual asset register"
+    ],
+    "unresolved": [
+      "unresolved research register"
+    ],
+    "rejected": [
+      "rejected claims"
+    ],
+    "freeze": [
+      "freeze decision"
+    ]
+  },
+  "canonicalProfile": {
+    "summaryHeadings": [
+      "executive summary",
+      "diagnostic summary",
+      "concise cultivar description"
+    ],
+    "identityHeadings": [
+      "cultivar identity and nomenclature"
+    ],
+    "morphologyHeadings": [
+      "botanical description",
+      "whole-plant architecture",
+      "leaf morphology"
+    ],
+    "cultivationHeadings": [
+      "horticultural information",
+      "cultivation"
+    ],
+    "historyHeadings": [
+      "historical provenance"
+    ],
+    "propagationHeadings": [
+      "propagation and cultivar continuity"
+    ],
+    "diagnosticHeadings": [
+      "diagnostic framework"
+    ],
+    "tableAliases": {
+      "acceptedName": [
+        "accepted working name"
+      ],
+      "entityType": [
+        "entity type"
+      ],
+      "habit": [
+        "whole-plant architecture"
+      ],
+      "leafForm": [
+        "leaf morphology"
+      ],
+      "springColor": [
+        "spring foliage"
+      ],
+      "summerColor": [
+        "summer foliage"
+      ],
+      "autumnColor": [
+        "autumn foliage"
+      ],
+      "height": [
+        "published mature height"
+      ],
+      "spread": [
+        "published mature spread"
+      ],
+      "growthRate": [
+        "growth rate"
+      ],
+      "flower": [
+        "flowers"
+      ],
+      "fruit": [
+        "fruit"
+      ],
+      "exposure": [
+        "exposure"
+      ],
+      "soil": [
+        "soil"
+      ],
+      "hardiness": [
+        "hardiness"
+      ],
+      "propagation": [
+        "propagation"
+      ],
+      "history": [
+        "historical provenance"
+      ],
+      "diagnostic": [
+        "diagnostic strength"
+      ],
+      "confidence": [
+        "overall descriptive confidence"
+      ],
+      "bark": [
+        "bark and stem characteristics"
+      ],
+      "synonyms": [
+        "synonyms and spelling variants",
+        "naming variants"
+      ]
+    },
+    "requiredTableFields": [
+      "acceptedName",
+      "synonyms",
+      "entityType",
+      "habit",
+      "leafForm",
+      "springColor",
+      "summerColor",
+      "autumnColor",
+      "height",
+      "exposure",
+      "soil",
+      "hardiness",
+      "propagation",
+      "history",
+      "diagnostic",
+      "confidence"
+    ],
+    "defaults": {
+      "spread": "Contextual spread is governed in the Reference Standard",
+      "growthRate": "No universal annual growth increment is approved",
+      "flower": "Small spring flowers",
+      "fruit": "Winged samaras",
+      "bark": "Bark is described in the frozen Reference Standard"
+    }
+  },
+  "provenance": {
+    "requiredFromRecord": "RC-006",
+    "directory": "sources",
+    "requiredEvidenceGroups": [
+      "identity",
+      "morphology",
+      "seasonal",
+      "dimensions",
+      "cultivation",
+      "history",
+      "diagnosis"
+    ]
+  },
+  "media": {
+    "directory": "media",
+    "minimumApprovedAssetsForRelease": 1,
+    "compilerAllowsEmptyUntilSprint11_5": true
+  },
+  "canonicalFreezeDateFormat": "YYYY-MM-DD",
+  "controlledVocabularies": {
+    "entityTypes": [
+      "Named cultivar"
+    ],
+    "evidenceGroups": [
+      "identity",
+      "morphology",
+      "seasonal",
+      "dimensions",
+      "cultivation",
+      "history",
+      "diagnosis"
+    ],
+    "recordProfiles": [
+      "canonical-rc-v1"
+    ]
+  }
+}

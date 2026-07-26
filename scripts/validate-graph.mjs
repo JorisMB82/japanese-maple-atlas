@@ -36,7 +36,7 @@ const assertionById = new Map(assertions.map(item => [item.id, item]));
 const typeById = new Map(relationshipTypes.map(item => [item.id, item]));
 const relationshipById = new Map(relationships.map(item => [item.id, item]));
 
-assert(manifest.repositoryVersion === '0.9.0', 'Sprint 9 repository version', manifest.repositoryVersion);
+assert(manifest.repositoryVersion === '0.11.0', 'Sprint 11 repository version', manifest.repositoryVersion);
 assert(manifest.objectCounts.relationships === 26, 'Relationship object count', manifest.objectCounts.relationships);
 assert(manifest.objectCounts.relationshipTypes === 10, 'Relationship type count', manifest.objectCounts.relationshipTypes);
 assert(manifest.objectTotal === 235, 'Repository object total', manifest.objectTotal);

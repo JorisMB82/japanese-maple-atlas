@@ -1,7 +1,7 @@
 # UX-002 — External User Testing Script
 
-**Status:** Ready for controlled testing after Sprint 10 usability remediation  
-**Scope:** Interface comprehension and task completion only; Sprint 11 remains out of scope
+**Status:** Retained for controlled product testing; ROADMAP-002 authorises Sprint 11 engineering
+**Scope:** Interface comprehension and task completion; reuse at the RC-010 checkpoint and RC-020 product validation
 
 ## Participants
 
@@ -31,4 +31,4 @@ Record task completion, time, wrong turns, terms requiring explanation, confiden
 
 ## Decision gate
 
-Summarize repeated failures and vocabulary problems before resuming roadmap work. Sprint 11 should remain paused until the findings are reviewed and any release-blocking usability issues are resolved.
+The Sprint 10 heuristic findings and remediation were reviewed before ROADMAP-002 was approved. Reuse this script at the RC-010 formative checkpoint and expand it for Sprint 13 RC-020 validation; repeated failures remain release inputs rather than silent exceptions.
