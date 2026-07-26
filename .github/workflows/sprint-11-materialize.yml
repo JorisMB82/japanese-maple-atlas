@@ -51,14 +51,15 @@ jobs:
           gzip --test /tmp/sprint11-files.tar.gz
           tar --list --gzip --file /tmp/sprint11-files.tar.gz > /tmp/sprint11-files.list
           test "$(wc -l < /tmp/sprint11-files.list)" -gt 0
-      - name: Overlay verified Sprint 11 files
+      - name: Overlay verified Sprint 11 source files
         shell: bash
         run: |
           set -euo pipefail
-          tar --extract --gzip --file /tmp/sprint11-files.tar.gz --directory .
+          tar --extract --gzip --file /tmp/sprint11-files.tar.gz --directory . \
+            --exclude='.github/workflows/repository-validation.yml'
           git add --all
           git rm -r --ignore-unmatch .sprint11-bootstrap .sprint11-correct .sprint11-tar
-      - name: Commit exact Sprint 11 tree
+      - name: Commit exact Sprint 11 source tree
         shell: bash
         run: |
           set -euo pipefail
