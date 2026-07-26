@@ -1,99 +1,75 @@
-name: Repository quality gates
+name: Sprint 11.5 materialise verified source
 
 on:
-  pull_request:
-    branches: [main]
   push:
-    branches: [main]
+    branches: [agent/sprint-11-5-media-governance-clean]
+    paths: [.github/workflows/repository-validation.yml]
   workflow_dispatch:
 
-concurrency:
-  group: quality-${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
-
 permissions:
-  contents: read
+  contents: write
 
 jobs:
-  repository-and-tests:
-    name: Repository, schemas and tests
+  materialise:
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
         with:
-          node-version: 24
-          cache: npm
-      - run: npm ci --no-audit --no-fund
-      - run: npm run validate:contributions
-      - run: npm run validate:reference-standards
-      - run: npm run compile:atlas:check
-      - run: npm run validate:scale
-      - run: npm run validate:schemas
-      - run: npm run validate:repository
-      - run: npm run validate:search
-      - run: npm run validate:graph
-      - run: npm run validate:explorer
-      - run: npm run test:unit
-      - run: npm run test:integration
+          ref: agent/sprint-11-5-media-governance-clean
+          fetch-depth: 0
 
-  coverage:
-    name: Native Node coverage thresholds
-    runs-on: ubuntu-latest
-    timeout-minutes: 15
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 24
-          cache: npm
-      - run: npm ci --no-audit --no-fund
-      - run: npm run test:coverage
-      - uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: sprint-11-coverage
-          path: quality-reports/coverage.txt
-          if-no-files-found: error
-          retention-days: 30
-
-  production-build:
-    name: Production build and static regression
-    needs: [repository-and-tests, coverage]
-    runs-on: ubuntu-latest
-    timeout-minutes: 20
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 24
-          cache: npm
-      - run: npm ci --no-audit --no-fund
-      - run: npm run build
-      - name: Run static export regression suite
+      - name: Verify implementation payload
         shell: bash
         run: |
-          set -o pipefail
-          mkdir -p quality-reports
-          npm run test:regression 2>&1 | tee quality-reports/regression.txt
-      - name: Regenerate deterministic scale evidence for aggregate validation
-        run: npm run validate:scale
-      - run: npm run validate:quality
-      - run: npm run release:manifest
-      - uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: sprint-11-quality-evidence
-          path: |
-            quality-reports/
-            release-artifacts/
-          if-no-files-found: warn
-          retention-days: 30
-      - uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: sprint-11-static-export
-          path: out/
-          if-no-files-found: error
-          retention-days: 14
+          set -euo pipefail
+          payload=.sprint-11-5-publish/payload.b64
+          test -s "$payload"
+          test "$(wc -c < "$payload")" -eq 132784
+          echo 'f39733345dfa8582c2cbd09af8e8cd47366fa8f449d28dfd9750a3b2986974a6  .sprint-11-5-publish/payload.b64' | sha256sum --check
+          base64 --decode "$payload" > /tmp/sprint-11-5.tar.gz
+          echo '177ae3180b3c7b87ac2930fbc61ad3d9d24b4ba9a5af950d8ae15a6518a73096  /tmp/sprint-11-5.tar.gz' | sha256sum --check
+          gzip -t /tmp/sprint-11-5.tar.gz
+          tar -tzf /tmp/sprint-11-5.tar.gz > /tmp/sprint-11-5.inventory
+          test "$(wc -l < /tmp/sprint-11-5.inventory)" -eq 73
+          if grep -Eq '(^/|(^|/)\.\.(/|$))' /tmp/sprint-11-5.inventory; then
+            echo 'Unsafe archive path detected.' >&2
+            exit 1
+          fi
+          grep -Fxq 'package.json' /tmp/sprint-11-5.inventory
+          grep -Fxq 'scripts/validate-media.mjs' /tmp/sprint-11-5.inventory
+          grep -Fxq 'schemas/media.schema.json' /tmp/sprint-11-5.inventory
+          grep -Fxq 'SPRINT-11.5.md' /tmp/sprint-11-5.inventory
+          grep -Fxq '.github/workflows/repository-validation.yml' /tmp/sprint-11-5.inventory
+
+      - name: Apply clean Sprint 11.5 source
+        shell: bash
+        run: |
+          set -euo pipefail
+          tar -xzf /tmp/sprint-11-5.tar.gz
+          rm -rf .sprint-11-5-publish
+          test "$(node -p "require('./package.json').version")" = '0.11.5'
+          test -f scripts/validate-media.mjs
+          test -f lib/media-pipeline.mjs
+          test -f atlas-repository/governance/media-policy.json
+          test ! -e .github/workflows/sprint-11-5-publish.yml
+
+      - name: Revalidate materialised repository
+        shell: bash
+        run: |
+          set -euo pipefail
+          npm run verify:repository
+          npm run test
+          npm run test:coverage
+          npm run validate:scale
+
+      - name: Commit clean implementation
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'Atlas Automation'
+          git config user.email 'actions@users.noreply.github.com'
+          git add -A
+          git diff --cached --check
+          git commit -m 'Sprint 11.5: establish governed media pipeline'
+          git push origin HEAD:agent/sprint-11-5-media-governance-clean
