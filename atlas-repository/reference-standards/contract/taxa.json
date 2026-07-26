@@ -1,0 +1,22 @@
+{
+  "version": "1.0.0",
+  "status": "approved",
+  "taxa": [
+    {
+      "id": "TAX-APAL",
+      "scientificName": "Acer palmatum",
+      "rank": "species",
+      "status": "accepted",
+      "commonName": "Japanese maple",
+      "authority": "Thunb."
+    },
+    {
+      "id": "TAX-ASHI",
+      "scientificName": "Acer shirasawanum",
+      "rank": "species",
+      "status": "accepted",
+      "commonName": "Shirasawa maple",
+      "authority": "Koidz."
+    }
+  ]
+}

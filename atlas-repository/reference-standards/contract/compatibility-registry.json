@@ -1,0 +1,452 @@
+{
+  "version": "1.0.0",
+  "status": "approved",
+  "governance": "Legacy adapters preserve RC-001 through RC-005 without rewriting frozen source documents.",
+  "records": {
+    "RC-001": {
+      "kind": "legacy-adapter",
+      "reason": "Frozen before canonical RC profile v1; adapter preserves the approved document unchanged.",
+      "decisionRecord": "docs/DR-011-001_Canonical-RC-Contract-and-Legacy-Adapters.md",
+      "effectiveCompilerVersion": "2.0.0",
+      "profile": {
+        "summaryHeadings": [
+          "concise cultivar description"
+        ],
+        "identityHeadings": [
+          "cultivar identity"
+        ],
+        "morphologyHeadings": [
+          "growth form and architecture",
+          "leaf morphology"
+        ],
+        "cultivationHeadings": [
+          "cultivation guidance"
+        ],
+        "historyHeadings": [
+          "historical provenance"
+        ],
+        "propagationHeadings": [
+          "propagation and cultivar continuity"
+        ],
+        "diagnosticHeadings": [
+          "identification and comparison"
+        ],
+        "tableAliases": {
+          "acceptedName": [
+            "accepted name"
+          ],
+          "entityType": [
+            "entity type"
+          ],
+          "habit": [
+            "general form"
+          ],
+          "leafForm": [
+            "foliage type"
+          ],
+          "springColor": [
+            "spring color"
+          ],
+          "summerColor": [
+            "summer color"
+          ],
+          "autumnColor": [
+            "autumn color"
+          ],
+          "height": [
+            "common reported eventual height"
+          ],
+          "exposure": [
+            "exposure"
+          ],
+          "hardiness": [
+            "hardiness"
+          ],
+          "propagation": [
+            "propagation"
+          ],
+          "history": [
+            "historical association"
+          ],
+          "diagnostic": [
+            "identification confidence from appearance alone"
+          ],
+          "confidence": [
+            "reference standard confidence"
+          ]
+        },
+        "defaults": {
+          "spread": "Substantial spread is possible over time.",
+          "growthRate": "Slow to moderate.",
+          "flower": "Small purple to purplish-red spring flowers.",
+          "fruit": "Red samaras.",
+          "soil": "Moist but freely draining soil.",
+          "bark": "Gray-brown mature bark; bark is not the principal governed ornamental character."
+        }
+      }
+    },
+    "RC-002": {
+      "kind": "legacy-adapter",
+      "reason": "Frozen before canonical RC profile v1; adapter preserves the approved document unchanged.",
+      "decisionRecord": "docs/DR-011-001_Canonical-RC-Contract-and-Legacy-Adapters.md",
+      "effectiveCompilerVersion": "2.0.0",
+      "profile": {
+        "summaryHeadings": [
+          "diagnostic summary"
+        ],
+        "identityHeadings": [
+          "cultivar identity and nomenclature"
+        ],
+        "morphologyHeadings": [
+          "whole-tree architecture",
+          "leaf morphology"
+        ],
+        "cultivationHeadings": [
+          "cultivation"
+        ],
+        "historyHeadings": [
+          "historical provenance"
+        ],
+        "propagationHeadings": [
+          "propagation and identity continuity"
+        ],
+        "diagnosticHeadings": [
+          "identification framework"
+        ],
+        "tableAliases": {
+          "acceptedName": [
+            "accepted working name"
+          ],
+          "entityType": [
+            "entity type"
+          ],
+          "habit": [
+            "whole-tree architecture"
+          ],
+          "leafForm": [
+            "foliage classification"
+          ],
+          "springColor": [
+            "spring foliage"
+          ],
+          "summerColor": [
+            "summer foliage"
+          ],
+          "autumnColor": [
+            "autumn foliage"
+          ],
+          "height": [
+            "published north american size estimate"
+          ],
+          "spread": [
+            "published north american size estimate"
+          ],
+          "flower": [
+            "flowers"
+          ],
+          "fruit": [
+            "fruit"
+          ],
+          "exposure": [
+            "exposure"
+          ],
+          "soil": [
+            "soil"
+          ],
+          "propagation": [
+            "propagation"
+          ],
+          "history": [
+            "historical provenance"
+          ],
+          "diagnostic": [
+            "diagnostic strength"
+          ],
+          "confidence": [
+            "overall descriptive confidence"
+          ]
+        },
+        "defaults": {
+          "growthRate": "No fixed annual growth increment is approved.",
+          "hardiness": "USDA zones 5\u20138, with regional qualification.",
+          "bark": "Bark is not the principal governed ornamental character."
+        }
+      }
+    },
+    "RC-003": {
+      "kind": "legacy-adapter",
+      "reason": "Frozen before canonical RC profile v1; adapter preserves the approved document unchanged.",
+      "decisionRecord": "docs/DR-011-001_Canonical-RC-Contract-and-Legacy-Adapters.md",
+      "effectiveCompilerVersion": "2.0.0",
+      "profile": {
+        "summaryHeadings": [
+          "executive summary"
+        ],
+        "identityHeadings": [
+          "cultivar identity and nomenclature"
+        ],
+        "morphologyHeadings": [
+          "whole-plant architecture",
+          "leaf morphology",
+          "bark and stem color"
+        ],
+        "cultivationHeadings": [
+          "cultivation"
+        ],
+        "historyHeadings": [
+          "historical provenance"
+        ],
+        "propagationHeadings": [
+          "propagation and cultivar continuity"
+        ],
+        "diagnosticHeadings": [
+          "identity and authentication framework"
+        ],
+        "tableAliases": {
+          "acceptedName": [
+            "accepted working name"
+          ],
+          "entityType": [
+            "entity type"
+          ],
+          "habit": [
+            "habit"
+          ],
+          "leafForm": [
+            "leaves"
+          ],
+          "springColor": [
+            "spring foliage"
+          ],
+          "summerColor": [
+            "summer foliage"
+          ],
+          "autumnColor": [
+            "autumn foliage"
+          ],
+          "height": [
+            "published north american size"
+          ],
+          "spread": [
+            "published north american size"
+          ],
+          "flower": [
+            "flowers"
+          ],
+          "fruit": [
+            "fruit"
+          ],
+          "exposure": [
+            "exposure"
+          ],
+          "soil": [
+            "soil"
+          ],
+          "hardiness": [
+            "hardiness"
+          ],
+          "propagation": [
+            "propagation"
+          ],
+          "history": [
+            "historical provenance"
+          ],
+          "diagnostic": [
+            "principal diagnostic feature"
+          ],
+          "confidence": [
+            "descriptive confidence"
+          ],
+          "bark": [
+            "principal diagnostic feature"
+          ]
+        },
+        "defaults": {
+          "growthRate": "Slow to moderate."
+        }
+      }
+    },
+    "RC-004": {
+      "kind": "legacy-adapter",
+      "reason": "Frozen before canonical RC profile v1; adapter preserves the approved document unchanged.",
+      "decisionRecord": "docs/DR-011-001_Canonical-RC-Contract-and-Legacy-Adapters.md",
+      "effectiveCompilerVersion": "2.0.0",
+      "profile": {
+        "summaryHeadings": [
+          "executive summary"
+        ],
+        "identityHeadings": [
+          "identity and nomenclature"
+        ],
+        "morphologyHeadings": [
+          "whole-plant architecture",
+          "leaf morphology"
+        ],
+        "cultivationHeadings": [
+          "cultivation"
+        ],
+        "historyHeadings": [
+          "historical provenance"
+        ],
+        "propagationHeadings": [
+          "propagation and identity continuity"
+        ],
+        "diagnosticHeadings": [
+          "diagnostic framework"
+        ],
+        "tableAliases": {
+          "acceptedName": [
+            "accepted working name"
+          ],
+          "entityType": [
+            "plant type"
+          ],
+          "habit": [
+            "architecture"
+          ],
+          "leafForm": [
+            "leaf morphology"
+          ],
+          "springColor": [
+            "spring foliage"
+          ],
+          "summerColor": [
+            "summer foliage"
+          ],
+          "autumnColor": [
+            "autumn foliage"
+          ],
+          "height": [
+            "north american size"
+          ],
+          "spread": [
+            "north american size"
+          ],
+          "flower": [
+            "flowers"
+          ],
+          "fruit": [
+            "fruit"
+          ],
+          "exposure": [
+            "exposure"
+          ],
+          "soil": [
+            "soil"
+          ],
+          "hardiness": [
+            "hardiness"
+          ],
+          "propagation": [
+            "propagation"
+          ],
+          "history": [
+            "historical provenance"
+          ],
+          "diagnostic": [
+            "principal risk"
+          ],
+          "confidence": [
+            "descriptive confidence"
+          ]
+        },
+        "defaults": {
+          "growthRate": "Slow.",
+          "bark": "Bark is not the principal governed ornamental character."
+        }
+      }
+    },
+    "RC-005": {
+      "kind": "legacy-adapter",
+      "reason": "Frozen before canonical RC profile v1; adapter preserves the approved document unchanged.",
+      "decisionRecord": "docs/DR-011-001_Canonical-RC-Contract-and-Legacy-Adapters.md",
+      "effectiveCompilerVersion": "2.0.0",
+      "profile": {
+        "summaryHeadings": [
+          "executive summary"
+        ],
+        "identityHeadings": [
+          "taxonomic identity"
+        ],
+        "morphologyHeadings": [
+          "whole-plant architecture",
+          "leaf morphology"
+        ],
+        "cultivationHeadings": [
+          "light climate and color interaction",
+          "soil and moisture"
+        ],
+        "historyHeadings": [
+          "historical provenance"
+        ],
+        "propagationHeadings": [
+          "propagation and cultivar continuity"
+        ],
+        "diagnosticHeadings": [
+          "diagnostic framework"
+        ],
+        "tableAliases": {
+          "acceptedName": [
+            "accepted working name"
+          ],
+          "entityType": [
+            "entity type"
+          ],
+          "habit": [
+            "architecture"
+          ],
+          "leafForm": [
+            "leaf outline"
+          ],
+          "springColor": [
+            "spring foliage"
+          ],
+          "summerColor": [
+            "summer foliage"
+          ],
+          "autumnColor": [
+            "autumn foliage"
+          ],
+          "height": [
+            "published mature size"
+          ],
+          "spread": [
+            "published mature size"
+          ],
+          "flower": [
+            "flowers"
+          ],
+          "fruit": [
+            "fruit"
+          ],
+          "exposure": [
+            "exposure"
+          ],
+          "soil": [
+            "soil"
+          ],
+          "hardiness": [
+            "hardiness"
+          ],
+          "propagation": [
+            "propagation"
+          ],
+          "history": [
+            "historical introduction"
+          ],
+          "diagnostic": [
+            "principal identifying feature"
+          ],
+          "confidence": [
+            "descriptive confidence"
+          ]
+        },
+        "defaults": {
+          "growthRate": "Slow.",
+          "bark": "Bark is not the principal governed ornamental character."
+        }
+      }
+    }
+  },
+  "exceptions": []
+}

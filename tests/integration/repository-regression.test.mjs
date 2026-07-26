@@ -8,9 +8,12 @@ import { ROOT, repositoryFixture } from '../helpers/repository-fixture.mjs';
 const fixture = repositoryFixture();
 const sha256 = value => crypto.createHash('sha256').update(value).digest('hex');
 
-test('repository manifest preserves Sprint 9 governed invariants', () => {
-  assert.equal(fixture.manifest.repositoryVersion, '0.9.0');
-  assert.equal(fixture.manifest.compiler.version, '1.2.0');
+test('repository manifest preserves Sprint 11 scalable compiler invariants', () => {
+  assert.equal(fixture.manifest.repositoryVersion, '0.11.0');
+  assert.equal(fixture.manifest.compiler.version, '2.0.0');
+  assert.equal(fixture.manifest.compiler.atomicPublication, true);
+  assert.equal(fixture.manifest.contract.profile, 'canonical-rc-v1');
+  assert.equal(fixture.manifest.contract.effectiveFromRecord, 'RC-006');
   assert.equal(fixture.manifest.objectTotal, 235);
   assert.deepEqual(fixture.manifest.objectCounts, {
     cultivars: 5,
@@ -26,8 +29,10 @@ test('repository manifest preserves Sprint 9 governed invariants', () => {
     editorialWorkflows: 5,
     editorialReviews: 25
   });
-  assert.equal(fixture.manifest.graph.nodes, 7);
-  assert.equal(fixture.manifest.graph.edges, 26);
+  assert.equal(fixture.manifest.objectCounts.assertions, fixture.manifest.objectCounts.cultivars * 22);
+  assert.equal(fixture.manifest.objectCounts.evidence, fixture.manifest.objectCounts.cultivars * 7);
+  assert.equal(fixture.manifest.graph.nodes, fixture.cultivars.length + fixture.taxa.length);
+  assert.equal(fixture.manifest.graph.edges, fixture.relationships.length);
 });
 
 test('object index covers every first-class repository object exactly once', () => {
@@ -83,6 +88,12 @@ test('cultivar, assertion, evidence and source references remain closed', () => 
   }
   for (const evidence of fixture.evidence) {
     assert.equal(sourceIds.has(evidence.sourceId), true);
+    assert.ok((evidence.sourceIds || []).every(id => sourceIds.has(id)));
+    assert.ok((evidence.sourceLocations || []).every(location => sourceIds.has(location.sourceId)));
+    if (evidence.sourceIds || evidence.sourceLocations) {
+      assert.ok(Array.isArray(evidence.sourceIds) && evidence.sourceIds.length >= 2);
+      assert.equal(evidence.sourceLocations.length, evidence.sourceIds.length);
+    }
     assert.ok(evidence.assertionIds.every(id => assertionIds.has(id)));
   }
 });

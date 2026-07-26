@@ -17,7 +17,10 @@ const exists = relative => fs.existsSync(path.join(ROOT, relative));
 
 check(packageJson.version === gates.applicationVersion, 'application version matches governed quality configuration', packageJson.version);
 check(lock.version === packageJson.version && lock.packages?.['']?.version === packageJson.version, 'package lock is synchronised', `${lock.version}/${lock.packages?.['']?.version}`);
-check(manifest.repositoryVersion === gates.repositoryVersion, 'repository data version remains unchanged', manifest.repositoryVersion);
+check(manifest.repositoryVersion === gates.repositoryVersion, 'repository data version matches governed quality configuration', manifest.repositoryVersion);
+check(manifest.compiler.version === gates.compilerVersion, 'compiler version matches governed quality configuration', manifest.compiler.version);
+check(manifest.compiler.atomicPublication === true, 'compiler publication is transactional');
+check(manifest.contract?.profile === 'canonical-rc-v1', 'canonical RC contract is active');
 check(manifest.objectTotal === gates.repositoryInvariants.objectTotal, 'repository object total is stable', manifest.objectTotal);
 check(manifest.objectCounts.cultivars === gates.repositoryInvariants.cultivars, 'cultivar count is stable');
 check(manifest.objectCounts.assertions === gates.repositoryInvariants.assertions, 'assertion count is stable');
@@ -32,11 +35,14 @@ for (const file of [
   'tests/unit/knowledge-graph.test.mjs',
   'tests/unit/json-schema-validator.test.mjs',
   'tests/unit/atlas-explorer.test.mjs',
+  'tests/unit/reference-standard-contract.test.mjs',
   'tests/integration/repository-regression.test.mjs',
   'tests/integration/compiler-determinism.test.mjs',
+  'tests/integration/compiler-scaling.test.mjs',
   'tests/integration/schema-conformance.test.mjs',
   'tests/regression/static-export.test.mjs',
   'scripts/validate-schemas.mjs',
+  'scripts/scale-test-compiler.mjs',
   'scripts/validate-explorer.mjs',
   'scripts/run-coverage.mjs',
   'scripts/generate-release-manifest.mjs',
@@ -45,11 +51,15 @@ for (const file of [
   'docs/QA-001_Testing-and-Quality-Infrastructure_v1.0.md',
   'docs/EXPLORER-001_Interactive-Atlas-Explorer_v1.0.md',
   'SPRINT-9.5.md',
-  'SPRINT-10.md'
+  'SPRINT-10.md',
+  'SPRINT-11.md',
+  'docs/ROADMAP-002_Post-Sprint-10_RC-020-Visual-Atlas-Roadmap_v1.0.md',
+  'docs/COMPILER-002_Scalable-Reference-Standard-Ingestion_v1.0.md',
+  'docs/DR-011-001_Canonical-RC-Contract-and-Legacy-Adapters.md'
 ]) check(exists(file), `required quality file ${file}`);
 
 const workflow = exists('.github/workflows/repository-validation.yml') ? fs.readFileSync(path.join(ROOT, '.github/workflows/repository-validation.yml'), 'utf8') : '';
-for (const command of ['npm ci', 'validate:schemas', 'validate:explorer', 'test:coverage', 'test:regression', 'validate:quality']) check(workflow.includes(command), `CI includes ${command}`);
+for (const command of ['npm ci', 'validate:reference-standards', 'validate:scale', 'validate:schemas', 'validate:explorer', 'test:coverage', 'test:regression', 'validate:quality']) check(workflow.includes(command), `CI includes ${command}`);
 const releaseWorkflow = exists('.github/workflows/release-readiness.yml') ? fs.readFileSync(path.join(ROOT, '.github/workflows/release-readiness.yml'), 'utf8') : '';
 for (const token of ['workflow_dispatch', 'refs/tags/v', 'release:manifest', 'upload-artifact', 'gh release create']) check(releaseWorkflow.includes(token), `release workflow includes ${token}`);
 
@@ -63,6 +73,16 @@ for (const temporary of [
   '.github/workflows/sprint-10-lock-sync.yml'
 ]) check(!exists(temporary), `temporary file removed: ${temporary}`);
 
+
+const scaleReportPath = path.join(ROOT, 'quality-reports', 'compiler-scale.json');
+check(fs.existsSync(scaleReportPath), 'compiler scale report exists', 'run npm run validate:scale');
+if (fs.existsSync(scaleReportPath)) {
+  const scale = readJson(scaleReportPath);
+  const targets = scale.targets?.map(item => item.targetRecords) || [];
+  check(JSON.stringify(targets) === JSON.stringify(gates.compilerScaleTargets), 'compiler scale targets pass', targets.join(', '));
+  check(scale.targets.every(item => item.uniqueObjectIds && item.searchRecords === item.targetRecords), 'compiler scale integrity checks pass');
+}
+
 const outputExists = exists('out');
 check(outputExists, 'production static export exists', 'run npm run build before npm run validate:quality');
 if (outputExists) {
@@ -75,7 +95,7 @@ if (outputExists) {
   }
 }
 
-console.log('Japanese Maple Atlas — Sprint 10 quality infrastructure validation');
+console.log('Japanese Maple Atlas — Sprint 11 quality infrastructure validation');
 for (const line of checks) console.log(line);
 if (failures.length) {
   console.error(`\nErrors: ${failures.length}`);

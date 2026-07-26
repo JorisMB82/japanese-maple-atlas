@@ -1,8 +1,8 @@
 {
-  "schemaVersion": "1.1.0",
+  "schemaVersion": "1.2.0",
   "nodeVersion": 24,
-  "applicationVersion": "0.10.1",
-  "repositoryVersion": "0.9.0",
+  "applicationVersion": "0.11.0",
+  "repositoryVersion": "0.11.0",
   "coverage": {
     "lines": 80,
     "functions": 80,
@@ -44,17 +44,31 @@
     "validate:explorer",
     "validate:quality",
     "release:manifest",
-    "verify"
+    "verify",
+    "compile:atlas:preflight",
+    "compile:atlas:dry-run",
+    "validate:reference-standards",
+    "validate:scale"
   ],
   "releaseFiles": [
     "README.md",
-    "SPRINT-10.md",
-    "docs/EXPLORER-001_Interactive-Atlas-Explorer_v1.0.md",
-    "docs/UX-001_Sprint-10-Usability-Remediation_v1.0.md",
+    "SPRINT-11.md",
+    "docs/ROADMAP-002_Post-Sprint-10_RC-020-Visual-Atlas-Roadmap_v1.0.md",
+    "docs/COMPILER-002_Scalable-Reference-Standard-Ingestion_v1.0.md",
+    "docs/DR-011-001_Canonical-RC-Contract-and-Legacy-Adapters.md",
+    "atlas-repository/reference-standards/contract/rc-contract.json",
+    "atlas-repository/reference-standards/contract/compatibility-registry.json",
+    "atlas-repository/reference-standards/contract/RC-TEMPLATE.md",
     "atlas-repository/manifest.json",
     "atlas-repository/hashes.json",
     "atlas-repository/indexes/object-index.json",
     "atlas-repository/indexes/search-index.json",
     "atlas-repository/indexes/graph-index.json"
+  ],
+  "compilerVersion": "2.0.0",
+  "compilerScaleTargets": [
+    20,
+    25,
+    150
   ]
 }

@@ -107,7 +107,7 @@ check(summary.relationshipCount > 0, 'research set summary aggregates graph link
 const exportPayload = explorerExportPayload(projected, { ...state, selected: ['seiryu', 'crimson-queen'] }, manifest);
 check(exportPayload.exportType === 'japanese-maple-atlas-explorer-set', 'export payload type is governed');
 check(exportPayload.schemaVersion === '1.0.0' && exportPayload.records.length === 2, 'export payload schema and record count are stable');
-check(exportPayload.repository.version === '0.9.0' && exportPayload.repository.hash === manifest.repositoryHash, 'export payload identifies repository provenance');
+check(exportPayload.repository.version === '0.11.0' && exportPayload.repository.hash === manifest.repositoryHash, 'export payload identifies repository provenance');
 check(exportPayload.records.every(item => item.repositoryLinks.profile && item.repositoryLinks.graph), 'export payload retains canonical application links');
 check(exportPayload.explorerState.comparisonPair.compareA === 'seiryu', 'export payload identifies the selected comparison pair');
 check(normaliseComparisonPair(['seiryu', 'crimson-queen', 'aureum'], 'aureum', 'seiryu').compareA === 'aureum', 'comparison pair is adjustable within a five-record research set');

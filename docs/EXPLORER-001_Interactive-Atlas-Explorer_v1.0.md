@@ -108,4 +108,4 @@ Source-invariant tests verify the mobile navigation disclosure, advanced-control
 
 ## Extension rule
 
-This remediation is not Sprint 11. Future media or IIIF work must be separately authorized and must continue to read governed repository outputs, preserve uncertainty and avoid converting derivative user state into silent editorial changes.
+Sprint 11 compiler generalisation remains an independent repository-layer change. Future media or IIIF work must continue to read governed repository outputs, preserve uncertainty and avoid converting derivative user state into silent editorial changes.

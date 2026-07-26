@@ -1,0 +1,26 @@
+{
+  "recordId": "RC-XXX",
+  "status": "approved",
+  "sources": [
+    {
+      "id": "SRC-RC-XXX-001",
+      "title": "Source title",
+      "citation": "Complete citation",
+      "sourceType": "institutional-web",
+      "authority": "Publishing institution or author",
+      "url": "https://example.org/source",
+      "accessedAt": "YYYY-MM-DD",
+      "domainScope": ["identity", "morphology"],
+      "sourceLocations": ["Section or page locator"]
+    }
+  ],
+  "evidenceMap": {
+    "identity": ["SRC-RC-XXX-001"],
+    "morphology": ["SRC-RC-XXX-001"],
+    "seasonal": ["SRC-RC-XXX-001"],
+    "dimensions": ["SRC-RC-XXX-001"],
+    "cultivation": ["SRC-RC-XXX-001"],
+    "history": ["SRC-RC-XXX-001"],
+    "diagnosis": ["SRC-RC-XXX-001"]
+  }
+}

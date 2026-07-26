@@ -2,22 +2,23 @@
 
 An evidence-aware botanical knowledge platform for finding, comparing and researching Japanese maple cultivars.
 
-## Sprint 10 usability remediation / application v0.10.1
+## Sprint 11 scalable ingestion / application v0.11.0
 
-Sprint 10 remains complete. Application v0.10.1 is a focused usability-remediation release before external testing. It preserves the repository-first architecture while improving first-time comprehension and mobile use:
+Sprint 11 removes the five-record compiler boundary while preserving the five frozen Reference Standards unchanged. Atlas Compiler 2.0.0 now provides:
 
-- accessible mobile navigation with every destination visible in one menu;
-- plain-language home, Explorer, graph, Compare and Repository introductions;
-- progressive disclosure for advanced Explorer filters, guided examples and evidence metrics;
-- explicit A/B cultivar selection from a five-item research set;
-- inline saved-view naming instead of `window.prompt()`;
-- print/PDF, CSV and provenance-preserving JSON exports;
-- responsive, copyable repository hashes without page-wide overflow;
-- in-page navigation on long cultivar records;
-- clearer Compare loading, empty and recovery states;
-- targeted unit and static-export regression coverage.
+- an approved canonical RC-006+ contract and template with explicit synonym, relationship, source and media registers;
+- external legacy adapters for RC-001 through RC-005;
+- a governed exception registry instead of cultivar-specific JavaScript branches;
+- per-record, record-scoped underlying-source provenance, source locators and evidence-domain mappings;
+- per-record governed media sidecars;
+- automatic discovery of approved Reference Standards;
+- dynamic object totals, search coverage and graph inventory;
+- record-level preflight and dry-run diagnostics;
+- transactional generated-output publication with rollback protection;
+- conforming RC-006 integration proof;
+- synthetic compiler validation at 20, 25 and 150 records.
 
-The repository data remains at v0.9.0 with 235 first-class objects. The five frozen Reference Standards, assertions, evidence, sources and Sprint 9 graph are unchanged. Sprint 11 has not started.
+The repository remains at five public cultivars and 235 first-class objects, but the repository contract is now v0.11.0 and ready for RC-006 production. Sprint 11.5 media governance and new botanical content remain separate next steps.
 
 ## Repository principle
 
@@ -50,13 +51,16 @@ Technical evidence, relationship rationale, confidence, repository versions and 
 ## Quality commands
 
 ```bash
-npm run verify:repository   # contributor, compiler, schema, repository, search, graph and explorer checks
+npm run validate:reference-standards # canonical RC and sidecar preflight
+npm run compile:atlas:dry-run        # build and report without publishing
+npm run verify:repository            # contributor, compiler, schema, repository, search, graph and explorer checks
 npm run validate:explorer   # explorer projection, state, comparison, saved-view and export checks
 npm run test:unit           # pure services and usability source invariants
 npm run test:integration    # repository, compiler and schema boundaries
 npm run test:coverage       # governed native Node coverage thresholds
 npm run build               # validated production static export
 npm run test:regression     # exported routes, links, content and assets
+npm run validate:scale      # synthetic 20-, 25- and 150-record compiler proof
 npm run validate:quality    # quality-infrastructure and release invariants
 npm run verify              # complete local release-readiness sequence
 npm run release:manifest    # release evidence and SHA-256 checksums
@@ -85,13 +89,13 @@ Do not edit generated JSON under `atlas-repository/` or `lib/repository-registry
 
 ## Continuous integration and releases
 
-Every pull request and `main` update runs repository validation, schema conformance, search, graph and Explorer validation, unit and integration tests, coverage thresholds, the production build and static-export regression tests. Quality and release evidence are retained as GitHub Actions artifacts.
+Every pull request and `main` update runs Reference Standard preflight, compiler drift and scale validation, repository and schema conformance, search, graph and Explorer validation, unit and integration tests, coverage thresholds, the production build and static-export regression tests. Quality and release evidence are retained as GitHub Actions artifacts.
 
 The release-readiness workflow can be run manually. A pushed `v*` tag executes the complete verification chain, packages the static export, generates checksums and creates a GitHub release from the verified tag.
 
 ## Repository structure
 
-- `atlas-repository/reference-standards/` — frozen canonical cultivar inputs
+- `atlas-repository/reference-standards/` — frozen cultivar inputs plus governed contract, source-provenance and media sidecars
 - `atlas-repository/relationship-standards/` — governed relationship vocabulary and specifications
 - `editorial-inbox/` — governed contributor and submission inputs
 - `app/explorer/` — integrated interactive research workspace
@@ -101,7 +105,8 @@ The release-readiness workflow can be run manually. A pushed `v*` tag executes t
 - `tests/unit/` — search, graph, Explorer, usability and schema-validator behaviour
 - `tests/integration/` — repository, compiler and schema boundary tests
 - `tests/regression/` — production static-export regression tests
-- `scripts/compile-atlas.mjs` — deterministic repository and graph compiler
+- `scripts/compile-atlas.mjs` — deterministic, contract-driven and transactional repository compiler
+- `scripts/scale-test-compiler.mjs` — synthetic 20-, 25- and 150-record scale validation
 - `scripts/validate-explorer.mjs` — Explorer-state and repository-projection validation
 - `scripts/validate-quality.mjs` — quality-infrastructure verification
 - `.github/workflows/repository-validation.yml` — pull-request and production quality gates
@@ -109,3 +114,6 @@ The release-readiness workflow can be run manually. A pushed `v*` tag executes t
 - `docs/EXPLORER-001_Interactive-Atlas-Explorer_v1.0.md` — Explorer architecture and operating boundary
 - `docs/UX-001_Sprint-10-Usability-Remediation_v1.0.md` — remediation decisions, tests and residual limits
 - `docs/QA-001_Testing-and-Quality-Infrastructure_v1.0.md` — quality architecture and operations
+- `docs/ROADMAP-002_Post-Sprint-10_RC-020-Visual-Atlas-Roadmap_v1.0.md` — locked RC-020 governing roadmap
+- `docs/COMPILER-002_Scalable-Reference-Standard-Ingestion_v1.0.md` — canonical ingestion and publication contract
+- `SPRINT-11.md` — Sprint 11 implementation and review boundary

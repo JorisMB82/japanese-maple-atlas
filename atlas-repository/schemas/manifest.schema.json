@@ -9,6 +9,7 @@
     "release",
     "generatedAt",
     "compiler",
+    "contract",
     "source",
     "editorial",
     "graph",
@@ -19,43 +20,150 @@
     "notes"
   ],
   "properties": {
-    "repositoryVersion": { "const": "0.9.0" },
-    "release": { "type": "string" },
-    "generatedAt": { "type": "string" },
+    "repositoryVersion": {
+      "const": "0.11.0"
+    },
+    "release": {
+      "type": "string"
+    },
+    "generatedAt": {
+      "type": "string"
+    },
     "compiler": {
       "type": "object",
-      "required": ["name", "version", "deterministic"],
+      "required": [
+        "name",
+        "version",
+        "deterministic",
+        "atomicPublication"
+      ],
       "properties": {
-        "name": { "const": "Atlas Compiler" },
-        "version": { "const": "1.2.0" },
-        "deterministic": { "const": true }
-      }
+        "name": {
+          "const": "Atlas Compiler"
+        },
+        "version": {
+          "const": "2.0.0"
+        },
+        "deterministic": {
+          "const": true
+        },
+        "atomicPublication": {
+          "const": true
+        }
+      },
+      "additionalProperties": false
+    },
+    "contract": {
+      "type": "object",
+      "required": [
+        "version",
+        "profile",
+        "effectiveFromRecord",
+        "legacyAdapters",
+        "governedExceptions"
+      ],
+      "properties": {
+        "version": {
+          "type": "string"
+        },
+        "profile": {
+          "const": "canonical-rc-v1"
+        },
+        "effectiveFromRecord": {
+          "const": "RC-006"
+        },
+        "legacyAdapters": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "governedExceptions": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "additionalProperties": false
     },
     "source": {
       "type": "object",
-      "required": ["type", "records", "inputHash"],
+      "required": [
+        "type",
+        "records",
+        "canonicalSources",
+        "underlyingSources",
+        "inputHash"
+      ],
       "properties": {
-        "records": { "const": 5 },
-        "inputHash": { "type": "string", "pattern": "^[a-f0-9]{64}$" }
-      }
+        "type": {
+          "const": "frozen-reference-standard-cohort"
+        },
+        "records": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "canonicalSources": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "underlyingSources": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "inputHash": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      },
+      "additionalProperties": false
     },
     "editorial": {
       "type": "object",
-      "required": ["contributors", "submissions", "workflows", "reviews", "lifecycleStages", "reviewPasses"]
+      "required": [
+        "contributors",
+        "submissions",
+        "workflows",
+        "reviews",
+        "lifecycleStages",
+        "reviewPasses"
+      ]
     },
     "graph": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["nodes", "edges", "relationshipTypes", "categories", "graphHash"],
+      "required": [
+        "nodes",
+        "edges",
+        "relationshipTypes",
+        "categories",
+        "graphHash"
+      ],
       "properties": {
-        "nodes": { "const": 7 },
-        "edges": { "const": 26 },
-        "relationshipTypes": { "const": 10 },
+        "nodes": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "edges": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "relationshipTypes": {
+          "type": "integer",
+          "minimum": 0
+        },
         "categories": {
           "type": "object",
-          "required": ["taxonomy", "morphology", "architecture", "seasonal-expression", "cultivation", "diagnosis"]
+          "required": [
+            "taxonomy",
+            "morphology",
+            "architecture",
+            "seasonal-expression",
+            "cultivation",
+            "diagnosis"
+          ]
         },
-        "graphHash": { "type": "string", "pattern": "^[a-f0-9]{64}$" }
+        "graphHash": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
       }
     },
     "objectCounts": {
@@ -73,11 +181,25 @@
         "submissions",
         "editorialWorkflows",
         "editorialReviews"
-      ]
+      ],
+      "additionalProperties": {
+        "type": "integer",
+        "minimum": 0
+      }
     },
-    "objectTotal": { "const": 235 },
-    "repositoryHash": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
-    "canonicality": { "const": "canonical-compiled" },
-    "notes": { "type": "string" }
+    "objectTotal": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "repositoryHash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "canonicality": {
+      "const": "canonical-compiled"
+    },
+    "notes": {
+      "type": "string"
+    }
   }
 }

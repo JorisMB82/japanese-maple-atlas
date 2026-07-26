@@ -142,6 +142,13 @@ vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 .vite/
 
-# Sprint 9.5 generated quality evidence
+# Sprint-generated quality evidence
 quality-reports/
 release-artifacts/
+
+# Atlas compiler transactional staging
+.atlas-compiler-stage-*/
+.atlas-compiler-backup-*/
+
+# macOS
+.DS_Store

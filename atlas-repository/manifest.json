@@ -1,16 +1,26 @@
 {
-  "repositoryVersion": "0.9.0",
-  "release": "Sprint 9 — Knowledge graph and cultivar relationships",
-  "generatedAt": "2026-07-25",
+  "repositoryVersion": "0.11.0",
+  "release": "Sprint 11 — Compiler and Repository Scale Generalisation",
+  "generatedAt": "2026-07-26",
   "compiler": {
     "name": "Atlas Compiler",
-    "version": "1.2.0",
-    "deterministic": true
+    "version": "2.0.0",
+    "deterministic": true,
+    "atomicPublication": true
+  },
+  "contract": {
+    "version": "1.0.0",
+    "profile": "canonical-rc-v1",
+    "effectiveFromRecord": "RC-006",
+    "legacyAdapters": 5,
+    "governedExceptions": 0
   },
   "source": {
     "type": "frozen-reference-standard-cohort",
     "records": 5,
-    "inputHash": "0a26583b49d13f17d324e8b26c72dbcc943c2d034213edf25a05dbca24821646"
+    "canonicalSources": 5,
+    "underlyingSources": 0,
+    "inputHash": "41daa6d7dfe13c42ec580e3772d3219a450fd0b01761f35aacf346249758f13a"
   },
   "editorial": {
     "contributors": 2,
@@ -51,5 +61,5 @@
   "objectTotal": 235,
   "repositoryHash": "a0ca2ee5e21122937003887086f376e49e598dc9575c5c04623a569e0b1962f4",
   "canonicality": "canonical-compiled",
-  "notes": "RC-001 through RC-005 remain canonical compiled records. Sprint 9 adds governed, evidence-linked taxonomic, morphological, architectural, seasonal, cultivation and diagnostic relationships."
+  "notes": "Sprint 11 removes the five-record compiler boundary. 5 approved Reference Standards compile through the canonical contract, legacy adapters and governed sidecars without cultivar-specific JavaScript branches."
 }
