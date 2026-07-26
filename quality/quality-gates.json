@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.1.0",
   "nodeVersion": 24,
-  "applicationVersion": "0.10.0",
+  "applicationVersion": "0.10.1",
   "repositoryVersion": "0.9.0",
   "coverage": {
     "lines": 80,
@@ -50,6 +50,7 @@
     "README.md",
     "SPRINT-10.md",
     "docs/EXPLORER-001_Interactive-Atlas-Explorer_v1.0.md",
+    "docs/UX-001_Sprint-10-Usability-Remediation_v1.0.md",
     "atlas-repository/manifest.json",
     "atlas-repository/hashes.json",
     "atlas-repository/indexes/object-index.json",

@@ -2,77 +2,65 @@
 
 ## Status
 
-Implementation complete and ready for review.
+Sprint 10 is complete. A focused post-Sprint-10 usability remediation is complete in application v0.10.1. Sprint 11 has not started.
 
-## Capability implemented
+## Original capability
 
 - dedicated `/explorer` research workspace;
 - semantic search and contextual repository facets;
-- shareable URL state across query, filters, sort, view, lens, focus and selection;
-- four coordinated views: gallery, trait matrix, seasonal expression and relationships;
-- six analysis lenses: overview, identity, morphology, seasonal, cultivation and evidence;
-- focused record inspector with direct profile and graph access;
-- five guided investigation presets;
+- deterministic, shareable URL state;
+- gallery, trait-table, seasonal and relationship views;
+- focused record inspection and guided starting points;
 - browser-local saved views;
-- governed research sets containing up to five cultivars;
-- direct comparison handoff for the first two selected cultivars;
-- portable JSON export with repository version, hash and canonicality;
-- deterministic explorer-state and projection services;
-- dedicated explorer validation and unit coverage;
-- production static-export regression coverage;
-- updated navigation, home page, about page, quality gates and documentation.
+- research sets containing up to five cultivars;
+- comparison and graph handoffs;
+- repository-aware export;
+- dedicated validation, tests and static-export regression coverage.
+
+## Post-Sprint-10 usability remediation
+
+The independent expert audit was treated as a pre-user-testing heuristic review, not observed user research. Every finding was checked against current `main`, the production application and the supplied responsive evidence before implementation.
+
+Implemented corrections:
+
+- replaced the horizontally scrolling mobile header with a disclosed, keyboard-operable menu containing all destinations;
+- rewrote first-touch copy around horticultural tasks, with repository and governance detail retained in secondary disclosures;
+- reduced initial Explorer density through progressive disclosure while preserving all expert controls and deterministic URL state;
+- made repository hashes wrap within constrained containers and added full-value copy controls;
+- added explicit A/B comparison selection inside the five-item research set and URL handoff;
+- added cultivar-record anchor navigation;
+- improved Compare loading, invalid-data and recovery states;
+- replaced browser `prompt()` saved-view naming with an inline dialog and validation;
+- added print/PDF and CSV export alongside provenance-preserving JSON;
+- increased mobile tap-target and focus visibility coverage;
+- shortened repetitive image alternative text while keeping the visible illustration disclaimer.
 
 ## Version boundary
 
-- Application version: 0.10.0
+- Application version: 0.10.1
 - Repository data version: 0.9.0
 - Atlas Compiler: 1.2.0
 - First-class repository objects: 235
 
-Sprint 10 does not alter the five frozen Reference Standards, compiled assertions, evidence records, source records, graph relationships or repository hashes. It adds a derived interactive workspace over those governed objects.
+The remediation does not alter the five frozen Reference Standards, compiled assertions, evidence, sources, taxonomy, graph relationships, generated repository JSON or repository hashes.
 
-## Explorer contract
+## Explorer contract after remediation
 
 - Workspace state is validated against the current cultivar inventory.
-- URL state is deterministic and shareable.
-- Saved views remain local to the browser.
-- Research sets are capped at five cultivar records.
-- JSON exports identify repository provenance and remain derivative research aids.
-- Relationship views preserve edge rationale, confidence and evidence context.
+- URL state includes the selected research set and explicit comparison A/B pair.
+- Saved views remain local to the browser and use a validated inline name.
+- Research sets remain capped at five cultivar records.
+- Advanced filters, examples, evidence metrics and technical explanations use progressive disclosure.
+- Print/PDF and CSV provide human-readable output; JSON retains repository provenance.
+- Relationship views preserve rationale, confidence, strength and evidence context.
 - Seasonal expression remains separated into spring, summer, autumn and winter interest.
 
-## Final verification
+## Completion rule
 
-- Contributor input validation: PASS.
-- Deterministic compiler drift check: PASS.
-- JSON Schema conformance validation: PASS.
-- Repository integrity validation: PASS — 235 first-class objects.
-- Semantic-search validation: PASS.
-- Knowledge-graph validation: PASS — 7 nodes, 26 edges and 10 relationship types.
-- Interactive-explorer validation: PASS — 5 projected cultivars and 5 guided investigations.
-- Unit tests: PASS — 34 of 34 tests in the native coverage suite.
-- Integration tests: PASS.
-- Native Node aggregate coverage: PASS — 98.53% lines, 82.74% branches and 97.81% functions.
-- Production Next.js static build: PASS.
-- Static-export regression suite: PASS, including `/explorer`, internal links and Next.js assets.
-- Quality-infrastructure validation: PASS.
-- Release manifest and Sprint 10 CI artifacts: PASS.
-- `package.json` and `package-lock.json`: synchronised at 0.10.0.
-- Vercel preview deployment: READY.
-- Temporary Sprint 10 synchronisation and patch workflows: removed.
-
-## CI artifacts
-
-The final quality workflow retains:
-
-1. `sprint-10-coverage` — native Node test and coverage evidence;
-2. `sprint-10-quality-evidence` — regression output, release manifest, summary and checksums;
-3. `sprint-10-static-export` — the complete production-ready static website.
-
-## Review and merge
+The remediation is complete only after contributor validation, compiler drift checking, schemas, repository integrity, search, graph, Explorer validation, unit tests, integration tests, coverage, production static build, static-export regression, quality validation and release-manifest generation all pass.
 
 Use **Squash and merge** with:
 
-`Sprint 10: implement interactive Atlas explorer`
+`Sprint 10: remediate usability findings before external testing`
 
-After Sprint 10 is merged, halt feature development and conduct the planned user-testing exercise before beginning Sprint 11 — Media Pipeline and IIIF Readiness.
+After merge, stop and conduct external user testing before considering Sprint 11 — Media Pipeline and IIIF Readiness.

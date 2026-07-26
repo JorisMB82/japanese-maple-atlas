@@ -4,8 +4,11 @@ import {
   EXPLORER_PRESETS,
   applyExplorerPreset,
   buildExplorerSummary,
+  createSavedExplorerView,
+  explorerCsv,
   explorerExportPayload,
   explorerLensFields,
+  normaliseComparisonPair,
   normaliseExplorerState,
   parseExplorerSearchParams,
   projectCultivarForExplorer,
@@ -78,6 +81,7 @@ const state = normaliseExplorerState({
   selected: ['seiryu', 'crimson-queen', 'unknown', 'seiryu']
 }, slugs);
 check(state.selected.join(',') === 'seiryu,crimson-queen', 'selection is unique, valid and ordered');
+check(state.compareA === 'seiryu' && state.compareB === 'crimson-queen', 'comparison pair defaults deterministically and remains explicit');
 check(state.focus === 'seiryu' && state.view === 'matrix' && state.lens === 'morphology', 'focus and display state are validated');
 const encoded = serialiseExplorerState(state, slugs);
 const decoded = parseExplorerSearchParams(encoded, slugs);
@@ -105,6 +109,11 @@ check(exportPayload.exportType === 'japanese-maple-atlas-explorer-set', 'export 
 check(exportPayload.schemaVersion === '1.0.0' && exportPayload.records.length === 2, 'export payload schema and record count are stable');
 check(exportPayload.repository.version === '0.9.0' && exportPayload.repository.hash === manifest.repositoryHash, 'export payload identifies repository provenance');
 check(exportPayload.records.every(item => item.repositoryLinks.profile && item.repositoryLinks.graph), 'export payload retains canonical application links');
+check(exportPayload.explorerState.comparisonPair.compareA === 'seiryu', 'export payload identifies the selected comparison pair');
+check(normaliseComparisonPair(['seiryu', 'crimson-queen', 'aureum'], 'aureum', 'seiryu').compareA === 'aureum', 'comparison pair is adjustable within a five-record research set');
+check(createSavedExplorerView('  Shade study  ', state, 7)?.label === 'Shade study', 'saved views use validated inline names');
+const csv = explorerCsv(projected, ['seiryu', 'crimson-queen']);
+check(csv.split('\n').length === 3 && csv.includes('Scientific name'), 'human-readable CSV export is stable');
 
 for (const file of [
   'app/explorer/page.js',

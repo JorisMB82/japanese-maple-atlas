@@ -118,17 +118,17 @@ export default function CultivarExplorer({ cultivars, facets = {}, examples = []
 
   return <section aria-labelledby="directory-heading">
     <div className="sectionHeading">
-      <div><div className="kicker">Semantic repository discovery</div><h2 id="directory-heading">Cultivar explorer</h2></div>
+      <div><div className="kicker">Quick search on this page</div><h2 id="directory-heading">Browse the five pilot cultivars</h2><p>Use the full <a href="/explorer">Cultivar Explorer</a> for saved views, trait tables, relationships and research-set export.</p></div>
       <p aria-live="polite">{filtered.length} of {cultivars.length} records</p>
     </div>
 
     <div className="searchPanel semanticSearchPanel">
       <div className="searchLeadRow">
         <label className="searchField">
-          <span>Search names, traits, colours and governed concepts</span>
+          <span>Search these five cultivars by name or trait</span>
           <input
             aria-label="Search cultivars"
-            placeholder='Try “laceleaf upright”, “weeping red” or leaf:laceleaf -habit:cascading'
+            placeholder='Try “upright”, “weeping red” or “partial shade”'
             value={state.query}
             onChange={event => update('query', event.target.value)}
           />
@@ -168,8 +168,8 @@ export default function CultivarExplorer({ cultivars, facets = {}, examples = []
 
       <div className="searchToolbar">
         <div className="searchToolbarLeft">
-          <button className="textButton" type="button" onClick={() => setShowAdvanced(value => !value)}>{showAdvanced ? 'Hide advanced filters' : 'Show advanced filters'}</button>
-          {active && <button className="textButton" type="button" onClick={reset}>Clear discovery state</button>}
+          <button className="textButton" type="button" onClick={() => setShowAdvanced(value => !value)}>{showAdvanced ? 'Hide more filters' : 'Show more filters'}</button>
+          {active && <button className="textButton" type="button" onClick={reset}>Clear quick search</button>}
         </div>
         <label className="sortControl">
           <span>Sort</span>
@@ -211,7 +211,7 @@ export default function CultivarExplorer({ cultivars, facets = {}, examples = []
       <h3>No matching cultivars</h3>
       <p>The current query and filters do not match a governed record. Broaden the query, remove a filter, or try one of these controlled concepts.</p>
       <div className="searchSuggestions">{suggestions.map(suggestion => <button type="button" key={`${suggestion.query}-${suggestion.label}`} onClick={() => update('query', suggestion.query)}><strong>{suggestion.label}</strong><span>{suggestion.query}</span></button>)}</div>
-      <button type="button" onClick={reset}>Reset discovery</button>
+      <button type="button" onClick={reset}>Reset search</button>
     </div>}
   </section>;
 }

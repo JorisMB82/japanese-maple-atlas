@@ -1,29 +1,27 @@
 # Japanese Maple Atlas
 
-An evidence-aware botanical knowledge platform for discovering, comparing and governing Japanese maple cultivar knowledge.
+An evidence-aware botanical knowledge platform for finding, comparing and researching Japanese maple cultivars.
 
-## Sprint 10 / application v0.10.0
+## Sprint 10 usability remediation / application v0.10.1
 
-Sprint 10 adds the integrated Interactive Atlas Explorer:
+Sprint 10 remains complete. Application v0.10.1 is a focused usability-remediation release before external testing. It preserves the repository-first architecture while improving first-time comprehension and mobile use:
 
-- dedicated `/explorer` research workspace;
-- semantic search and contextual facets;
-- gallery, trait-matrix, seasonal and relationship views;
-- overview, identity, morphology, seasonal, cultivation and evidence lenses;
-- shareable URL state;
-- browser-local saved views;
-- focused record inspection;
-- five guided investigations;
-- research sets containing up to five cultivars;
-- direct handoff to comparison and graph routes;
-- derivative JSON export with repository provenance;
-- dedicated explorer validation, tests and static-export regression coverage.
+- accessible mobile navigation with every destination visible in one menu;
+- plain-language home, Explorer, graph, Compare and Repository introductions;
+- progressive disclosure for advanced Explorer filters, guided examples and evidence metrics;
+- explicit A/B cultivar selection from a five-item research set;
+- inline saved-view naming instead of `window.prompt()`;
+- print/PDF, CSV and provenance-preserving JSON exports;
+- responsive, copyable repository hashes without page-wide overflow;
+- in-page navigation on long cultivar records;
+- clearer Compare loading, empty and recovery states;
+- targeted unit and static-export regression coverage.
 
-The repository data remains at v0.9.0 with 235 first-class objects. The five frozen Reference Standards, assertions, evidence, sources and Sprint 9 graph are unchanged. Sprint 10 is an application-layer workspace over those governed objects.
+The repository data remains at v0.9.0 with 235 first-class objects. The five frozen Reference Standards, assertions, evidence, sources and Sprint 9 graph are unchanged. Sprint 11 has not started.
 
 ## Repository principle
 
-The repository is the source of truth. The application is a derived interface. Contributions enter through governed inputs and only approved, validated repository knowledge may reach publication outputs. Explorer selections, saved views and exports never silently modify repository knowledge.
+The repository is the source of truth. The application is a derived interface. Contributions enter through governed inputs and only approved, validated repository knowledge may reach publication outputs. Explorer searches, saved views, selections, comparison pairs and exports never modify repository knowledge.
 
 ## Install and run locally
 
@@ -32,29 +30,29 @@ npm ci
 npm run dev
 ```
 
-Open `http://localhost:3000`. The integrated explorer is at `http://localhost:3000/explorer`; the graph explorer remains at `http://localhost:3000/graph`.
+Open `http://localhost:3000`. The integrated Explorer is at `http://localhost:3000/explorer`; the graph remains at `http://localhost:3000/graph`.
 
 ## Explorer workflows
 
-The explorer supports:
+The Explorer supports:
 
-- semantic queries such as `laceleaf upright`, `weeping red`, or `species:"Acer shirasawanum"`;
-- governed facets for habit, leaf form, colour, exposure, scale and cultivation risk;
-- trait matrices driven by an analysis lens;
+- everyday searches such as `upright laceleaf`, `weeping red`, or `partial shade`;
+- common filters for growth habit, leaf form and foliage colour;
+- advanced filters for exposure, mature scale and growing considerations;
+- gallery, trait-table, seasonal and relationship views;
 - separate spring, summer, autumn and winter-interest inspection;
-- graph relationship rationale, confidence and strength;
-- shareable workspace URLs;
-- local saved views;
-- research-set comparison and JSON export.
+- explicit comparison-pair selection inside a research set of up to five cultivars;
+- shareable URL state and browser-local saved views;
+- print/PDF, CSV and machine-readable JSON export.
 
-Exported JSON identifies the repository version, repository hash and canonicality. It is a derivative research aid, not a repository package or authentication certificate.
+Technical evidence, relationship rationale, confidence, repository versions and hashes remain available through contextual disclosures and repository pages.
 
 ## Quality commands
 
 ```bash
 npm run verify:repository   # contributor, compiler, schema, repository, search, graph and explorer checks
-npm run validate:explorer   # explorer projections, state, presets, research sets and exports
-npm run test:unit           # pure service behaviour
+npm run validate:explorer   # explorer projection, state, comparison, saved-view and export checks
+npm run test:unit           # pure services and usability source invariants
 npm run test:integration    # repository, compiler and schema boundaries
 npm run test:coverage       # governed native Node coverage thresholds
 npm run build               # validated production static export
@@ -87,34 +85,27 @@ Do not edit generated JSON under `atlas-repository/` or `lib/repository-registry
 
 ## Continuous integration and releases
 
-Every pull request and `main` update runs repository validation, schema conformance, search, graph and explorer validation, unit and integration tests, coverage thresholds, the production build and static-export regression tests. Quality and release evidence are retained as GitHub Actions artifacts.
+Every pull request and `main` update runs repository validation, schema conformance, search, graph and Explorer validation, unit and integration tests, coverage thresholds, the production build and static-export regression tests. Quality and release evidence are retained as GitHub Actions artifacts.
 
 The release-readiness workflow can be run manually. A pushed `v*` tag executes the complete verification chain, packages the static export, generates checksums and creates a GitHub release from the verified tag.
 
 ## Repository structure
 
 - `atlas-repository/reference-standards/` — frozen canonical cultivar inputs
-- `atlas-repository/relationship-standards/` — governed relationship vocabulary and relationship specifications
+- `atlas-repository/relationship-standards/` — governed relationship vocabulary and specifications
 - `editorial-inbox/` — governed contributor and submission inputs
-- `atlas-repository/relationships/` — generated graph edge objects
-- `atlas-repository/relationship-types/` — generated controlled relationship types
-- `atlas-repository/indexes/graph-index.json` — generated nodes, edges, adjacency and graph statistics
 - `app/explorer/` — integrated interactive research workspace
-- `components/AtlasExplorerWorkspace.js` — coordinated explorer interface
-- `lib/atlas-explorer.mjs` — deterministic explorer state, projection, selection and export services
-- `quality/quality-gates.json` — governed thresholds, routes and regression invariants
-- `tests/unit/` — search, graph, explorer and schema-validator behaviour
+- `components/AtlasExplorerWorkspace.js` — coordinated Explorer interface
+- `lib/atlas-explorer.mjs` — deterministic Explorer state, pairing and export services
+- `quality/quality-gates.json` — governed thresholds, routes and release invariants
+- `tests/unit/` — search, graph, Explorer, usability and schema-validator behaviour
 - `tests/integration/` — repository, compiler and schema boundary tests
 - `tests/regression/` — production static-export regression tests
-- `lib/knowledge-graph.mjs` — deterministic graph construction, traversal and ranking services
-- `lib/search-engine.mjs` — query parsing, relevance, explainability and facets
-- `lib/json-schema-validator.mjs` — dependency-free schema validation engine
 - `scripts/compile-atlas.mjs` — deterministic repository and graph compiler
-- `scripts/validate-explorer.mjs` — explorer-state and repository-projection validation
-- `scripts/validate-schemas.mjs` — repository-wide schema conformance
-- `scripts/validate-quality.mjs` — quality infrastructure verification
-- `scripts/generate-release-manifest.mjs` — release evidence and checksums
+- `scripts/validate-explorer.mjs` — Explorer-state and repository-projection validation
+- `scripts/validate-quality.mjs` — quality-infrastructure verification
 - `.github/workflows/repository-validation.yml` — pull-request and production quality gates
 - `.github/workflows/release-readiness.yml` — validated artifact and tagged-release automation
-- `docs/EXPLORER-001_Interactive-Atlas-Explorer_v1.0.md` — explorer architecture and operating boundary
+- `docs/EXPLORER-001_Interactive-Atlas-Explorer_v1.0.md` — Explorer architecture and operating boundary
+- `docs/UX-001_Sprint-10-Usability-Remediation_v1.0.md` — remediation decisions, tests and residual limits
 - `docs/QA-001_Testing-and-Quality-Infrastructure_v1.0.md` — quality architecture and operations

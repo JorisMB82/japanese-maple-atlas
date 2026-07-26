@@ -135,3 +135,19 @@ A failing quality gate blocks merge or release. The correction should address th
 ## Future extension
 
 Sprint 10 and later capabilities should add focused unit, integration and regression tests in the same change that introduces the capability. Browser-level accessibility and interaction testing may be added when the interactive explorer requires behaviour that cannot be validated through static export and pure service tests.
+
+## Sprint 10 usability-remediation coverage
+
+Application v0.10.1 extends the permanent quality system without changing the governed thresholds. Targeted tests now cover:
+
+- mobile navigation completeness, disclosure semantics and active state;
+- progressive disclosure of Explorer controls;
+- explicit, URL-stable A/B comparison selection inside a five-record research set;
+- saved-view naming without browser `prompt()`;
+- readable CSV export and provenance-preserving JSON export;
+- responsive repository identifier containment and copyability;
+- cultivar in-page navigation;
+- Compare loading and recovery content;
+- release-defining usability content in the production static export.
+
+The source-invariant tests intentionally complement, rather than replace, rendered browser checks. The CI production job remains authoritative for Next.js compilation, static-route output, internal links and assets. Responsive behavior should also be observed at 390px, 768px and 1440px during external-test preparation.
