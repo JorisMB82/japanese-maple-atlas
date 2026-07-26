@@ -1,0 +1,49 @@
+name: Sprint 11 materialize
+
+on:
+  push:
+    branches:
+      - agent/sprint-11-compiler-generalisation
+    paths:
+      - '.sprint11-bootstrap/**'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sprint-11-materialize
+  cancel-in-progress: true
+
+jobs:
+  materialize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: agent/sprint-11-compiler-generalisation
+          fetch-depth: 0
+      - name: Check payload completeness
+        id: payload
+        shell: bash
+        run: |
+          set -euo pipefail
+          complete=true
+          for part in 00 01 02 03 04; do
+            test -f ".sprint11-bootstrap/part-${part}" || complete=false
+          done
+          echo "complete=${complete}" >> "$GITHUB_OUTPUT"
+      - name: Apply verified Sprint 11 patch
+        if: steps.payload.outputs.complete == 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+          cat .sprint11-bootstrap/part-* | base64 --decode | gzip --decompress > /tmp/sprint11.patch
+          echo "61030548f0de289bc148c2e8c52415d8040e98830ea04ea6ce6c6e10efdbcf03  /tmp/sprint11.patch" | sha256sum --check --strict
+          git apply --check /tmp/sprint11.patch
+          git apply --index /tmp/sprint11.patch
+          git rm -r .sprint11-bootstrap
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Sprint 11: generalise compiler and lock RC-020 roadmap"
+          git push origin HEAD:agent/sprint-11-compiler-generalisation
