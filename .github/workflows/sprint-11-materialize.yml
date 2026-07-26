@@ -27,22 +27,36 @@ jobs:
           ref: agent/sprint-11-compiler-generalisation
           fetch-depth: 0
       - name: Check payload completeness
-        id: payload
         shell: bash
         run: |
           set -euo pipefail
-          complete=true
-          for part in 00 01; do
-            test -f ".sprint11-bootstrap/part-${part}" || complete=false
-          done
-          echo "complete=${complete}" >> "$GITHUB_OUTPUT"
-      - name: Apply Sprint 11 patch
-        if: steps.payload.outputs.complete == 'true'
+          test -f .sprint11-bootstrap/part-00
+          test -f .sprint11-bootstrap/part-01
+          wc -c .sprint11-bootstrap/part-*
+      - name: Decode payload
         shell: bash
         run: |
           set -euo pipefail
-          cat .sprint11-bootstrap/part-* | base64 --decode | gzip --decompress > /tmp/sprint11.patch
+          cat .sprint11-bootstrap/part-* | base64 --decode > /tmp/sprint11.patch.gz
+          file /tmp/sprint11.patch.gz
+          sha256sum /tmp/sprint11.patch.gz
+      - name: Decompress payload
+        shell: bash
+        run: |
+          set -euo pipefail
+          gzip --test /tmp/sprint11.patch.gz
+          gzip --decompress --stdout /tmp/sprint11.patch.gz > /tmp/sprint11.patch
+          wc -c /tmp/sprint11.patch
+          sha256sum /tmp/sprint11.patch
+      - name: Validate patch application
+        shell: bash
+        run: |
+          set -euo pipefail
           git apply --check /tmp/sprint11.patch
+      - name: Materialize verified tree
+        shell: bash
+        run: |
+          set -euo pipefail
           git apply --index /tmp/sprint11.patch
           git rm -r .sprint11-bootstrap
           git config user.name "github-actions[bot]"
