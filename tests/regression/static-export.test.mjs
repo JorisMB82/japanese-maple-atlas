@@ -44,7 +44,7 @@ test('critical pages retain the remediated first-touch experience', () => {
   assert.match(home, /Find, understand and compare Japanese maples/i);
   assert.match(home, /Browse the five pilot cultivars/i);
   const explorer = htmlFor('/explorer');
-  assert.match(explorer, /Find and compare Japanese maple cultivars/i);
+  assert.match(explorer, /Find Japanese maples by the traits that matter to you/i);
   assert.match(explorer, /More filters/i);
   assert.match(explorer, /Try a guided starting point/i);
   assert.match(explorer, /Trait table/i);
