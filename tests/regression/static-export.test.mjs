@@ -13,23 +13,20 @@ function allFiles(directory) {
     return entry.isDirectory() ? allFiles(file) : [file];
   });
 }
-
 function routeCandidates(route) {
   if (route === '/') return [path.join(OUT, 'index.html')];
   const clean = route.replace(/^\//, '').replace(/\/$/, '');
   return [path.join(OUT, `${clean}.html`), path.join(OUT, clean, 'index.html')];
 }
-
-function routeFile(route) {
-  return routeCandidates(route).find(file => fs.existsSync(file));
-}
-
+function routeFile(route) { return routeCandidates(route).find(file => fs.existsSync(file)); }
 function localRouteFromHref(href) {
   if (!href.startsWith('/') || href.startsWith('//')) return null;
   const clean = href.split('#')[0].split('?')[0];
   if (!clean || clean.startsWith('/_next/') || clean.startsWith('/media/') || path.extname(clean)) return null;
   return clean;
 }
+
+const htmlFor = route => fs.readFileSync(routeFile(route), 'utf8');
 
 test('production export contains every governed public route', () => {
   assert.equal(fs.existsSync(OUT), true, 'run npm run build before regression tests');
@@ -42,17 +39,28 @@ test('production export contains every governed public route', () => {
   }
 });
 
-test('critical pages retain their release-defining content', () => {
-  assert.match(fs.readFileSync(routeFile('/'), 'utf8'), /interactive explorer/i);
-  const explorer = fs.readFileSync(routeFile('/explorer'), 'utf8');
-  assert.match(explorer, /integrated research workspace/i);
-  assert.match(explorer, /Guided investigations/i);
-  assert.match(explorer, /Trait matrix/i);
-  assert.match(explorer, /Research set/i);
-  assert.match(fs.readFileSync(routeFile('/graph'), 'utf8'), /knowledge graph/i);
-  assert.match(fs.readFileSync(routeFile('/repository'), 'utf8'), /235/);
-  assert.match(fs.readFileSync(routeFile('/editorial'), 'utf8'), /editorial/i);
-  assert.match(fs.readFileSync(routeFile('/cultivars/seiryu'), 'utf8'), /Seiryu/i);
+test('critical pages retain the remediated first-touch experience', () => {
+  const home = htmlFor('/');
+  assert.match(home, /Find, understand and compare Japanese maples/i);
+  assert.match(home, /Browse the five pilot cultivars/i);
+  const explorer = htmlFor('/explorer');
+  assert.match(explorer, /Find Japanese maples by the traits that matter to you/i);
+  assert.match(explorer, /More filters/i);
+  assert.match(explorer, /Try a guided starting point/i);
+  assert.match(explorer, /Trait table/i);
+  assert.match(explorer, /saved for research/i);
+  assert.match(explorer, /Save view/i);
+  assert.doesNotMatch(explorer, /window\.prompt/);
+});
+
+test('navigation, repository, compare and records expose usability safeguards', () => {
+  const home = htmlFor('/');
+  for (const destination of ['Explorer', 'Compare', 'Graph', 'Editorial', 'Contribute', 'Sources', 'Media', 'Repository', 'About']) assert.match(home, new RegExp(`>${destination}<`));
+  assert.match(home, /aria-controls="primary-navigation"/);
+  assert.match(htmlFor('/repository'), /Copy repository hash/i);
+  assert.match(htmlFor('/compare'), /Preparing the cultivar selectors/i);
+  assert.match(htmlFor('/cultivars/seiryu'), /On this record/i);
+  assert.match(htmlFor('/graph'), /Try:/i);
 });
 
 test('internal application links resolve to exported routes', () => {

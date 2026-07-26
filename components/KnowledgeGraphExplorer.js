@@ -142,7 +142,7 @@ export default function KnowledgeGraphExplorer({ graph, relationshipTypes }) {
       </article>
     </section>
 
-    <section className="profileSection graphPathSection">
+    <section className="profileSection graphPathSection" id="relationship-path">
       <div className="sectionHeading"><div><div className="kicker">Graph traversal</div><h2>Find a relationship path</h2></div><p>Shortest path across governed edges</p></div>
       <div className="pathControls">
         <label><span>Start cultivar</span><select value={startId} onChange={event => setStartId(event.target.value)}>{cultivarNodes.map(node => <option key={node.id} value={node.id}>{node.label}</option>)}</select></label>

@@ -2,8 +2,8 @@ import KnowledgeGraphExplorer from '@/components/KnowledgeGraphExplorer';
 import { getKnowledgeGraph, getRelationshipTypes } from '@/lib/repository';
 
 export const metadata = {
-  title: 'Knowledge graph',
-  description: 'Explore governed taxonomic, morphological, architectural, seasonal, cultivation and diagnostic relationships among Japanese maple cultivars.'
+  title: 'Cultivar relationships',
+  description: 'Explore verified taxonomic, morphological, architectural, seasonal, cultivation and diagnostic relationships among Japanese maple cultivars.'
 };
 
 export default function KnowledgeGraphPage() {
@@ -11,17 +11,12 @@ export default function KnowledgeGraphPage() {
   const relationshipTypes = getRelationshipTypes();
   return <>
     <section className="pageIntro graphIntro">
-      <div className="kicker">Sprint 9 · governed relationships</div>
-      <h1>Explore how cultivars are connected—and why.</h1>
-      <p>The knowledge graph joins cultivar and taxon nodes through explicit, evidence-linked relationships. Shared traits, contrasts and diagnostic comparisons remain separate from identity claims, and every edge retains its rationale and confidence.</p>
-      <div className="graphStats">
-        <article><strong>{graph.nodeCount}</strong><span>Graph nodes</span></article>
-        <article><strong>{graph.edgeCount}</strong><span>Governed edges</span></article>
-        <article><strong>{graph.stats.relationshipTypes}</strong><span>Relationship types</span></article>
-        <article><strong>{Object.keys(graph.stats.categories).length}</strong><span>Knowledge categories</span></article>
-      </div>
+      <div className="kicker">Cultivar relationships</div>
+      <h1>See how Japanese maple cultivars are similar, different and connected.</h1>
+      <p>Choose a cultivar to see shared leaf forms, contrasting growth habits, seasonal similarities and other evidence-linked comparisons.</p>
+      <div className="graphStartingPoints" aria-label="Suggested graph starting points"><span>Try:</span><a href="/graph?node=RC-002">Seiryu and dissected foliage</a><a href="/graph?node=RC-004">Crimson Queen and cascading form</a><a href="#relationship-path">Find a path between two cultivars</a></div>
     </section>
-    <div className="notice"><strong>Interpretation boundary:</strong> a graph edge records an approved relationship or comparison. It does not establish synonymy, genetic identity or specimen authentication unless a future governed relationship type explicitly states that conclusion.</div>
+    <details className="evidenceDisclosure"><summary>What a relationship does—and does not—mean</summary><p>Every connection retains a rationale, category, strength and confidence. A connection records an approved comparison; it does not prove synonymy, genetic identity or specimen authenticity.</p><p>{graph.nodeCount} nodes · {graph.edgeCount} connections · {graph.stats.relationshipTypes} relationship types.</p></details>
     <KnowledgeGraphExplorer graph={graph} relationshipTypes={relationshipTypes}/>
   </>;
 }

@@ -9,3 +9,62 @@
 
 @media(max-width:900px){.homeHero,.profileHero,.twoColumn{grid-template-columns:1fr}.cultivarGrid{grid-template-columns:1fr 1fr}.seasonGrid{grid-template-columns:1fr 1fr}.filterGrid{grid-template-columns:1fr 1fr}.valueStrip{grid-template-columns:1fr}.valueStrip>div{border-right:0;border-bottom:1px solid var(--line)}.valueStrip>div:last-child{border-bottom:0}.similarGrid{grid-template-columns:1fr 1fr}.compareTray{grid-template-columns:1fr}.compareTray .button{justify-self:start}}
 @media(max-width:650px){.siteHeader{align-items:flex-start}.siteHeader nav{overflow-x:auto;max-width:60vw}.brand small{display:none}.cultivarGrid,.diagnosticGrid,.sourceGrid,.compareSummary,.compareTraits,.similarGrid{grid-template-columns:1fr}.filterGrid,.compareControls{grid-template-columns:1fr}.swapButton{justify-self:center}.seasonGrid{grid-template-columns:1fr}.sectionHeading{align-items:flex-start;flex-direction:column}.profileHero h1{font-size:3.4rem}.identityCard dl,.traitDl,.compactDl{grid-template-columns:1fr}.roadmap li{grid-template-columns:1fr}footer{flex-direction:column}.evidenceItem summary{flex-direction:column}.searchToolbar{align-items:stretch;flex-direction:column}.cardFooterActions{align-items:stretch;flex-direction:column}.cardFooterActions button,.cardFooterActions>a{width:100%;text-align:center}}
+
+/* Sprint 10 usability remediation */
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible,[role="button"]:focus-visible{outline:3px solid rgba(49,92,58,.35);outline-offset:3px}
+.mobileMenuButton{display:none;gap:.45rem;min-height:44px;padding:.55rem .75rem;background:transparent;color:var(--accent);border-color:var(--line)}
+.mobileMenuButton:hover{background:var(--accent-soft)}
+.siteHeader nav a{min-height:44px;display:inline-flex;align-items:center}
+.siteHeader nav a[aria-current="page"]{box-shadow:inset 0 0 0 1px rgba(49,92,58,.18)}
+.plainFeatureList{padding-left:1.15rem;margin:.8rem 0 0;color:var(--muted)}
+.plainFeatureList li+li{margin-top:.4rem}
+.heroPanel h2{font-family:Georgia,serif;font-size:1.65rem;line-height:1.15;margin:.5rem 0}
+.compactDisclosure,.evidenceDisclosure{border:1px solid var(--line);border-radius:14px;background:var(--paper);padding:.8rem 1rem;margin:1rem 0 2rem}
+.compactDisclosure{margin:1rem 0 0;background:var(--paper-2)}
+.compactDisclosure summary,.evidenceDisclosure summary{cursor:pointer;color:var(--accent-dark);font-weight:800;min-height:44px;display:flex;align-items:center}
+.compactDisclosure p,.evidenceDisclosure p{color:var(--muted)}
+.twoColumn>*{min-width:0}
+.compactDl dd,.compactDl code,.registryRow>*{min-width:0;overflow-wrap:anywhere;word-break:break-word}
+.repositoryIntegrityGrid article{min-width:0}
+.copyIdentifier{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:.55rem;align-items:start;max-width:100%}
+.copyIdentifier code{display:block;padding:.55rem;border-radius:8px;background:var(--paper-2);white-space:normal;overflow-wrap:anywhere;word-break:break-all;font-size:.72rem}
+.copyIdentifier button{min-height:40px;padding:.45rem .65rem;background:transparent;color:var(--accent);border-color:var(--line);font-size:.75rem}
+.copyIdentifier button:hover{background:var(--accent-soft)}
+.recordNav{position:sticky;top:74px;z-index:11;display:flex;align-items:center;gap:1rem;margin:1rem 0 0;padding:.7rem .85rem;border:1px solid var(--line);border-radius:14px;background:rgba(255,253,248,.96);box-shadow:0 8px 24px rgba(24,36,25,.06);backdrop-filter:blur(12px)}
+.recordNav>strong{white-space:nowrap;font-size:.8rem;color:var(--muted)}
+.recordNav>div{display:flex;flex-wrap:wrap;gap:.35rem}
+.recordNav a{display:inline-flex;align-items:center;min-height:40px;padding:.35rem .55rem;border-radius:999px;color:var(--accent);text-decoration:none;font-size:.78rem;font-weight:700}
+.recordNav a:hover{background:var(--accent-soft)}
+.profileSection[id]{scroll-margin-top:145px}
+.graphStartingPoints{display:flex;flex-wrap:wrap;align-items:center;gap:.45rem;margin-top:1.2rem}
+.graphStartingPoints>span{color:var(--muted);font-size:.78rem;font-weight:800}
+.graphStartingPoints a{display:inline-flex;align-items:center;min-height:40px;padding:.4rem .65rem;border:1px solid var(--line);border-radius:999px;background:var(--paper);color:var(--accent);text-decoration:none;font-size:.78rem;font-weight:700}
+.graphStartingPoints a:hover{background:var(--accent-soft)}
+.compareLoading,.compareEmpty{margin:0 0 3rem;padding:1.5rem;border:1px solid var(--line);border-radius:18px;background:var(--paper)}
+.compareLoading h2,.compareEmpty h2{font-family:Georgia,serif;font-size:2rem;margin:.25rem 0}
+.comparePairSummary{display:flex;justify-content:space-between;gap:1rem;margin:0 0 .75rem;padding:.75rem 1rem;border-radius:12px;background:var(--accent-soft);color:var(--accent-dark)}
+.comparePairSummary span{color:var(--muted);font-size:.84rem}
+
+@media(max-width:900px){
+  .siteHeader{align-items:center}
+  .mobileMenuButton{display:inline-flex}
+  .siteHeader nav{display:none;position:absolute;top:100%;left:0;right:0;max-width:none!important;overflow:visible!important;grid-template-columns:repeat(2,minmax(0,1fr));gap:.35rem;padding:.75rem 4vw 1rem;border-bottom:1px solid var(--line);background:rgba(255,253,248,.99);box-shadow:0 18px 35px rgba(24,36,25,.12)}
+  .siteHeader nav.open{display:grid}
+  .siteHeader nav a{justify-content:flex-start;border-radius:10px;padding:.7rem .8rem}
+  .recordNav{top:72px;align-items:flex-start;flex-direction:column;gap:.35rem}
+  .recordNav>div{flex-wrap:nowrap;max-width:100%;overflow-x:auto;padding-bottom:.25rem}
+  .recordNav a{white-space:nowrap}
+}
+@media(max-width:650px){
+  .siteHeader{align-items:center;padding:.7rem 4vw}
+  .brand strong{font-size:.92rem}
+  .brandMark{width:2rem;height:2rem}
+  .mobileMenuButton{margin-left:auto}
+  .siteHeader nav{grid-template-columns:1fr}
+  .hero{padding:3rem 0 2rem}
+  .hero h1,.pageIntro h1{font-size:clamp(2.55rem,13vw,3.6rem);line-height:1.02}
+  .pageIntro{padding:2.7rem 0 1.2rem}
+  .comparePairSummary{align-items:flex-start;flex-direction:column}
+  .copyIdentifier{grid-template-columns:1fr}
+  .copyIdentifier button{justify-self:start}
+}

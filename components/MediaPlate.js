@@ -7,7 +7,7 @@ export default function MediaPlate({ media, cultivar, compact = false }) {
   }
 
   return <figure className={`mediaPlate ${compact ? 'compact' : ''}`}>
-    <img src={media.assetPath} alt={media.altText} loading={compact ? 'lazy' : 'eager'} />
+    <img src={media.assetPath} alt={`${cultivar?.cultivar || 'Japanese maple'} standardized botanical illustration`} loading={compact ? 'lazy' : 'eager'} />
     {!compact && <figcaption>
       <div><strong>{media.caption}</strong><span>{media.credit}</span></div>
       <span className="mediaEvidenceBadge">{media.evidentiaryStatus === 'illustrative-not-evidence' ? 'Illustration · not evidence' : media.evidentiaryStatus}</span>

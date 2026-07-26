@@ -17,7 +17,7 @@ export default function RootLayout({ children }) {
     <main>{children}</main>
     <footer>
       <div><strong>Japanese Maple Atlas</strong><p>Evidence-based cultivar knowledge, presented through a usable public interface.</p></div>
-      <div><span>Sprint 10</span><span>Interactive Atlas explorer operational</span><span>Search, graph, comparison, evidence and workspace state remain derived from the governed repository</span></div>
+      <div><span>Application v0.10.1</span><span>Sprint 10 usability remediation complete</span><span>Search, graph, comparison, evidence and workspace state remain derived from the governed repository</span></div>
     </footer>
   </body></html>;
 }

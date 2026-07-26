@@ -5,9 +5,13 @@ import {
   EXPLORER_PRESETS,
   applyExplorerPreset,
   buildExplorerSummary,
+  createSavedExplorerView,
+  explorerCsv,
   explorerExportPayload,
   explorerLensFields,
+  normaliseComparisonPair,
   normaliseExplorerState,
+  normaliseSavedViewName,
   parseExplorerSearchParams,
   projectCultivarForExplorer,
   serialiseExplorerState,
@@ -56,16 +60,19 @@ test('normaliseExplorerState rejects invalid controls and selection entries', ()
   assert.equal(state.sort, EXPLORER_DEFAULT_STATE.sort);
   assert.equal(state.focus, '');
   assert.deepEqual(state.selected, ['seiryu', 'aureum']);
+  assert.deepEqual([state.compareA, state.compareB], ['seiryu', 'aureum']);
 });
 
 test('explorer URL state serialises and parses deterministically', () => {
   const state = normaliseExplorerState({
     query: 'yellow "partial shade"', species: 'Acer shirasawanum', view: 'seasonal', lens: 'seasonal',
-    focus: 'aureum', selected: ['aureum', 'seiryu'], sort: 'name'
+    focus: 'aureum', selected: ['aureum', 'seiryu'], compareA: 'seiryu', compareB: 'aureum', sort: 'name'
   }, slugs);
   const encoded = serialiseExplorerState(state, slugs);
   assert.match(encoded, /q=yellow/);
   assert.match(encoded, /set=aureum%2Cseiryu/);
+  assert.match(encoded, /ca=seiryu/);
+  assert.match(encoded, /cb=aureum/);
   assert.deepEqual(parseExplorerSearchParams(encoded, slugs), state);
 });
 
@@ -117,10 +124,35 @@ test('research set summary and export payload preserve repository provenance', (
   assert.equal(payload.repository.version, '0.9.0');
   assert.equal(payload.repository.hash, 'abc');
   assert.equal(payload.records[0].repositoryLinks.profile, '/cultivars/seiryu');
+  assert.deepEqual(payload.explorerState.comparisonPair, { compareA: 'seiryu', compareB: 'crimson-queen' });
 });
 
 test('analysis lenses return stable governed field sets', () => {
   assert.deepEqual(explorerLensFields('seasonal'), ['springColor', 'summerColor', 'autumnColor', 'bark']);
   assert.deepEqual(explorerLensFields('evidence'), ['assertionCount', 'evidenceCount', 'sourceCount', 'relationshipCount']);
   assert.deepEqual(explorerLensFields('unknown'), explorerLensFields('overview'));
+});
+
+
+test('comparison pair stays explicit, valid and independent of selection order', () => {
+  assert.deepEqual(normaliseComparisonPair(['seiryu', 'crimson-queen', 'aureum'], 'aureum', 'seiryu'), { compareA: 'aureum', compareB: 'seiryu' });
+  assert.deepEqual(normaliseComparisonPair(['seiryu', 'crimson-queen'], 'unknown', 'unknown'), { compareA: 'seiryu', compareB: 'crimson-queen' });
+  assert.deepEqual(normaliseComparisonPair(['seiryu'], 'seiryu', ''), { compareA: '', compareB: '' });
+});
+
+test('saved view naming is inline-dialog safe and bounded', () => {
+  assert.equal(normaliseSavedViewName('  Shade   study  '), 'Shade study');
+  assert.equal(normaliseSavedViewName('x'.repeat(80)).length, 60);
+  assert.equal(createSavedExplorerView('   ', EXPLORER_DEFAULT_STATE, 1), null);
+  assert.deepEqual(createSavedExplorerView('Winter interest', EXPLORER_DEFAULT_STATE, 42), { id: '42', label: 'Winter interest', state: EXPLORER_DEFAULT_STATE });
+});
+
+test('human-readable CSV export preserves selected order and escapes values', () => {
+  const projected = projectCultivarForExplorer({ ...cultivar, cultivar: 'Seiryu, selected' });
+  const second = { ...projected, id: 'RC-004', slug: 'crimson-queen', cultivar: 'Crimson "Queen"' };
+  const csv = explorerCsv([projected, second], ['seiryu', 'crimson-queen']);
+  assert.match(csv, /"Reference ID","Cultivar","Scientific name"/);
+  assert.match(csv, /"Seiryu, selected"/);
+  assert.match(csv, /"Crimson ""Queen"""/);
+  assert.equal(csv.split('\n').length, 3);
 });

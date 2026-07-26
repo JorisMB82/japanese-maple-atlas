@@ -10,30 +10,26 @@ export default function Home() {
   return <>
     <section className="hero homeHero">
       <div>
-        <div className="kicker">Sprint 10 · interactive Atlas explorer</div>
-        <h1>Japanese maples, organized as evidence—not folklore.</h1>
-        <p>Search canonical cultivar records here, or open the integrated explorer to move across traits, seasonal expression, relationships, evidence and research sets in one workspace.</p>
-        <div className="heroActions"><a className="button" href="/explorer">Open interactive explorer</a><a className="button secondary" href="#directory-heading">Quick search</a><a className="button secondary" href="/graph">Explore knowledge graph</a></div>
+        <div className="kicker">Japanese maple cultivar guide</div>
+        <h1>Find, understand and compare Japanese maples.</h1>
+        <p>Explore cultivars by growth habit, leaf shape, seasonal colour, growing conditions and winter interest. Each profile also shows the evidence behind the description.</p>
+        <div className="heroActions"><a className="button" href="/explorer">Find a cultivar</a><a className="button secondary" href="#directory-heading">Browse the five cultivars</a><a className="button secondary" href="/compare">Compare two cultivars</a></div>
       </div>
       <aside className="heroPanel">
-        <span className="panelEyebrow">Governed knowledge repository</span>
-        <div className="statGrid">
-          <div><strong>{stats.cultivars}</strong><span>Cultivars</span></div>
-          <div><strong>{stats.species}</strong><span>Species</span></div>
-          <div><strong>{stats.graphNodes}</strong><span>Graph nodes</span></div>
-          <div><strong>{stats.graphEdges}</strong><span>Graph edges</span></div>
-        </div>
-        <p>RC-001 through RC-005 remain frozen and hash-protected. Sprint 10 adds an interactive research workspace without altering canonical repository knowledge.</p>
+        <span className="panelEyebrow">A practical research guide</span>
+        <h2>Move from a garden question to the supporting record.</h2>
+        <ul className="plainFeatureList"><li>Search in ordinary horticultural language.</li><li>Compare form, foliage and seasonal interest.</li><li>See why cultivars are considered similar or different.</li><li>Trace important claims to evidence and sources.</li></ul>
+        <details className="compactDisclosure"><summary>Repository status</summary><div className="statGrid"><div><strong>{stats.cultivars}</strong><span>Cultivars</span></div><div><strong>{stats.species}</strong><span>Species</span></div><div><strong>{stats.graphNodes}</strong><span>Relationship nodes</span></div><div><strong>{stats.graphEdges}</strong><span>Verified connections</span></div></div><p>RC-001 through RC-005 remain frozen and hash-protected. The interface is derived from those source records.</p></details>
       </aside>
     </section>
 
     <div className="valueStrip">
-      <div><strong>Investigate</strong><span>Use semantic filters, analysis lenses and multiple views over the same governed records.</span></div>
-      <div><strong>Connect</strong><span>Move directly between cultivar profiles, comparison, graph relationships and evidence context.</span></div>
-      <div><strong>Preserve boundaries</strong><span>Saved views and exports are derivative workspace state, never silent repository edits.</span></div>
+      <div><strong>Choose</strong><span>Filter by shape, colour, exposure and mature scale.</span></div>
+      <div><strong>Compare</strong><span>See meaningful differences side by side.</span></div>
+      <div><strong>Verify</strong><span>Open evidence, sources and relationship explanations when needed.</span></div>
     </div>
 
-    <div className="notice"><strong>Explorer status:</strong> the integrated workspace is available at <a href="/explorer">/explorer</a>. Relationships and comparisons remain qualified and do not establish clonal identity or specimen authentication.</div>
+    <details className="evidenceDisclosure"><summary>How the evidence works</summary><p>The repository is the source of truth. Search results, saved views and exports are working aids; they do not change the verified cultivar records or imply specimen authentication.</p></details>
 
     <CultivarExplorer cultivars={cultivars} facets={facets} examples={queryExamples()} />
   </>;

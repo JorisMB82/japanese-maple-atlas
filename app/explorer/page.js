@@ -2,23 +2,21 @@ import AtlasExplorerWorkspace from '@/components/AtlasExplorerWorkspace';
 import { getCultivars, getRepositoryManifest, getSearchFacets } from '@/lib/repository';
 
 export const metadata = {
-  title: 'Interactive Atlas explorer',
-  description: 'Search, filter, inspect, compare, save and export governed Japanese maple cultivar research sets.'
+  title: 'Find and compare cultivars',
+  description: 'Search Japanese maple cultivars by form, foliage, colour, growing conditions, seasonal interest and verified relationships.'
 };
 
 export default function ExplorerPage() {
   const cultivars = getCultivars();
   const facets = getSearchFacets();
   const manifest = getRepositoryManifest();
-
   return <>
     <section className="pageIntro explorerIntro">
-      <div className="kicker">Sprint 10 · integrated research workspace</div>
-      <h1>Explore the Atlas as a connected body of governed knowledge.</h1>
-      <p>Move between semantic discovery, trait matrices, seasonal expression, graph relationships and record-level evidence without leaving one workspace. Explorer state is shareable in the URL; saved views remain local to your browser.</p>
-      <div className="explorerIntroFacts"><span><strong>{cultivars.length}</strong> frozen cultivar records</span><span><strong>{manifest.objectTotal}</strong> repository objects</span><span><strong>{manifest.graph.edges}</strong> governed graph edges</span><span><strong>0.10.0</strong> application release</span></div>
+      <div className="kicker">Cultivar finder and research workspace</div>
+      <h1>Find Japanese maples by the traits that matter to you.</h1>
+      <p>Start with a simple search, then narrow by growth habit, leaf form, colour or growing conditions. Open the table, seasonal and relationship views when you need a deeper comparison.</p>
     </section>
-    <div className="notice"><strong>Repository boundary:</strong> the explorer reads canonical compiled records. Saved views, selections and exported research sets are derivative workspace state and do not alter the repository.</div>
+    <details className="evidenceDisclosure explorerEvidence"><summary>How records and saved work are handled</summary><p>The Explorer reads verified compiled records. Search settings, saved views, comparison choices and exports are personal workspace state and never alter the repository.</p></details>
     <AtlasExplorerWorkspace cultivars={cultivars} facets={facets} manifest={manifest}/>
   </>;
 }

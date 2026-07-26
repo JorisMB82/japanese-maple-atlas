@@ -1,110 +1,111 @@
 # EXPLORER-001 — Interactive Atlas Explorer
 
-**Version:** 1.0  
-**Status:** Sprint 10 implementation  
-**Release date:** 2026-07-25
+**Version:** 1.1
+**Status:** Sprint 10 implementation with post-release usability remediation
+**Updated:** 2026-07-25
 
 ## Purpose
 
-The Interactive Atlas Explorer provides a single research workspace over the governed Japanese Maple Atlas repository. It combines semantic discovery, contextual facets, trait matrices, seasonal views, graph relationships, record inspection, research-set assembly and derivative export without creating a second knowledge source.
+The Interactive Atlas Explorer provides one research workspace over the Japanese Maple Atlas repository. Its default experience helps gardeners, collectors and professionals find cultivars by form, foliage, colour, exposure and seasonal interest. Technical repository, evidence and graph detail remains available without becoming the first barrier to entry.
 
 ## Repository boundary
 
-The repository remains authoritative. The explorer reads compiled cultivar, assertion, evidence, media, taxonomy and relationship objects through the existing repository access layer. Browser state, saved views and exported research sets are derivative user-workspace artifacts. They never modify repository objects, editorial status, frozen Reference Standards or graph edges.
+The repository remains authoritative. The Explorer reads compiled cultivar, assertion, evidence, media, taxonomy and relationship objects through the existing access layer. Browser state, saved views, comparison pairs and exports are derivative workspace artifacts. They never modify repository objects, editorial status, frozen Reference Standards or graph edges.
 
-## Route and application boundary
+## Route boundary
 
-The explorer is available at `/explorer`. The home page retains a lighter quick-search interface, while the dedicated explorer supplies the integrated research workflow. Existing profile, comparison and graph routes remain independent canonical interfaces and are linked from the workspace.
+The Explorer is available at `/explorer`. The home page offers a concise introduction and clearly distinguishes browsing the five pilot cultivars from opening the full Explorer. Profiles, Compare and Graph remain independent derived interfaces and receive explicit handoffs from the workspace.
 
-## Explorer state model
+## Progressive-disclosure model
 
-`lib/atlas-explorer.mjs` defines the governed client-state contract:
+The initial task flow exposes:
 
-- free-text semantic query;
-- species and six semantic facets;
-- relevance or deterministic repository sorting;
-- gallery, matrix, seasonal and relationship views;
-- overview, identity, morphology, seasonal, cultivation and evidence lenses;
+- free-text search;
+- species and sorting;
+- growth habit, leaf form and foliage colour;
+- four compact result views;
+- the cultivar results.
+
+Exposure, mature scale and growing considerations are under **More filters**. Guided starting points, release metrics and repository explanations are secondary disclosures. Trait-table columns are shown only when the trait-table view is active. This hierarchy reduces first-entry density without removing expert capability.
+
+## Deterministic state model
+
+`lib/atlas-explorer.mjs` defines:
+
+- semantic query and seven controlled filters;
+- deterministic sorting;
+- gallery, trait-table, seasonal and relationship views;
+- six stable table-column sets;
 - focused record;
-- research set of up to five cultivars.
+- research set of up to five cultivars;
+- explicit comparison `A` and `B` selection.
 
-State is normalized against the current cultivar slug inventory. Invalid views, lenses, sort modes, focus values and selection entries are rejected. Duplicate selections are removed and research-set capacity is deterministic.
+State is normalized against the current cultivar slug inventory. Invalid views, column sets, sort modes, focus values, selection entries and comparison values are rejected. Duplicate selections are removed. When a pair becomes invalid, a deterministic valid pair is selected from the remaining research set.
 
-## Shareable state
+## Shareable and saved state
 
-The current workspace is serialized into URL query parameters. Query, facets, sort order, view, lens, focused record and selected research set can therefore be shared or bookmarked. Default values are omitted to keep URLs stable and readable.
+URL query parameters retain query, filters, sort, view, column set, focused record, research set and explicit comparison pair. Defaults are omitted where possible.
 
-Saved views use browser local storage and are explicitly identified as local to the current browser. They do not enter the repository or cross devices automatically.
+Saved views use browser local storage. Naming occurs in an inline dialog with required, whitespace-normalized, length-limited input. Saved views are explicitly identified as local to the current browser.
 
-## Guided investigations
-
-Five maintained presets demonstrate high-value workflows:
-
-1. dissected architecture;
-2. upright structure;
-3. red seasonal expression;
-4. golden foliage for protected sites;
-5. relationship teaching set.
-
-A preset changes query, view and analysis lens while preserving the current focused record and research set.
-
-## View modes
+## Views
 
 ### Gallery
 
-Visual record cards expose identity media, canonical status, summary, growth habit and leaf form. Records may be focused or added to the research set.
+Visual cards expose identity, summary, growth habit and leaf form. Records may be inspected or added to the research set.
 
-### Trait matrix
+### Trait table
 
-The matrix uses the selected analysis lens to choose stable columns. It supports direct cross-record inspection across identity, morphology, seasonal expression, cultivation or repository evidence metrics.
+The selected **Columns to show** option chooses stable fields for identity, form and foliage, seasonal expression, cultivation or evidence. This label explains that the option changes columns rather than underlying data.
 
-### Seasonal view
+### Seasons
 
-Seasonal bands keep spring, summer, autumn and winter-interest descriptions separate. The interface does not collapse seasonal expression into one color label.
+Spring, summer, autumn and winter-interest descriptions remain separate.
 
-### Relationship view
+### Relationships
 
-Relationship cards display the governed edge identifier, relative label, related cultivar, category, strength, confidence and rationale. The view links to the graph route rather than recreating graph authority.
+Connections retain governed edge ID, label, related cultivar, category, strength, confidence and rationale. Plain-language starting prompts are provided on the Graph page. Connections remain qualified comparisons, not claims of genetic identity or specimen authenticity.
 
-## Record inspector
+## Research sets and comparison
 
-The inspector exposes the focused cultivar’s canonical identity, summary, habit, leaf form, exposure, scale, assertion count, evidence count and direct cultivar-relationship count. It provides direct links to the full profile and graph node.
+A research set is explained as a temporary group of up to five cultivars for comparison and export. When at least two cultivars are present, the tray exposes explicit `A` and `B` selectors. The selected pair is visible in the comparison action, serialized in Explorer URL state and handed to `/compare?a=…&b=…`.
 
-## Research sets
+This preserves the five-record research workflow while eliminating dependence on hidden selection order.
 
-Users may assemble up to five cultivars. The workspace summarizes selected species, assertions, evidence records and graph links. The first two records may be opened in the established comparison route.
+## Export
 
-A research set can be exported as JSON. The export contains:
+**Export research set** opens a format chooser:
 
-- export type and schema version;
-- generation timestamp;
-- repository version, hash and canonicality;
-- current explorer query, facets, sort, view and lens;
-- selected cultivar identifiers and governed display fields;
-- links to canonical profiles and graph nodes.
+- Print / save as PDF for a human-readable browser summary;
+- CSV for spreadsheet use;
+- JSON for machine-readable data with repository version, hash and canonicality.
 
-The JSON export is a portable research aid, not a repository package or authentication certificate.
+JSON remains the authoritative data-oriented export. Human-readable formats do not claim repository-package or specimen-authentication status.
 
-## Accessibility and interaction
+## Accessibility and responsive behaviour
 
-The explorer uses labeled controls, native inputs and selects, keyboard-operable buttons, table headers, live result counts and status messaging. The interface remains usable at narrow viewport widths, where complex layouts collapse to a single column.
+The Explorer uses labeled native controls, keyboard-operable disclosures and dialogs, table headers, visible focus treatment, live result messaging and minimum mobile tap targets. On narrow screens:
+
+- advanced controls remain collapsed by default;
+- result views use a compact two-by-two control;
+- the inspector provides **Back to results**;
+- the research tray becomes a single-column block;
+- comparison selectors and dialogs remain touch accessible.
 
 ## Validation
 
-Sprint 10 adds `npm run validate:explorer` and dedicated unit coverage. Validation checks:
+`npm run validate:explorer` and unit coverage verify:
 
-- projection of all five frozen cultivar records;
-- assertion, evidence, source, media and relationship retention;
-- deterministic URL round trips;
-- valid selection and capacity behavior;
-- guided investigation state;
-- analysis-lens field stability;
-- research-set aggregation;
-- repository provenance in exports;
-- existence of required explorer implementation and documentation files.
+- all five cultivar projections and provenance counts;
+- deterministic URL round trips including comparison pair;
+- valid selection and pair adjustment inside a five-record set;
+- guided starting points and stable table fields;
+- validated saved-view names;
+- repository-aware JSON and human-readable CSV export;
+- existence of required implementation and documentation files.
 
-The permanent CI workflow runs explorer validation before tests and production build. The static-export regression suite verifies the `/explorer` route and release-defining content.
+Source-invariant tests verify the mobile navigation disclosure, advanced-control disclosure, absence of browser `prompt()`, explicit comparison labels, responsive identifier wrapping, cultivar anchor navigation and Compare recovery content. Static-export regression verifies the rendered release-defining content after `next build`.
 
-## Future extension rules
+## Extension rule
 
-Sprint 11 may add richer media and IIIF-compatible viewers to the explorer. Any future workspace capability must continue to read governed repository outputs, preserve uncertainty and avoid converting derivative user state into silent editorial changes.
+This remediation is not Sprint 11. Future media or IIIF work must be separately authorized and must continue to read governed repository outputs, preserve uncertainty and avoid converting derivative user state into silent editorial changes.

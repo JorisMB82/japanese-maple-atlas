@@ -23,7 +23,7 @@ Sprint 9.5 establishes a permanent, repository-first quality system for the Japa
 `quality/quality-gates.json` records the controlled quality thresholds and regression invariants:
 
 - Node.js 24 runtime;
-- application version 0.9.5;
+- application version 0.10.1;
 - repository data version 0.9.0;
 - minimum line, function and branch coverage;
 - stable repository object counts;
@@ -46,7 +46,9 @@ Native Node test-runner suites cover pure behaviour in:
 - graph construction, node and edge lookup;
 - filtered graph traversal and shortest paths;
 - evidence-weighted related-cultivar ranking;
-- the dependency-free JSON Schema validation engine.
+- Explorer state, explicit comparison pairing, saved-view naming and CSV export;
+- the dependency-free JSON Schema validation engine;
+- source-level usability invariants for navigation, progressive disclosure, responsive identifiers, record anchors and Compare recovery.
 
 Unit tests are located under `tests/unit/` and run with `npm run test:unit`.
 
@@ -69,7 +71,8 @@ Integration tests are located under `tests/integration/` and run with `npm run t
 The static-export regression suite runs only after a production build. It checks:
 
 - every governed public route has exported HTML;
-- release-defining content remains present;
+- release-defining first-touch and usability content remains present;
+- mobile navigation, repository, Compare and cultivar-profile safeguards are rendered;
 - internal application links resolve to exported routes;
 - referenced Next.js static assets exist.
 
@@ -132,6 +135,22 @@ npm run release:manifest
 
 A failing quality gate blocks merge or release. The correction should address the underlying defect; generated outputs, snapshots, expected counts or thresholds must not be changed merely to make a failing test pass. Changes to canonical data require the established editorial workflow and compiler process.
 
+## Sprint 10 usability-remediation coverage
+
+Application v0.10.1 extends the permanent quality system without changing the governed thresholds. Targeted tests cover:
+
+- mobile navigation completeness, disclosure semantics and active state;
+- progressive disclosure of Explorer controls;
+- explicit, URL-stable A/B comparison selection inside a five-record research set;
+- saved-view naming without browser `prompt()`;
+- readable CSV export and provenance-preserving JSON export;
+- responsive repository identifier containment and copyability;
+- cultivar in-page navigation;
+- Compare loading and recovery content;
+- release-defining usability content in the production static export.
+
+The source-invariant tests intentionally complement, rather than replace, rendered browser checks. The CI production job remains authoritative for Next.js compilation, static-route output, internal links and assets. Responsive behaviour should also be observed at 390px, 768px and 1440px during external-test preparation.
+
 ## Future extension
 
-Sprint 10 and later capabilities should add focused unit, integration and regression tests in the same change that introduces the capability. Browser-level accessibility and interaction testing may be added when the interactive explorer requires behaviour that cannot be validated through static export and pure service tests.
+Browser-level accessibility and interaction testing may be added when behaviour cannot be validated through static export and pure service tests. Sprint 11 remains out of scope until the post-remediation external user test is reviewed.
