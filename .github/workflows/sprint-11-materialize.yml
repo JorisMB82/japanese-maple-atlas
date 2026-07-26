@@ -5,7 +5,8 @@ on:
     branches:
       - agent/sprint-11-compiler-generalisation
     paths:
-      - '.sprint11-correct/**'
+      - '.sprint11-tar/**'
+      - '.github/workflows/sprint-11-materialize.yml'
   pull_request:
     branches:
       - main
@@ -26,39 +27,38 @@ jobs:
         with:
           ref: agent/sprint-11-compiler-generalisation
           fetch-depth: 0
-      - name: Reconstruct and verify payload
+      - name: Reconstruct and verify exact Sprint 11 files
         shell: bash
         run: |
           set -euo pipefail
-          for file in part-00 part-01 part-02 part-02b part-02c part-02d part-03 part-04; do
-            test -f ".sprint11-correct/${file}"
+          parts=(
+            part-00a part-00b part-00c
+            part-01 part-02 part-03 part-04 part-05
+            part-06a part-06b part-06c
+            part-07a part-07b part-07c
+            part-08
+          )
+          for part in "${parts[@]}"; do
+            test -f ".sprint11-tar/${part}"
           done
-          cat \
-            .sprint11-correct/part-00 \
-            .sprint11-correct/part-01 \
-            .sprint11-correct/part-02 \
-            .sprint11-correct/part-02b \
-            .sprint11-correct/part-02c \
-            .sprint11-correct/part-02d \
-            .sprint11-correct/part-03 \
-            .sprint11-correct/part-04 \
-            > /tmp/sprint11.patch.gz.b64
-          echo "ac624509208a1b60e68b1ee3494b7bebfadc038e80ae3465d59ea26cab447602  /tmp/sprint11.patch.gz.b64" | sha256sum --check --strict
-          base64 --decode /tmp/sprint11.patch.gz.b64 > /tmp/sprint11.patch.gz
-          echo "04fb45987261826f7fa5604944454d5a54e3de7f429b0b800433d53dba9eb652  /tmp/sprint11.patch.gz" | sha256sum --check --strict
-          gzip --test /tmp/sprint11.patch.gz
-          gzip --decompress --stdout /tmp/sprint11.patch.gz > /tmp/sprint11.patch
-          echo "61030548f0de289bc148c2e8c52415d8040e98830ea04ea6ce6c6e10efdbcf03  /tmp/sprint11.patch" | sha256sum --check --strict
-      - name: Validate patch application
+          : > /tmp/sprint11-files.tar.gz.b64
+          for part in "${parts[@]}"; do
+            cat ".sprint11-tar/${part}" >> /tmp/sprint11-files.tar.gz.b64
+          done
+          echo "f44fa865864509cad5a5c024212b09e9b04f4cf47950ad75cc5670885b752bc3  /tmp/sprint11-files.tar.gz.b64" | sha256sum --check --strict
+          base64 --decode /tmp/sprint11-files.tar.gz.b64 > /tmp/sprint11-files.tar.gz
+          echo "83e4c55e312b87bb293516e3af19f7fe012c5804a57dd692bb102e5bd998125e  /tmp/sprint11-files.tar.gz" | sha256sum --check --strict
+          gzip --test /tmp/sprint11-files.tar.gz
+          tar --list --gzip --file /tmp/sprint11-files.tar.gz > /tmp/sprint11-files.list
+          test "$(wc -l < /tmp/sprint11-files.list)" -gt 0
+      - name: Overlay verified Sprint 11 files
         shell: bash
-        run: git apply --check /tmp/sprint11.patch
-      - name: Apply verified patch
-        shell: bash
-        run: git apply --index /tmp/sprint11.patch
-      - name: Remove transfer payloads
-        shell: bash
-        run: git rm -r .sprint11-bootstrap .sprint11-correct
-      - name: Commit materialized Sprint 11 tree
+        run: |
+          set -euo pipefail
+          tar --extract --gzip --file /tmp/sprint11-files.tar.gz --directory .
+          git add --all
+          git rm -r --ignore-unmatch .sprint11-bootstrap .sprint11-correct .sprint11-tar
+      - name: Commit exact Sprint 11 tree
         shell: bash
         run: |
           set -euo pipefail
