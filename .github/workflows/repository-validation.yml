@@ -27,7 +27,9 @@ jobs:
           cache: npm
       - run: npm ci --no-audit --no-fund
       - run: npm run validate:contributions
+      - run: npm run validate:reference-standards
       - run: npm run compile:atlas:check
+      - run: npm run validate:scale
       - run: npm run validate:schemas
       - run: npm run validate:repository
       - run: npm run validate:search
@@ -51,7 +53,7 @@ jobs:
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: sprint-10-coverage
+          name: sprint-11-coverage
           path: quality-reports/coverage.txt
           if-no-files-found: error
           retention-days: 30
@@ -80,7 +82,7 @@ jobs:
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: sprint-10-quality-evidence
+          name: sprint-11-quality-evidence
           path: |
             quality-reports/
             release-artifacts/
@@ -89,7 +91,7 @@ jobs:
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: sprint-10-static-export
+          name: sprint-11-static-export
           path: out/
           if-no-files-found: error
           retention-days: 14
