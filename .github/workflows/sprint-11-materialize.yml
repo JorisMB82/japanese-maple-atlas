@@ -30,10 +30,19 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          for part in 00 01 02 03 04; do
-            test -f ".sprint11-correct/part-${part}"
+          for file in part-00 part-01 part-02 part-02b part-02c part-02d part-03 part-04; do
+            test -f ".sprint11-correct/${file}"
           done
-          cat .sprint11-correct/part-* > /tmp/sprint11.patch.gz.b64
+          cat \
+            .sprint11-correct/part-00 \
+            .sprint11-correct/part-01 \
+            .sprint11-correct/part-02 \
+            .sprint11-correct/part-02b \
+            .sprint11-correct/part-02c \
+            .sprint11-correct/part-02d \
+            .sprint11-correct/part-03 \
+            .sprint11-correct/part-04 \
+            > /tmp/sprint11.patch.gz.b64
           echo "ac624509208a1b60e68b1ee3494b7bebfadc038e80ae3465d59ea26cab447602  /tmp/sprint11.patch.gz.b64" | sha256sum --check --strict
           base64 --decode /tmp/sprint11.patch.gz.b64 > /tmp/sprint11.patch.gz
           echo "04fb45987261826f7fa5604944454d5a54e3de7f429b0b800433d53dba9eb652  /tmp/sprint11.patch.gz" | sha256sum --check --strict
