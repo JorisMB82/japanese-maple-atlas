@@ -6,13 +6,50 @@ import path from 'node:path';
 import {
   ROOT,
   buildRecord,
+  buildCompilerOutputs,
+  checkOutputs,
+  collectEditorialInputs,
+  collectGraphInputs,
   collectInputs,
   loadCompilerGovernance,
+  parseCli,
   writeOutputsAtomically
 } from '../../scripts/compile-atlas.mjs';
 import { syntheticReferenceStandard, syntheticSupport } from '../helpers/synthetic-reference-standard.mjs';
 
 const governance = loadCompilerGovernance();
+
+test('complete compiler pipeline reproduces the governed five-record repository', () => {
+  const inputResult = collectInputs({ governance });
+  const result = buildCompilerOutputs(
+    inputResult.records,
+    collectEditorialInputs(),
+    collectGraphInputs(),
+    governance
+  );
+
+  assert.equal(inputResult.records.length, 5);
+  assert.equal(inputResult.diagnostics.every(item => item.status === 'pass'), true);
+  assert.equal(result.manifest.objectTotal, 235);
+  assert.equal(result.manifest.objectCounts.cultivars, 5);
+  assert.equal(result.manifest.contract.profile, 'canonical-rc-v1');
+  assert.equal(result.outputs.has('atlas-repository/manifest.json'), true);
+  assert.equal(result.outputs.has('atlas-repository/hashes.json'), true);
+  assert.equal(result.outputs.has('lib/repository-registry.js'), true);
+  assert.doesNotThrow(() => checkOutputs(result.outputs));
+});
+
+test('compiler CLI parsing enforces one explicit mode and preserves path options', () => {
+  assert.deepEqual(parseCli(['--preflight', '--report', 'quality-reports/preflight.json', '--input-dir', 'inputs']), {
+    mode: 'preflight',
+    report: 'quality-reports/preflight.json',
+    inputDir: 'inputs',
+    contractDir: undefined,
+    mediaDir: undefined,
+    sourceDir: undefined
+  });
+  assert.throws(() => parseCli(['--check', '--dry-run']), /Choose only one compiler mode/);
+});
 
 test('canonical RC-006 parses without a cultivar-specific compiler branch', () => {
   const id = 'RC-006';
