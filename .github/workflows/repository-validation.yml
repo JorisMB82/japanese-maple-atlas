@@ -77,6 +77,8 @@ jobs:
           set -o pipefail
           mkdir -p quality-reports
           npm run test:regression 2>&1 | tee quality-reports/regression.txt
+      - name: Regenerate deterministic scale evidence for aggregate validation
+        run: npm run validate:scale
       - run: npm run validate:quality
       - run: npm run release:manifest
       - uses: actions/upload-artifact@v4
