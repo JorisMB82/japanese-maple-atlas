@@ -27,7 +27,7 @@ function prepareCohort({ malformed = false } = {}) {
   }
   const id = 'RC-006';
   let markdown = syntheticReferenceStandard(id);
-  if (malformed) markdown = markdown.replace('**Compiler profile:** canonical-rc-v1  \n', '');
+  if (malformed) markdown = markdown.replace('**Compiler profile:** canonical-rc-v1\n', '');
   fs.writeFileSync(path.join(inputDir, `${id}.md`), markdown);
   const support = syntheticSupport(id, ROOT);
   fs.writeFileSync(path.join(sourceDir, `${id}.sources.json`), `${JSON.stringify(support.provenance, null, 2)}\n`);
