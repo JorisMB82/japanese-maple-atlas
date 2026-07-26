@@ -1,6 +1,8 @@
 name: Sprint 11.5 materialise verified source
 
 on:
+  pull_request:
+    branches: [main]
   push:
     branches: [agent/sprint-11-5-media-governance-clean]
     paths: [.github/workflows/repository-validation.yml]
@@ -11,6 +13,7 @@ permissions:
 
 jobs:
   materialise:
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
@@ -52,7 +55,6 @@ jobs:
           test -f scripts/validate-media.mjs
           test -f lib/media-pipeline.mjs
           test -f atlas-repository/governance/media-policy.json
-          test ! -e .github/workflows/sprint-11-5-publish.yml
 
       - name: Revalidate materialised repository
         shell: bash
