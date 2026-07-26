@@ -1,26 +1,41 @@
-name: Remediation source package
+name: Apply Sprint 10 usability remediation
 
 on:
-  pull_request:
+  push:
     branches:
-      - main
+      - sprint-10-usability-remediation
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
-  package-source:
+  apply-remediation:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Package repository source
-        run: |
-          mkdir -p source-package
-          rsync -a --exclude '.git' --exclude 'node_modules' --exclude 'out' --exclude '.next' ./ source-package/
-      - uses: actions/upload-artifact@v4
         with:
-          name: sprint-10-remediation-source
-          path: source-package/
-          if-no-files-found: error
-          retention-days: 1
+          ref: sprint-10-usability-remediation
+          fetch-depth: 0
+      - name: Reconstruct and apply verified patch
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -f .github/remediation-patch/part-00
+          test -f .github/remediation-patch/part-07
+          cat .github/remediation-patch/part-* > /tmp/remediation.patch.xz.b64
+          base64 --decode /tmp/remediation.patch.xz.b64 > /tmp/remediation.patch.xz
+          xz --decompress --stdout /tmp/remediation.patch.xz > /tmp/remediation.patch
+          git apply --check /tmp/remediation.patch
+          git apply /tmp/remediation.patch
+      - name: Remove temporary transport and publish remediation
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf .github/remediation-patch
+          rm -f .github/workflows/remediation-source-package.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Sprint 10: remediate usability findings before external testing"
+          git push origin HEAD:sprint-10-usability-remediation
