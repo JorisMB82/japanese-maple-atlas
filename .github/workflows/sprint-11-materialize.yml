@@ -5,7 +5,7 @@ on:
     branches:
       - agent/sprint-11-compiler-generalisation
     paths:
-      - '.sprint11-bootstrap/**'
+      - '.sprint11-correct/**'
   pull_request:
     branches:
       - main
@@ -26,39 +26,27 @@ jobs:
         with:
           ref: agent/sprint-11-compiler-generalisation
           fetch-depth: 0
-      - name: Check payload completeness
+      - name: Reconstruct and verify payload
         shell: bash
         run: |
           set -euo pipefail
-          test -f .sprint11-bootstrap/part-00
-          test -f .sprint11-bootstrap/part-01
-          wc -c .sprint11-bootstrap/part-*
-      - name: Decode payload
-        shell: bash
-        run: |
-          set -euo pipefail
-          cat .sprint11-bootstrap/part-* | base64 --decode > /tmp/sprint11.patch.gz
-          file /tmp/sprint11.patch.gz
-          sha256sum /tmp/sprint11.patch.gz
-      - name: Decompress payload
-        shell: bash
-        run: |
-          set -euo pipefail
+          for part in 00 01 02 03 04; do
+            test -f ".sprint11-correct/part-${part}"
+          done
+          cat .sprint11-correct/part-* > /tmp/sprint11.patch.gz.b64
+          echo "ac624509208a1b60e68b1ee3494b7bebfadc038e80ae3465d59ea26cab447602  /tmp/sprint11.patch.gz.b64" | sha256sum --check --strict
+          base64 --decode /tmp/sprint11.patch.gz.b64 > /tmp/sprint11.patch.gz
+          echo "04fb45987261826f7fa5604944454d5a54e3de7f429b0b800433d53dba9eb652  /tmp/sprint11.patch.gz" | sha256sum --check --strict
           gzip --test /tmp/sprint11.patch.gz
           gzip --decompress --stdout /tmp/sprint11.patch.gz > /tmp/sprint11.patch
-          wc -c /tmp/sprint11.patch
-          sha256sum /tmp/sprint11.patch
-      - name: Validate patch application
+          echo "61030548f0de289bc148c2e8c52415d8040e98830ea04ea6ce6c6e10efdbcf03  /tmp/sprint11.patch" | sha256sum --check --strict
+      - name: Apply and publish verified Sprint 11 tree
         shell: bash
         run: |
           set -euo pipefail
           git apply --check /tmp/sprint11.patch
-      - name: Materialize verified tree
-        shell: bash
-        run: |
-          set -euo pipefail
           git apply --index /tmp/sprint11.patch
-          git rm -r .sprint11-bootstrap
+          git rm -r .sprint11-bootstrap .sprint11-correct .github/workflows/sprint-11-materialize.yml
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git commit -m "Sprint 11: generalise compiler and lock RC-020 roadmap"
