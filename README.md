@@ -2,9 +2,39 @@
 
 An evidence-aware botanical knowledge platform for finding, comparing and researching Japanese maple cultivars.
 
-## Sprint 11.5 media governance / application v0.11.5
+## Current programme baseline — application v0.11.5
 
-Sprint 11 remains the repository and compiler baseline. Sprint 11.5 adds the governed visual layer required before RC-006 production:
+The repository is operating under **ROADMAP-002 Version 1.1 — Approved and governing**, an integrated three-track plan for engineering, editorial/content production and media/visual assets.
+
+Current state:
+
+- Sprint 11 scalable ingestion is complete;
+- Sprint 11.5 media governance and deterministic visual derivatives are complete and merged;
+- RC-001 through RC-005 remain the five frozen public Reference Standards;
+- the repository contains 235 first-class objects;
+- RC-006 through RC-010 are the first coordinated publication wave;
+- editorial and media work proceed in separate streams and converge through engineering/integration validation.
+
+Authoritative programme documents:
+
+- [`ROADMAP-002 Version 1.1 — Approved Integrated Three-Track Operating Plan`](docs/ROADMAP-002_Post-Sprint-10_RC-020-Visual-Atlas-Roadmap_v1.1_APPROVED.docx)
+- [`DR-ROADMAP-002-001 — Approval and implementation record`](docs/DR-ROADMAP-002-001_Approval-of-ROADMAP-002-v1.1.md)
+- [`STATUS-002 — Post-Sprint-11.5 three-track baseline`](docs/STATUS-002_Post-Sprint-11.5-Three-Track-Baseline.md)
+- [`RC-001–RC-025 programme register`](docs/PROGRAMME-REGISTER_RC-001-RC-025.md)
+
+The historical Version 1.0 Markdown roadmap remains in the repository for traceability but is operationally superseded by Version 1.1.
+
+## Three-track ownership
+
+- **Engineering/integration:** contracts, schemas, compiler, validation, generated systems, application, CI and deployment.
+- **Editorial/content:** cultivar selection, RC Markdown, source sidecars, evidence synthesis, editorial decisions and freeze recommendations.
+- **Media/visual assets:** source assets, media sidecars, rights/provenance, specimen-identity treatment, captions, alt text and coverage.
+
+Branches should normally use `engineering/`, `content/`, `media/` and `integration/` prefixes. No track should edit another track's owned files or assume that unmerged files in another conversation exist.
+
+## Sprint 11.5 media governance
+
+Sprint 11.5 adds the governed visual layer required before RC-006 production:
 
 - media-v2 rights, licence, provenance, privacy and approval metadata;
 - preserved source checksums and deterministic thumb, card, display and archive derivatives;
@@ -45,21 +75,21 @@ Technical evidence, relationship rationale, confidence, repository versions and 
 ## Quality commands
 
 ```bash
-npm run process:media               # generate deterministic visual derivatives
-npm run validate:media              # rights, provenance, privacy and coverage checks
+npm run process:media                # generate deterministic visual derivatives
+npm run validate:media               # rights, provenance, privacy and coverage checks
 npm run validate:reference-standards # canonical RC and sidecar preflight
 npm run compile:atlas:dry-run        # build and report without publishing
 npm run verify:repository            # contributor, compiler, schema, repository, search, graph and explorer checks
-npm run validate:explorer   # explorer projection, state, comparison, saved-view and export checks
-npm run test:unit           # pure services and usability source invariants
-npm run test:integration    # repository, compiler and schema boundaries
-npm run test:coverage       # governed native Node coverage thresholds
-npm run build               # validated production static export
-npm run test:regression     # exported routes, links, content and assets
-npm run validate:scale      # synthetic 20-, 25- and 150-record compiler proof
-npm run validate:quality    # quality-infrastructure and release invariants
-npm run verify              # complete local release-readiness sequence
-npm run release:manifest    # release evidence and SHA-256 checksums
+npm run validate:explorer            # explorer projection, state, comparison, saved-view and export checks
+npm run test:unit                    # pure services and usability source invariants
+npm run test:integration             # repository, compiler and schema boundaries
+npm run test:coverage                # governed native Node coverage thresholds
+npm run build                        # validated production static export
+npm run test:regression              # exported routes, links, content and assets
+npm run validate:scale               # synthetic 20-, 25- and 150-record compiler proof
+npm run validate:quality             # quality-infrastructure and release invariants
+npm run verify                       # complete local release-readiness sequence
+npm run release:manifest             # release evidence and SHA-256 checksums
 ```
 
 Coverage thresholds and release invariants are governed in `quality/quality-gates.json`. The production static export is written to `out/`; release evidence is written to `release-artifacts/`.
@@ -110,8 +140,11 @@ The release-readiness workflow can be run manually. A pushed `v*` tag executes t
 - `docs/EXPLORER-001_Interactive-Atlas-Explorer_v1.0.md` — Explorer architecture and operating boundary
 - `docs/UX-001_Sprint-10-Usability-Remediation_v1.0.md` — remediation decisions, tests and residual limits
 - `docs/QA-001_Testing-and-Quality-Infrastructure_v1.0.md` — quality architecture and operations
-- `docs/ROADMAP-002_Post-Sprint-10_RC-020-Visual-Atlas-Roadmap_v1.0.md` — locked RC-020 governing roadmap
+- `docs/ROADMAP-002_Post-Sprint-10_RC-020-Visual-Atlas-Roadmap_v1.1_APPROVED.docx` — approved and governing three-track operating plan
+- `docs/ROADMAP-002_Post-Sprint-10_RC-020-Visual-Atlas-Roadmap_v1.0.md` — superseded historical roadmap
+- `docs/STATUS-002_Post-Sprint-11.5-Three-Track-Baseline.md` — current programme status addendum
+- `docs/PROGRAMME-REGISTER_RC-001-RC-025.md` — live cross-track operating register
 - `docs/COMPILER-002_Scalable-Reference-Standard-Ingestion_v1.0.md` — canonical ingestion and publication contract
 - `SPRINT-11.md` — Sprint 11 implementation and review boundary
-- `SPRINT-11.5.md` — governed media pipeline and review boundary
+- `SPRINT-11.5.md` — completed governed media pipeline record
 - `docs/MEDIA-002_Visual-Asset-Governance-and-Pipeline_v1.0.md` — media contract and operating procedure

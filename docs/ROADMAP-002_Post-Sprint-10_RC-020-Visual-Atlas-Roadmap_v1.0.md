@@ -1,9 +1,13 @@
 # ROADMAP-002 — Post-Sprint-10 RC-020 Visual Atlas Roadmap
 
-**Version:** 1.0
-**Status:** Approved and locked
-**Effective date:** 2026-07-26
-**Supersedes:** ROADMAP-001 — Development Roadmap (Post Sprint 6)
+> [!IMPORTANT]
+> **Historical document — operationally superseded.** ROADMAP-002 Version 1.1 is the approved and governing three-track operating plan. Read [`DR-ROADMAP-002-001`](DR-ROADMAP-002-001_Approval-of-ROADMAP-002-v1.1.md), the [approved Version 1.1 DOCX](ROADMAP-002_Post-Sprint-10_RC-020-Visual-Atlas-Roadmap_v1.1_APPROVED.docx) and the [current status addendum](STATUS-002_Post-Sprint-11.5-Three-Track-Baseline.md) before starting new work. This Version 1.0 file is retained for decision-history traceability only.
+
+**Version:** 1.0  
+**Status:** Superseded operationally; retained as historical baseline  
+**Effective date:** 2026-07-26  
+**Superseded by:** ROADMAP-002 Version 1.1 — Approved Integrated Three-Track Operating Plan  
+**Originally superseded:** ROADMAP-001 — Development Roadmap (Post Sprint 6)  
 **Governing milestone:** Japanese Maple Atlas — RC-020 Visual Reference Release
 
 ## 1. Locked near-term objective
@@ -298,4 +302,4 @@ The working target for the RC-020 Visual Reference Release is approximately six 
 
 ## 10. Governance and change control
 
-This roadmap is locked as the post-Sprint-10 governing baseline. Changes require a documented Decision Record stating the proposed change, rationale, impact on the RC-020 objective, alternatives considered and approval date.
+This roadmap was the original post-Sprint-10 governing baseline. It is retained for decision history. Operational work is governed by ROADMAP-002 Version 1.1 and subsequent approved Decision Records.
