@@ -1,6 +1,6 @@
 # DR-EDITORIAL-001 — Wave 1 RC-006–RC-010 Cultivar Assignments
 
-**Status:** Editorially recommended; pending project-owner approval and merge  
+**Status:** Approved by project owner; authorised for merge  
 **Decision date:** 2026-07-27  
 **Prepared against `main`:** `969b02db7ef27a1c80ddc02f893404945abb7f9c`  
 **Editorial branch:** `content/rc-006-010`  
@@ -24,15 +24,17 @@ The post-housekeeping baseline also establishes that:
 
 The earlier provisional proposal to assign RC-010 to *Acer japonicum* ‘Aconitifolium’ would introduce an engineering-owned taxon-contract dependency because *Acer japonicum* is not currently registered. That proposal is therefore deferred rather than silently creating a schema or contract change inside the editorial branch.
 
-## Decision proposed for approval
+## Decision
 
-Assign and lock the Wave 1 cohort as follows:
+Assign and lock the Wave 1 cohort at G0 as follows:
 
 1. **RC-006 — *Acer palmatum* ‘Osakazuki’**
 2. **RC-007 — *Acer palmatum* ‘Butterfly’**
 3. **RC-008 — *Acer palmatum* ‘Shishi-gashira’**
 4. **RC-009 — *Acer palmatum* ‘Katsura’**
 5. **RC-010 — *Acer palmatum* ‘Mikawa-yatsubusa’**
+
+The replacement of *Acer japonicum* ‘Aconitifolium’ with ‘Mikawa-yatsubusa’ is approved for Wave 1. ‘Aconitifolium’ is deferred for a future wave and may later require a governed *Acer japonicum* taxon-contract addition.
 
 The assignment lock applies to record identifiers and the accepted proposed working names. It does not pre-approve synonyms, histories, descriptions, media, relationships, freeze decisions or publication.
 
@@ -76,7 +78,7 @@ The cohort also creates useful comparison pairs without duplication:
 
 ## Consequences
 
-If approved and merged:
+Following approval and merge:
 
 1. Editorial may proceed through G1–G4 under stable Wave 1 identifiers.
 2. Media may create acquisition and sidecar plans for the same five identifiers.
@@ -89,13 +91,21 @@ If approved and merged:
 
 This document is not a cultivar freeze decision. No RC-006–RC-010 record is approved, frozen, media-ready, integrated, technically validated or published by this assignment decision.
 
+RC-006 remains:
+
+- G1 PASS;
+- G2 PASS for review;
+- G3 PASS as an editorial draft;
+- G4 CONDITIONAL;
+- G5–G9 not claimed.
+
 ## Project-owner determination
 
-- [ ] **Approved as proposed**
+- [x] **Approved as proposed**
 - [ ] **Approved with amendments recorded below**
 - [ ] **Deferred**
 - [ ] **Rejected**
 
-**Approver:** Pending  
-**Approval date:** Pending  
-**Amendments / rationale:** Pending
+**Approver:** Joris Magenti — Project owner / Editor-in-Chief  
+**Approval date:** 2026-07-27  
+**Amendments / rationale:** No amendment to the five proposed assignments. The substitution of ‘Mikawa-yatsubusa’ for ‘Aconitifolium’ is expressly approved. ‘Aconitifolium’ is deferred and may later require a governed *Acer japonicum* taxon-contract addition. This decision locks G0 only and does not constitute G4 approval of RC-006.
