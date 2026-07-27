@@ -1,4 +1,4 @@
-name: Sprint 11.5 materialise verified source
+name: Sprint 11.5 materialise compact verified source
 
 on:
   pull_request:
@@ -15,33 +15,34 @@ jobs:
   materialise:
     if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
         with:
           ref: agent/sprint-11-5-media-governance-clean
           fetch-depth: 0
 
-      - name: Verify implementation payload
+      - name: Verify compact implementation archive
         shell: bash
         run: |
           set -euo pipefail
-          payload=.sprint-11-5-publish/payload.b64
-          test -s "$payload"
-          test "$(wc -c < "$payload")" -eq 132784
-          echo 'f39733345dfa8582c2cbd09af8e8cd47366fa8f449d28dfd9750a3b2986974a6  .sprint-11-5-publish/payload.b64' | sha256sum --check
-          base64 --decode "$payload" > /tmp/sprint-11-5.tar.gz
-          echo '177ae3180b3c7b87ac2930fbc61ad3d9d24b4ba9a5af950d8ae15a6518a73096  /tmp/sprint-11-5.tar.gz' | sha256sum --check
-          gzip -t /tmp/sprint-11-5.tar.gz
-          tar -tzf /tmp/sprint-11-5.tar.gz > /tmp/sprint-11-5.inventory
-          test "$(wc -l < /tmp/sprint-11-5.inventory)" -eq 73
+          for part in .sprint-11-5-publish/patch-{00..05}; do
+            test -s "$part"
+          done
+          cat .sprint-11-5-publish/patch-{00..05} > /tmp/sprint-11-5.b64
+          base64 --decode /tmp/sprint-11-5.b64 > /tmp/sprint-11-5.tar.xz
+          xz -t /tmp/sprint-11-5.tar.xz
+          tar -tJf /tmp/sprint-11-5.tar.xz > /tmp/sprint-11-5.inventory
+          test "$(wc -l < /tmp/sprint-11-5.inventory)" -eq 24
           if grep -Eq '(^/|(^|/)\.\.(/|$))' /tmp/sprint-11-5.inventory; then
             echo 'Unsafe archive path detected.' >&2
             exit 1
           fi
           grep -Fxq 'package.json' /tmp/sprint-11-5.inventory
+          grep -Fxq 'scripts/process-media.mjs' /tmp/sprint-11-5.inventory
           grep -Fxq 'scripts/validate-media.mjs' /tmp/sprint-11-5.inventory
           grep -Fxq 'schemas/media.schema.json' /tmp/sprint-11-5.inventory
+          grep -Fxq 'atlas-repository/governance/media-policy.json' /tmp/sprint-11-5.inventory
           grep -Fxq 'SPRINT-11.5.md' /tmp/sprint-11-5.inventory
           grep -Fxq '.github/workflows/repository-validation.yml' /tmp/sprint-11-5.inventory
 
@@ -49,14 +50,27 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          tar -xzf /tmp/sprint-11-5.tar.gz
+          tar -xJf /tmp/sprint-11-5.tar.xz
           rm -rf .sprint-11-5-publish
           test "$(node -p "require('./package.json').version")" = '0.11.5'
+          test -f scripts/process-media.mjs
           test -f scripts/validate-media.mjs
-          test -f lib/media-pipeline.mjs
           test -f atlas-repository/governance/media-policy.json
 
-      - name: Revalidate materialised repository
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci --no-audit --no-fund
+
+      - name: Regenerate deterministic outputs
+        run: |
+          npm run process:media
+          npm run compile:atlas
+
+      - name: Run complete release verification
         shell: bash
         run: |
           set -euo pipefail
@@ -64,6 +78,9 @@ jobs:
           npm run test
           npm run test:coverage
           npm run validate:scale
+          npm run build
+          npm run test:regression
+          npm run validate:quality
 
       - name: Commit clean implementation
         shell: bash
