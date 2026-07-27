@@ -1,6 +1,6 @@
 {
   "name": "japanese-maple-atlas-mvp",
-  "version": "0.11.0",
+  "version": "0.11.5",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -20,7 +20,7 @@
     "validate:explorer": "node scripts/validate-explorer.mjs",
     "validate:quality": "node scripts/validate-quality.mjs",
     "validate:scale": "node scripts/scale-test-compiler.mjs",
-    "verify:repository": "npm run validate:contributions && npm run validate:reference-standards && npm run compile:atlas:check && npm run validate:schemas && npm run validate:repository && npm run validate:search && npm run validate:graph && npm run validate:explorer",
+    "verify:repository": "npm run process:media && npm run validate:media && npm run validate:contributions && npm run validate:reference-standards && npm run compile:atlas:check && npm run validate:schemas && npm run validate:repository && npm run validate:search && npm run validate:graph && npm run validate:explorer",
     "test:unit": "node scripts/run-test-suite.mjs unit",
     "test:integration": "node scripts/run-test-suite.mjs integration",
     "test:regression": "node scripts/run-test-suite.mjs regression",
@@ -30,7 +30,10 @@
     "build": "next build",
     "start": "next start",
     "verify": "npm run test && npm run test:coverage && npm run validate:scale && npm run build && npm run test:regression && npm run validate:quality",
-    "release:manifest": "node scripts/generate-release-manifest.mjs"
+    "release:manifest": "node scripts/generate-release-manifest.mjs",
+    "process:media": "node scripts/process-media.mjs",
+    "process:media:check": "node scripts/process-media.mjs --check",
+    "validate:media": "node scripts/validate-media.mjs"
   },
   "dependencies": {
     "next": "14.2.5",

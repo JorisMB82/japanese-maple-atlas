@@ -152,3 +152,6 @@ release-artifacts/
 
 # macOS
 .DS_Store
+
+# Deterministic Sprint 11.5 media derivatives
+public/media/derivatives/

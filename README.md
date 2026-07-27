@@ -2,23 +2,17 @@
 
 An evidence-aware botanical knowledge platform for finding, comparing and researching Japanese maple cultivars.
 
-## Sprint 11 scalable ingestion / application v0.11.0
+## Sprint 11.5 media governance / application v0.11.5
 
-Sprint 11 removes the five-record compiler boundary while preserving the five frozen Reference Standards unchanged. Atlas Compiler 2.0.0 now provides:
+Sprint 11 remains the repository and compiler baseline. Sprint 11.5 adds the governed visual layer required before RC-006 production:
 
-- an approved canonical RC-006+ contract and template with explicit synonym, relationship, source and media registers;
-- external legacy adapters for RC-001 through RC-005;
-- a governed exception registry instead of cultivar-specific JavaScript branches;
-- per-record, record-scoped underlying-source provenance, source locators and evidence-domain mappings;
-- per-record governed media sidecars;
-- automatic discovery of approved Reference Standards;
-- dynamic object totals, search coverage and graph inventory;
-- record-level preflight and dry-run diagnostics;
-- transactional generated-output publication with rollback protection;
-- conforming RC-006 integration proof;
-- synthetic compiler validation at 20, 25 and 150 records.
+- media-v2 rights, licence, provenance, privacy and approval metadata;
+- preserved source checksums and deterministic thumb, card, display and archive derivatives;
+- conspicuous non-evidentiary labelling for Atlas illustrations and reconstructions;
+- RC-001 through RC-020 coverage accounting with explicit governed gaps;
+- media processing, drift validation, schema checks, tests and CI integration.
 
-The repository remains at five public cultivars and 235 first-class objects, but the repository contract is now v0.11.0 and ready for RC-006 production. Sprint 11.5 media governance and new botanical content remain separate next steps.
+The five frozen botanical records and 235 repository objects remain unchanged. Visual attractiveness is presentation only and is never cultivar-identification evidence.
 
 ## Repository principle
 
@@ -51,6 +45,8 @@ Technical evidence, relationship rationale, confidence, repository versions and 
 ## Quality commands
 
 ```bash
+npm run process:media               # generate deterministic visual derivatives
+npm run validate:media              # rights, provenance, privacy and coverage checks
 npm run validate:reference-standards # canonical RC and sidecar preflight
 npm run compile:atlas:dry-run        # build and report without publishing
 npm run verify:repository            # contributor, compiler, schema, repository, search, graph and explorer checks
@@ -117,3 +113,5 @@ The release-readiness workflow can be run manually. A pushed `v*` tag executes t
 - `docs/ROADMAP-002_Post-Sprint-10_RC-020-Visual-Atlas-Roadmap_v1.0.md` — locked RC-020 governing roadmap
 - `docs/COMPILER-002_Scalable-Reference-Standard-Ingestion_v1.0.md` — canonical ingestion and publication contract
 - `SPRINT-11.md` — Sprint 11 implementation and review boundary
+- `SPRINT-11.5.md` — governed media pipeline and review boundary
+- `docs/MEDIA-002_Visual-Asset-Governance-and-Pipeline_v1.0.md` — media contract and operating procedure

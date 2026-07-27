@@ -1,6 +1,7 @@
 {
   "recordId": "RC-005",
   "status": "approved",
+  "contractVersion": "media-v2",
   "assets": [
     {
       "id": "MED-RC-005-IDENTITY-001",
@@ -9,17 +10,84 @@
       "role": "identity-plate",
       "subject": "whole-plant-habit",
       "season": "representative",
-      "status": "pilot-approved",
-      "assetPath": "/media/identity-plates/aureum.svg",
-      "thumbnailPath": "/media/identity-plates/aureum.svg",
+      "status": "approved",
+      "assetPath": "/media/derivatives/rc-005/display.svg",
+      "thumbnailPath": "/media/derivatives/rc-005/thumb.svg",
       "altText": "Standardized Atlas editorial illustration of Acer shirasawanum 'Aureum', based on the frozen Reference Standard but not diagnostic evidence.",
       "caption": "Aureum standardized Atlas identity plate.",
-      "credit": "Japanese Maple Atlas",
-      "creatorType": "procedural-editorial-illustration",
-      "rights": "Copyright retained; licensing decision pending",
+      "creator": "Japanese Maple Atlas",
+      "contributor": "Japanese Maple Atlas",
+      "rightsHolder": "Japanese Maple Atlas",
+      "licence": "All rights reserved; internal Atlas publication approved",
+      "source": {
+        "path": "/media/identity-plates/aureum.svg",
+        "sha256": "773b2701f8603029bb91378a7b71f37d8291c42c5de0370628587ee014e3386d",
+        "preservation": "original-retained"
+      },
+      "identification": {
+        "specimenIdentity": "editorial reconstruction from frozen Reference Standard",
+        "confidence": "not-applicable",
+        "editorialStatus": "illustrative"
+      },
+      "privacy": {
+        "exifRetained": false,
+        "gpsRetained": false,
+        "locationGranularity": "not-applicable"
+      },
       "evidentiaryStatus": "illustrative-not-evidence",
-      "styleVersion": "atlas-identity-plate-v1",
-      "reviewNotes": "Reviewed for consistency with RC-005; remains illustrative and must not be used as cultivar authentication evidence."
+      "syntheticLabel": "Atlas editorial reconstruction \u2014 not an observed specimen or identification evidence.",
+      "styleVersion": "atlas-identity-plate-v2",
+      "focalPoint": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "derivatives": [
+        {
+          "profile": "thumb",
+          "path": "/media/derivatives/rc-005/thumb.svg",
+          "width": 320,
+          "height": 231,
+          "mimeType": "image/svg+xml",
+          "sha256": "3e7b628cbb61afb557444db840f6d87c97eed36c2c56ae9098576adc714208a3",
+          "derivedFrom": "MED-RC-005-IDENTITY-001"
+        },
+        {
+          "profile": "card",
+          "path": "/media/derivatives/rc-005/card.svg",
+          "width": 560,
+          "height": 404,
+          "mimeType": "image/svg+xml",
+          "sha256": "883aceb7aed6a4aabf52c98d1788da1e4e816daa5202e99fd8b487ea5364f97d",
+          "derivedFrom": "MED-RC-005-IDENTITY-001"
+        },
+        {
+          "profile": "display",
+          "path": "/media/derivatives/rc-005/display.svg",
+          "width": 960,
+          "height": 693,
+          "mimeType": "image/svg+xml",
+          "sha256": "32046418e14d63f9eccd67645c137b03e80336926087fae3598d121f07e36505",
+          "derivedFrom": "MED-RC-005-IDENTITY-001"
+        },
+        {
+          "profile": "archive",
+          "path": "/media/derivatives/rc-005/archive.svg",
+          "width": 1440,
+          "height": 1040,
+          "mimeType": "image/svg+xml",
+          "sha256": "2b6e64c1c71a7d567e49f72e0ad2bf903b73f14e977bad76c7974473e5e01e36",
+          "derivedFrom": "MED-RC-005-IDENTITY-001"
+        }
+      ],
+      "approvalHistory": [
+        {
+          "status": "approved",
+          "date": "2026-07-26",
+          "authority": "Atlas editorial governance",
+          "note": "Migrated from pilot media with rights, privacy, source and derivative lineage."
+        }
+      ],
+      "reviewNotes": "Visual attractiveness is presentation only and must not be treated as cultivar identity evidence."
     }
   ]
 }

@@ -1,35 +1,17 @@
 {
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://japanese-maple-atlas.org/schemas/media.schema.json",
-  "title": "Atlas Media Object",
-  "type": "object",
-  "additionalProperties": true,
-  "required": [
-    "id",
-    "cultivarId",
-    "mediaType",
-    "role",
-    "status",
-    "assetPath",
-    "altText",
-    "evidentiaryStatus"
-  ],
-  "properties": {
-    "id": {
-      "type": "string",
-      "pattern": "^MED-RC-[0-9]{3}-[A-Z]+-[0-9]{3}$"
-    },
-    "cultivarId": {
-      "type": "string",
-      "pattern": "^RC-[0-9]{3}$"
-    },
-    "evidentiaryStatus": {
-      "enum": [
-        "illustrative-not-evidence",
-        "supporting-evidence",
-        "primary-evidence",
-        "context-only"
-      ]
-    }
-  }
+  "$schema":"https://json-schema.org/draft/2020-12/schema","title":"Atlas governed media object","type":"object",
+  "required":["id","cultivarId","mediaType","role","status","assetPath","altText","creator","rightsHolder","licence","source","identification","privacy","evidentiaryStatus","syntheticLabel","derivatives","approvalHistory"],
+  "properties":{
+    "id":{"type":"string","pattern":"^MED-RC-[0-9]{3}-[A-Z]+-[0-9]{3}$"},"cultivarId":{"type":"string","pattern":"^RC-[0-9]{3}$"},
+    "mediaType":{"enum":["atlas-illustration","photograph","scan","diagram","map","specimen-image"]},"role":{"type":"string"},"subject":{"type":"string"},"season":{"type":"string"},
+    "status":{"enum":["reserved","draft","approved","deprecated"]},"assetPath":{"type":"string"},"thumbnailPath":{"type":["string","null"]},"altText":{"type":"string","minLength":20},"caption":{"type":"string"},
+    "creator":{"type":"string"},"contributor":{"type":"string"},"rightsHolder":{"type":"string"},"licence":{"type":"string"},
+    "source":{"type":"object","required":["path","sha256","preservation"],"properties":{"path":{"type":"string"},"sha256":{"type":"string","pattern":"^[a-f0-9]{64}$"},"preservation":{"type":"string"}},"additionalProperties":false},
+    "identification":{"type":"object","required":["specimenIdentity","confidence","editorialStatus"],"properties":{"specimenIdentity":{"type":"string"},"confidence":{"type":"string"},"editorialStatus":{"type":"string"}},"additionalProperties":false},
+    "privacy":{"type":"object","required":["exifRetained","gpsRetained","locationGranularity"],"properties":{"exifRetained":{"type":"boolean"},"gpsRetained":{"type":"boolean"},"locationGranularity":{"type":"string"}},"additionalProperties":false},
+    "evidentiaryStatus":{"enum":["illustrative-not-evidence","supporting-evidence","primary-evidence","context-only"]},"syntheticLabel":{"type":"string","minLength":20},"styleVersion":{"type":"string"},
+    "focalPoint":{"type":"object","required":["x","y"],"properties":{"x":{"type":"number"},"y":{"type":"number"}},"additionalProperties":false},
+    "derivatives":{"type":"array","minItems":4,"items":{"type":"object","required":["profile","path","width","height","mimeType","sha256","derivedFrom"],"properties":{"profile":{"enum":["thumb","card","display","archive"]},"path":{"type":"string"},"width":{"type":"integer"},"height":{"type":"integer"},"mimeType":{"const":"image/svg+xml"},"sha256":{"type":"string","pattern":"^[a-f0-9]{64}$"},"derivedFrom":{"type":"string"}},"additionalProperties":false}},
+    "approvalHistory":{"type":"array","minItems":1},"reviewNotes":{"type":"string"}
+  },"additionalProperties":false
 }
