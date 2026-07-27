@@ -1,48 +1,102 @@
-name: Sprint 11.5 trace source preparation
+name: Repository quality gates
 
 on:
   pull_request:
     branches: [main]
   push:
-    branches: [agent/sprint-11-5-media-governance-clean]
-    paths: [.github/workflows/repository-validation.yml]
+    branches: [main]
   workflow_dispatch:
+
+concurrency:
+  group: quality-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 permissions:
   contents: read
 
 jobs:
-  trace:
+  repository-and-tests:
+    name: Repository, schemas and tests
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
-          ref: agent/sprint-11-5-media-governance-clean
-          fetch-depth: 1
-          show-progress: false
-      - name: Trace preparation
-        shell: bash
-        run: |
-          set +e
-          exec > >(tee /tmp/prepare.log) 2>&1
-          echo '1 segments'; ls -l .sprint-11-5-publish/patch-{00..05}; echo status=$?
-          echo '2 concatenate'; cat .sprint-11-5-publish/patch-{00..05} > /tmp/sprint-11-5.b64; echo status=$?
-          echo '3 decode'; base64 --decode /tmp/sprint-11-5.b64 > /tmp/sprint-11-5.tar.xz; echo status=$?
-          echo '4 xz'; xz -t /tmp/sprint-11-5.tar.xz; echo status=$?
-          echo '5 extract'; tar -xJf /tmp/sprint-11-5.tar.xz; echo status=$?
-          echo '6 workflow present'; ls -l .github/workflows/repository-validation.yml; echo status=$?
-          echo '7 restore workflow'; git checkout HEAD -- .github/workflows/repository-validation.yml; echo status=$?
-          echo '8 remove payload'; rm -rf .sprint-11-5-publish; echo status=$?
-          echo '9 decision record'; ls -l docs/DR-011-002_Governed-Media-Derivatives.md; echo status=$?
-          echo '10 normalize'; sed -i 's/[[:space:]]\+$//' docs/DR-011-002_Governed-Media-Derivatives.md; echo status=$?
-          echo '11 version'; node -p "require('./package.json').version"; echo status=$?
-          echo '12 status'; git status --short; echo status=$?
-          exit 0
+          node-version: 24
+          cache: npm
+      - run: npm ci --no-audit --no-fund
+      - run: npm run process:media
+      - run: npm run validate:media
+      - run: npm run process:media:check
+      - run: npm run validate:contributions
+      - run: npm run validate:reference-standards
+      - run: npm run compile:atlas:check
+      - run: npm run validate:scale
+      - run: npm run validate:schemas
+      - run: npm run validate:repository
+      - run: npm run validate:search
+      - run: npm run validate:graph
+      - run: npm run validate:explorer
+      - run: npm run test:unit
+      - run: npm run test:integration
+
+  coverage:
+    name: Native Node coverage thresholds
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci --no-audit --no-fund
+      - run: npm run test:coverage
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: sprint-11-5-prepare-trace
-          path: /tmp/prepare.log
+          name: sprint-11-5-coverage
+          path: quality-reports/coverage.txt
           if-no-files-found: error
-          retention-days: 3
+          retention-days: 30
+
+  production-build:
+    name: Production build and static regression
+    needs: [repository-and-tests, coverage]
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci --no-audit --no-fund
+      - run: npm run build
+      - name: Run static export regression suite
+        shell: bash
+        run: |
+          set -o pipefail
+          mkdir -p quality-reports
+          npm run test:regression 2>&1 | tee quality-reports/regression.txt
+      - name: Regenerate deterministic scale evidence for aggregate validation
+        run: npm run validate:scale
+      - run: npm run validate:quality
+      - run: npm run release:manifest
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: sprint-11-5-quality-evidence
+          path: |
+            quality-reports/
+            release-artifacts/
+          if-no-files-found: warn
+          retention-days: 30
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: sprint-11-5-static-export
+          path: out/
+          if-no-files-found: error
+          retention-days: 14
