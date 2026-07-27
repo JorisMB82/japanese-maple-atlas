@@ -15,50 +15,6 @@ permissions:
   contents: read
 
 jobs:
-  branch-housekeeping:
-    name: Delete explicit stale branch refs
-    if: github.event_name == 'pull_request' && github.head_ref == 'agent/repository-housekeeping-three-track-baseline'
-    runs-on: ubuntu-latest
-    timeout-minutes: 10
-    permissions:
-      contents: write
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 1
-      - name: Delete reviewed stale branches
-        shell: bash
-        run: |
-          set -euo pipefail
-          stale_branches=(
-            'sprint-6-atlas-compiler'
-            'sprint-7-editorial-pipeline'
-            'sprint-8-advanced-search'
-            'sprint-9-knowledge-graph'
-            'sprint-9-5-testing-quality'
-            'sprint-10-interactive-atlas-explorer'
-            'sprint-10-usability-remediation'
-            'agent/sprint-11-compiler-generalisation'
-            'agent/sprint-11-compiler-generalisation-cleanup'
-            'agent/sprint-11-compiler-generalisation-payload'
-            'agent/sprint-11-compiler-generalisation-payload2'
-            'agent/sprint-11-compiler-generalisation-temp'
-            'agent/sprint-11-compiler-generalisation-testtree'
-            'agent/sprint-11-compiler-generalisation-unused'
-            'agent/sprint-11-5-media-governance'
-            'agent/sprint-11-5-media-governance-clean'
-            'agent/approve-roadmap-v1-1'
-          )
-
-          for branch in "${stale_branches[@]}"; do
-            if git ls-remote --exit-code --heads origin "$branch" >/dev/null 2>&1; then
-              echo "Deleting stale branch: $branch"
-              git push origin --delete "$branch"
-            else
-              echo "Already absent: $branch"
-            fi
-          done
-
   repository-and-tests:
     name: Repository, schemas and tests
     runs-on: ubuntu-latest
