@@ -1,0 +1,333 @@
+{
+  "recordId": "RC-007",
+  "status": "draft-editorial-review",
+  "version": "1.0-draft.1",
+  "accessedAt": "2026-07-27",
+  "sources": [
+    {
+      "id": "SRC-RC-007-001",
+      "title": "Acer palmatum 'Butterfly' (P/v) and 'Kochō-no-mai' — RHS Plant Profiles",
+      "citation": "Royal Horticultural Society. Acer palmatum 'Butterfly' (P/v), Japanese maple 'Butterfly', and Acer palmatum 'Kochō-no-mai'. RHS Plant Profiles. Accessed 2026-07-27.",
+      "sourceType": "institutional-cultivar-profile-set",
+      "authority": "Royal Horticultural Society",
+      "status": "approved",
+      "url": "https://www.rhs.org.uk/plants/62336/acer-palmatum-butterfly-pv/details",
+      "domainScope": [
+        "identity",
+        "morphology",
+        "seasonal",
+        "dimensions",
+        "cultivation",
+        "history",
+        "diagnosis"
+      ],
+      "sourceLocations": [
+        {
+          "locatorType": "section",
+          "locator": "Page title, Name Status and Synonyms"
+        },
+        {
+          "locatorType": "paragraph",
+          "locator": "Cultivar description beginning 'A rather upright shrub or small tree'"
+        },
+        {
+          "locatorType": "section",
+          "locator": "Size — ultimate height, spread and time to maturity"
+        },
+        {
+          "locatorType": "section",
+          "locator": "Colour & Scent seasonal table"
+        },
+        {
+          "locatorType": "section",
+          "locator": "Growing Conditions, Position, Exposure and Hardiness H6"
+        },
+        {
+          "locatorType": "section",
+          "locator": "Botanical Details — habit and palmatum horticultural group"
+        },
+        {
+          "locatorType": "section",
+          "locator": "How to Grow — Cultivation and Propagation"
+        },
+        {
+          "locatorType": "related-page",
+          "locator": "Acer palmatum 'Kochō-no-mai' accepted-name profile identifying Japanese maple 'Butterfly'",
+          "url": "https://www.rhs.org.uk/plants/366965/acer-palmatum-koch-no-mai/details"
+        }
+      ],
+      "authorityAssessment": "High for current RHS accepted-name, synonym, morphology, dimensions, hardiness and horticultural treatment.",
+      "limitations": [
+        "The profiles do not provide primary historical documentation for the naming sequence or origin of the synonym relationship.",
+        "The seasonal table does not establish one detailed cultivar-specific autumn trajectory."
+      ]
+    },
+    {
+      "id": "SRC-RC-007-002",
+      "title": "Acer palmatum 'Butterfly' — Plant Finder",
+      "citation": "Missouri Botanical Garden. Acer palmatum 'Butterfly'. Plant Finder. Accessed 2026-07-27.",
+      "sourceType": "institutional-cultivar-profile",
+      "authority": "Missouri Botanical Garden",
+      "status": "approved",
+      "url": "https://www.missouribotanicalgarden.org/PlantFinder/PlantFinderDetails.aspx?taxonid=241783",
+      "domainScope": [
+        "identity",
+        "morphology",
+        "seasonal",
+        "dimensions",
+        "cultivation",
+        "diagnosis"
+      ],
+      "sourceLocations": [
+        {
+          "locatorType": "section",
+          "locator": "Top summary fields — type, zones, height, spread, bloom, sun and water"
+        },
+        {
+          "locatorType": "section",
+          "locator": "Culture"
+        },
+        {
+          "locatorType": "field",
+          "locator": "Leaf — Colorful, Good Fall"
+        }
+      ],
+      "authorityAssessment": "High for institutional North American dimensions, climatic rating and cultivation guidance.",
+      "limitations": [
+        "The accessible profile provides limited cultivar-specific leaf-detail text.",
+        "The 'Good Fall' flag does not define one exact autumn colour trajectory."
+      ]
+    },
+    {
+      "id": "SRC-RC-007-003",
+      "title": "Acer palmatum — University of Connecticut Plant Database cultivar entry for 'Butterfly'",
+      "citation": "Brand, Mark H. Acer palmatum. University of Connecticut Plant Database. Cultivars/Varieties entry for 'Butterfly'. Accessed 2026-07-27.",
+      "sourceType": "university-plant-database",
+      "authority": "University of Connecticut Plant Database",
+      "status": "approved",
+      "url": "https://plantdatabase.uconn.edu/detail.php?pid=19",
+      "domainScope": [
+        "identity",
+        "morphology",
+        "seasonal",
+        "dimensions",
+        "cultivation",
+        "history",
+        "diagnosis"
+      ],
+      "sourceLocations": [
+        {
+          "locatorType": "section",
+          "locator": "Cultivars/Varieties — 'Butterfly' entry"
+        },
+        {
+          "locatorType": "section",
+          "locator": "Habit and Form — species context only"
+        },
+        {
+          "locatorType": "section",
+          "locator": "Culture — species context only"
+        },
+        {
+          "locatorType": "section",
+          "locator": "Propagation — cultivar context"
+        }
+      ],
+      "authorityAssessment": "High for the university database's direct cultivar description and useful for separating cultivar-specific statements from species-level context.",
+      "limitations": [
+        "Most page content is species-level and must not be inherited automatically by the cultivar.",
+        "The page does not identify a measured accession or protocol for the approximately 15-foot older-plant estimate.",
+        "The page's non-profit educational-use statement is not treated as blanket media permission for the Atlas."
+      ]
+    },
+    {
+      "id": "SRC-RC-007-004",
+      "title": "Acer palmatum Thunb. — Plants of the World Online",
+      "citation": "Royal Botanic Gardens, Kew. Acer palmatum Thunb. Plants of the World Online. Accessed 2026-07-27.",
+      "sourceType": "taxonomic-database",
+      "authority": "Royal Botanic Gardens, Kew",
+      "status": "approved",
+      "url": "https://powo.science.kew.org/taxon/927504-1",
+      "domainScope": [
+        "identity",
+        "history"
+      ],
+      "sourceLocations": [
+        {
+          "locatorType": "field",
+          "locator": "Accepted-name header and first-publication statement"
+        },
+        {
+          "locatorType": "section",
+          "locator": "Native range and Distribution"
+        }
+      ],
+      "authorityAssessment": "Very high for current species-level taxonomy.",
+      "limitations": [
+        "Does not establish cultivar origin, selector, synonym history or clonal identity."
+      ]
+    },
+    {
+      "id": "SRC-RC-007-005",
+      "title": "Acer palmatum 'Butterfly' — RHS 1851 Royal Commission Herbarium specimen records",
+      "citation": "Royal Horticultural Society. RHS Digital Collections herbarium records for Acer palmatum 'Butterfly'. Accessed 2026-07-27.",
+      "sourceType": "institutional-herbarium-record-set",
+      "authority": "Royal Horticultural Society — 1851 Royal Commission Herbarium",
+      "status": "approved",
+      "domainScope": [
+        "identity",
+        "morphology",
+        "seasonal",
+        "history",
+        "diagnosis"
+      ],
+      "sourceLocations": [
+        {
+          "locatorType": "specimen",
+          "locator": "WSY0032649 — collection date 14 April 2000; herbarium label Acer palmatum 'Butterfly' (v)",
+          "url": "https://collections.rhs.org.uk/view/161468/acer-palmatum-butterfly-p-v"
+        },
+        {
+          "locatorType": "specimen",
+          "locator": "WSY0024965 — collection date 06 June 2000; herbarium label Acer palmatum 'Butterfly'",
+          "url": "https://collections.rhs.org.uk/view/161476/acer-palmatum-butterfly-p-v"
+        },
+        {
+          "locatorType": "specimen",
+          "locator": "WSY0032650 — collection date 18 October 2000; herbarium label Acer palmatum 'Butterfly' (v)",
+          "url": "https://collections.rhs.org.uk/view/161466/acer-palmatum-butterfly-p-v"
+        }
+      ],
+      "authorityAssessment": "High for the existence, labels, dates and institutional custody of the individual specimen records.",
+      "limitations": [
+        "Determination and accession histories require further review.",
+        "The labels do not prove original-clone status or commercial clonal uniformity.",
+        "Copyright is RHS; no Atlas publication right is inferred."
+      ]
+    },
+    {
+      "id": "SRC-RC-007-006",
+      "title": "Acer palmatum 'Butterfly' — JC Raulston Arboretum photograph collection",
+      "citation": "JC Raulston Arboretum, NC State University. Photographs of Acer palmatum 'Butterfly'. Photograph Collection. Accessed 2026-07-27.",
+      "sourceType": "institutional-photograph-record-set",
+      "authority": "JC Raulston Arboretum, North Carolina State University",
+      "status": "approved",
+      "url": "https://jcra.ncsu.edu/resources/photographs/plants-results.php?serial=106255",
+      "domainScope": [
+        "identity",
+        "morphology",
+        "seasonal",
+        "history",
+        "diagnosis"
+      ],
+      "sourceLocations": [
+        {
+          "locatorType": "collection",
+          "locator": "Eleven photograph records dated 15 October 2001 through 9 July 2014"
+        },
+        {
+          "locatorType": "photograph",
+          "locator": "Image 318529 — JC Raulston Arboretum, 27 March 2003",
+          "url": "https://jcra.ncsu.edu/resources/photographs/details.php?serial=318529"
+        },
+        {
+          "locatorType": "photograph",
+          "locator": "Image 670890 — JC Raulston Arboretum, 18 May 2010",
+          "url": "https://jcra.ncsu.edu/resources/photographs/details.php?serial=670890"
+        },
+        {
+          "locatorType": "photograph",
+          "locator": "Images 400807 and 400808 — State Botanical Garden of Georgia, 15 October 2001"
+        },
+        {
+          "locatorType": "photograph",
+          "locator": "Images 599376 and 599377 — JC Raulston Arboretum, 9 July 2014"
+        }
+      ],
+      "authorityAssessment": "High for the displayed photograph metadata, plant-name assertions, dates and locations.",
+      "limitations": [
+        "The collection page does not itself establish full accession or determination histories for every photographed plant.",
+        "Photograph records are editorial and media-research evidence, not automatic rights clearance or clonal authentication."
+      ]
+    },
+    {
+      "id": "SRC-RC-007-007",
+      "title": "Acer palmatum 'White Butterfly' — RHS Plant Profile",
+      "citation": "Royal Horticultural Society. Acer palmatum 'White Butterfly' (P/v). RHS Plant Profile. Accessed 2026-07-27.",
+      "sourceType": "institutional-disambiguation-profile",
+      "authority": "Royal Horticultural Society",
+      "status": "approved",
+      "url": "https://www.rhs.org.uk/plants/367097/acer-palmatum-white-butterfly-p-v/details",
+      "domainScope": [
+        "identity",
+        "diagnosis"
+      ],
+      "sourceLocations": [
+        {
+          "locatorType": "field",
+          "locator": "Accepted page title and Name Status"
+        }
+      ],
+      "authorityAssessment": "High for establishing that RHS maintains 'White Butterfly' as a separately accepted cultivar name.",
+      "limitations": [
+        "The page provides limited descriptive content, so it is used only for identity disambiguation."
+      ]
+    }
+  ],
+  "evidenceMap": {
+    "identity": [
+      "SRC-RC-007-001",
+      "SRC-RC-007-002",
+      "SRC-RC-007-003",
+      "SRC-RC-007-004",
+      "SRC-RC-007-005",
+      "SRC-RC-007-006",
+      "SRC-RC-007-007"
+    ],
+    "morphology": [
+      "SRC-RC-007-001",
+      "SRC-RC-007-002",
+      "SRC-RC-007-003",
+      "SRC-RC-007-005",
+      "SRC-RC-007-006"
+    ],
+    "seasonal": [
+      "SRC-RC-007-001",
+      "SRC-RC-007-002",
+      "SRC-RC-007-003",
+      "SRC-RC-007-005",
+      "SRC-RC-007-006"
+    ],
+    "dimensions": [
+      "SRC-RC-007-001",
+      "SRC-RC-007-002",
+      "SRC-RC-007-003"
+    ],
+    "cultivation": [
+      "SRC-RC-007-001",
+      "SRC-RC-007-002",
+      "SRC-RC-007-003"
+    ],
+    "history": [
+      "SRC-RC-007-001",
+      "SRC-RC-007-003",
+      "SRC-RC-007-004",
+      "SRC-RC-007-005",
+      "SRC-RC-007-006"
+    ],
+    "diagnosis": [
+      "SRC-RC-007-001",
+      "SRC-RC-007-002",
+      "SRC-RC-007-003",
+      "SRC-RC-007-005",
+      "SRC-RC-007-006",
+      "SRC-RC-007-007"
+    ]
+  },
+  "editorialNotes": {
+    "approvalBoundary": "Source objects are accepted for use in this editorial draft; the sidecar and RC remain unapproved for freeze.",
+    "missingPrimaryHistory": "No primary catalogue, registration record or original Japanese naming source was recovered for the origin of 'Butterfly' or the historical 'Kochō-no-mai' relationship.",
+    "mediaBoundary": "RHS herbarium and JC Raulston photograph records are research evidence and media leads only; no rights clearance is implied.",
+    "nextReview": "Botanical and nomenclatural review is required before G4."
+  }
+}
