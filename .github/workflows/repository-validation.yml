@@ -1,4 +1,4 @@
-name: Sprint 11.5 diagnose source push
+name: Sprint 11.5 trace source preparation
 
 on:
   pull_request:
@@ -9,60 +9,40 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
-  diagnose-push:
+  trace:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
         with:
           ref: agent/sprint-11-5-media-governance-clean
           fetch-depth: 1
           show-progress: false
-      - name: Prepare clean source commit
-        shell: bash
-        run: |
-          set -euo pipefail
-          cat .sprint-11-5-publish/patch-{00..05} > /tmp/sprint-11-5.b64
-          base64 --decode /tmp/sprint-11-5.b64 > /tmp/sprint-11-5.tar.xz
-          xz -t /tmp/sprint-11-5.tar.xz
-          tar -xJf /tmp/sprint-11-5.tar.xz
-          git checkout HEAD -- .github/workflows/repository-validation.yml
-          rm -rf .sprint-11-5-publish
-          sed -i 's/[[:space:]]\+$//' docs/DR-011-002_Governed-Media-Derivatives.md
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 24
-          cache: npm
-      - name: Regenerate and commit
-        shell: bash
-        run: |
-          set -euo pipefail
-          npm ci --no-audit --no-fund >/tmp/npm-ci.log 2>&1
-          npm run process:media >/tmp/process-media.log 2>&1
-          npm run compile:atlas >/tmp/compile-atlas.log 2>&1
-          git config user.name 'Atlas Automation'
-          git config user.email 'actions@users.noreply.github.com'
-          git add -A
-          git diff --cached --check
-          git commit -m 'Sprint 11.5: establish governed media pipeline' >/tmp/commit.log 2>&1
-      - name: Diagnose push
-        id: push
+      - name: Trace preparation
         shell: bash
         run: |
           set +e
-          git push origin HEAD:agent/sprint-11-5-media-governance-clean >/tmp/push.log 2>&1
-          status=$?
-          echo "push_status=$status" | tee -a /tmp/push.log
-          exit "$status"
+          exec > >(tee /tmp/prepare.log) 2>&1
+          echo '1 segments'; ls -l .sprint-11-5-publish/patch-{00..05}; echo status=$?
+          echo '2 concatenate'; cat .sprint-11-5-publish/patch-{00..05} > /tmp/sprint-11-5.b64; echo status=$?
+          echo '3 decode'; base64 --decode /tmp/sprint-11-5.b64 > /tmp/sprint-11-5.tar.xz; echo status=$?
+          echo '4 xz'; xz -t /tmp/sprint-11-5.tar.xz; echo status=$?
+          echo '5 extract'; tar -xJf /tmp/sprint-11-5.tar.xz; echo status=$?
+          echo '6 workflow present'; ls -l .github/workflows/repository-validation.yml; echo status=$?
+          echo '7 restore workflow'; git checkout HEAD -- .github/workflows/repository-validation.yml; echo status=$?
+          echo '8 remove payload'; rm -rf .sprint-11-5-publish; echo status=$?
+          echo '9 decision record'; ls -l docs/DR-011-002_Governed-Media-Derivatives.md; echo status=$?
+          echo '10 normalize'; sed -i 's/[[:space:]]\+$//' docs/DR-011-002_Governed-Media-Derivatives.md; echo status=$?
+          echo '11 version'; node -p "require('./package.json').version"; echo status=$?
+          echo '12 status'; git status --short; echo status=$?
+          exit 0
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: sprint-11-5-push-diagnostic
-          path: |
-            /tmp/commit.log
-            /tmp/push.log
+          name: sprint-11-5-prepare-trace
+          path: /tmp/prepare.log
           if-no-files-found: error
           retention-days: 3
