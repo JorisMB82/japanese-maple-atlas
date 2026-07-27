@@ -1,4 +1,4 @@
-name: Sprint 11.5 materialise compact verified source
+name: Sprint 11.5 diagnose compact archive
 
 on:
   pull_request:
@@ -12,83 +12,45 @@ permissions:
   contents: write
 
 jobs:
-  materialise:
+  diagnose:
     if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
         with:
           ref: agent/sprint-11-5-media-governance-clean
-          fetch-depth: 0
+          fetch-depth: 1
+          show-progress: false
 
-      - name: Verify compact implementation archive
+      - name: Diagnose compact implementation archive
         shell: bash
         run: |
-          set -euo pipefail
-          for part in .sprint-11-5-publish/patch-{00..05}; do
-            test -s "$part"
-          done
+          set +e
+          echo '--- segment sizes ---'
+          ls -l .sprint-11-5-publish/patch-{00..05}
+          wc -c .sprint-11-5-publish/patch-{00..05}
           cat .sprint-11-5-publish/patch-{00..05} > /tmp/sprint-11-5.b64
+          echo "combined_b64_bytes=$(wc -c < /tmp/sprint-11-5.b64)"
           base64 --decode /tmp/sprint-11-5.b64 > /tmp/sprint-11-5.tar.xz
+          decode_status=$?
+          echo "base64_status=$decode_status decoded_bytes=$(wc -c < /tmp/sprint-11-5.tar.xz)"
           xz -t /tmp/sprint-11-5.tar.xz
+          xz_status=$?
+          echo "xz_status=$xz_status"
           tar -tJf /tmp/sprint-11-5.tar.xz > /tmp/sprint-11-5.inventory
-          test "$(wc -l < /tmp/sprint-11-5.inventory)" -eq 24
-          if grep -Eq '(^/|(^|/)\.\.(/|$))' /tmp/sprint-11-5.inventory; then
-            echo 'Unsafe archive path detected.' >&2
-            exit 1
-          fi
-          grep -Fxq 'package.json' /tmp/sprint-11-5.inventory
-          grep -Fxq 'scripts/process-media.mjs' /tmp/sprint-11-5.inventory
-          grep -Fxq 'scripts/validate-media.mjs' /tmp/sprint-11-5.inventory
-          grep -Fxq 'schemas/media.schema.json' /tmp/sprint-11-5.inventory
-          grep -Fxq 'atlas-repository/governance/media-policy.json' /tmp/sprint-11-5.inventory
-          grep -Fxq 'SPRINT-11.5.md' /tmp/sprint-11-5.inventory
-          grep -Fxq '.github/workflows/repository-validation.yml' /tmp/sprint-11-5.inventory
-
-      - name: Apply clean Sprint 11.5 source
-        shell: bash
-        run: |
-          set -euo pipefail
-          tar -xJf /tmp/sprint-11-5.tar.xz
-          rm -rf .sprint-11-5-publish
-          test "$(node -p "require('./package.json').version")" = '0.11.5'
-          test -f scripts/process-media.mjs
-          test -f scripts/validate-media.mjs
-          test -f atlas-repository/governance/media-policy.json
-
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 24
-          cache: npm
-
-      - name: Install dependencies
-        run: npm ci --no-audit --no-fund
-
-      - name: Regenerate deterministic outputs
-        run: |
-          npm run process:media
-          npm run compile:atlas
-
-      - name: Run complete release verification
-        shell: bash
-        run: |
-          set -euo pipefail
-          npm run verify:repository
-          npm run test
-          npm run test:coverage
-          npm run validate:scale
-          npm run build
-          npm run test:regression
-          npm run validate:quality
-
-      - name: Commit clean implementation
-        shell: bash
-        run: |
-          set -euo pipefail
-          git config user.name 'Atlas Automation'
-          git config user.email 'actions@users.noreply.github.com'
-          git add -A
-          git diff --cached --check
-          git commit -m 'Sprint 11.5: establish governed media pipeline'
-          git push origin HEAD:agent/sprint-11-5-media-governance-clean
+          tar_status=$?
+          echo "tar_status=$tar_status inventory_lines=$(wc -l < /tmp/sprint-11-5.inventory)"
+          echo '--- inventory ---'
+          cat /tmp/sprint-11-5.inventory
+          echo '--- required paths ---'
+          for required in package.json scripts/process-media.mjs scripts/validate-media.mjs schemas/media.schema.json atlas-repository/governance/media-policy.json SPRINT-11.5.md .github/workflows/repository-validation.yml; do
+            if grep -Fxq "$required" /tmp/sprint-11-5.inventory; then
+              echo "present $required"
+            else
+              echo "MISSING $required"
+            fi
+          done
+          test "$decode_status" -eq 0
+          test "$xz_status" -eq 0
+          test "$tar_status" -eq 0
