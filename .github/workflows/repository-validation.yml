@@ -34,6 +34,7 @@ jobs:
           cp .github/workflows/repository-validation.yml /tmp/repository-validation.final.yml
           git checkout HEAD -- .github/workflows/repository-validation.yml
           rm -rf .sprint-11-5-publish
+          sed -i 's/[[:space:]]\+$//' docs/DR-011-002_Governed-Media-Derivatives.md
           test "$(node -p "require('./package.json').version")" = '0.11.5'
 
       - uses: actions/setup-node@v4
