@@ -5,15 +5,82 @@
   "role": "identity-plate",
   "subject": "whole-plant-habit",
   "season": "representative",
-  "status": "pilot-approved",
-  "assetPath": "/media/identity-plates/seiryu.svg",
-  "thumbnailPath": "/media/identity-plates/seiryu.svg",
+  "status": "approved",
+  "assetPath": "/media/derivatives/rc-002/display.svg",
+  "thumbnailPath": "/media/derivatives/rc-002/thumb.svg",
   "altText": "Standardized Atlas editorial illustration of Acer palmatum 'Seiryu', based on the frozen Reference Standard but not diagnostic evidence.",
   "caption": "Seiryu standardized Atlas identity plate.",
-  "credit": "Japanese Maple Atlas",
-  "creatorType": "procedural-editorial-illustration",
-  "rights": "Copyright retained; licensing decision pending",
+  "creator": "Japanese Maple Atlas",
+  "contributor": "Japanese Maple Atlas",
+  "rightsHolder": "Japanese Maple Atlas",
+  "licence": "All rights reserved; internal Atlas publication approved",
+  "source": {
+    "path": "/media/identity-plates/seiryu.svg",
+    "sha256": "f69cefe5e76b85213efa23419749875149e0a2e3e484379b29cdda7c58533175",
+    "preservation": "original-retained"
+  },
+  "identification": {
+    "specimenIdentity": "editorial reconstruction from frozen Reference Standard",
+    "confidence": "not-applicable",
+    "editorialStatus": "illustrative"
+  },
+  "privacy": {
+    "exifRetained": false,
+    "gpsRetained": false,
+    "locationGranularity": "not-applicable"
+  },
   "evidentiaryStatus": "illustrative-not-evidence",
-  "styleVersion": "atlas-identity-plate-v1",
-  "reviewNotes": "Reviewed for consistency with RC-002; remains illustrative and must not be used as cultivar authentication evidence."
+  "syntheticLabel": "Atlas editorial reconstruction — not an observed specimen or identification evidence.",
+  "styleVersion": "atlas-identity-plate-v2",
+  "focalPoint": {
+    "x": 0.5,
+    "y": 0.5
+  },
+  "derivatives": [
+    {
+      "profile": "thumb",
+      "path": "/media/derivatives/rc-002/thumb.svg",
+      "width": 320,
+      "height": 231,
+      "mimeType": "image/svg+xml",
+      "sha256": "ffbe9b3519d1f5ce040055647c5c2d047fabffe93b918df74c945cbc05a8a524",
+      "derivedFrom": "MED-RC-002-IDENTITY-001"
+    },
+    {
+      "profile": "card",
+      "path": "/media/derivatives/rc-002/card.svg",
+      "width": 560,
+      "height": 404,
+      "mimeType": "image/svg+xml",
+      "sha256": "a5d3a14a6d7c78bcc046c9b8e2f4162190a4e70383317e7138fe455378dc9057",
+      "derivedFrom": "MED-RC-002-IDENTITY-001"
+    },
+    {
+      "profile": "display",
+      "path": "/media/derivatives/rc-002/display.svg",
+      "width": 960,
+      "height": 693,
+      "mimeType": "image/svg+xml",
+      "sha256": "7c2a2561416e3f69c080fd8ac9cab76e713206f4a13fbb1037f40d7e9766b2d1",
+      "derivedFrom": "MED-RC-002-IDENTITY-001"
+    },
+    {
+      "profile": "archive",
+      "path": "/media/derivatives/rc-002/archive.svg",
+      "width": 1440,
+      "height": 1040,
+      "mimeType": "image/svg+xml",
+      "sha256": "7d400dd6c541c024610f8440057f6e86c6334feb47fc3cbdfc4e28241655a23a",
+      "derivedFrom": "MED-RC-002-IDENTITY-001"
+    }
+  ],
+  "approvalHistory": [
+    {
+      "status": "approved",
+      "date": "2026-07-26",
+      "authority": "Atlas editorial governance",
+      "note": "Migrated from pilot media with rights, privacy, source and derivative lineage."
+    }
+  ],
+  "reviewNotes": "Visual attractiveness is presentation only and must not be treated as cultivar identity evidence."
 }

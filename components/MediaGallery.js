@@ -19,11 +19,13 @@ export default function MediaGallery({ cultivar }) {
         <dt>Type</dt><dd>{active.mediaType}</dd>
         <dt>Subject</dt><dd>{active.subject}</dd>
         <dt>Status</dt><dd>{active.status}</dd>
-        <dt>Rights</dt><dd>{active.rights}</dd>
+        <dt>Rights holder</dt><dd>{active.rightsHolder}</dd>
+        <dt>Licence</dt><dd>{active.licence}</dd>
         <dt>Evidence</dt><dd>{active.evidentiaryStatus}</dd>
         <dt>Style</dt><dd>{active.styleVersion}</dd>
+        <dt>Derivatives</dt><dd>{active.derivatives?.length || 0}</dd>
       </dl>
-      <p className="mediaReviewNote">{active.reviewNotes}</p>
+      <p className="mediaReviewNote"><strong>{active.syntheticLabel}</strong><br />{active.reviewNotes}</p>
     </div>
     {cultivar.media.length > 1 && <div className="mediaThumbnails">
       {cultivar.media.map(item => <button type="button" key={item.id} onClick={() => setSelected(item.id)} className={item.id === active.id ? 'active' : ''}>

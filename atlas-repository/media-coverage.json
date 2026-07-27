@@ -1,0 +1,28 @@
+{
+  "version": "RC-020-media-coverage-v1",
+  "releaseMinimum": "one rights-cleared primary visual or an explicit governed gap",
+  "target": "habit plus foliage/detail",
+  "enhanced": "seasonal, bark, flower, samara and historical coverage where available",
+  "records": [
+    {"recordId":"RC-001","releaseMinimum":"met","coverage":["identity-plate"],"gap":"photographed habit and foliage detail"},
+    {"recordId":"RC-002","releaseMinimum":"met","coverage":["identity-plate"],"gap":"photographed habit and foliage detail"},
+    {"recordId":"RC-003","releaseMinimum":"met","coverage":["identity-plate"],"gap":"photographed habit and foliage detail"},
+    {"recordId":"RC-004","releaseMinimum":"met","coverage":["identity-plate"],"gap":"photographed habit and foliage detail"},
+    {"recordId":"RC-005","releaseMinimum":"met","coverage":["identity-plate"],"gap":"photographed habit and foliage detail"},
+    {"recordId":"RC-006","releaseMinimum":"gap","coverage":[],"gap":"rights-cleared primary visual required during editorial production"},
+    {"recordId":"RC-007","releaseMinimum":"gap","coverage":[],"gap":"rights-cleared primary visual required during editorial production"},
+    {"recordId":"RC-008","releaseMinimum":"gap","coverage":[],"gap":"rights-cleared primary visual required during editorial production"},
+    {"recordId":"RC-009","releaseMinimum":"gap","coverage":[],"gap":"rights-cleared primary visual required during editorial production"},
+    {"recordId":"RC-010","releaseMinimum":"gap","coverage":[],"gap":"rights-cleared primary visual required during editorial production"},
+    {"recordId":"RC-011","releaseMinimum":"gap","coverage":[],"gap":"rights-cleared primary visual required during editorial production"},
+    {"recordId":"RC-012","releaseMinimum":"gap","coverage":[],"gap":"rights-cleared primary visual required during editorial production"},
+    {"recordId":"RC-013","releaseMinimum":"gap","coverage":[],"gap":"rights-cleared primary visual required during editorial production"},
+    {"recordId":"RC-014","releaseMinimum":"gap","coverage":[],"gap":"rights-cleared primary visual required during editorial production"},
+    {"recordId":"RC-015","releaseMinimum":"gap","coverage":[],"gap":"rights-cleared primary visual required during editorial production"},
+    {"recordId":"RC-016","releaseMinimum":"gap","coverage":[],"gap":"rights-cleared primary visual required during editorial production"},
+    {"recordId":"RC-017","releaseMinimum":"gap","coverage":[],"gap":"rights-cleared primary visual required during editorial production"},
+    {"recordId":"RC-018","releaseMinimum":"gap","coverage":[],"gap":"rights-cleared primary visual required during editorial production"},
+    {"recordId":"RC-019","releaseMinimum":"gap","coverage":[],"gap":"rights-cleared primary visual required during editorial production"},
+    {"recordId":"RC-020","releaseMinimum":"gap","coverage":[],"gap":"rights-cleared primary visual required during editorial production"}
+  ]
+}

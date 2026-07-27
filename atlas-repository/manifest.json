@@ -20,7 +20,7 @@
     "records": 5,
     "canonicalSources": 5,
     "underlyingSources": 0,
-    "inputHash": "41daa6d7dfe13c42ec580e3772d3219a450fd0b01761f35aacf346249758f13a"
+    "inputHash": "89408c2f4d7418cbdd47def020523fbc17fcbe25828b4875525635da6abdcafc"
   },
   "editorial": {
     "contributors": 2,
@@ -59,7 +59,7 @@
     "editorialReviews": 25
   },
   "objectTotal": 235,
-  "repositoryHash": "a0ca2ee5e21122937003887086f376e49e598dc9575c5c04623a569e0b1962f4",
+  "repositoryHash": "b0a3ca82f2e304e908caa7344c1feddaf599327f123e28910c424c40821e6843",
   "canonicality": "canonical-compiled",
   "notes": "Sprint 11 removes the five-record compiler boundary. 5 approved Reference Standards compile through the canonical contract, legacy adapters and governed sidecars without cultivar-specific JavaScript branches."
 }

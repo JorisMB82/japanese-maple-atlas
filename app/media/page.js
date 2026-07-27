@@ -8,7 +8,7 @@ export default function MediaPage() {
 
   return <>
     <section className="pageIntro">
-      <div className="kicker">Sprint 5 · media system</div>
+      <div className="kicker">Sprint 11.5 · governed media pipeline</div>
       <h1>A consistent visual language for cultivated plants.</h1>
       <p>Media is stored as a governed repository object with explicit rights, status, subject, season, role, accessibility text, and evidentiary classification.</p>
     </section>
@@ -19,8 +19,8 @@ export default function MediaPage() {
 
     <section className="profileSection">
       <div className="sectionHeading">
-        <div><div className="kicker">Pilot identity plates</div><h2>Five standardized visuals</h2></div>
-        <p>Same canvas, framing, scale language, and metadata model</p>
+        <div><div className="kicker">Pilot identity plates</div><h2>Five governed identity visuals</h2></div>
+        <p>Rights-cleared sources, four deterministic derivatives, explicit non-evidentiary status</p>
       </div>
       <div className="mediaPlateGrid">
         {cultivars.map(c => <a href={`/cultivars/${c.slug}#media`} className="mediaIndexCard" key={c.id}>
@@ -40,15 +40,17 @@ export default function MediaPage() {
           <li>Controlled media type and role</li>
           <li>Subject and seasonal scope</li>
           <li>Alt text and caption</li>
-          <li>Credit and rights statement</li>
+          <li>Creator, contributor, rights holder and licence</li>
+          <li>Source and derivative SHA-256 lineage</li>
+          <li>EXIF/GPS privacy treatment</li>
           <li>Evidentiary classification</li>
           <li>Editorial review notes</li>
         </ul>
       </article>
       <article>
-        <div className="kicker">Planned expansion</div>
-        <h2>From identity plate to visual record</h2>
-        <p>Future media collections can include whole-plant habit, spring emergence, summer foliage, autumn colour, winter structure, bark, leaf close-ups, samaras, flowers, historical material, and authenticated real-world examples.</p>
+        <div className="kicker">RC-020 coverage</div>
+        <h2>Governed gaps before editorial production</h2>
+        <p>RC-001 through RC-005 meet the release minimum through approved Atlas identity plates. RC-006 through RC-020 carry explicit visual gaps that must be resolved or retained transparently during editorial production.</p>
         <p>The same repository object can support Atlas illustrations and real photographs without treating them as equivalent evidence.</p>
       </article>
     </section>

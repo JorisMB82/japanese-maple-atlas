@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.2.0",
   "nodeVersion": 24,
-  "applicationVersion": "0.11.0",
+  "applicationVersion": "0.11.5",
   "repositoryVersion": "0.11.0",
   "coverage": {
     "lines": 80,
@@ -48,7 +48,10 @@
     "compile:atlas:preflight",
     "compile:atlas:dry-run",
     "validate:reference-standards",
-    "validate:scale"
+    "validate:scale",
+    "process:media",
+    "process:media:check",
+    "validate:media"
   ],
   "releaseFiles": [
     "README.md",
@@ -63,7 +66,11 @@
     "atlas-repository/hashes.json",
     "atlas-repository/indexes/object-index.json",
     "atlas-repository/indexes/search-index.json",
-    "atlas-repository/indexes/graph-index.json"
+    "atlas-repository/indexes/graph-index.json",
+    "SPRINT-11.5.md",
+    "docs/MEDIA-002_Visual-Asset-Governance-and-Pipeline_v1.0.md",
+    "docs/DR-011-002_Governed-Media-Derivatives.md",
+    "atlas-repository/media-coverage.json"
   ],
   "compilerVersion": "2.0.0",
   "compilerScaleTargets": [
