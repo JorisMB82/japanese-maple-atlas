@@ -1,7 +1,7 @@
 # HANDOFF-MEDIA-001 — RC-006 ‘Osakazuki’ G5 Status
 
 **Handoff status:** BLOCKED — acquisition and rights work active  
-**Inspected `main`:** `56169aa9fe3e21231f1a680bb6f97d4230192780`  
+**Inspected `main`:** `1af3d20c574e851ce55d01f9639caa8fda3a8e54`  
 **Media branch:** `media/rc-006-010`  
 **RC:** RC-006 — *Acer palmatum* ‘Osakazuki’  
 **Editorial state:** G1–G3 complete; G4 CONDITIONAL  
