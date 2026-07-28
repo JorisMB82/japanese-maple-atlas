@@ -1,0 +1,292 @@
+{
+  "recordId": "RC-009",
+  "status": "draft-editorial-review",
+  "version": "1.0-draft.1",
+  "accessedAt": "2026-07-27",
+  "sources": [
+    {
+      "id": "SRC-RC-009-001",
+      "title": "Acer palmatum 'Katsura' — RHS Plant Profile",
+      "citation": "Royal Horticultural Society. Acer palmatum 'Katsura' (P), Japanese maple 'Katsura'. RHS Plant Profile. Accessed 2026-07-27.",
+      "sourceType": "institutional-cultivar-profile",
+      "authority": "Royal Horticultural Society",
+      "status": "approved",
+      "url": "https://www.rhs.org.uk/plants/94932/acer-palmatum-katsura-p/details",
+      "domainScope": [
+        "identity",
+        "morphology",
+        "seasonal",
+        "dimensions",
+        "cultivation",
+        "history",
+        "diagnosis"
+      ],
+      "sourceLocations": [
+        {
+          "locatorType": "section",
+          "locator": "Page title and Name Status"
+        },
+        {
+          "locatorType": "paragraph",
+          "locator": "Cultivar description beginning 'An upright, deciduous shrub'"
+        },
+        {
+          "locatorType": "section",
+          "locator": "Size — ultimate height, spread and time to maturity"
+        },
+        {
+          "locatorType": "section",
+          "locator": "Colour & Scent seasonal table"
+        },
+        {
+          "locatorType": "section",
+          "locator": "Growing Conditions, Position, Exposure and Hardiness H6"
+        },
+        {
+          "locatorType": "section",
+          "locator": "Botanical Details — habit and palmatum group"
+        },
+        {
+          "locatorType": "section",
+          "locator": "How to Grow — Cultivation and Propagation"
+        }
+      ],
+      "authorityAssessment": "High for current RHS accepted-name, seasonal, habit, dimensions, hardiness and propagation treatment.",
+      "limitations": [
+        "The profile does not provide primary historical documentation for cultivar origin or naming rationale.",
+        "The 20–50-year maturity framework is horticultural context rather than a biological maximum."
+      ]
+    },
+    {
+      "id": "SRC-RC-009-002",
+      "title": "Acer palmatum 'Katsura' — Plant Finder",
+      "citation": "Missouri Botanical Garden. Acer palmatum 'Katsura'. Plant Finder and Plant of Merit profile. Accessed 2026-07-27.",
+      "sourceType": "institutional-cultivar-profile",
+      "authority": "Missouri Botanical Garden",
+      "status": "approved",
+      "url": "https://www.missouribotanicalgarden.org/PlantFinder/PlantFinderDetails.aspx?isprofile=1&pm=1&taxonid=241539",
+      "domainScope": [
+        "identity",
+        "morphology",
+        "seasonal",
+        "dimensions",
+        "cultivation",
+        "history",
+        "diagnosis"
+      ],
+      "sourceLocations": [
+        {
+          "locatorType": "section",
+          "locator": "Top summary fields — type, zones, height, spread, bloom, sun and water"
+        },
+        {
+          "locatorType": "section",
+          "locator": "Culture"
+        },
+        {
+          "locatorType": "paragraph",
+          "locator": "Cultivar paragraph beginning 'Katsura is a dense, compact cultivar'"
+        },
+        {
+          "locatorType": "section",
+          "locator": "Problems"
+        },
+        {
+          "locatorType": "section",
+          "locator": "Uses"
+        }
+      ],
+      "authorityAssessment": "High for detailed institutional seasonal morphology, developmental architecture, dimensions and regional cultivation.",
+      "limitations": [
+        "The profile does not identify an accession or measurement protocol for leaf and size values.",
+        "Early leaf-out and frost risk are regionally variable."
+      ]
+    },
+    {
+      "id": "SRC-RC-009-003",
+      "title": "Acer palmatum Thunb. — Plants of the World Online",
+      "citation": "Royal Botanic Gardens, Kew. Acer palmatum Thunb. Plants of the World Online. Accessed 2026-07-27.",
+      "sourceType": "taxonomic-database",
+      "authority": "Royal Botanic Gardens, Kew",
+      "status": "approved",
+      "url": "https://powo.science.kew.org/taxon/927504-1",
+      "domainScope": [
+        "identity",
+        "history"
+      ],
+      "sourceLocations": [
+        {
+          "locatorType": "field",
+          "locator": "Accepted-name header and first-publication statement"
+        },
+        {
+          "locatorType": "section",
+          "locator": "Native range and Distribution"
+        }
+      ],
+      "authorityAssessment": "Very high for current species-level taxonomy.",
+      "limitations": [
+        "Does not establish cultivar origin, naming history or clonal identity."
+      ]
+    },
+    {
+      "id": "SRC-RC-009-004",
+      "title": "Acer palmatum 'Katsura' — RHS 1851 Royal Commission Herbarium specimen records",
+      "citation": "Royal Horticultural Society. RHS Digital Collections herbarium records for Acer palmatum 'Katsura'. Accessed 2026-07-27.",
+      "sourceType": "institutional-herbarium-record-set",
+      "authority": "Royal Horticultural Society — 1851 Royal Commission Herbarium",
+      "status": "approved",
+      "domainScope": [
+        "identity",
+        "morphology",
+        "seasonal",
+        "history",
+        "diagnosis"
+      ],
+      "sourceLocations": [
+        {
+          "locatorType": "specimen",
+          "locator": "WSY0056489 — collection date 15 July 1995; herbarium label Acer palmatum 'Katsura' AGM",
+          "url": "https://collections.rhs.org.uk/view/54624/acer-palmatum-katsura-p"
+        },
+        {
+          "locatorType": "specimen",
+          "locator": "WSY0001674 — collection date June 1997; herbarium label Acer palmatum 'Katsura'",
+          "url": "https://collections.rhs.org.uk/view/54659/acer-palmatum-katsura-p"
+        },
+        {
+          "locatorType": "specimen",
+          "locator": "WSY0024958 — collection date 06 June 2000; herbarium label Acer palmatum 'Katsura'",
+          "url": "https://collections.rhs.org.uk/view/54661/acer-palmatum-katsura-p"
+        }
+      ],
+      "authorityAssessment": "High for the existence, labels, dates and institutional custody of the specimen records.",
+      "limitations": [
+        "Determination and accession histories require further review.",
+        "Specimen labels do not prove original-clone status or commercial clonal uniformity.",
+        "Copyright is RHS; no Atlas publication right is inferred."
+      ]
+    },
+    {
+      "id": "SRC-RC-009-005",
+      "title": "Acer palmatum 'Katsura' — JC Raulston Arboretum photograph records",
+      "citation": "JC Raulston Arboretum, NC State University. Photograph records for Acer palmatum 'Katsura', images 683044–683047. Accessed 2026-07-27.",
+      "sourceType": "institutional-photograph-record-set",
+      "authority": "JC Raulston Arboretum, North Carolina State University",
+      "status": "approved",
+      "domainScope": [
+        "identity",
+        "morphology",
+        "seasonal",
+        "history",
+        "diagnosis"
+      ],
+      "sourceLocations": [
+        {
+          "locatorType": "photograph",
+          "locator": "Image 683044 — JC Raulston Arboretum, 1 May 2018",
+          "url": "https://jcra.ncsu.edu/resources/photographs/details.php?serial=683044"
+        },
+        {
+          "locatorType": "photograph",
+          "locator": "Image 683045 — JC Raulston Arboretum, 1 May 2018",
+          "url": "https://jcra.ncsu.edu/resources/photographs/details.php?serial=683045"
+        },
+        {
+          "locatorType": "photograph",
+          "locator": "Image 683046 — JC Raulston Arboretum, 1 May 2018",
+          "url": "https://jcra.ncsu.edu/resources/photographs/details.php?serial=683046"
+        },
+        {
+          "locatorType": "photograph",
+          "locator": "Image 683047 — JC Raulston Arboretum, 1 May 2018",
+          "url": "https://jcra.ncsu.edu/resources/photographs/details.php?serial=683047"
+        }
+      ],
+      "authorityAssessment": "High for the displayed photograph metadata, plant-name assertion, date and location.",
+      "limitations": [
+        "The photograph records do not themselves establish full accession or determination history.",
+        "Photographs are editorial and media-research evidence, not automatic rights clearance or clonal authentication."
+      ]
+    },
+    {
+      "id": "SRC-RC-009-006",
+      "title": "Katsura search results — Acer palmatum 'Katsura' and Cercidiphyllum japonicum",
+      "citation": "Missouri Botanical Garden. Plant Finder search results for 'Katsura', displaying separate records for Acer palmatum 'Katsura' and Cercidiphyllum japonicum. Accessed 2026-07-27.",
+      "sourceType": "institutional-disambiguation-record",
+      "authority": "Missouri Botanical Garden",
+      "status": "approved",
+      "url": "https://www.missouribotanicalgarden.org/PlantFinder/PlantFinderProfileResults.aspx?basic=Katsura%25",
+      "domainScope": [
+        "identity",
+        "diagnosis"
+      ],
+      "sourceLocations": [
+        {
+          "locatorType": "search-result",
+          "locator": "Separate result: Acer palmatum 'Katsura' — Japanese maple"
+        },
+        {
+          "locatorType": "search-result",
+          "locator": "Separate result: Cercidiphyllum japonicum — katsura tree"
+        }
+      ],
+      "authorityAssessment": "High for establishing the institutional distinction between the cultivar record and the unrelated katsura-tree species record.",
+      "limitations": [
+        "Used only for identity disambiguation, not for detailed morphology or history."
+      ]
+    }
+  ],
+  "evidenceMap": {
+    "identity": [
+      "SRC-RC-009-001",
+      "SRC-RC-009-002",
+      "SRC-RC-009-003",
+      "SRC-RC-009-004",
+      "SRC-RC-009-005",
+      "SRC-RC-009-006"
+    ],
+    "morphology": [
+      "SRC-RC-009-001",
+      "SRC-RC-009-002",
+      "SRC-RC-009-004",
+      "SRC-RC-009-005"
+    ],
+    "seasonal": [
+      "SRC-RC-009-001",
+      "SRC-RC-009-002",
+      "SRC-RC-009-004",
+      "SRC-RC-009-005"
+    ],
+    "dimensions": [
+      "SRC-RC-009-001",
+      "SRC-RC-009-002"
+    ],
+    "cultivation": [
+      "SRC-RC-009-001",
+      "SRC-RC-009-002"
+    ],
+    "history": [
+      "SRC-RC-009-001",
+      "SRC-RC-009-002",
+      "SRC-RC-009-003",
+      "SRC-RC-009-004",
+      "SRC-RC-009-005"
+    ],
+    "diagnosis": [
+      "SRC-RC-009-001",
+      "SRC-RC-009-002",
+      "SRC-RC-009-004",
+      "SRC-RC-009-005",
+      "SRC-RC-009-006"
+    ]
+  },
+  "editorialNotes": {
+    "approvalBoundary": "Source objects are accepted for use in this editorial draft; the sidecar and RC remain unapproved for freeze.",
+    "synonymPosition": "No cultivar synonym is approved from the reviewed institutional source set.",
+    "disambiguation": "The cultivar must remain distinct from Cercidiphyllum japonicum, commonly called katsura tree.",
+    "missingPrimaryHistory": "No primary catalogue, registration record or original naming statement was recovered for cultivar origin or epithet rationale.",
+    "mediaBoundary": "RHS herbarium and JC Raulston photograph records are research evidence and media leads only; no rights clearance is implied.",
+    "nextReview": "Botanical and nomenclatural review is required before G4."
+  }
+}
