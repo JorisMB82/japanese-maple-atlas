@@ -1,22 +1,15 @@
 # HANDOFF-MEDIA-001 — RC-006 ‘Osakazuki’ G5 Status
 
 **Handoff status:** BLOCKED — acquisition and rights work active  
-**Inspected `main`:** `1af3d20c574e851ce55d01f9639caa8fda3a8e54`  
-**Media branch:** `media/rc-006-010`  
+**Inspected `main`:** `f8aeff982c5d155ae4880a618453dc38c40f008e`  
+**Media branch:** `media/visual-coverage-001-025-planning`  
 **RC:** RC-006 — *Acer palmatum* ‘Osakazuki’  
-**Editorial state:** G1–G3 complete; G4 CONDITIONAL  
+**Editorial state:** G4 PASS — owner condition accepted; non-public freeze candidate  
 **Engineering dependency:** RESOLVED through PR #17 / `a010c2c8ee76dbd8735d1390e09aa06664b1b009`
 
-## Changed media-owned files
+## Status change since prior handoff
 
-- `atlas-repository/media-coverage.json`
-- `docs/MEDIA-003_Wave-1-Acquisition-and-Rights-Operations_v1.0.md`
-- `docs/MEDIA-005_RC-006-Osakazuki-Acquisition-Plan_v1.0.md`
-- `docs/registers/MEDIA-CANDIDATE-REGISTER_RC-006-RC-010.md`
-- `docs/HANDOFF-MEDIA-ENGINEERING-001_RC-006-Photograph-Pipeline-Request.md`
-- this status handoff and shared templates/checklist
-
-No RC prose, source sidecar, programme register, engineering code/schema, application or generated output was edited.
+The Project Owner accepted the bounded G4 nomenclatural and provenance treatment. G4 is no longer a blocker. This does not approve media, issue a freeze or enter G5–G9.
 
 ## Sidecar and source assets
 
@@ -59,15 +52,14 @@ The raster pipeline can process a compliant JPEG/PNG source, but no source exist
 - scaled upper/lower leaf-detail candidate;
 - final caption, alt text and focal point;
 - approved sidecar or approved governed-gap decision;
-- derivative generation and visual inspection;
-- G4 editorial completion.
+- derivative generation and visual inspection.
 
 ## G5 assessment
 
-**BLOCKED.** Technical processability is available, but source preservation, rights, identity, required coverage, metadata, sidecar approval and validation remain incomplete.
+**BLOCKED.** Technical processability and G4 readiness are available, but source preservation, rights, identity, required coverage, metadata, sidecar approval and validation remain incomplete.
 
 ## Exact next action requested
 
-Media must obtain and preserve a rights-compatible original, complete the item-level provenance and identity review, and then process and visually inspect the four derivatives. If no candidate can satisfy the release minimum, the project owner must approve an explicit governed-gap package before a sidecar is created.
+Media must obtain and preserve a rights-compatible original, complete the item-level provenance and identity review, and then process and visually inspect the four derivatives. If no candidate can satisfy the release minimum, the Project Owner must approve an explicit governed-gap package before a sidecar is created.
 
 **Next receiver when complete:** CTO / engineering and integration for G6 compatibility review.
