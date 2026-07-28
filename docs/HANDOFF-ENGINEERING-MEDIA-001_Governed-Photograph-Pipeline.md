@@ -1,13 +1,14 @@
 # HANDOFF-ENGINEERING-MEDIA-001 — Governed Photograph Pipeline
 
-**Handoff status:** READY FOR MEDIA USE AFTER ENGINEERING MERGE  
-**Inspected `main`:** `eb8f668d58253a36d6e0618f42318e38db97e20f`  
+**Handoff status:** READY FOR MEDIA USE  
+**Inspected `main`:** `a010c2c8ee76dbd8735d1390e09aa06664b1b009`  
 **Engineering branch:** `engineering/sprint-12-wave-1`  
-**Validated implementation commit:** `23e2802b63a4a586df64e0b0a2583b43471b1b12`  
+**Validated implementation commit:** `72d161b70cbdfb41bfe6bff879f3d308ef2678da`  
+**Merged implementation:** PR `#17`, squash commit `a010c2c8ee76dbd8735d1390e09aa06664b1b009`  
 **Affected records:** RC-006 through RC-010; no RC-specific logic  
-**Current gate:** shared engineering dependency before media G5  
-**Assessment:** `PASS — technically ready, effective after merge to main`  
-**Validation workflow:** `30323192509` — all three jobs passed  
+**Current gate:** shared engineering dependency resolved; media G5 work may resume  
+**Assessment:** `PASS — available on main`  
+**Validation workflow:** `30323424632` — all three jobs passed  
 **Source request:** `docs/HANDOFF-MEDIA-ENGINEERING-001_RC-006-Photograph-Pipeline-Request.md`  
 **Decision Record:** `docs/DR-012-001_Governed-Raster-Photograph-Derivatives.md`
 
@@ -15,7 +16,7 @@
 
 The implementation closes the documented mismatch between the governed media schema and the executable pipeline.
 
-Supported paths after merge:
+Supported paths:
 
 | Media path | Source | Public derivatives | Evidence treatment |
 | --- | --- | --- | --- |
@@ -52,7 +53,7 @@ The implementation:
 - `docs/HANDOFF-ENGINEERING-MEDIA-001_Governed-Photograph-Pipeline.md`
 - `docs/PROGRAMME-REGISTER_RC-001-RC-025.md`
 
-No RC Markdown, source sidecar, media candidate, contributor record, rights conclusion, generated cultivar object or application page is changed by this engineering package.
+No RC Markdown, source sidecar, media candidate, contributor record, rights conclusion, generated cultivar object or application page was changed by the engineering package.
 
 ## 3. Media-side source convention
 
@@ -108,7 +109,7 @@ A synthetic label is not required merely because the asset is a photograph. Supp
 
 ## 6. Validation completed
 
-Repository-quality workflow `30323192509` passed at implementation commit `23e2802b63a4a586df64e0b0a2583b43471b1b12`:
+Repository-quality workflow `30323424632` passed at final implementation head `72d161b70cbdfb41bfe6bff879f3d308ef2678da`:
 
 - repository, schemas and tests — PASS;
 - Native Node coverage thresholds — PASS;
@@ -149,16 +150,21 @@ Fixtures cover:
 - invalid rights, GPS, identity, path, MIME, dimension and checksum rejection;
 - unchanged illustration governance and SVG output bytes.
 
-## 7. Remaining boundary before media work
+## 7. Remaining media boundary
 
-Until the engineering PR is merged:
+The technical dependency is resolved on `main`, but media must still complete:
 
-- media must not claim the pipeline dependency resolved on `main`;
-- no candidate photograph is an approved G5 asset;
-- no RC-006 media sidecar should be represented as integration-ready;
-- PR #14 remains a planning, governance and blocked-handoff PR rather than a completed media package.
+- candidate selection;
+- rights and licence approval;
+- original-byte preservation and source SHA-256;
+- contributor and provenance records;
+- specimen-identity basis and confidence;
+- public privacy treatment;
+- captions and alt text;
+- sidecar and derivative validation;
+- a per-record G5 assessment.
 
-After merge, media must still complete rights, provenance, contributor, identity, caption, alt-text and approval work. Technical processability is necessary but not sufficient for G5.
+No candidate photograph is approved merely because the processor accepts its file type. Technical processability is necessary but not sufficient for G5.
 
 ## 8. Ownership boundaries
 
@@ -179,8 +185,8 @@ Engineering has not approved any candidate asset or rewritten a media conclusion
 
 ## 9. Next receiver and requested action
 
-**Next receiver after engineering merge:** media and visual-assets stream.
+**Next receiver:** media and visual-assets stream.
 
-Media should reconcile `media/rc-006-010` onto the new `main`, retain the approved planning/governance documents, process only rights-compliant candidates through the merged pipeline, and return a structured per-record G5 handoff with `PASS`, `CONDITIONAL` or `BLOCKED`.
+Media must reconcile `media/rc-006-010` onto current `main`, retain the approved planning/governance documents, process only rights-compliant candidates through the merged pipeline, and return a structured per-record G5 handoff with `PASS`, `CONDITIONAL` or `BLOCKED`.
 
 **Stop condition:** stop before claiming G5 PASS for any record whose rights, provenance, identity, privacy or derivative validation remains incomplete. Do not create an integration branch or publish an RC.
