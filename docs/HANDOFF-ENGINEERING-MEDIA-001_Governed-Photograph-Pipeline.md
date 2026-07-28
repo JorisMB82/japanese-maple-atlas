@@ -1,12 +1,13 @@
 # HANDOFF-ENGINEERING-MEDIA-001 — Governed Photograph Pipeline
 
-**Handoff status:** IMPLEMENTATION CANDIDATE — CI AND CTO REVIEW REQUIRED  
+**Handoff status:** READY FOR MEDIA USE AFTER ENGINEERING MERGE  
 **Inspected `main`:** `eb8f668d58253a36d6e0618f42318e38db97e20f`  
 **Engineering branch:** `engineering/sprint-12-wave-1`  
-**Head commit:** recorded by the engineering pull request  
+**Validated implementation commit:** `23e2802b63a4a586df64e0b0a2583b43471b1b12`  
 **Affected records:** RC-006 through RC-010; no RC-specific logic  
 **Current gate:** shared engineering dependency before media G5  
-**Assessment:** `CONDITIONAL` until the complete repository-quality workflow passes  
+**Assessment:** `PASS — technically ready, effective after merge to main`  
+**Validation workflow:** `30323192509` — all three jobs passed  
 **Source request:** `docs/HANDOFF-MEDIA-ENGINEERING-001_RC-006-Photograph-Pipeline-Request.md`  
 **Decision Record:** `docs/DR-012-001_Governed-Raster-Photograph-Derivatives.md`
 
@@ -82,7 +83,7 @@ The four profile paths should follow:
 /media/derivatives/rc-006/archive.jpg
 ```
 
-The processor calculates actual no-upscale dimensions and bytes. The media sidecar must then record the resulting width, height, MIME and SHA-256 for each profile. `assetPath` must reference `display`; `thumbnailPath` must reference `thumb`.
+The processor calculates actual no-upscale dimensions and bytes. The media sidecar must record the resulting width, height, MIME and SHA-256 for each profile. `assetPath` must reference `display`; `thumbnailPath` must reference `thumb`.
 
 ## 5. Evidence and synthetic-label rules
 
@@ -105,9 +106,15 @@ Permitted after media review:
 
 A synthetic label is not required merely because the asset is a photograph. Supporting or primary evidence requires substantive specimen identity, confidence and editorial-status metadata. The pipeline does not infer evidentiary status from appearance or file type.
 
-## 6. Validation expectations
+## 6. Validation completed
 
-The associated engineering PR must pass the repository's full workflow, including:
+Repository-quality workflow `30323192509` passed at implementation commit `23e2802b63a4a586df64e0b0a2583b43471b1b12`:
+
+- repository, schemas and tests — PASS;
+- Native Node coverage thresholds — PASS;
+- production build and static regression — PASS.
+
+The executed chain covered:
 
 ```text
 npm run process:media
@@ -131,22 +138,22 @@ npm run validate:quality
 npm run release:manifest
 ```
 
-New fixtures cover:
+Fixtures cover:
 
-- JPEG orientation;
+- JPEG orientation values 1–8;
 - JPEG metadata stripping;
 - PNG processing;
 - deterministic profile generation;
 - proportional no-upscale sizing;
 - photograph evidence without a synthetic label;
-- invalid rights, GPS and checksum rejection;
-- unchanged illustration governance and SVG bytes.
+- invalid rights, GPS, identity, path, MIME, dimension and checksum rejection;
+- unchanged illustration governance and SVG output bytes.
 
-## 7. Unresolved issues
+## 7. Remaining boundary before media work
 
-Until CI passes and the engineering PR is merged:
+Until the engineering PR is merged:
 
-- media must not claim the pipeline dependency resolved;
+- media must not claim the pipeline dependency resolved on `main`;
 - no candidate photograph is an approved G5 asset;
 - no RC-006 media sidecar should be represented as integration-ready;
 - PR #14 remains a planning, governance and blocked-handoff PR rather than a completed media package.
