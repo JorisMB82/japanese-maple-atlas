@@ -1,7 +1,7 @@
 # HANDOFF-MEDIA-002 — RC-007 ‘Butterfly’ G5 Status
 
 **Handoff status:** BLOCKED  
-**Inspected `main`:** `56169aa9fe3e21231f1a680bb6f97d4230192780`  
+**Inspected `main`:** `1af3d20c574e851ce55d01f9639caa8fda3a8e54`  
 **Branch:** `media/rc-006-010`  
 **RC:** RC-007 — *Acer palmatum* ‘Butterfly’  
 **Editorial state:** G1–G3 complete; G4 CONDITIONAL  
