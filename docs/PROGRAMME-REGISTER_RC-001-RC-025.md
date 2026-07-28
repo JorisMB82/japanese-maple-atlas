@@ -17,7 +17,7 @@ This register is the repository-visible coordination surface for the three paral
 | RC-003 | *Acer palmatum* ‘Sango-kaku’ | Foundation | G8 FROZEN | G5 READY — identity plate; target coverage gap | Validated | PUBLISHED | Prioritise governed bark/stem, habit and seasonal foliage photography. |
 | RC-004 | *Acer palmatum* ‘Crimson Queen’ | Foundation | G8 FROZEN | G5 READY — identity plate; target coverage gap | Validated | PUBLISHED | Acquire governed habit and dissected-foliage detail photography. |
 | RC-005 | *Acer shirasawanum* ‘Aureum’ | Foundation | G8 FROZEN | G5 READY — identity plate; target coverage gap | Validated | PUBLISHED | Acquire governed habit and spring/summer foliage photography. |
-| RC-006 | *Acer palmatum* ‘Osakazuki’ | Wave 1 | G1 PASS; G2 PASS FOR REVIEW; G3 DRAFT; G4 CONDITIONAL | G5 BLOCKED — candidate work active; photograph pipeline merge and final rights/provenance package required | BLOCKED — awaiting corrected G4 and matching G5 package | NOT PUBLIC | Editorial completes record-specific G4 review, approves the sidecar and resolves `sourceLocations`; media resumes G5 after the validated raster fix reaches `main`. Do not compile or publish. |
+| RC-006 | *Acer palmatum* ‘Osakazuki’ | Wave 1 | G1 PASS; G2 PASS FOR REVIEW; G3 DRAFT; G4 CONDITIONAL | G5 BLOCKED — pipeline ready; candidate rights/provenance, identity, source preservation and sidecar work remain | BLOCKED — awaiting corrected G4 and matching G5 package | NOT PUBLIC | Editorial completes record-specific G4 review and sidecar correction; media reconciles PR #14 and returns a governed G5 assessment. Do not compile or publish. |
 | RC-007 | *Acer palmatum* ‘Butterfly’ | Wave 1 | G1 PASS; G2 PASS FOR REVIEW; G3 DRAFT; G4 CONDITIONAL | G0 PLANNED — governed gap; acquisition planning active | BLOCKED — awaiting corrected G4 and matching G5 package | NOT PUBLIC | Editorial performs G4 review and sidecar correction; media covers variegation, reversion and whole-plant habit. |
 | RC-008 | *Acer palmatum* ‘Shishi-gashira’ | Wave 1 | G1 PASS; G2 PASS FOR REVIEW; G3 DRAFT; G4 CONDITIONAL | G0 PLANNED — governed gap; acquisition planning active | BLOCKED — awaiting corrected G4 and matching G5 package | NOT PUBLIC | Editorial performs G4 review and sidecar correction; media must distinguish lion’s-mane architecture from RC-010 layered dwarf foliage. |
 | RC-009 | *Acer palmatum* ‘Katsura’ | Wave 1 | G1 PASS; G2 PASS FOR REVIEW; G3 DRAFT; G4 CONDITIONAL | G0 PLANNED — governed gap; acquisition planning active | BLOCKED — awaiting corrected G4 and matching G5 package | NOT PUBLIC | Editorial performs G4 review and sidecar correction; media prioritises the brief spring-emergence capture window. |
@@ -40,6 +40,18 @@ This register is the repository-visible coordination surface for the three paral
 
 ## Status update evidence
 
+### 2026-07-27 — Governed photograph pipeline merged
+
+- **Inspected `main` SHA:** `a010c2c8ee76dbd8735d1390e09aa06664b1b009`
+- **Engineering source:** merged PR `#17`, final head `72d161b70cbdfb41bfe6bff879f3d308ef2678da`, squash commit `a010c2c8ee76dbd8735d1390e09aa06664b1b009`
+- **Gate entered / acknowledged:** shared engineering dependency for governed JPEG/PNG processing is resolved on `main`; this does not enter or complete G5 for any record.
+- **Validation:** workflow `30323424632` passed repository/tests, coverage, production build, static regression, quality validation and release-manifest generation. Vercel reported successful deployment for the merged main commit.
+- **Implementation:** JPEG/PNG source-byte detection, EXIF orientation, deterministic proportional no-upscale derivatives, public metadata stripping, checksum/dimension/MIME/lineage validation, media-type-specific evidence rules and illustration regression protection.
+- **Media branch status:** PR `#14`, branch `media/rc-006-010`, head `a384f9b2926980ff166023083724c06e419d6b63`, diverges from current main and must be reconciled before merge or candidate processing.
+- **Unresolved issues:** record-specific G4 reviews; source-sidecar locator/approval corrections; candidate rights, licence, provenance and identity review; original-byte preservation; media sidecars and G5 assessments for RC-006 through RC-010.
+- **Next receivers:** media reconciles PR #14 and returns per-record G5 packets; editorial returns corrected per-record G4 packets; engineering then performs G6 compatibility review for coherent records.
+- **Readiness assessment:** `PASS` for the shared engineering pipeline; `BLOCKED` for G6, G7 and publication pending corrected G4 and matching G5 handoffs.
+
 ### 2026-07-27 — Wave 1 G1–G3 draft cohort and raster dependency
 
 - **Inspected `main` SHA:** `eb8f668d58253a36d6e0618f42318e38db97e20f`
@@ -50,10 +62,8 @@ This register is the repository-visible coordination surface for the three paral
 - **Editorial validation:** PR #16 repository-quality workflow `30305661689` passed. The changed files remained within editorial ownership, all records and source sidecars remained explicitly draft, and generated/public outputs were unchanged.
 - **Editorial contract issue:** RC-006 through RC-010 source sidecars use structured `sourceLocations` objects while the current generated-source schema expects string arrays. Editorial must normalize the locators or submit a governed engineering extension request before G4/G6. Top-level sidecar status must become `approved` only through editorial/source review.
 - **Media engineering issue:** PR #14 demonstrated that the schema advertised governed photographs while the processor and validator were SVG-only and illustration-only.
-- **Engineering action and validation:** PR #17 implements generic governed JPEG/PNG processing, EXIF orientation, public metadata stripping, deterministic no-upscale derivatives, conditional evidence rules, tests and DR-012-001 while preserving the five existing illustration bytes. Workflow `30323192509` passed repository/tests, coverage, production build, regression, quality and release-manifest generation at commit `23e2802b63a4a586df64e0b0a2583b43471b1b12`.
-- **Unresolved issues:** merge of the validated shared raster fix; record-specific botanical/nomenclatural G4 reviews; sidecar locator and approval corrections; candidate rights/provenance and identity review; G5 assessments for all five records.
-- **Next receivers:** media resumes the bounded G5 package after PR #17 reaches `main`; editorial returns corrected record-specific G4 handoffs; engineering receives both structured packets for G6 review.
-- **Readiness assessment:** `PASS` for G1–G3 draft presence and the shared raster implementation; `BLOCKED` for G6, G7 and publication pending merge plus corrected G4 and matching G5 handoffs.
+- **Engineering response:** the governed photograph pipeline was implemented and subsequently merged through PR #17.
+- **Readiness assessment at this checkpoint:** `PASS` for G1–G3 draft presence; `BLOCKED` for G6, G7 and publication.
 
 ### 2026-07-27 — Wave 1 G0 assignment lock
 
