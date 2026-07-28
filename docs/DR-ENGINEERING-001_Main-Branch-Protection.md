@@ -1,55 +1,65 @@
 # DR-ENGINEERING-001 — Main Branch Protection
 
-**Status:** CONDITIONAL — configuration specified; Stage 1 enforcement pending an administration-capable GitHub mutation surface  
+**Status:** ACTIVE — Stage 1 enforced; Stage 2 planned for the next stable checkpoint  
 **Decision owner:** Engineering / integration  
 **Repository:** `JorisMB82/japanese-maple-atlas`  
 **Protected target:** `main`  
 **Decision date:** 2026-07-27  
-**Inspected main:** `56169aa9fe3e21231f1a680bb6f97d4230192780`
+**Stage 1 implementation date:** 2026-07-27  
+**Inspected main:** `1af3d20c574e851ce55d01f9639caa8fda3a8e54`
 
 ## 1. Context
 
 `main` is the production source of truth and deploys the public Japanese Maple Atlas. The repository uses short-lived track branches, pull requests, the repository-quality workflow and squash merges. Accidental force pushes or deletion of `main` would bypass the governed history and could disrupt production.
 
-Protection must be staged so that the current Sprint 12 / Wave 1 editorial and media cycle is not stranded while stronger merge requirements are introduced.
+Protection is staged so that the current Sprint 12 / Wave 1 editorial and media cycle is not stranded while stronger merge requirements are introduced.
 
 ## 2. Decision
 
-Use a branch protection rule targeting the exact branch name `main`.
+Use a GitHub branch ruleset targeting the exact branch name `main`.
 
 Stage 1 establishes only destructive-operation protection. Stage 2 adds the normal PR and CI merge controls after the active Wave 1 PR cycle reaches a stable checkpoint and before the first major `integration/rc-006-010` publication merge.
 
-The repository remains configured to permit squash merges. No independent human approval is required initially because the repository has a single project owner; review conversations and required CI provide the initial merge controls.
+The repository remains configured to permit squash merges. No independent human approval is required initially because the repository has a single project owner; resolved review conversations and required CI will provide the initial Stage 2 merge controls.
 
 ## 3. Stage 1 — minimum safe protection
 
-### Intended exact configuration
+### Live configuration
 
 | Setting | Stage 1 value |
 | --- | --- |
-| Branch name pattern | `main` |
+| Ruleset name | `Protect main — Stage 1` |
+| Enforcement status | `Active` |
+| Target branch | exact branch `main` |
+| Bypass | repository administrators / authorised owner, retained for emergency recovery |
 | Require a pull request before merging | Off |
 | Require status checks before merging | Off |
 | Require conversation resolution | Off |
-| Allow force pushes | Off |
-| Allow deletions | Off |
-| Lock branch | Off |
-| Restrict who can push | Off |
-| Do not allow bypassing | Off |
-| Administrator / authorised-owner recovery | Available through the default administrator bypass |
+| Restrict creations | Off |
+| Restrict updates | Off |
+| Restrict deletions | On |
+| Block force pushes | On |
+| Require linear history | Off |
+| Require deployments | Off |
+| Require signed commits | Off |
+| Code-scanning, code-quality and coverage rules | Off |
 
-This configuration blocks force pushes and branch deletion without changing the current PR, CI or squash-merge path.
+This configuration blocks force pushes and branch deletion for non-bypass actors without changing the current branch, PR, CI or squash-merge path. Repository administrators retain an emergency bypass; the bypass is not the normal development route.
 
-### Stage 1 implementation record
+### Stage 1 implementation and validation record
 
 - **Repository access verified:** the connected GitHub identity has repository administrator permission.
 - **Repository visibility:** public.
-- **Plan availability:** GitHub supports protected branches and repository rulesets for public repositories on GitHub Free; no plan limitation has been identified for this rule.
-- **Active PR inspected:** PR `#14`, `media/rc-006-010` into `main`, remains an open draft.
-- **Tooling limitation:** the connected GitHub tool exposes repository, branch, PR and content operations but does not expose branch-protection or repository-ruleset create/update endpoints. The local environment has no authenticated GitHub CLI or token. Therefore enforcement cannot be truthfully recorded as active from this execution surface.
-- **Stage 1 assessment:** `BLOCKED` until the rule is created through GitHub repository administration or an administration-capable API connection.
-
-Do not mark Stage 1 complete until the live rule is inspected and both `allow_force_pushes` and `allow_deletions` are confirmed false.
+- **Plan availability:** no GitHub-plan limitation was encountered for the active ruleset.
+- **Administration evidence:** the Project Owner created the ruleset in GitHub repository administration and supplied UI evidence showing `Protect main — Stage 1`, enforcement status `Active`, and confirmation `Ruleset created`.
+- **Rule-selection evidence:** the supplied configuration showed `Restrict deletions` and `Block force pushes` enabled, with PR, status-check and conversation requirements left disabled.
+- **Target and bypass:** the Project Owner configured the exact target `main` and retained repository-administrator bypass for emergency recovery.
+- **Current main:** `1af3d20c574e851ce55d01f9639caa8fda3a8e54` at the implementation checkpoint.
+- **Active PR inspected:** PR `#14`, `media/rc-006-010` into `main`, remained open, draft and mergeable after activation.
+- **Normal branch creation:** `engineering/main-protection-stage1-record` was created from current `main` after activation, confirming ordinary non-target branch creation remains available.
+- **Normal branch update:** this Decision Record was committed to that branch after activation, confirming ordinary branch updates remain available.
+- **Direct destructive tests:** no force-push or deletion attempt was made against production `main`; the active ruleset configuration is the enforcement evidence.
+- **Stage 1 assessment:** `PASS`.
 
 ## 4. Stage 2 trigger
 
@@ -61,6 +71,8 @@ Stage 2 may be enabled when all of the following are true:
 4. no active PR would be stranded by newly required checks;
 5. the exact successful check names have been observed from GitHub Actions;
 6. no major `integration/rc-006-010` publication merge has begun.
+
+At the Stage 1 implementation checkpoint, PR `#14` remained active. Stage 2 therefore remains deferred and must not yet be enabled.
 
 ## 5. Stage 2 — protected merge path
 
@@ -77,8 +89,8 @@ Expected configuration, subject to that verification:
 | Require status checks before merging | On |
 | Require branches to be up to date | Off initially unless validation proves it will not strand active PRs |
 | Require conversation resolution | On |
-| Allow force pushes | Off |
-| Allow deletions | Off |
+| Restrict deletions | On |
+| Block force pushes | On |
 | Administrator / authorised-owner bypass | Available for emergency recovery |
 | Merge method | Squash merge remains permitted |
 | Merge queue, signed commits, linear history and deployment requirements | Off unless separately approved |
@@ -96,7 +108,7 @@ Use a harmless branch based on current `main` and remove it after testing. Recor
 1. direct unreviewed changes to `main` are blocked;
 2. a PR with incomplete or failing required checks cannot merge;
 3. a PR with all required checks passing and conversations resolved can be squash-merged through the authorised workflow;
-4. force pushes and deletion of `main` are blocked;
+4. force pushes and deletion of `main` remain blocked;
 5. emergency administrator recovery remains available;
 6. no temporary branch or workflow remains.
 
@@ -119,6 +131,7 @@ Emergency procedure:
 
 Revisit this decision when:
 
+- the Stage 2 trigger conditions are satisfied;
 - a second regular maintainer is added;
 - independent approval can be required without deadlock;
 - merge queue adoption becomes useful;
@@ -129,6 +142,6 @@ Revisit this decision when:
 
 ## 9. Current assessment
 
-**Stage 1:** `BLOCKED` — configuration is fully specified, but live enforcement could not be applied through the available connector.  
-**Stage 2:** `PLANNED / CONDITION-WATCHED` — activate only at the defined stable checkpoint.  
-**Overall:** `CONDITIONAL`.
+**Stage 1:** `PASS` — active ruleset blocks force pushes and deletion while preserving administrator emergency recovery and the current branch/PR workflow.  
+**Stage 2:** `PLANNED / DEFERRED` — activate only at the defined stable checkpoint; PR `#14` remains active at this record update.  
+**Overall:** `PASS FOR STAGE 1`.
