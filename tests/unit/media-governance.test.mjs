@@ -130,6 +130,7 @@ test('five pilot sidecars preserve governed Atlas illustration treatment', () =>
     assert.equal(asset.evidentiaryStatus, 'illustrative-not-evidence');
     assert.match(asset.syntheticLabel, /not an observed specimen/i);
     assert.deepEqual(asset.derivatives.map(item => item.profile), Object.keys(PROFILES));
+    assert.deepEqual(validateAsset(asset, { root:ROOT }), []);
   }
 });
 
@@ -139,19 +140,26 @@ test('SVG derivative rendering remains deterministic and profile-labelled', () =
   assert.match(render(svg, 'display', 960, 693), /data-atlas-profile="display"/);
 });
 
-test('JPEG EXIF orientation is applied before deterministic no-upscale rendering', () => {
+test('all JPEG EXIF orientations are applied before deterministic no-upscale rendering', () => {
   const jpeg = encodeRaster(pixels(4, 2), 'image/jpeg');
+  for (let orientation = 1; orientation <= 8; orientation += 1) {
+    const oriented = withExifOrientation(jpeg, orientation);
+    const decoded = decodeRaster(oriented);
+    const expectedDimensions = orientation >= 5 ? [2, 4] : [4, 2];
+    assert.deepEqual([decoded.width, decoded.height], expectedDimensions);
+    assert.equal(decoded.sourceOrientation, orientation);
+  }
   const oriented = withExifOrientation(jpeg, 6);
   assert.equal(detectRasterMime(oriented), 'image/jpeg');
   assert.equal(hasRasterPrivacyMetadata(oriented), true);
-  const decoded = decodeRaster(oriented);
-  assert.deepEqual([decoded.width, decoded.height, decoded.sourceOrientation], [2, 4, 6]);
   const profiles = renderRasterProfiles(oriented, PROFILES);
   for (const output of Object.values(profiles)) {
     assert.deepEqual([output.width, output.height], [2, 4]);
     assert.equal(output.mimeType, 'image/jpeg');
     assert.equal(hasRasterPrivacyMetadata(output.bytes, output.mimeType), false);
   }
+  assert.throws(() => detectRasterMime(Buffer.from('not-an-image')), /unsupported raster format/);
+  assert.throws(() => encodeRaster(pixels(1, 1), 'image/webp'), /unsupported output MIME/);
 });
 
 test('PNG rendering is deterministic and dimensions never upscale', () => {
@@ -170,14 +178,52 @@ test('governed photographs validate without a synthetic label and reject rights 
   try {
     const fixture = writeGovernedPhotographFixture(root);
     assert.deepEqual(validateAsset(fixture.asset, { root }), []);
+    assert.ok(validateAsset({ id:'MED-INCOMPLETE' }, { root }).some(error => error.includes('missing cultivarId')));
+
     const invalid = structuredClone(fixture.asset);
+    invalid.status = 'draft';
     invalid.rightsHolder = '';
+    invalid.source.path = '/public/unapproved-source.jpg';
+    invalid.source.sha256 = '0'.repeat(64);
+    invalid.privacy.exifRetained = true;
     invalid.privacy.gpsRetained = true;
-    invalid.derivatives[0].sha256 = '0'.repeat(64);
+    invalid.evidentiaryStatus = 'primary-evidence';
+    invalid.identification.confidence = 'not-applicable';
+    invalid.identification.editorialStatus = 'illustrative';
+    invalid.assetPath = '/wrong-display.jpg';
+    invalid.thumbnailPath = '/wrong-thumb.jpg';
+    invalid.derivatives[0].derivedFrom = 'MED-RC-999-WRONG-001';
+    invalid.derivatives[0].width = 0;
+    invalid.derivatives[0].height = 0;
+    invalid.derivatives[0].mimeType = 'image/webp';
+    invalid.derivatives[0].path = '/media/derivatives/rc-999/missing.jpg';
+    invalid.derivatives[1].profile = 'thumb';
+    invalid.derivatives[2].mimeType = 'image/svg+xml';
+    invalid.derivatives[3].profile = 'mystery';
     const errors = validateAsset(invalid, { root });
-    assert.ok(errors.some(error => error.includes('rightsHolder must be non-empty')));
-    assert.ok(errors.some(error => error.includes('precise GPS')));
-    assert.ok(errors.some(error => error.includes('invalid derivative checksum')));
+    for (const expected of [
+      'asset not approved',
+      'rightsHolder must be non-empty',
+      'precise GPS',
+      'public raster derivatives must not retain EXIF',
+      'raster original must be preserved',
+      'evidentiary photographs require substantive identity metadata',
+      'source file missing',
+      'profile thumb must appear exactly once',
+      'unknown derivative profile',
+      'derivedFrom must reference the asset',
+      'invalid dimensions',
+      'unsupported MIME type',
+      'derivative file missing',
+      'MIME declaration does not match bytes',
+      'assetPath must reference the display derivative',
+      'thumbnailPath must reference the thumb derivative'
+    ]) assert.ok(errors.some(error => error.includes(expected)), `${expected}: ${errors.join('\n')}`);
+
+    const nonRaster = structuredClone(fixture.asset);
+    nonRaster.mediaType = 'diagram';
+    const nonRasterErrors = validateAsset(nonRaster, { root });
+    assert.ok(nonRasterErrors.some(error => error.includes('non-raster media cannot publish raster derivatives')));
   } finally {
     fs.rmSync(root, { recursive:true, force:true });
   }
