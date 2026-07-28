@@ -1,0 +1,264 @@
+{
+  "version": "1.0.0",
+  "status": "approved",
+  "approvedAt": "2026-07-28",
+  "authority": "Project Owner / Editor-in-Chief",
+  "decisionRecord": "DR-STRATEGY-002",
+  "identityFamily": "CUL-######",
+  "publicationClasses": [
+    "catalogue-profile",
+    "reference-standard"
+  ],
+  "entries": [
+    {
+      "cultivarId": "CUL-000001",
+      "programmeSlot": "001",
+      "state": "reference-standard-mapped",
+      "referenceStandardId": "RC-001",
+      "assignedWorkingName": null,
+      "publicationClass": "reference-standard",
+      "assignmentDecision": "DR-STRATEGY-002",
+      "notes": "Deterministic migration mapping; frozen source records remain unchanged."
+    },
+    {
+      "cultivarId": "CUL-000002",
+      "programmeSlot": "002",
+      "state": "reference-standard-mapped",
+      "referenceStandardId": "RC-002",
+      "assignedWorkingName": null,
+      "publicationClass": "reference-standard",
+      "assignmentDecision": "DR-STRATEGY-002",
+      "notes": "Deterministic migration mapping; frozen source records remain unchanged."
+    },
+    {
+      "cultivarId": "CUL-000003",
+      "programmeSlot": "003",
+      "state": "reference-standard-mapped",
+      "referenceStandardId": "RC-003",
+      "assignedWorkingName": null,
+      "publicationClass": "reference-standard",
+      "assignmentDecision": "DR-STRATEGY-002",
+      "notes": "Deterministic migration mapping; frozen source records remain unchanged."
+    },
+    {
+      "cultivarId": "CUL-000004",
+      "programmeSlot": "004",
+      "state": "reference-standard-mapped",
+      "referenceStandardId": "RC-004",
+      "assignedWorkingName": null,
+      "publicationClass": "reference-standard",
+      "assignmentDecision": "DR-STRATEGY-002",
+      "notes": "Deterministic migration mapping; frozen source records remain unchanged."
+    },
+    {
+      "cultivarId": "CUL-000005",
+      "programmeSlot": "005",
+      "state": "reference-standard-mapped",
+      "referenceStandardId": "RC-005",
+      "assignedWorkingName": null,
+      "publicationClass": "reference-standard",
+      "assignmentDecision": "DR-STRATEGY-002",
+      "notes": "Deterministic migration mapping; frozen source records remain unchanged."
+    },
+    {
+      "cultivarId": "CUL-000006",
+      "programmeSlot": "006",
+      "state": "reference-standard-mapped",
+      "referenceStandardId": "RC-006",
+      "assignedWorkingName": null,
+      "publicationClass": "reference-standard",
+      "assignmentDecision": "DR-STRATEGY-002",
+      "notes": "Deterministic migration mapping; frozen source records remain unchanged."
+    },
+    {
+      "cultivarId": "CUL-000007",
+      "programmeSlot": "007",
+      "state": "reference-standard-mapped",
+      "referenceStandardId": "RC-007",
+      "assignedWorkingName": null,
+      "publicationClass": "reference-standard",
+      "assignmentDecision": "DR-STRATEGY-002",
+      "notes": "Deterministic migration mapping; frozen source records remain unchanged."
+    },
+    {
+      "cultivarId": "CUL-000008",
+      "programmeSlot": "008",
+      "state": "reference-standard-mapped",
+      "referenceStandardId": "RC-008",
+      "assignedWorkingName": null,
+      "publicationClass": "reference-standard",
+      "assignmentDecision": "DR-STRATEGY-002",
+      "notes": "Deterministic migration mapping; frozen source records remain unchanged."
+    },
+    {
+      "cultivarId": "CUL-000009",
+      "programmeSlot": "009",
+      "state": "reference-standard-mapped",
+      "referenceStandardId": "RC-009",
+      "assignedWorkingName": null,
+      "publicationClass": "reference-standard",
+      "assignmentDecision": "DR-STRATEGY-002",
+      "notes": "Deterministic migration mapping; frozen source records remain unchanged."
+    },
+    {
+      "cultivarId": "CUL-000010",
+      "programmeSlot": "010",
+      "state": "reference-standard-mapped",
+      "referenceStandardId": "RC-010",
+      "assignedWorkingName": null,
+      "publicationClass": "reference-standard",
+      "assignmentDecision": "DR-STRATEGY-002",
+      "notes": "Deterministic migration mapping; frozen source records remain unchanged."
+    },
+    {
+      "cultivarId": "CUL-000011",
+      "programmeSlot": "011",
+      "state": "reserved-catalogue-slot",
+      "referenceStandardId": null,
+      "assignedWorkingName": null,
+      "publicationClass": "catalogue-profile",
+      "assignmentDecision": null,
+      "notes": "Reserved for the owner-approved first Catalogue cohort; cultivar assignment remains pending C0 review."
+    },
+    {
+      "cultivarId": "CUL-000012",
+      "programmeSlot": "012",
+      "state": "reserved-catalogue-slot",
+      "referenceStandardId": null,
+      "assignedWorkingName": null,
+      "publicationClass": "catalogue-profile",
+      "assignmentDecision": null,
+      "notes": "Reserved for the owner-approved first Catalogue cohort; cultivar assignment remains pending C0 review."
+    },
+    {
+      "cultivarId": "CUL-000013",
+      "programmeSlot": "013",
+      "state": "reserved-catalogue-slot",
+      "referenceStandardId": null,
+      "assignedWorkingName": null,
+      "publicationClass": "catalogue-profile",
+      "assignmentDecision": null,
+      "notes": "Reserved for the owner-approved first Catalogue cohort; cultivar assignment remains pending C0 review."
+    },
+    {
+      "cultivarId": "CUL-000014",
+      "programmeSlot": "014",
+      "state": "reserved-catalogue-slot",
+      "referenceStandardId": null,
+      "assignedWorkingName": null,
+      "publicationClass": "catalogue-profile",
+      "assignmentDecision": null,
+      "notes": "Reserved for the owner-approved first Catalogue cohort; cultivar assignment remains pending C0 review."
+    },
+    {
+      "cultivarId": "CUL-000015",
+      "programmeSlot": "015",
+      "state": "reserved-catalogue-slot",
+      "referenceStandardId": null,
+      "assignedWorkingName": null,
+      "publicationClass": "catalogue-profile",
+      "assignmentDecision": null,
+      "notes": "Reserved for the owner-approved first Catalogue cohort; cultivar assignment remains pending C0 review."
+    },
+    {
+      "cultivarId": "CUL-000016",
+      "programmeSlot": "016",
+      "state": "reserved-catalogue-slot",
+      "referenceStandardId": null,
+      "assignedWorkingName": null,
+      "publicationClass": "catalogue-profile",
+      "assignmentDecision": null,
+      "notes": "Reserved for the owner-approved first Catalogue cohort; cultivar assignment remains pending C0 review."
+    },
+    {
+      "cultivarId": "CUL-000017",
+      "programmeSlot": "017",
+      "state": "reserved-catalogue-slot",
+      "referenceStandardId": null,
+      "assignedWorkingName": null,
+      "publicationClass": "catalogue-profile",
+      "assignmentDecision": null,
+      "notes": "Reserved for the owner-approved first Catalogue cohort; cultivar assignment remains pending C0 review."
+    },
+    {
+      "cultivarId": "CUL-000018",
+      "programmeSlot": "018",
+      "state": "reserved-catalogue-slot",
+      "referenceStandardId": null,
+      "assignedWorkingName": null,
+      "publicationClass": "catalogue-profile",
+      "assignmentDecision": null,
+      "notes": "Reserved for the owner-approved first Catalogue cohort; cultivar assignment remains pending C0 review."
+    },
+    {
+      "cultivarId": "CUL-000019",
+      "programmeSlot": "019",
+      "state": "reserved-catalogue-slot",
+      "referenceStandardId": null,
+      "assignedWorkingName": null,
+      "publicationClass": "catalogue-profile",
+      "assignmentDecision": null,
+      "notes": "Reserved for the owner-approved first Catalogue cohort; cultivar assignment remains pending C0 review."
+    },
+    {
+      "cultivarId": "CUL-000020",
+      "programmeSlot": "020",
+      "state": "reserved-catalogue-slot",
+      "referenceStandardId": null,
+      "assignedWorkingName": null,
+      "publicationClass": "catalogue-profile",
+      "assignmentDecision": null,
+      "notes": "Reserved for the owner-approved first Catalogue cohort; cultivar assignment remains pending C0 review."
+    },
+    {
+      "cultivarId": "CUL-000021",
+      "programmeSlot": "021",
+      "state": "reserved-catalogue-slot",
+      "referenceStandardId": null,
+      "assignedWorkingName": null,
+      "publicationClass": "catalogue-profile",
+      "assignmentDecision": null,
+      "notes": "Reserved for the owner-approved first Catalogue cohort; cultivar assignment remains pending C0 review."
+    },
+    {
+      "cultivarId": "CUL-000022",
+      "programmeSlot": "022",
+      "state": "reserved-catalogue-slot",
+      "referenceStandardId": null,
+      "assignedWorkingName": null,
+      "publicationClass": "catalogue-profile",
+      "assignmentDecision": null,
+      "notes": "Reserved for the owner-approved first Catalogue cohort; cultivar assignment remains pending C0 review."
+    },
+    {
+      "cultivarId": "CUL-000023",
+      "programmeSlot": "023",
+      "state": "reserved-catalogue-slot",
+      "referenceStandardId": null,
+      "assignedWorkingName": null,
+      "publicationClass": "catalogue-profile",
+      "assignmentDecision": null,
+      "notes": "Reserved for the owner-approved first Catalogue cohort; cultivar assignment remains pending C0 review."
+    },
+    {
+      "cultivarId": "CUL-000024",
+      "programmeSlot": "024",
+      "state": "reserved-catalogue-slot",
+      "referenceStandardId": null,
+      "assignedWorkingName": null,
+      "publicationClass": "catalogue-profile",
+      "assignmentDecision": null,
+      "notes": "Reserved for the owner-approved first Catalogue cohort; cultivar assignment remains pending C0 review."
+    },
+    {
+      "cultivarId": "CUL-000025",
+      "programmeSlot": "025",
+      "state": "reserved-catalogue-slot",
+      "referenceStandardId": null,
+      "assignedWorkingName": null,
+      "publicationClass": "catalogue-profile",
+      "assignmentDecision": null,
+      "notes": "Reserved for the owner-approved first Catalogue cohort; cultivar assignment remains pending C0 review."
+    }
+  ]
+}
