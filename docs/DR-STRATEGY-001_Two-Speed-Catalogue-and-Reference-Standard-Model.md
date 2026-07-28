@@ -50,7 +50,13 @@ The existing governance framework is retained as the premium assurance layer. It
 
 RC-001 through RC-010 remain Reference Standards. RC-006 through RC-010 must complete the current Wave 1 process without downgrade or interruption.
 
-RC-011 through RC-025 are not automatically committed to the Reference Standard path. Their publication class will be decided after the RC-010 formative checkpoint and the Catalogue pilot design.
+The first breadth objective is to bring the platform to **twenty-five total cultivar identities**:
+
+- RC-001 through RC-010 remain the first Reference Standard identities;
+- programme slots 011 through 025 become the first Catalogue production cohort after duplicate review, risk triage and owner approval of the actual assignments;
+- media works toward governed visual representation across identities 001 through 025, using approved primary visuals where available and explicit governed visual gaps where not.
+
+Programme slots 011–025 are not automatically RC identifiers. A future RC identifier is created only if a cultivar is promoted to the Reference Standard programme.
 
 ## 4. Strategic outcome
 
@@ -100,7 +106,8 @@ The two-speed model is the smallest design that satisfies the combined objective
 - explicit uncertainty;
 - automated validation;
 - later promotion to a Reference Standard;
-- preservation of the existing RC pipeline.
+- preservation of the existing RC pipeline;
+- visible front-end delivery in bounded batches.
 
 The current repository already demonstrates that generic compilation, search, graph and scale validation can support larger inventories. The principal design change is not raw record count; it is the introduction of a lighter governed input class without duplicating cultivar identity.
 
@@ -111,9 +118,10 @@ The current repository already demonstrates that generic compilation, search, gr
 - fewer owner decisions for routine records;
 - publication despite an explicit governed visual gap;
 - visible distinction between useful review and deep assurance;
-- reuse of catalogue sources and media during later promotion;
+- reuse of Catalogue sources and media during later promotion;
 - preservation of existing Reference Standards and routes;
-- risk-based allocation of specialist effort.
+- risk-based allocation of specialist effort;
+- earlier delivery of useful content through the production front end.
 
 ## 8. Drawbacks
 
@@ -137,6 +145,7 @@ The current repository already demonstrates that generic compilation, search, gr
 | Catalogue bureaucracy recreates G1–G9 | Four simple Catalogue states and batch review; no per-record Decision Record for normal low-risk profiles |
 | Reference Standards are weakened | Existing canonical RC contract and G1–G9 remain unchanged |
 | Publication classes become disconnected databases | Shared cultivar identity, search, graph, media and source links; promotion changes assurance class rather than creating a new cultivar |
+| Content waits for all twenty-five records | Three independently publishable five-profile batches |
 
 ## 10. Publication-class selection
 
@@ -168,13 +177,28 @@ Complete the current Reference Standard wave and measure actual editorial effort
 
 Implement the smallest generic Catalogue path without destabilising the Reference Standard pipeline. Changes may include schemas, compiler discovery, source/media contracts, repository inventory, search, graph, routes, validators, tests, CI and documentation.
 
-### Stage D — Pilot cohort
+### Stage D — First Catalogue production cohort
 
-Run an owner-approved cohort of 10–20 low-risk cultivars. Measure throughput, source sufficiency, media gaps, duplicate detection, risk triage, UI clarity, owner escalations and correction rate.
+Use programme slots 011–025 as the first fifteen Catalogue profiles, delivered in three batches:
 
-### Stage E — Scale
+- C-001 — slots 011–015;
+- C-002 — slots 016–020;
+- C-003 — slots 021–025.
 
-Increase cohort size only after the pilot demonstrates acceptable quality, cycle time and correction behaviour.
+Batch C-001 is the operational pilot. Each batch may publish independently after validation and production review.
+
+### Stage E — Visual coverage to identity 025
+
+Run a parallel media programme across identities 001–025:
+
+- improve the existing visual layer for RC-001–RC-010;
+- seek one approved primary visual for every Catalogue Profile;
+- permit explicit governed visual gaps without counting them as visual-complete;
+- preserve all rights, provenance, privacy and identity safeguards.
+
+### Stage F — Scale
+
+Increase cohort size only after the first fifteen Catalogue profiles demonstrate acceptable quality, cycle time, correction behaviour and front-end clarity.
 
 ## 12. RC-006–RC-010 boundary
 
@@ -185,7 +209,7 @@ RC-006 through RC-010 remain the first full Reference Standard production wave.
 - no record is frozen, compiled or public;
 - no `integration/rc-006-010` branch is authorised until a coherent G5 package exists.
 
-The two-speed design must proceed in parallel as documentation and architecture work only. It must not divert the media stream from completing the first viable Wave 1 G5 package.
+The two-speed design proceeds in parallel as documentation and architecture work. It must not divert the media stream from completing the first viable Wave 1 G5 package.
 
 ## 13. Metrics
 
@@ -223,8 +247,8 @@ Explicit Project Owner approval remains required for:
 
 - final roadmap amendment;
 - final public terminology for the two classes;
-- first Catalogue pilot cohort;
-- material RC-011–RC-025 assignment changes;
+- the `CUL-######` stable identity model;
+- actual cultivar assignments for programme slots 011–025;
 - final batch-publication policy;
 - high-risk Catalogue exceptions;
 - Reference Standard promotion;
@@ -245,6 +269,7 @@ The model should be reconsidered if evidence shows that:
 ## 16. Review history
 
 - 2026-07-28 — Project Owner approved the two-speed strategic direction in principle.
+- 2026-07-28 — Project Owner directed the programme to prioritise twenty-five total cultivar identities and governed visual representation across identities 001–025.
 - 2026-07-28 — CTO opened Stage A architecture and contract design; no Catalogue implementation or publication authorised.
 
 ## 17. Excluded scope
