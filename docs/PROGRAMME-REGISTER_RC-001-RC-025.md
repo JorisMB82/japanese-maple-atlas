@@ -17,9 +17,9 @@ This register is the repository-visible coordination surface for the three paral
 | RC-003 | *Acer palmatum* ‘Sango-kaku’ | Foundation | G8 FROZEN | G5 READY — identity plate; target coverage gap | Validated | PUBLISHED | Prioritise governed bark/stem, habit and seasonal foliage photography. |
 | RC-004 | *Acer palmatum* ‘Crimson Queen’ | Foundation | G8 FROZEN | G5 READY — identity plate; target coverage gap | Validated | PUBLISHED | Acquire governed habit and dissected-foliage detail photography. |
 | RC-005 | *Acer shirasawanum* ‘Aureum’ | Foundation | G8 FROZEN | G5 READY — identity plate; target coverage gap | Validated | PUBLISHED | Acquire governed habit and spring/summer foliage photography. |
-| RC-006 | *Acer palmatum* ‘Osakazuki’ | Wave 1 | G4 CONDITIONAL — merged non-public candidate; Project Owner decision pending | G5 BLOCKED — no approved asset or governed gap | BLOCKED — owner condition and matching G5 package required | NOT PUBLIC | Project Owner decides whether to accept the conservative ‘Taihai’, group-formulation, ‘Ōsakasuki’ and provenance treatment; media completes rights, identity, source preservation, sidecar and derivatives. |
-| RC-007 | *Acer palmatum* ‘Butterfly’ | Wave 1 | G4 CONDITIONAL — merged non-public candidate; Project Owner decision pending | G5 BLOCKED — no approved asset or governed gap | BLOCKED — owner condition and matching G5 package required | NOT PUBLIC | Project Owner decides whether to accept the conservative ‘Kochō-no-mai’ treatment; media completes rights, identity, source preservation, sidecar and derivatives. |
-| RC-008 | *Acer palmatum* ‘Shishi-gashira’ | Wave 1 | G4 CONDITIONAL — merged non-public candidate; Project Owner decision pending | G5 BLOCKED — no approved asset or governed gap | BLOCKED — owner condition and matching G5 package required | NOT PUBLIC | Project Owner decides whether to accept the conservative ‘Ribesifolium’, ‘Crispifolium’ and ‘Mejishi’ treatment; media completes rights, identity, source preservation, sidecar and derivatives. |
+| RC-006 | *Acer palmatum* ‘Osakazuki’ | Wave 1 | G4 PASS — owner condition accepted; non-public freeze candidate | G5 BLOCKED — no approved asset or governed gap | BLOCKED — matching G5 package required | NOT PUBLIC | Media completes rights, identity, source preservation, sidecar and derivatives; accepted nomenclatural uncertainty remains explicit. |
+| RC-007 | *Acer palmatum* ‘Butterfly’ | Wave 1 | G4 PASS — owner condition accepted; non-public freeze candidate | G5 BLOCKED — no approved asset or governed gap | BLOCKED — matching G5 package required | NOT PUBLIC | Media completes rights, identity, source preservation, sidecar and derivatives; accepted ‘Kochō-no-mai’ uncertainty remains explicit. |
+| RC-008 | *Acer palmatum* ‘Shishi-gashira’ | Wave 1 | G4 PASS — owner condition accepted; non-public freeze candidate | G5 BLOCKED — no approved asset or governed gap | BLOCKED — matching G5 package required | NOT PUBLIC | Media completes rights, identity, source preservation, sidecar and derivatives; accepted synonym-history uncertainty remains explicit. |
 | RC-009 | *Acer palmatum* ‘Katsura’ | Wave 1 | G4 PASS — merged non-public freeze candidate; owner freeze decision pending | G5 BLOCKED — no approved asset or governed gap | BLOCKED — matching G5 package required | NOT PUBLIC | Media secures a governed early-spring or emergence visual, provenance, sidecar and validated derivatives; no freeze or publication yet. |
 | RC-010 | *Acer palmatum* ‘Mikawa-yatsubusa’ | Wave 1 | G4 PASS — merged non-public freeze candidate; owner freeze decision pending | G5 BLOCKED — no approved asset or governed gap | BLOCKED — matching G5 package required | NOT PUBLIC | Media secures a governed dwarf-scale or layered-foliage visual, provenance, sidecar and validated derivatives; preserve the RC-010 checkpoint before Wave 2. |
 | RC-011 | UNASSIGNED IN REPOSITORY | Wave 2 | G0 PLANNED | G0 PLANNED — governed gap | Not started | NOT PUBLIC | Do not begin deep production before the RC-010 checkpoint. |
@@ -40,6 +40,16 @@ This register is the repository-visible coordination surface for the three paral
 
 ## Status update evidence
 
+### 2026-07-28 — RC-006–RC-008 bounded G4 owner conditions accepted
+
+- **Inspected `main` SHA:** `07d01ce3d796fcf99e91632297825620521502cb`.
+- **Owner decision:** Project Owner accepted the conservative treatments recorded in `DR-EDITORIAL-002` for RC-006, RC-007 and RC-008.
+- **Decision record:** `DR-EDITORIAL-003_Wave-1-G4-Owner-Acceptance.md`.
+- **Gate consequence:** G4 is now `PASS — owner condition accepted` for RC-006 through RC-008. RC-009 and RC-010 were already G4 PASS.
+- **Boundary:** no freeze date, final approval, media approval, compilation or publication was issued.
+- **Remaining blocker:** all five Wave 1 records remain G5 BLOCKED and therefore cannot enter G6, G7 or G8.
+- **Next receiver:** media for record-specific rights-cleared source, provenance, sidecar and derivative packages; engineering/integration remains on hold until a coherent G5 package returns.
+
 ### 2026-07-27 — Wave 1 G4 candidates and G5 status packages merged
 
 - **Inspected `main` SHA:** `04e0d4e8700bc3297c077346b10f0a4b3d5c55bd`
@@ -48,10 +58,8 @@ This register is the repository-visible coordination surface for the three paral
 - **Media assessment:** RC-006 through RC-010 are all `G5 BLOCKED`. No source photograph, original-byte SHA-256, provenance record, derivative, approved media sidecar or owner-approved governed gap was added.
 - **Editorial source:** merged PR `#22`, final head `4cf87a776f1fb55483e335e92a04072458c4cd58`, squash commit `04e0d4e8700bc3297c077346b10f0a4b3d5c55bd`.
 - **Editorial validation:** repository-quality workflow `30326534158` passed the same three jobs and confirmed that RC-006 through RC-010 remain outside the compiled public corpus.
-- **Editorial assessment:** RC-006, RC-007 and RC-008 are `G4 CONDITIONAL`; RC-009 and RC-010 are `G4 PASS` for owner freeze consideration only. All five remain non-public with freeze date and final approval pending.
-- **Owner decisions required:** explicit acceptance or rejection of the documented conservative nomenclatural treatments for RC-006 through RC-008. No owner decision is inferred from merge.
+- **Editorial assessment at merge:** RC-006, RC-007 and RC-008 were `G4 CONDITIONAL`; RC-009 and RC-010 were `G4 PASS` for owner freeze consideration only. The three conditions were later resolved through DR-EDITORIAL-003.
 - **Integration status:** `BLOCKED`. No record has a matching G5 PASS or owner-approved governed gap, so no G6 review or integration branch is authorised.
-- **Next receivers:** Project Owner for the three bounded G4 conditions; media for item-level acquisition, rights, provenance, identity, source preservation, sidecar and derivative work; engineering/integration remains on hold until a coherent record package returns.
 - **Readiness assessment:** `PASS` for repository-visible G4 candidate and G5 status baselines; `BLOCKED` for G6, G7, freeze and publication.
 
 ### 2026-07-27 — Governed photograph pipeline merged

@@ -1,9 +1,10 @@
 # DR-EDITORIAL-002 — Wave 1 G4 Review Recommendations
 
-**Status:** Editorial recommendations complete; Project Owner freeze decisions pending  
+**Status:** Editorial recommendations complete; bounded G4 owner conditions resolved; freeze decisions pending  
 **Decision date:** 2026-07-28  
 **Inspected `main`:** `774be47d4709700a3c217af9aca093bb2d6a38c3`  
 **Editorial branch:** `content/rc-006-010`  
+**Related owner decision:** `DR-EDITORIAL-003_Wave-1-G4-Owner-Acceptance.md`  
 **Decision authority for later freeze/publication:** Project Owner / Editor-in-Chief  
 **Responsible stream:** Editorial and content production  
 **Governing roadmap:** ROADMAP-002 Version 1.1 — approved and governing
@@ -26,17 +27,17 @@ The G0 assignments remain unchanged:
 4. RC-009 — *Acer palmatum* ‘Katsura’
 5. RC-010 — *Acer palmatum* ‘Mikawa-yatsubusa’
 
-## 3. Editorial recommendations
+## 3. Editorial recommendations and owner disposition
 
-| Record | G4 assessment | Freeze-candidate recommendation | Material Project Owner decision |
+| Record | Final G4 assessment | Freeze-candidate recommendation | Project Owner disposition |
 | --- | --- | --- | --- |
-| RC-006 ‘Osakazuki’ | **CONDITIONAL** | Recommend only after explicit acceptance of the listed naming/provenance conditions | Accept conservative treatment of ‘Taihai’, Amoenum/Elegans/Heptalobum formulations, JC Raulston ‘Ōsakasuki’ and absent primary provenance |
-| RC-007 ‘Butterfly’ | **CONDITIONAL** | Recommend only after explicit acceptance of the synonym-history condition | Accept use of RHS-recorded ‘Kochō-no-mai’ while historical sequence and primary provenance remain unresolved |
-| RC-008 ‘Shishi-gashira’ | **CONDITIONAL** | Recommend only after explicit acceptance of the synonym-scope condition | Accept RHS-recorded ‘Ribesifolium’, ‘Crispifolium’ and ‘Mejishi’ while priority and historical scope remain unresolved |
-| RC-009 ‘Katsura’ | **PASS** | Suitable for Project Owner freeze consideration | No material nomenclatural condition; provenance and seasonal variability remain explicit research gaps |
-| RC-010 ‘Mikawa-yatsubusa’ | **PASS** | Suitable for Project Owner freeze consideration | No material nomenclatural condition; flower-colour conflict, size context and provenance remain explicit research gaps |
+| RC-006 ‘Osakazuki’ | **PASS — owner condition accepted** | Suitable for later freeze consideration once G5–G7 are complete | Conservative treatment of ‘Taihai’, Amoenum/Elegans/Heptalobum formulations, JC Raulston ‘Ōsakasuki’ and absent primary provenance accepted through DR-EDITORIAL-003 |
+| RC-007 ‘Butterfly’ | **PASS — owner condition accepted** | Suitable for later freeze consideration once G5–G7 are complete | Use of RHS-recorded ‘Kochō-no-mai’ while historical sequence and primary provenance remain unresolved accepted through DR-EDITORIAL-003 |
+| RC-008 ‘Shishi-gashira’ | **PASS — owner condition accepted** | Suitable for later freeze consideration once G5–G7 are complete | Retention of ‘Ribesifolium’, ‘Crispifolium’ and ‘Mejishi’ while priority and historical scope remain unresolved accepted through DR-EDITORIAL-003 |
+| RC-009 ‘Katsura’ | **PASS** | Suitable for later freeze consideration once G5–G7 are complete | No material nomenclatural condition; provenance and seasonal variability remain explicit research gaps |
+| RC-010 ‘Mikawa-yatsubusa’ | **PASS** | Suitable for later freeze consideration once G5–G7 are complete | No material nomenclatural condition; flower-colour conflict, size context and provenance remain explicit research gaps |
 
-A CONDITIONAL assessment is not a failure of the descriptive profile. It identifies a material naming decision that the editorial stream must not silently make on behalf of the Project Owner.
+The original CONDITIONAL assessments were not failures of the descriptive profiles. They identified material naming decisions that editorial could not silently make for the Project Owner. DR-EDITORIAL-003 records the explicit acceptance that resolves those bounded conditions without issuing a freeze or publication decision.
 
 ## 4. Source-object decision
 
@@ -115,21 +116,26 @@ No schema, compiler, validator or vocabulary change is proposed.
 Each RC remains deliberately outside the approved/frozen compiler status patterns:
 
 - freeze date: **Pending**;
-- final approval decision: **Pending**;
+- final freeze/publication approval: **Pending**;
 - publication status: **Not public**;
 - G5–G9: **not claimed**.
 
-This Decision Record is an editorial recommendation. It is not a Project Owner freeze or publication decision.
+DR-EDITORIAL-003 resolves only the three bounded G4 nomenclatural conditions. Neither Decision Record is a G8 freeze or publication decision.
 
 ## 10. Consequences and next receiver
 
-After this editorial PR passes repository-quality validation, the CTO / engineering and integration stream should:
+The CTO / engineering and integration stream should:
 
-1. review canonical-record and source-sidecar compatibility;
-2. confirm that RC-006 through RC-010 remain outside the compiled public corpus;
+1. treat G4 as PASS for RC-006 through RC-010, with the accepted uncertainty preserved;
+2. confirm that all five remain outside the compiled public corpus;
 3. confirm generated outputs remain unchanged;
-4. await matching G5 media handoffs;
+4. await matching G5 media handoffs or explicitly approved governed gaps;
 5. return any genuine contract issue as a structured request;
-6. not create an integration/publication record until the Project Owner resolves the G4 conditions and media completes the corresponding G5 work.
+6. not create an integration/publication record until a coherent record reaches G5 and the later G6–G8 gates.
 
-The editorial stream stops before G5, G6, G7, G8, G9, freeze or publication.
+The editorial stream remains stopped before G5, G6, G7, G8, G9, freeze or publication.
+
+## 11. Review history
+
+- 2026-07-28 — G4 recommendations merged through PR #22.
+- 2026-07-28 — Project Owner accepted the bounded RC-006, RC-007 and RC-008 nomenclatural conditions through DR-EDITORIAL-003; freeze and publication remain pending.
