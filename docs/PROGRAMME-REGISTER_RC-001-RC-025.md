@@ -17,7 +17,7 @@ This register is the repository-visible coordination surface for the three paral
 | RC-003 | *Acer palmatum* ‘Sango-kaku’ | Foundation | G8 FROZEN | G5 READY — identity plate; target coverage gap | Validated | PUBLISHED | Prioritise governed bark/stem, habit and seasonal foliage photography. |
 | RC-004 | *Acer palmatum* ‘Crimson Queen’ | Foundation | G8 FROZEN | G5 READY — identity plate; target coverage gap | Validated | PUBLISHED | Acquire governed habit and dissected-foliage detail photography. |
 | RC-005 | *Acer shirasawanum* ‘Aureum’ | Foundation | G8 FROZEN | G5 READY — identity plate; target coverage gap | Validated | PUBLISHED | Acquire governed habit and spring/summer foliage photography. |
-| RC-006 | *Acer palmatum* ‘Osakazuki’ | Wave 1 | G1 PASS; G2 PASS FOR REVIEW; G3 DRAFT; G4 CONDITIONAL | G0 PLANNED — governed gap; no G5 handoff | BLOCKED — awaiting matching G4 and G5 packages | NOT PUBLIC | Editorial completes botanical/nomenclatural G4 review and source-sidecar approval; media returns G5. Do not compile or publish the draft. |
+| RC-006 | *Acer palmatum* ‘Osakazuki’ | Wave 1 | G1 PASS; G2 PASS FOR REVIEW; G3 DRAFT; G4 CONDITIONAL | G0 PLANNED — governed gap; no G5 handoff | BLOCKED — awaiting corrected G4 and matching G5 packages | NOT PUBLIC | Editorial completes botanical/nomenclatural G4 review, approves the source sidecar and resolves `sourceLocations` compatibility; media returns G5. Do not compile or publish the draft. |
 | RC-007 | *Acer palmatum* ‘Butterfly’ | Wave 1 | G0 PASS — assignment locked | G0 PLANNED — governed gap | Awaiting G4 and G5 packages | NOT PUBLIC | Editorial begins governed G1 research; media plans variegation, reversion and habit coverage. |
 | RC-008 | *Acer palmatum* ‘Shishi-gashira’ | Wave 1 | G0 PASS — assignment locked | G0 PLANNED — governed gap | Awaiting G4 and G5 packages | NOT PUBLIC | Editorial begins governed G1 research; media must distinguish dense lion’s-mane architecture from RC-010 layered dwarf foliage. |
 | RC-009 | *Acer palmatum* ‘Katsura’ | Wave 1 | G0 PASS — assignment locked | G0 PLANNED — governed gap | Awaiting G4 and G5 packages | NOT PUBLIC | Editorial begins governed G1 research; media prioritises the brief spring-emergence capture window. |
@@ -56,12 +56,13 @@ This register is the repository-visible coordination surface for the three paral
   - `docs/PROGRAMME-REGISTER_RC-001-RC-025.md`
   - `docs/INTEGRATION-001A_Wave-1-Assignment-Lock-Addendum_RC-006-RC-010_v1.0.md`
 - **Validation:** PR #13 repository-quality workflow run `30303617848` passed repository/schema/tests, coverage, production build, static regression, quality validation and release-manifest generation. The draft RC status remained outside the approved/frozen compiler cohort.
-- **Contract/taxon assessment:** `PASS` — all five assignments are *Acer palmatum*, already governed as `TAX-APAL`; no compiler, schema or taxon-contract change is required.
+- **Assignment/taxon assessment:** `PASS` — all five assignments are *Acer palmatum*, already governed as `TAX-APAL`; no shared contract, compiler, schema or taxon change is required for G0 assignment or G1 research.
+- **RC-006 pre-G4 compatibility:** `CONDITIONAL` — the source sidecar must move from `draft-editorial-review` to `approved` through editorial review. Its structured `sourceLocations` objects must either be normalized to the current governed string format or be accompanied by an approved engineering contract/schema change request before G6.
 - **Deferred question:** *Acer japonicum* ‘Aconitifolium’ remains a future corpus candidate and requires a separate evidence-backed `Acer japonicum` taxon-contract decision before canonical ingestion.
-- **Unresolved issues:** RC-006 botanical and nomenclatural G4 review; RC-006 source-sidecar approval; all Wave 1 G5 media handoffs; RC-007 through RC-010 G1–G4 editorial packages.
+- **Unresolved issues:** RC-006 botanical and nomenclatural G4 review; source-sidecar approval and locator-shape compatibility; all Wave 1 G5 media handoffs; RC-007 through RC-010 G1–G4 editorial packages.
 - **Next receiver:** editorial and media streams.
-- **Requested action:** return matching G4 editorial and G5 media packets for all five records; engineering then performs G6 cohort compatibility review.
-- **Readiness assessment:** `PASS` for the five G0 assignments; `BLOCKED` for G6 integration and publication pending complete G4 and G5 handoffs.
+- **Requested action:** return corrected matching G4 editorial and G5 media packets for all five records; engineering then performs G6 cohort compatibility review.
+- **Readiness assessment:** `PASS` for the five G0 assignments; `BLOCKED` for G6 integration and publication pending complete corrected G4 and matching G5 handoffs.
 
 ## Gate definitions
 
