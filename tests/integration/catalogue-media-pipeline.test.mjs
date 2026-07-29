@@ -112,6 +112,8 @@ test('Catalogue media sidecars generate deterministic derivatives and validate',
   assert.equal(manifest.derivativeCount, 12);
   assert.deepEqual(manifest.publicationClasses, ['catalogue-profile']);
   assert.equal(manifest.entries.every(entry => entry.publicationClass === 'catalogue-profile'), true);
+  assert.equal(fs.existsSync(path.join(root, 'public/media/derivatives/catalogue/cul-000011/med-cul-000011-001-display.png')), true);
+  assert.equal(fs.existsSync(path.join(root, 'media/derivatives/catalogue/cul-000011/med-cul-000011-001-display.png')), false);
 
   const validation = validateMediaRepository({
     root,

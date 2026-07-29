@@ -7,7 +7,7 @@
   "taxonId": "TAX-APAL",
   "scientificName": "Acer palmatum ‘Inaba-shidare’",
   "publicationClass": "catalogue-profile",
-  "profileVersion": "1.1.0",
+  "profileVersion": "1.2.0",
   "catalogueState": "published",
   "riskLevel": "low",
   "riskReasons": [
@@ -18,41 +18,156 @@
   "duplicateCheck": {
     "reviewedBy": "Japanese Maple Atlas editorial stream",
     "reviewedAt": "2026-07-28T23:30:00Z",
-    "comparedIds": ["RC-001","RC-002","RC-003","RC-004","RC-005","RC-006","RC-007","RC-008","RC-009","RC-010","CUL-000011","CUL-000012","CUL-000014","CUL-000015","CUL-000016","CUL-000017","CUL-000018","CUL-000019","CUL-000020","CUL-000021","CUL-000022","CUL-000023","CUL-000024","CUL-000025"],
-    "comparedNames": ["Bloodgood","Seiryu","Sango-kaku","Crimson Queen","Aureum","Osakazuki","Butterfly","Shishi-gashira","Katsura","Mikawa-yatsubusa","Orange Dream","Koto-no-ito","Beni-kawa","Trompenburg","Autumn Moon","Waterfall","Aoyagi","Shin-deshōjō","Red Dragon","Tamukeyama","Orangeola","Higasa-yama","Arakawa","Red Pygmy","Inaba Shidara"],
+    "comparedIds": [
+      "RC-001",
+      "RC-002",
+      "RC-003",
+      "RC-004",
+      "RC-005",
+      "RC-006",
+      "RC-007",
+      "RC-008",
+      "RC-009",
+      "RC-010",
+      "CUL-000011",
+      "CUL-000012",
+      "CUL-000014",
+      "CUL-000015",
+      "CUL-000016",
+      "CUL-000017",
+      "CUL-000018",
+      "CUL-000019",
+      "CUL-000020",
+      "CUL-000021",
+      "CUL-000022",
+      "CUL-000023",
+      "CUL-000024",
+      "CUL-000025"
+    ],
+    "comparedNames": [
+      "Bloodgood",
+      "Seiryu",
+      "Sango-kaku",
+      "Crimson Queen",
+      "Aureum",
+      "Osakazuki",
+      "Butterfly",
+      "Shishi-gashira",
+      "Katsura",
+      "Mikawa-yatsubusa",
+      "Orange Dream",
+      "Koto-no-ito",
+      "Beni-kawa",
+      "Trompenburg",
+      "Autumn Moon",
+      "Waterfall",
+      "Aoyagi",
+      "Shin-deshōjō",
+      "Red Dragon",
+      "Tamukeyama",
+      "Orangeola",
+      "Higasa-yama",
+      "Arakawa",
+      "Red Pygmy",
+      "Inaba Shidara"
+    ],
     "result": "unique",
     "notes": "Compared with all RC-001–RC-010 records and all other approved Catalogue assignments. It is distinct from RC-004 ‘Crimson Queen’ and from CUL-000020 ‘Red Dragon’, CUL-000021 ‘Tamukeyama’ and CUL-000022 ‘Orangeola’: the reviewed sources describe a relatively vigorous upright-rounded yet cascading plant with its own name history and size profile. C0 resolves as unique."
   },
-  "namingVariants": ["Inaba shidare","Inaba Shidare"],
+  "namingVariants": [
+    "Inaba shidare",
+    "Inaba Shidare"
+  ],
   "identityNotes": "The accepted working name follows the RHS hyphenated accepted form. The designation ‘var. dissectum’ used in some horticultural sources is a group-style placement, not a separate cultivar identity. The misspelling ‘Inaba Shidara’ is not accepted as a governed variant.",
   "content": {
     "summary": "A vigorous red-purple laceleaf Japanese maple combining arching, cascading branches with deeply dissected foliage that remains purple-red through much of the growing season and becomes bright crimson-red in autumn.",
     "habit": "Small deciduous shrub or tree with arching branches and a rounded, cascading outline. It may be trained higher but usually spreads at least as widely as it grows tall.",
     "leafForm": "Large, deeply divided laceleaf foliage, commonly described with seven strongly incised lobes. The foliage is finer than ordinary palmate leaves but can appear broader and more substantial than some compact red dissectum cultivars.",
-    "seasonal": {"spring":"Leaves emerge deep purple; small reddish flowers may be visible at close range.","summer":"Foliage matures to purple-red and may vary in depth with exposure and heat.","autumn":"Leaves turn crimson to bright red."},
-    "size": {"height":"1.5–3 m","spread":"1.5–4.6 m","qualifier":"RHS gives 1.5–2.5 m high and wide; Missouri Botanical Garden gives 6–10 ft high and 8–15 ft wide. Ranges are source- and age-dependent."},
+    "seasonal": {
+      "spring": "Leaves emerge deep purple; small reddish flowers may be visible at close range.",
+      "summer": "Foliage matures to purple-red and may vary in depth with exposure and heat.",
+      "autumn": "Leaves turn crimson to bright red."
+    },
+    "size": {
+      "height": "1.5–3 m",
+      "spread": "1.5–4.6 m",
+      "qualifier": "RHS gives 1.5–2.5 m high and wide; Missouri Botanical Garden gives 6–10 ft high and 8–15 ft wide. Ranges are source- and age-dependent."
+    },
     "cultivation": "Grow in moist, organically rich, slightly acidic, well-drained soil in full sun to partial shade, with afternoon protection in hotter regions. Avoid hot, dry and wind-exposed sites, and maintain moisture to reduce scorch.",
     "diagnostic": "Compared with RC-004 ‘Crimson Queen’, ‘Inaba-shidare’ is generally presented as more vigorous and more upright before cascading, with relatively large deep-purple dissected leaves. These tendencies aid comparison but do not authenticate an individual plant without provenance.",
     "confidence": "High confidence in identity, dissected leaf form, arching-cascading habit and broad colour sequence; moderate confidence in mature size because institutional ranges differ substantially.",
     "unresolvedIssue": "Published mature dimensions differ, and this lean review does not establish a universal size ceiling or authenticate unlabeled plants circulating in commerce."
   },
   "sources": [
-    {"id":"SRC-CUL-000013-01","sourceClass":"institutional","title":"Acer palmatum 'Inaba-shidare' (D) — plant profile","authority":"Royal Horticultural Society","url":"https://www.rhs.org.uk/plants/93695/acer-palmatum-inaba-shidare-d/details","accessedAt":"2026-07-28T23:30:00Z","locator":"Plant profile sections: accepted name, habit, leaf and colour description, size, cultivation and hardiness.","claimsSupported":["identity","name status","habit","leaf form","seasonality","size","cultivation","hardiness"],"limitations":"UK-centred framework; no clonal-authentication chain or comprehensive historical treatment.","confidence":"high"},
-    {"id":"SRC-CUL-000013-02","sourceClass":"institutional","title":"Acer palmatum var. dissectum 'Inaba-shidare' — Plant Finder","authority":"Missouri Botanical Garden","url":"https://www.missouribotanicalgarden.org/PlantFinder/PlantFinderDetails.aspx?hf=3&isprofile=0&taxonid=269581","accessedAt":"2026-07-28T23:30:00Z","locator":"Cultivar profile: culture, habit, dimensions, leaf morphology and seasonal colour.","claimsSupported":["identity","dissectum placement","habit","leaf form","seasonality","size","cultivation"],"limitations":"Uses a horticultural varietal formulation and US garden framework; dimensions are contextual, not a fixed cultivar maximum.","confidence":"high"},
-    {"id":"SRC-CUL-000013-03","sourceClass":"institutional","title":"Acer palmatum 'Inaba-shidare' — Plant Finder","authority":"Chicago Botanic Garden","url":"https://www.chicagobotanic.org/plant-information/plant-finder/acer-palmatum-inaba-shidare-japanese-maple","accessedAt":"2026-07-28T23:30:00Z","locator":"Archived living-collection profile: plant shape, dimensions, purple-red foliage, fall colour and exposure.","claimsSupported":["living collection","habit","seasonality","size","cultivation"],"limitations":"Archived content captured before February 2022 and no longer updated; concise treatment without name-history analysis.","confidence":"medium"}
+    {
+      "id": "SRC-CUL-000013-01",
+      "sourceClass": "institutional",
+      "title": "Acer palmatum 'Inaba-shidare' (D) — plant profile",
+      "authority": "Royal Horticultural Society",
+      "url": "https://www.rhs.org.uk/plants/93695/acer-palmatum-inaba-shidare-d/details",
+      "accessedAt": "2026-07-28T23:30:00Z",
+      "locator": "Plant profile sections: accepted name, habit, leaf and colour description, size, cultivation and hardiness.",
+      "claimsSupported": [
+        "identity",
+        "name status",
+        "habit",
+        "leaf form",
+        "seasonality",
+        "size",
+        "cultivation",
+        "hardiness"
+      ],
+      "limitations": "UK-centred framework; no clonal-authentication chain or comprehensive historical treatment.",
+      "confidence": "high"
+    },
+    {
+      "id": "SRC-CUL-000013-02",
+      "sourceClass": "institutional",
+      "title": "Acer palmatum var. dissectum 'Inaba-shidare' — Plant Finder",
+      "authority": "Missouri Botanical Garden",
+      "url": "https://www.missouribotanicalgarden.org/PlantFinder/PlantFinderDetails.aspx?hf=3&isprofile=0&taxonid=269581",
+      "accessedAt": "2026-07-28T23:30:00Z",
+      "locator": "Cultivar profile: culture, habit, dimensions, leaf morphology and seasonal colour.",
+      "claimsSupported": [
+        "identity",
+        "dissectum placement",
+        "habit",
+        "leaf form",
+        "seasonality",
+        "size",
+        "cultivation"
+      ],
+      "limitations": "Uses a horticultural varietal formulation and US garden framework; dimensions are contextual, not a fixed cultivar maximum.",
+      "confidence": "high"
+    },
+    {
+      "id": "SRC-CUL-000013-03",
+      "sourceClass": "institutional",
+      "title": "Acer palmatum 'Inaba-shidare' — Plant Finder",
+      "authority": "Chicago Botanic Garden",
+      "url": "https://www.chicagobotanic.org/plant-information/plant-finder/acer-palmatum-inaba-shidare-japanese-maple",
+      "accessedAt": "2026-07-28T23:30:00Z",
+      "locator": "Archived living-collection profile: plant shape, dimensions, purple-red foliage, fall colour and exposure.",
+      "claimsSupported": [
+        "living collection",
+        "habit",
+        "seasonality",
+        "size",
+        "cultivation"
+      ],
+      "limitations": "Archived content captured before February 2022 and no longer updated; concise treatment without name-history analysis.",
+      "confidence": "medium"
+    }
   ],
   "media": {
-    "state": "governed-gap",
-    "primaryMediaId": null,
-    "candidateMediaIds": [],
-    "governedGap": {
-      "reason": "MVG-CUL-000013-001 approved temporarily: open-licence images exist, but sign-based identification does not yet support transparent distinction from similar red dissectum cultivars.",
-      "reviewer": "Project Owner",
-      "reviewedAt": "2026-07-29T02:20:00Z",
-      "backfillPriority": "high",
-      "publicWording": "No approved cultivar-specific image is currently available. The Atlas has recorded this as a governed visual gap and will add an image after rights, provenance and identity review."
-    },
-    "visualComplete": false,
+    "state": "approved-primary",
+    "primaryMediaId": "MED-CUL-000013-001",
+    "candidateMediaIds": [
+      "MED-CUL-000013-002",
+      "MED-CUL-000013-003"
+    ],
+    "governedGap": null,
+    "visualComplete": true,
     "identityBasis": "asserted"
   },
   "review": {
@@ -66,7 +181,23 @@
   "referenceStandardId": null,
   "publishedAt": "2026-07-29T02:20:00Z",
   "revisionHistory": [
-    {"version":"1.0.0","date":"2026-07-28T23:30:00Z","actor":"Japanese Maple Atlas editorial stream","change":"Created the canonical non-public Catalogue Profile input; completed C0 duplicate/naming review and C1 editorial/source review."},
-    {"version":"1.1.0","date":"2026-07-29T02:20:00Z","actor":"Project Owner and CTO / engineering","change":"Approved temporary governed visual gap MVG-CUL-000013-001, batch-approved the low-risk profile and initiated C3 publication for Catalogue Batch C-001."}
+    {
+      "version": "1.0.0",
+      "date": "2026-07-28T23:30:00Z",
+      "actor": "Japanese Maple Atlas editorial stream",
+      "change": "Created the canonical non-public Catalogue Profile input; completed C0 duplicate/naming review and C1 editorial/source review."
+    },
+    {
+      "version": "1.1.0",
+      "date": "2026-07-29T02:20:00Z",
+      "actor": "Project Owner and CTO / engineering",
+      "change": "Approved temporary governed visual gap MVG-CUL-000013-001, batch-approved the low-risk profile and initiated C3 publication for Catalogue Batch C-001."
+    },
+    {
+      "version": "1.2.0",
+      "date": "2026-07-29T07:30:00Z",
+      "actor": "Japanese Maple Atlas media / visual-assets stream",
+      "change": "Replaced the temporary governed visual gap with a validated three-item Visual-First gallery using lawful, attributed and identity-qualified external photographs."
+    }
   ]
 }

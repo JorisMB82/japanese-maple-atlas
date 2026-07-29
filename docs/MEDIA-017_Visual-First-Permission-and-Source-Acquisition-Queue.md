@@ -1,6 +1,6 @@
 # MEDIA-017 — Visual-First Permission and Source Acquisition Queue
 
-**Status:** ACTIVE EXECUTION QUEUE  
+**Status:** ACTIVE — FIRST DISPLAYABLE ASSET PACKAGE COMPLETED  
 **Inspected `main`:** `3ac1e80dc51f01e47a0e8aed679acae1e864dc7c`  
 **Branch:** `media/visual-first-c001-c002`  
 **Date:** 2026-07-29  
@@ -70,37 +70,26 @@ The JC Raulston Arboretum photograph collection states that permission is requir
 - WBLA_Corky Flickr item: request permission and original only if the current item licence is not already compatible; ask how the plant was identified.
 - Contributor route should request the source label or purchase/propagation history and a whole-plant frame that shows the cultivar’s mound and scale.
 
-## 5. Open-source-byte acquisition queue
+## 5. Completed open-source acquisition
 
-The following candidates have a documented open licence but still require actual original-byte acquisition, checksum, privacy review, processing and sidecar approval:
+| Completed | Cultivar | Outcome |
+| --- | --- | --- |
+| 2026-07-29 | CUL-000011 ‘Orange Dream’ | three original Commons JPEGs preserved; habit-primary, foliage-detail and seasonal-diagnostic gallery approved |
+| 2026-07-29 | CUL-000013 ‘Inaba-shidare’ | three original Commons JPEGs preserved; habit-primary, foliage-detail and seasonal-diagnostic gallery approved |
 
-| Priority | Cultivar | Source set | Required action |
+All six items have exact source hashes, deterministic thumb/card/display/archive derivatives, item-level attribution, Creative Commons licence records, privacy treatment and conspicuous identity-confidence qualification.
+
+## 6. Next acquisition queue
+
+| Priority | Cultivar | Route | Required action |
 | ---: | --- | --- | --- |
-| 1 | CUL-000011 ‘Orange Dream’ | Wojsławice Commons item plus selected Andy Mabbett items | acquire exact originals; choose three visually distinct roles; preserve licence/change notice |
-| 2 | CUL-000013 ‘Inaba-shidare’ | Don McCulley IMG 2740/1966 plus Andy Mabbett autumn item | acquire originals; select habit, foliage and autumn roles; retain sign/retail identity qualifications |
-| 3 | CUL-000014 ‘Beni-kawa’ | Drew Avery CC BY 2.0 item | acquire original and verify source licence page; process only as one role, not a complete gallery |
-| 4 | CUL-000016 ‘Autumn Moon’ | Cossey Tree 063 sequence and/or Auckland/Kingsbrae files | select same-tree three-role sequence; record taxon sensitivity; remove precise GPS |
-| 5 | CUL-000019 ‘Shin-deshōjō’ | Meise 37972–37974 | acquire originals; confirm distinct roles; remove precise GPS and preserve romanised source names |
-| 6 | CUL-000017 ‘Waterfall’ | Longwood Gardens and Robert Lenoir Commons items | acquire originals; select exact licence for the GRANDMONT item; seek a whole-plant primary if the Longwood frame is unsuitable |
+| 1 | CUL-000014 ‘Beni-kawa’ | Drew Avery CC BY 2.0 item plus permission-dependent role backfill | preserve the lawful item; continue habit-primary and winter-stem acquisition; prepare but do not self-approve any partial-gallery exception |
+| 2 | CUL-000016 ‘Autumn Moon’ | open Commons sequence | select and acquire a same-tree or otherwise clearly qualified three-role set |
+| 3 | CUL-000019 ‘Shin-deshōjō’ | Meise Commons sequence | acquire originals and confirm materially distinct roles |
+| 4 | CUL-000017 ‘Waterfall’ | Commons plus institutional route | secure whole-plant primary and exact item-level licences |
+| 5 | CUL-000018 ‘Aoyagi’ | institutional permission | obtain original files, derivative permission and accession mapping |
+| 6 | CUL-000020 ‘Red Dragon’ | institutional and contributor routes | obtain accession-mapped or clearly qualified originals |
 
-## 6. Execution-environment blocker
+## 7. Remaining controlled gaps
 
-The present session provides web research and GitHub text operations but no functioning external binary download path into the repository workspace. Direct source-file transfer attempts did not produce reusable bytes. This prevents:
-
-- source preservation;
-- Atlas SHA-256 calculation;
-- EXIF/GPS removal;
-- deterministic derivative generation;
-- visual inspection of generated derivatives;
-- approved Catalogue sidecar creation.
-
-This is a transfer/tooling blocker, not a rights waiver and not an engineering-contract defect. No schema, compiler, application or CI file should be changed to work around it.
-
-## 7. Completion trigger
-
-Resume asset execution when either:
-
-- a supported binary download path is available for the exact open-licence originals; or
-- an institution/contributor supplies full-resolution originals through an available file channel with the permission record.
-
-The first complete packages should be CUL-000011 and CUL-000013, followed by CUL-000016 and CUL-000019. Existing governed gaps and candidate-only status remain in force until the source and derivative packages validate.
+CUL-000012 ‘Koto-no-ito’, CUL-000014 ‘Beni-kawa’ and CUL-000015 ‘Trompenburg’ remain incomplete. Permission-dependent candidates are still leads only and have not been copied into public display packages.

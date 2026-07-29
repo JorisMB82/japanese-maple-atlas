@@ -19,7 +19,8 @@ export function resolveSourcePath(root, sourcePath) {
 }
 
 export function resolveDerivativePath(root, derivativePath) {
-  return path.join(root, clean(derivativePath));
+  const relative = clean(derivativePath);
+  return relative.startsWith('media/') ? path.join(root, 'public', relative) : path.join(root, relative);
 }
 
 function discoverSidecars(directory, pattern, publicationClass) {

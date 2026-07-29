@@ -1,6 +1,6 @@
 # Media Candidate Register — Catalogue Batch C-001
 
-**Register status:** ACTIVE — Visual-First reassessment complete; temporary governed gaps remain authoritative  
+**Register status:** ACTIVE — CUL-000011 and CUL-000013 approved displayable galleries; remaining governed gaps authoritative  
 **Visual-First baseline:** `3ac1e80dc51f01e47a0e8aed679acae1e864dc7c`  
 **Branch:** `media/visual-first-c001-c002`  
 **Assessment date:** 2026-07-29  
@@ -18,25 +18,25 @@
 
 | Stable identity | Cultivar | Rights-qualified candidates | Normal three-role feasibility | Current C2 state |
 | --- | --- | ---: | --- | --- |
-| CUL-000011 | *Acer palmatum* ‘Orange Dream’ | multiple | high after source-byte acquisition and visual role review | existing governed gap remains active |
+| CUL-000011 | *Acer palmatum* ‘Orange Dream’ | 3 approved | complete: habit-primary, foliage-detail and seasonal-diagnostic | approved displayable gallery; C2 visual target met |
 | CUL-000012 | *Acer palmatum* ‘Koto-no-ito’ | 0 | medium only if institutional or contributor permission is secured | existing governed gap remains active |
-| CUL-000013 | *Acer palmatum* ‘Inaba-shidare’ | multiple | high after source-byte acquisition and final role selection | existing governed gap remains active |
+| CUL-000013 | *Acer palmatum* ‘Inaba-shidare’ | 3 approved | complete: habit-primary, foliage-detail and seasonal-diagnostic | approved displayable gallery; C2 visual target met |
 | CUL-000014 | *Acer palmatum* ‘Beni-kawa’ | 1 confirmed | low-to-medium; bark and whole-plant coverage still required | existing governed gap remains active |
 | CUL-000015 | *Acer palmatum* ‘Trompenburg’ | 0 confirmed | medium if JCRA permission and accession mapping are obtained | existing governed gap remains active |
 
-No candidate has been assigned an approved `MED-CUL-######-###` identity. Proposed IDs below are reservations only and become valid only through an approved sidecar.
+`MED-CUL` identities for CUL-000011 and CUL-000013 are approved through validated sidecars. Other proposed IDs remain reservations only.
 
 ## CUL-000011 — *Acer palmatum* ‘Orange Dream’
 
-| Candidate ID | Proposed asset ID | Exact item | Rights | Identity confidence | Intended role | Disposition |
+| Candidate ID | Approved asset ID | Exact item | Rights | Identity confidence | Approved role | Disposition |
 | --- | --- | --- | --- | --- | --- | --- |
-| MCAND-CUL-000011-001 | MED-CUL-000011-001 | Wikimedia Commons, `Acer palmatum 'Orange Dream' Klon palmowy 2017-05-14 01.jpg` — https://commons.wikimedia.org/wiki/File:Acer_palmatum_%27Orange_Dream%27_Klon_palmowy_2017-05-14_01.jpg | CC BY-SA 4.0; creator Agnieszka Kwiecień; original file available | `source-asserted` — source identifies a cultivated specimen at Wojsławice Arboretum; no accession or propagation chain recovered | `habit-primary` candidate, subject to composition review | rights-qualified and identity-qualified; source bytes, Atlas SHA-256, privacy processing and derivatives not yet completed |
-| MCAND-CUL-000011-002 | MED-CUL-000011-002 | Wikimedia Commons Andy Mabbett series, files 01–13 — https://commons.wikimedia.org/wiki/Category:Acer_palmatum_%27Orange_Dream%27 | item-level CC BY-SA 4.0 | `community-identified` or `source-asserted` — plant purchased under the cultivar name; retail assertion only | `foliage-detail` candidate | rights-qualified; select one non-duplicate item only after full visual review |
-| MCAND-CUL-000011-003 | MED-CUL-000011-003 | Same Commons series, contrasting spring foliage item | item-level CC BY-SA 4.0 | same retail limitation | `seasonal-diagnostic` candidate | rights-qualified; exact item selection pending |
+| MCAND-CUL-000011-001 | MED-CUL-000011-001 | Wikimedia Commons, `Acer palmatum 'Orange Dream' Klon palmowy 2017-05-14 01.jpg` | Agnieszka Kwiecień (Nova); CC BY-SA 4.0 | `source-asserted`; cultivated specimen identified by the source at Wojsławice Arboretum | `habit-primary` | approved displayable asset; source and four derivatives validated |
+| MCAND-CUL-000011-002 | MED-CUL-000011-002 | Wikimedia Commons, Andy Mabbett frame 11 | Andy Mabbett; CC BY-SA 4.0 | `community-identified`; retail material sold under the cultivar name | `foliage-detail` | approved displayable asset with conspicuous identity qualification |
+| MCAND-CUL-000011-003 | MED-CUL-000011-003 | Wikimedia Commons, Andy Mabbett frame 06 | Andy Mabbett; CC BY-SA 4.0 | `community-identified`; retail material sold under the cultivar name | `seasonal-diagnostic` | approved displayable asset with conspicuous identity qualification |
 
-**Required public qualification:** “Source-identified; not independently authenticated by the Japanese Maple Atlas.”
+**Public qualification:** source-identified or community-identified; not independently authenticated by the Japanese Maple Atlas.
 
-**Remaining work:** acquire original bytes through a supported transfer path; verify the exact three selected files and crop suitability; calculate SHA-256; remove EXIF/GPS from public derivatives; create thumb, card, display and archive outputs; complete captions, alt text, attribution and sidecar review.
+**Execution result:** complete three-role gallery approved on 2026-07-29. Source SHA-256 and derivative lineage are recorded in `CUL-000011.media.json`.
 
 ## CUL-000012 — *Acer palmatum* ‘Koto-no-ito’
 
@@ -51,17 +51,15 @@ No candidate has been assigned an approved `MED-CUL-######-###` identity. Propos
 
 ## CUL-000013 — *Acer palmatum* ‘Inaba-shidare’
 
-| Candidate ID | Proposed asset ID | Exact item | Rights | Identity confidence | Intended role | Disposition |
+| Candidate ID | Approved asset ID | Exact item | Rights | Identity confidence | Approved role | Disposition |
 | --- | --- | --- | --- | --- | --- | --- |
-| MCAND-CUL-000013-001 | MED-CUL-000013-001 | Wikimedia Commons, `Acer palmatum 'Inaba Shidare' IMG 2740.jpg` — https://commons.wikimedia.org/wiki/File:Acer_palmatum_%27Inaba_Shidare%27_IMG_2740.jpg | Don McCulley; CC BY-SA 4.0; 5,359 × 4,000 original available | `source-asserted` — Mendocino Coast Botanical Gardens specimen identified by sign | `habit-primary` candidate | rights-qualified and identity-qualified; must disclose that sign-based identity does not independently distinguish similar red dissectums |
-| MCAND-CUL-000013-002 | MED-CUL-000013-002 | Wikimedia Commons, `Acer palmatum 'Inaba Shidare' IMG 1966.jpg` — https://commons.wikimedia.org/wiki/File:Acer_palmatum_%27Inaba_Shidare%27_IMG_1966.jpg | Don McCulley; CC BY-SA 4.0; 4,973 × 4,000 original available | same sign-based source assertion | `foliage-detail` or `habit-alternate` | rights-qualified and identity-qualified; avoid near-duplicate selection |
-| MCAND-CUL-000013-003 | MED-CUL-000013-003 | Wikimedia Commons, `...in autumn sunshine...Andy Mabbett - 01.jpg` — https://commons.wikimedia.org/wiki/File:Acer_palmatum_%27Inaba_Shidare%27_in_autumn_sunshine_-_2021-10-17_-_Andy_Mabbett_-_01.jpg | Andy Mabbett; CC BY-SA 4.0 | `community-identified` or `source-asserted` — garden-centre retail material sold under the name | `seasonal-diagnostic` | rights-qualified; public qualification required |
-| MCAND-CUL-000013-004 | MED-CUL-000013-004 | Wikimedia Commons, `...Andy Mabbett - 02.jpg` | Andy Mabbett; CC BY-SA 4.0 | same retail limitation | alternate autumn detail | rights-qualified; optional only if materially distinct |
-| MCAND-CUL-000013-005 | MED-CUL-000013-005 | Wikimedia Commons, `Acer palmatum var. dissectum 'Inaba-shidare'.JPG` | open licence shown on item page; exact selected licence and attribution must be captured | `community-identified`; private garden, no accession record | optional diagnostic support | retain pending exact item-level licence capture and visual review |
+| MCAND-CUL-000013-002 | MED-CUL-000013-001 | Wikimedia Commons, `Acer palmatum 'Inaba Shidare' IMG 1966.jpg` | Don McCulley; CC BY-SA 4.0 | `source-asserted`; botanical-garden specimen identified by sign | `habit-primary` | approved displayable asset; similar red dissectum limitation disclosed |
+| MCAND-CUL-000013-005 | MED-CUL-000013-002 | Wikimedia Commons, `Acer palmatum var. dissectum 'Inaba-shidare'.JPG` | James Steakley; CC BY-SA 3.0 | `community-identified`; photographer identification in a botanist's garden | `foliage-detail` | approved displayable asset with conspicuous identity qualification |
+| MCAND-CUL-000013-003 | MED-CUL-000013-003 | Wikimedia Commons, Andy Mabbett autumn frame 01 | Andy Mabbett; CC BY-SA 4.0 | `community-identified`; garden-centre material sold under the cultivar name | `seasonal-diagnostic` | approved displayable asset with conspicuous identity qualification |
 
-**Required public qualification:** “Source-identified or community-identified; not independently authenticated by the Japanese Maple Atlas. Similar red dissectum cultivars may be difficult to distinguish from photographs alone.”
+**Public qualification:** source-identified or community-identified; not independently authenticated by the Japanese Maple Atlas. Similar red dissectum cultivars may be difficult to distinguish from photographs alone.
 
-**Remaining work:** acquire originals through a supported transfer path; choose non-duplicate roles; preserve source bytes and hashes; strip public EXIF/GPS; create deterministic derivatives and sidecar.
+**Execution result:** complete three-role gallery approved on 2026-07-29. Source SHA-256 and derivative lineage are recorded in `CUL-000013.media.json`.
 
 ## CUL-000014 — *Acer palmatum* ‘Beni-kawa’
 
@@ -86,14 +84,8 @@ No candidate has been assigned an approved `MED-CUL-######-###` identity. Propos
 
 **Feasibility:** strong institutional identity route but no displayable item. Request a three-image JCRA subset covering mature habit, convex foliage and seasonal colour, with written derivative permission and mapping to accession 030160 where applicable.
 
-## Execution blocker and preservation boundary
+## Execution and preservation status
 
-The engineering contract is merged and supports Catalogue sidecars and deterministic processing. This execution session can inspect web items and write repository text, but it cannot transfer external binary image bytes into the working environment or GitHub. Therefore:
+External binary acquisition is now operational through the protected branch workflow. CUL-000011 and CUL-000013 have preserved originals, exact source SHA-256 values, metadata-neutral public derivatives, approved sidecars and complete three-role galleries.
 
-- no web image has been copied, cached or transformed;
-- no source SHA-256 has been invented from a webpage checksum;
-- no derivative path or checksum has been claimed;
-- no `CUL-######.media.json` sidecar has been created;
-- the five approved temporary governed gaps remain authoritative.
-
-When a binary transfer path or contributor/institutional original delivery is available, process CUL-000011 and CUL-000013 first because lawful multi-item candidates already exist, then CUL-000014, CUL-000012 and CUL-000015.
+CUL-000012, CUL-000014 and CUL-000015 retain their existing controlled gaps or permission dependencies. No generic substitute, unresolved-rights image or weakened Reference Standard rule is introduced.
