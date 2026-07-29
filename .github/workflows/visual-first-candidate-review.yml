@@ -1,0 +1,113 @@
+name: Visual-First C-001 candidate series review
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - .github/workflows/visual-first-candidate-review.yml
+
+permissions:
+  contents: read
+
+jobs:
+  review-candidates:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Build lawful Commons candidate preview set
+        shell: bash
+        run: |
+          node --input-type=module <<'NODE'
+          import fs from 'node:fs';
+          import path from 'node:path';
+
+          const sets = [
+            { cultivarId: 'CUL-000011', category: "Category:Acer palmatum 'Orange Dream'" },
+            { cultivarId: 'CUL-000013', category: "Category:Acer palmatum 'Inaba Shidare'" }
+          ];
+          const headers = { 'user-agent': 'Japanese-Maple-Atlas/0.11.5 (https://github.com/JorisMB82/japanese-maple-atlas) candidate-review' };
+          const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
+          const stripHtml = value => String(value || '').replace(/<[^>]+>/g, ' ').replace(/&nbsp;/g, ' ').replace(/&amp;/g, '&').replace(/&#39;/g, "'").replace(/&quot;/g, '"').replace(/\s+/g, ' ').trim();
+          const safe = value => value.replace(/^File:/, '').replace(/[^A-Za-z0-9._-]+/g, '-').replace(/-+/g, '-').slice(0, 180);
+          async function getJson(url) {
+            for (let attempt = 1; attempt <= 6; attempt += 1) {
+              const response = await fetch(url, { headers });
+              if (response.ok) return response.json();
+              if (response.status !== 429 || attempt === 6) throw new Error(`${url}: HTTP ${response.status}`);
+              await sleep(attempt * 4000);
+            }
+          }
+          async function getBytes(url) {
+            for (let attempt = 1; attempt <= 6; attempt += 1) {
+              const response = await fetch(url, { headers });
+              if (response.ok) return Buffer.from(await response.arrayBuffer());
+              if (response.status !== 429 || attempt === 6) throw new Error(`${url}: HTTP ${response.status}`);
+              await sleep(attempt * 4000);
+            }
+          }
+
+          const manifest = [];
+          for (const set of sets) {
+            const listApi = new URL('https://commons.wikimedia.org/w/api.php');
+            listApi.searchParams.set('action', 'query');
+            listApi.searchParams.set('format', 'json');
+            listApi.searchParams.set('list', 'categorymembers');
+            listApi.searchParams.set('cmtitle', set.category);
+            listApi.searchParams.set('cmtype', 'file');
+            listApi.searchParams.set('cmlimit', '100');
+            listApi.searchParams.set('origin', '*');
+            const listed = await getJson(listApi);
+            const titles = listed.query.categorymembers.map(item => item.title).sort();
+
+            for (const title of titles) {
+              const infoApi = new URL('https://commons.wikimedia.org/w/api.php');
+              infoApi.searchParams.set('action', 'query');
+              infoApi.searchParams.set('format', 'json');
+              infoApi.searchParams.set('prop', 'imageinfo');
+              infoApi.searchParams.set('iiprop', 'url|size|mime|extmetadata');
+              infoApi.searchParams.set('iiurlwidth', '960');
+              infoApi.searchParams.set('titles', title);
+              infoApi.searchParams.set('origin', '*');
+              const payload = await getJson(infoApi);
+              const page = Object.values(payload.query.pages)[0];
+              const info = page?.imageinfo?.[0];
+              if (!info?.thumburl) continue;
+              const meta = info.extmetadata || {};
+              const licence = stripHtml(meta.LicenseShortName?.value);
+              if (!/^CC|public domain/i.test(licence)) continue;
+              const bytes = await getBytes(info.thumburl);
+              const dir = path.join('candidate-review', set.cultivarId);
+              fs.mkdirSync(dir, { recursive: true });
+              const file = `${safe(title)}.jpg`;
+              fs.writeFileSync(path.join(dir, file), bytes);
+              manifest.push({
+                cultivarId: set.cultivarId,
+                title,
+                previewFile: `${set.cultivarId}/${file}`,
+                sourcePage: `https://commons.wikimedia.org/wiki/${encodeURIComponent(title).replaceAll('%20', '_')}`,
+                originalUrl: info.url,
+                originalWidth: info.width,
+                originalHeight: info.height,
+                originalBytes: info.size,
+                creator: stripHtml(meta.Artist?.value),
+                rightsHolder: stripHtml(meta.Credit?.value) || stripHtml(meta.Artist?.value),
+                licence,
+                licenceUrl: stripHtml(meta.LicenseUrl?.value) || null,
+                description: stripHtml(meta.ImageDescription?.value),
+                dateTimeOriginal: stripHtml(meta.DateTimeOriginal?.value)
+              });
+              await sleep(1200);
+            }
+          }
+          fs.writeFileSync('candidate-review/manifest.json', `${JSON.stringify({ generatedAt: new Date().toISOString(), records: manifest }, null, 2)}\n`);
+          NODE
+      - uses: actions/upload-artifact@v4
+        with:
+          name: visual-first-c001-candidate-series
+          path: candidate-review/
+          if-no-files-found: error
+          retention-days: 7
