@@ -13,6 +13,20 @@ function replaceExact(file, oldText, newText, label) {
 
 replaceExact(
   'tests/unit/media-governance.test.mjs',
+  "import { ROOT, PROFILES, render } from '../../scripts/process-media.mjs';",
+  "import { ROOT, PROFILES, render, resolveDerivativePath } from '../../scripts/process-media.mjs';",
+  'derivative resolver unit import'
+);
+
+replaceExact(
+  'tests/unit/media-governance.test.mjs',
+  `test('SVG derivative rendering remains deterministic and profile-labelled', () => {\n  const svg = '<svg viewBox="0 0 10 10"></svg>';\n  assert.equal(render(svg, 'thumb', 320, 231), render(svg, 'thumb', 320, 231));\n  assert.match(render(svg, 'display', 960, 693), /data-atlas-profile="display"/);\n});`,
+  `test('SVG derivative rendering remains deterministic and profile-labelled', () => {\n  const svg = '<svg viewBox="0 0 10 10"></svg>';\n  assert.equal(render(svg, 'thumb', 320, 231), render(svg, 'thumb', 320, 231));\n  assert.match(render(svg, 'display', 960, 693), /data-atlas-profile="display"/);\n});\n\ntest('derivative path resolution publishes browser media paths and preserves repository-internal paths', () => {\n  const root = path.join(os.tmpdir(), 'atlas-derivative-path');\n  assert.equal(\n    resolveDerivativePath(root, '/media/derivatives/catalogue/example.jpg'),\n    path.join(root, 'public/media/derivatives/catalogue/example.jpg')\n  );\n  assert.equal(\n    resolveDerivativePath(root, '/atlas-repository/media-sources/example.jpg'),\n    path.join(root, 'atlas-repository/media-sources/example.jpg')\n  );\n});`,
+  'derivative resolver branch coverage'
+);
+
+replaceExact(
+  'tests/unit/media-governance.test.mjs',
   "    const target = path.join(root, relativePath.replace(/^\\//, ''));",
   "    const target = path.join(root, 'public', relativePath.replace(/^\\//, ''));",
   'unit raster public path'
@@ -40,4 +54,4 @@ replaceExact(
 );
 
 fs.rmSync(path.join(ROOT, 'scripts/patch-media-public-fixture.mjs'), { force:true });
-console.log('Updated media unit and integration fixtures for static-public paths and the first six Catalogue assets.');
+console.log('Updated media tests for static-public paths, first Catalogue galleries and resolver branch coverage.');
