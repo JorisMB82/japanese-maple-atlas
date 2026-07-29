@@ -1,0 +1,263 @@
+{
+  "schemaVersion": "1.0.0",
+  "cultivarId": "CUL-000011",
+  "publicationClass": "catalogue-profile",
+  "status": "approved",
+  "assets": [
+    {
+      "id": "MED-CUL-000011-001",
+      "cultivarId": "CUL-000011",
+      "mediaType": "photograph",
+      "role": "habit-primary",
+      "isPrimary": true,
+      "status": "approved",
+      "assetPath": "/media/derivatives/catalogue/cul-000011/med-cul-000011-001-display.jpg",
+      "thumbnailPath": "/media/derivatives/catalogue/cul-000011/med-cul-000011-001-thumb.jpg",
+      "altText": "Mature rounded ‘Orange Dream’ Japanese maple with a dense yellow-green crown at Wojsławice Arboretum.",
+      "caption": "Mature source-identified ‘Orange Dream’ at Wojsławice Arboretum, photographed in May 2017.",
+      "creator": "Agnieszka Kwiecień, Nova",
+      "rightsHolder": "Agnieszka Kwiecień, Nova",
+      "rightsBasis": "creative-commons",
+      "licence": "CC BY-SA 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AAcer_palmatum_'Orange_Dream'_Klon_palmowy_2017-05-14_01.jpg",
+      "sourceItemId": "Wikimedia Commons Acer palmatum 'Orange Dream' Klon palmowy 2017-05-14 01.jpg",
+      "attributionText": "Agnieszka Kwiecień, Nova, CC BY-SA 4.0, via Wikimedia Commons.",
+      "source": {
+        "path": "/atlas-repository/media-sources/catalogue/CUL-000011/MED-CUL-000011-001-source.jpg",
+        "sha256": "ab20332fd38262e756edde5d350a2d2f68819f99b02bc3a5c524fec38716f11c",
+        "preservation": "Exact original JPEG bytes downloaded from Wikimedia Commons and retained without modification."
+      },
+      "identity": {
+        "confidence": "source-asserted",
+        "identificationBasis": "The Wikimedia Commons source identifies the cultivated specimen as Acer palmatum ‘Orange Dream’ at Wojsławice Arboretum.",
+        "limitations": "No accession record, propagation chain or independent clonal authentication was recovered.",
+        "publicQualification": "Source-identified; not independently authenticated by the Japanese Maple Atlas."
+      },
+      "privacy": {
+        "status": "location-generalised",
+        "exifRetained": false,
+        "gpsRetained": false,
+        "locationGranularity": "Wojsławice Arboretum, Poland"
+      },
+      "derivatives": [
+        {
+          "profile": "thumb",
+          "path": "/media/derivatives/catalogue/cul-000011/med-cul-000011-001-thumb.jpg",
+          "width": 173,
+          "height": 231,
+          "mimeType": "image/jpeg",
+          "sha256": "6acfe8afb6d071e02ec061cb24149d2f87d11b2adae509632dd86e6f21354405",
+          "derivedFrom": "MED-CUL-000011-001"
+        },
+        {
+          "profile": "card",
+          "path": "/media/derivatives/catalogue/cul-000011/med-cul-000011-001-card.jpg",
+          "width": 303,
+          "height": 404,
+          "mimeType": "image/jpeg",
+          "sha256": "853ba5649d7065142bd9d7ca2e6506f3258210d3ea27dd39d05ef6840a1c73eb",
+          "derivedFrom": "MED-CUL-000011-001"
+        },
+        {
+          "profile": "display",
+          "path": "/media/derivatives/catalogue/cul-000011/med-cul-000011-001-display.jpg",
+          "width": 519,
+          "height": 693,
+          "mimeType": "image/jpeg",
+          "sha256": "095dad8b1308e3e007eeb05fd6c9ba1c4a9f3c082357d2007e35cac0cbed504e",
+          "derivedFrom": "MED-CUL-000011-001"
+        },
+        {
+          "profile": "archive",
+          "path": "/media/derivatives/catalogue/cul-000011/med-cul-000011-001-archive.jpg",
+          "width": 780,
+          "height": 1040,
+          "mimeType": "image/jpeg",
+          "sha256": "3598ca1990d65f1cad31542f4c874961cf2c40d1affff74cfd699e56997e0948",
+          "derivedFrom": "MED-CUL-000011-001"
+        }
+      ],
+      "approvalHistory": [
+        {
+          "status": "approved",
+          "date": "2026-07-29",
+          "authority": "Japanese Maple Atlas media / visual-assets stream",
+          "note": "Rights, provenance, identity qualification, privacy treatment, visual role and deterministic derivatives reviewed under the Visual-First Catalogue contract."
+        }
+      ]
+    },
+    {
+      "id": "MED-CUL-000011-002",
+      "cultivarId": "CUL-000011",
+      "mediaType": "photograph",
+      "role": "foliage-detail",
+      "isPrimary": false,
+      "status": "approved",
+      "assetPath": "/media/derivatives/catalogue/cul-000011/med-cul-000011-002-display.jpg",
+      "thumbnailPath": "/media/derivatives/catalogue/cul-000011/med-cul-000011-002-thumb.jpg",
+      "altText": "Close view of attached ‘Orange Dream’ leaves with pale green blades and pink-red spring tips.",
+      "caption": "Spring foliage detail on retail material sold as ‘Orange Dream’.",
+      "creator": "Andy Mabbett",
+      "rightsHolder": "Andy Mabbett",
+      "rightsBasis": "creative-commons",
+      "licence": "CC BY-SA 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AAcer_palmatum_'Orange_Dream'_-_2020-05-08_-_Andy_Mabbett_-_11.jpg",
+      "sourceItemId": "Wikimedia Commons Acer palmatum 'Orange Dream' - 2020-05-08 - Andy Mabbett - 11.jpg",
+      "attributionText": "Andy Mabbett, CC BY-SA 4.0, via Wikimedia Commons.",
+      "source": {
+        "path": "/atlas-repository/media-sources/catalogue/CUL-000011/MED-CUL-000011-002-source.jpg",
+        "sha256": "78cf73c2366bc1e1068cfe99f98b4e1a7d2931e1d6ae87e7914247e0487f6d5b",
+        "preservation": "Exact original JPEG bytes downloaded from Wikimedia Commons and retained without modification."
+      },
+      "identity": {
+        "confidence": "community-identified",
+        "identificationBasis": "The photographer recorded the plant as purchased under the cultivar name ‘Orange Dream’ from an English supermarket.",
+        "limitations": "Retail labelling is the only cultivar-identity basis; no accession or propagation record is available.",
+        "publicQualification": "Community-identified from the source record; not independently authenticated by the Japanese Maple Atlas."
+      },
+      "privacy": {
+        "status": "location-generalised",
+        "exifRetained": false,
+        "gpsRetained": false,
+        "locationGranularity": "England, United Kingdom"
+      },
+      "derivatives": [
+        {
+          "profile": "thumb",
+          "path": "/media/derivatives/catalogue/cul-000011/med-cul-000011-002-thumb.jpg",
+          "width": 320,
+          "height": 214,
+          "mimeType": "image/jpeg",
+          "sha256": "1c7e8022886ec36ab04e32e0cd2d683e7c1b98b5c700441cce0d49c7ed23c225",
+          "derivedFrom": "MED-CUL-000011-002"
+        },
+        {
+          "profile": "card",
+          "path": "/media/derivatives/catalogue/cul-000011/med-cul-000011-002-card.jpg",
+          "width": 560,
+          "height": 374,
+          "mimeType": "image/jpeg",
+          "sha256": "0ca0ce5e204a01ad2457d71a71fc4b1242d4b423c18e33608d5ea789e9f4fcb2",
+          "derivedFrom": "MED-CUL-000011-002"
+        },
+        {
+          "profile": "display",
+          "path": "/media/derivatives/catalogue/cul-000011/med-cul-000011-002-display.jpg",
+          "width": 960,
+          "height": 642,
+          "mimeType": "image/jpeg",
+          "sha256": "92d9b9c6048af1eaa7ff896bf9ecf29decf94862b34bd3d332729407e860a6be",
+          "derivedFrom": "MED-CUL-000011-002"
+        },
+        {
+          "profile": "archive",
+          "path": "/media/derivatives/catalogue/cul-000011/med-cul-000011-002-archive.jpg",
+          "width": 1440,
+          "height": 963,
+          "mimeType": "image/jpeg",
+          "sha256": "45cf961cc50fea0dad60ead072c18aa9baec592394a80b1cf13b7214e94d5104",
+          "derivedFrom": "MED-CUL-000011-002"
+        }
+      ],
+      "approvalHistory": [
+        {
+          "status": "approved",
+          "date": "2026-07-29",
+          "authority": "Japanese Maple Atlas media / visual-assets stream",
+          "note": "Rights, provenance, identity qualification, privacy treatment, visual role and deterministic derivatives reviewed under the Visual-First Catalogue contract."
+        }
+      ]
+    },
+    {
+      "id": "MED-CUL-000011-003",
+      "cultivarId": "CUL-000011",
+      "mediaType": "photograph",
+      "role": "seasonal-diagnostic",
+      "isPrimary": false,
+      "status": "approved",
+      "assetPath": "/media/derivatives/catalogue/cul-000011/med-cul-000011-003-display.jpg",
+      "thumbnailPath": "/media/derivatives/catalogue/cul-000011/med-cul-000011-003-thumb.jpg",
+      "altText": "Branch of ‘Orange Dream’ showing lime-green leaves and red-pink new spring growth.",
+      "caption": "Branch-scale spring flush on retail material sold as ‘Orange Dream’.",
+      "creator": "Andy Mabbett",
+      "rightsHolder": "Andy Mabbett",
+      "rightsBasis": "creative-commons",
+      "licence": "CC BY-SA 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AAcer_palmatum_'Orange_Dream'_-_2020-05-08_-_Andy_Mabbett_-_06.jpg",
+      "sourceItemId": "Wikimedia Commons Acer palmatum 'Orange Dream' - 2020-05-08 - Andy Mabbett - 06.jpg",
+      "attributionText": "Andy Mabbett, CC BY-SA 4.0, via Wikimedia Commons.",
+      "source": {
+        "path": "/atlas-repository/media-sources/catalogue/CUL-000011/MED-CUL-000011-003-source.jpg",
+        "sha256": "caa6a939fe65a79c951de1719bf60b2c910899d006af3525db15c79e0f35d9d7",
+        "preservation": "Exact original JPEG bytes downloaded from Wikimedia Commons and retained without modification."
+      },
+      "identity": {
+        "confidence": "community-identified",
+        "identificationBasis": "The photographer recorded the plant as purchased under the cultivar name ‘Orange Dream’ from an English supermarket.",
+        "limitations": "Retail labelling is the only cultivar-identity basis; seasonal colour alone does not authenticate the cultivar.",
+        "publicQualification": "Community-identified from the source record; not independently authenticated by the Japanese Maple Atlas."
+      },
+      "privacy": {
+        "status": "location-generalised",
+        "exifRetained": false,
+        "gpsRetained": false,
+        "locationGranularity": "England, United Kingdom"
+      },
+      "derivatives": [
+        {
+          "profile": "thumb",
+          "path": "/media/derivatives/catalogue/cul-000011/med-cul-000011-003-thumb.jpg",
+          "width": 320,
+          "height": 214,
+          "mimeType": "image/jpeg",
+          "sha256": "18acaaa6a88ab645af73bbcca6169290b278ae689db7d977446fd5d40739441d",
+          "derivedFrom": "MED-CUL-000011-003"
+        },
+        {
+          "profile": "card",
+          "path": "/media/derivatives/catalogue/cul-000011/med-cul-000011-003-card.jpg",
+          "width": 560,
+          "height": 374,
+          "mimeType": "image/jpeg",
+          "sha256": "2e77ff7ab0bc32d173473fbc2af7193537e557615b308d5d03bea413ec01c63b",
+          "derivedFrom": "MED-CUL-000011-003"
+        },
+        {
+          "profile": "display",
+          "path": "/media/derivatives/catalogue/cul-000011/med-cul-000011-003-display.jpg",
+          "width": 960,
+          "height": 642,
+          "mimeType": "image/jpeg",
+          "sha256": "c0836391e63d67f3f7d0f67ad26e0786b1980712cfe4d1accd791f3c716de87f",
+          "derivedFrom": "MED-CUL-000011-003"
+        },
+        {
+          "profile": "archive",
+          "path": "/media/derivatives/catalogue/cul-000011/med-cul-000011-003-archive.jpg",
+          "width": 1440,
+          "height": 963,
+          "mimeType": "image/jpeg",
+          "sha256": "34b532e502e60028e280c73e97ebbdf016417729948c64d424679f1d94903339",
+          "derivedFrom": "MED-CUL-000011-003"
+        }
+      ],
+      "approvalHistory": [
+        {
+          "status": "approved",
+          "date": "2026-07-29",
+          "authority": "Japanese Maple Atlas media / visual-assets stream",
+          "note": "Rights, provenance, identity qualification, privacy treatment, visual role and deterministic derivatives reviewed under the Visual-First Catalogue contract."
+        }
+      ]
+    }
+  ],
+  "roleException": null,
+  "review": {
+    "reviewedBy": "Japanese Maple Atlas media / visual-assets stream",
+    "reviewedAt": "2026-07-29T07:30:00Z",
+    "notes": "Complete three-role Visual-First gallery; all items carry lawful reuse, attribution, identity-confidence qualification and privacy treatment."
+  }
+}

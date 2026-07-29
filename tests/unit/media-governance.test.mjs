@@ -4,7 +4,7 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import crypto from 'node:crypto';
-import { ROOT, PROFILES, render } from '../../scripts/process-media.mjs';
+import { ROOT, PROFILES, render, resolveDerivativePath } from '../../scripts/process-media.mjs';
 import { validateAsset } from '../../scripts/validate-media.mjs';
 import {
   decodeRaster,
@@ -63,7 +63,7 @@ function writeGovernedPhotographFixture(root) {
   const profiles = renderRasterProfiles(original, PROFILES);
   const derivatives = Object.entries(profiles).map(([profile, output]) => {
     const relativePath = `/media/derivatives/rc-999/${profile}.jpg`;
-    const target = path.join(root, relativePath.replace(/^\//, ''));
+    const target = path.join(root, 'public', relativePath.replace(/^\//, ''));
     fs.mkdirSync(path.dirname(target), { recursive:true });
     fs.writeFileSync(target, output.bytes);
     return {
@@ -138,6 +138,18 @@ test('SVG derivative rendering remains deterministic and profile-labelled', () =
   const svg = '<svg viewBox="0 0 10 10"></svg>';
   assert.equal(render(svg, 'thumb', 320, 231), render(svg, 'thumb', 320, 231));
   assert.match(render(svg, 'display', 960, 693), /data-atlas-profile="display"/);
+});
+
+test('derivative path resolution publishes browser media paths and preserves repository-internal paths', () => {
+  const root = path.join(os.tmpdir(), 'atlas-derivative-path');
+  assert.equal(
+    resolveDerivativePath(root, '/media/derivatives/catalogue/example.jpg'),
+    path.join(root, 'public/media/derivatives/catalogue/example.jpg')
+  );
+  assert.equal(
+    resolveDerivativePath(root, '/atlas-repository/media-sources/example.jpg'),
+    path.join(root, 'atlas-repository/media-sources/example.jpg')
+  );
 });
 
 test('all JPEG EXIF orientations are applied before deterministic no-upscale rendering', () => {

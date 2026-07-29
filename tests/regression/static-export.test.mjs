@@ -71,8 +71,17 @@ test('navigation, repository, compare and records expose usability safeguards', 
   assert.match(htmlFor('/graph'), /Try:/i);
 });
 
-test('published Catalogue profiles disclose class and temporary governed visual gaps', () => {
-  for (const slug of ['orange-dream', 'koto-no-ito', 'inaba-shidare', 'beni-kawa', 'trompenburg']) {
+test('published Catalogue profiles disclose approved galleries or controlled visual gaps', () => {
+  for (const slug of ['orange-dream', 'inaba-shidare']) {
+    const profile = htmlFor(`/cultivars/${slug}`);
+    assert.match(profile, /Catalogue Profile/i);
+    assert.match(profile, /approved-gallery/i);
+    assert.match(profile, /Source-identified|Community-identified/i);
+    assert.match(profile, /not independently authenticated by the Japanese Maple Atlas/i);
+    assert.match(profile, new RegExp(`/media/derivatives/catalogue/cul-0000${slug === 'orange-dream' ? '11' : '13'}/`));
+  }
+
+  for (const slug of ['koto-no-ito', 'beni-kawa', 'trompenburg']) {
     const profile = htmlFor(`/cultivars/${slug}`);
     assert.match(profile, /Catalogue Profile/i);
     assert.match(profile, /No approved cultivar-specific image is currently available/i);

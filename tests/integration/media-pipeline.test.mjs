@@ -29,24 +29,25 @@ function rasterFixture() {
   return encodeRaster({ width, height, data }, 'image/jpeg');
 }
 
-test('media pipeline generates and verifies twenty deterministic illustration derivatives', () => {
+test('media pipeline generates and verifies Reference Standard and Catalogue derivatives', () => {
   const generated = run('scripts/process-media.mjs');
   assert.equal(generated.status,0,generated.stderr);
   const checked = run('scripts/process-media.mjs',['--check']);
   assert.equal(checked.status,0,checked.stderr);
   const manifest = JSON.parse(fs.readFileSync(path.join(ROOT,'public/media/derivatives/manifest.json'),'utf8'));
   assert.equal(manifest.version, 'media-pipeline-v2.2');
-  assert.equal(manifest.derivativeCount,20);
-  assert.deepEqual(manifest.publicationClasses, ['reference-standard']);
-  assert.equal(new Set(manifest.entries.map(entry => entry.sha256)).size,20);
-  assert.ok(manifest.entries.every(entry => entry.mimeType === 'image/svg+xml'));
-  assert.ok(manifest.entries.every(entry => entry.publicationClass === 'reference-standard'));
+  assert.equal(manifest.derivativeCount,44);
+  assert.deepEqual([...manifest.publicationClasses].sort(), ['catalogue-profile','reference-standard']);
+  assert.equal(new Set(manifest.entries.map(entry => entry.sha256)).size,44);
+  assert.equal(manifest.entries.filter(entry => entry.mimeType === 'image/svg+xml').length,20);
+  assert.equal(manifest.entries.filter(entry => entry.mimeType === 'image/jpeg').length,24);
+  assert.deepEqual([...new Set(manifest.entries.map(entry => entry.publicationClass))].sort(), ['catalogue-profile','reference-standard']);
 });
 
-test('media governance validator passes the five-record illustration cohort and RC-020 plan', () => {
+test('media governance validator passes the governed Reference Standard and Catalogue cohorts', () => {
   const result = run('scripts/validate-media.mjs');
   assert.equal(result.status,0,result.stderr);
-  assert.match(result.stdout,/5 Reference Standard assets; 0 Catalogue assets; 20 derivatives; 20-record RC coverage plan/);
+  assert.match(result.stdout,/5 Reference Standard assets; 6 Catalogue assets; 44 derivatives; 20-record RC coverage plan/);
 });
 
 test('governed JPEG photograph generates deterministic private-source derivatives and passes validation', () => {
@@ -110,7 +111,7 @@ test('governed JPEG photograph generates deterministic private-source derivative
     const validation = validateMediaRepository({ root, sideDirectory, requireCoverage:false });
     assert.deepEqual(validation.errors, []);
     for (const derivative of derivatives) {
-      const bytes = fs.readFileSync(path.join(root, derivative.path.replace(/^\//,'')));
+      const bytes = fs.readFileSync(path.join(root, 'public', derivative.path.replace(/^\//,'')));
       assert.equal(hasRasterPrivacyMetadata(bytes, derivative.mimeType), false);
       assert.ok(derivative.width <= 640 && derivative.height <= 480);
     }

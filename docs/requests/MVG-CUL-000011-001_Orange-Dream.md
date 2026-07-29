@@ -1,3 +1,5 @@
+> **Closure notice — 2026-07-29:** CLOSED. The temporary governed gap has been replaced by a validated three-item Visual-First gallery with preserved lawful originals, deterministic derivatives and an approved Catalogue media sidecar.
+
 # MVG-CUL-000011-001 — Governed Visual Gap for ‘Orange Dream’
 
 **Request status:** APPROVED — TEMPORARY C2 RESOLUTION  

@@ -1,0 +1,263 @@
+{
+  "schemaVersion": "1.0.0",
+  "cultivarId": "CUL-000013",
+  "publicationClass": "catalogue-profile",
+  "status": "approved",
+  "assets": [
+    {
+      "id": "MED-CUL-000013-001",
+      "cultivarId": "CUL-000013",
+      "mediaType": "photograph",
+      "role": "habit-primary",
+      "isPrimary": true,
+      "status": "approved",
+      "assetPath": "/media/derivatives/catalogue/cul-000013/med-cul-000013-001-display.jpg",
+      "thumbnailPath": "/media/derivatives/catalogue/cul-000013/med-cul-000013-001-thumb.jpg",
+      "altText": "Mature mound-shaped ‘Inaba-shidare’ Japanese maple with cascading dark red dissected foliage in a botanical garden.",
+      "caption": "Mature source-identified ‘Inaba-shidare’ at Mendocino Coast Botanical Gardens.",
+      "creator": "Don McCulley",
+      "rightsHolder": "Don McCulley",
+      "rightsBasis": "creative-commons",
+      "licence": "CC BY-SA 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AAcer_palmatum_'Inaba_Shidare'_IMG_1966.jpg",
+      "sourceItemId": "Wikimedia Commons Acer palmatum 'Inaba Shidare' IMG 1966.jpg",
+      "attributionText": "Don McCulley, CC BY-SA 4.0, via Wikimedia Commons.",
+      "source": {
+        "path": "/atlas-repository/media-sources/catalogue/CUL-000013/MED-CUL-000013-001-source.jpg",
+        "sha256": "544bb02a09cf1009345d2ab6ffa4c08051f91c64354b0886f660a8d92f594a25",
+        "preservation": "Exact original JPEG bytes downloaded from Wikimedia Commons and retained without modification."
+      },
+      "identity": {
+        "confidence": "source-asserted",
+        "identificationBasis": "The Wikimedia Commons source identifies the Mendocino Coast Botanical Gardens specimen by its displayed sign.",
+        "limitations": "The sign-based identification is not an accession or propagation-chain record, and similar red dissectum cultivars can be difficult to distinguish photographically.",
+        "publicQualification": "Source-identified; not independently authenticated by the Japanese Maple Atlas."
+      },
+      "privacy": {
+        "status": "location-generalised",
+        "exifRetained": false,
+        "gpsRetained": false,
+        "locationGranularity": "Mendocino Coast Botanical Gardens, California"
+      },
+      "derivatives": [
+        {
+          "profile": "thumb",
+          "path": "/media/derivatives/catalogue/cul-000013/med-cul-000013-001-thumb.jpg",
+          "width": 287,
+          "height": 231,
+          "mimeType": "image/jpeg",
+          "sha256": "ef6ce75d70640cb88b81e4c137abf01a310e8c72cd563c2c086dd6a9f5bdfba9",
+          "derivedFrom": "MED-CUL-000013-001"
+        },
+        {
+          "profile": "card",
+          "path": "/media/derivatives/catalogue/cul-000013/med-cul-000013-001-card.jpg",
+          "width": 502,
+          "height": 404,
+          "mimeType": "image/jpeg",
+          "sha256": "f0f6330e5ec9def44d49672702768f396dbc28b8c7566ea7eafcae6ffbb269d1",
+          "derivedFrom": "MED-CUL-000013-001"
+        },
+        {
+          "profile": "display",
+          "path": "/media/derivatives/catalogue/cul-000013/med-cul-000013-001-display.jpg",
+          "width": 861,
+          "height": 693,
+          "mimeType": "image/jpeg",
+          "sha256": "144d0a872aac132b5e7ccd8576dff7ffdc74342d8e68126f3e15d58d2ba0195c",
+          "derivedFrom": "MED-CUL-000013-001"
+        },
+        {
+          "profile": "archive",
+          "path": "/media/derivatives/catalogue/cul-000013/med-cul-000013-001-archive.jpg",
+          "width": 1292,
+          "height": 1040,
+          "mimeType": "image/jpeg",
+          "sha256": "8f64b43752c3c741a1be006923164266ab44aaa8b184da9bf556d606ae688c8d",
+          "derivedFrom": "MED-CUL-000013-001"
+        }
+      ],
+      "approvalHistory": [
+        {
+          "status": "approved",
+          "date": "2026-07-29",
+          "authority": "Japanese Maple Atlas media / visual-assets stream",
+          "note": "Rights, provenance, identity qualification, privacy treatment, visual role and deterministic derivatives reviewed under the Visual-First Catalogue contract."
+        }
+      ]
+    },
+    {
+      "id": "MED-CUL-000013-002",
+      "cultivarId": "CUL-000013",
+      "mediaType": "photograph",
+      "role": "foliage-detail",
+      "isPrimary": false,
+      "status": "approved",
+      "assetPath": "/media/derivatives/catalogue/cul-000013/med-cul-000013-002-display.jpg",
+      "thumbnailPath": "/media/derivatives/catalogue/cul-000013/med-cul-000013-002-thumb.jpg",
+      "altText": "Close view of narrow, deeply dissected purple-red leaves identified by the source as ‘Inaba-shidare’.",
+      "caption": "Dissected foliage detail from a plant identified by the photographer as ‘Inaba-shidare’.",
+      "creator": "James Steakley",
+      "rightsHolder": "James Steakley",
+      "rightsBasis": "creative-commons",
+      "licence": "CC BY-SA 3.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AAcer_palmatum_var._dissectum_'Inaba-shidare'.JPG",
+      "sourceItemId": "Wikimedia Commons Acer palmatum var. dissectum 'Inaba-shidare'.JPG",
+      "attributionText": "James Steakley, CC BY-SA 3.0, via Wikimedia Commons.",
+      "source": {
+        "path": "/atlas-repository/media-sources/catalogue/CUL-000013/MED-CUL-000013-002-source.jpg",
+        "sha256": "a7c042308eb4a81f7d868be29d298f1995194c58e1da0643f16f362660c0481c",
+        "preservation": "Exact original JPEG bytes downloaded from Wikimedia Commons and retained without modification."
+      },
+      "identity": {
+        "confidence": "community-identified",
+        "identificationBasis": "The photographer identifies the plant as ‘Inaba-shidare’ in the garden of botanist Robert R. Kowal.",
+        "limitations": "No accession, sign or propagation record accompanies the image; the photograph does not independently distinguish all similar red dissectum cultivars.",
+        "publicQualification": "Community-identified from the source record; not independently authenticated by the Japanese Maple Atlas."
+      },
+      "privacy": {
+        "status": "location-generalised",
+        "exifRetained": false,
+        "gpsRetained": false,
+        "locationGranularity": "Madison, Wisconsin"
+      },
+      "derivatives": [
+        {
+          "profile": "thumb",
+          "path": "/media/derivatives/catalogue/cul-000013/med-cul-000013-002-thumb.jpg",
+          "width": 320,
+          "height": 180,
+          "mimeType": "image/jpeg",
+          "sha256": "0b283a501ed0b84735066006b57d5709e5341b81997d4bc48701370672259b11",
+          "derivedFrom": "MED-CUL-000013-002"
+        },
+        {
+          "profile": "card",
+          "path": "/media/derivatives/catalogue/cul-000013/med-cul-000013-002-card.jpg",
+          "width": 560,
+          "height": 315,
+          "mimeType": "image/jpeg",
+          "sha256": "e0bfaa0cec84fd14cc1ee273359706fc8e848287de54aa105c38d12b2e3eefea",
+          "derivedFrom": "MED-CUL-000013-002"
+        },
+        {
+          "profile": "display",
+          "path": "/media/derivatives/catalogue/cul-000013/med-cul-000013-002-display.jpg",
+          "width": 960,
+          "height": 540,
+          "mimeType": "image/jpeg",
+          "sha256": "59d6e9c67a7eca944dc70b10fe87cbb7b7bdd408fc8485e0447270e1683072f8",
+          "derivedFrom": "MED-CUL-000013-002"
+        },
+        {
+          "profile": "archive",
+          "path": "/media/derivatives/catalogue/cul-000013/med-cul-000013-002-archive.jpg",
+          "width": 1440,
+          "height": 810,
+          "mimeType": "image/jpeg",
+          "sha256": "7d456bdbfaf7332ec5a084ee29263a8e3533086fcf82ed5d265d0ae5818a953b",
+          "derivedFrom": "MED-CUL-000013-002"
+        }
+      ],
+      "approvalHistory": [
+        {
+          "status": "approved",
+          "date": "2026-07-29",
+          "authority": "Japanese Maple Atlas media / visual-assets stream",
+          "note": "Rights, provenance, identity qualification, privacy treatment, visual role and deterministic derivatives reviewed under the Visual-First Catalogue contract."
+        }
+      ]
+    },
+    {
+      "id": "MED-CUL-000013-003",
+      "cultivarId": "CUL-000013",
+      "mediaType": "photograph",
+      "role": "seasonal-diagnostic",
+      "isPrimary": false,
+      "status": "approved",
+      "assetPath": "/media/derivatives/catalogue/cul-000013/med-cul-000013-003-display.jpg",
+      "thumbnailPath": "/media/derivatives/catalogue/cul-000013/med-cul-000013-003-thumb.jpg",
+      "altText": "Backlit red autumn foliage of a garden-centre plant sold as ‘Inaba-shidare’.",
+      "caption": "Autumn foliage on retail material sold as ‘Inaba-shidare’.",
+      "creator": "Andy Mabbett",
+      "rightsHolder": "Andy Mabbett",
+      "rightsBasis": "creative-commons",
+      "licence": "CC BY-SA 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AAcer_palmatum_'Inaba_Shidare'_in_autumn_sunshine_-_2021-10-17_-_Andy_Mabbett_-_01.jpg",
+      "sourceItemId": "Wikimedia Commons Acer palmatum 'Inaba Shidare' in autumn sunshine - 2021-10-17 - Andy Mabbett - 01.jpg",
+      "attributionText": "Andy Mabbett, CC BY-SA 4.0, via Wikimedia Commons.",
+      "source": {
+        "path": "/atlas-repository/media-sources/catalogue/CUL-000013/MED-CUL-000013-003-source.jpg",
+        "sha256": "bf5dd257e6cd56b3faff1134b175025e45d0048424265fa047d9375f1a730a94",
+        "preservation": "Exact original JPEG bytes downloaded from Wikimedia Commons and retained without modification."
+      },
+      "identity": {
+        "confidence": "community-identified",
+        "identificationBasis": "The photographer recorded garden-centre material offered for sale under the name ‘Inaba-shidare’.",
+        "limitations": "Retail labelling is the only cultivar-identity basis; autumn colour and dissected leaves alone do not authenticate the cultivar.",
+        "publicQualification": "Community-identified from the source record; not independently authenticated by the Japanese Maple Atlas."
+      },
+      "privacy": {
+        "status": "location-generalised",
+        "exifRetained": false,
+        "gpsRetained": false,
+        "locationGranularity": "West Midlands, England"
+      },
+      "derivatives": [
+        {
+          "profile": "thumb",
+          "path": "/media/derivatives/catalogue/cul-000013/med-cul-000013-003-thumb.jpg",
+          "width": 320,
+          "height": 214,
+          "mimeType": "image/jpeg",
+          "sha256": "6a37298d9383d76439a7308adb13f7dad303a925996cbd0b54a2694b98be6c3b",
+          "derivedFrom": "MED-CUL-000013-003"
+        },
+        {
+          "profile": "card",
+          "path": "/media/derivatives/catalogue/cul-000013/med-cul-000013-003-card.jpg",
+          "width": 560,
+          "height": 374,
+          "mimeType": "image/jpeg",
+          "sha256": "84948ddfeba3975e37140ab22959c9280c91a039991bb534864c4a3e3f91884a",
+          "derivedFrom": "MED-CUL-000013-003"
+        },
+        {
+          "profile": "display",
+          "path": "/media/derivatives/catalogue/cul-000013/med-cul-000013-003-display.jpg",
+          "width": 960,
+          "height": 642,
+          "mimeType": "image/jpeg",
+          "sha256": "5eeb76492aa4d2c3c302cecabc23d982288ee55cbbc3f3f3f4559258e8d96c8a",
+          "derivedFrom": "MED-CUL-000013-003"
+        },
+        {
+          "profile": "archive",
+          "path": "/media/derivatives/catalogue/cul-000013/med-cul-000013-003-archive.jpg",
+          "width": 1440,
+          "height": 963,
+          "mimeType": "image/jpeg",
+          "sha256": "f6683afa6a710d127a669a0a6ed4b9e3999d7024ef67e3f191867bd45d8d8a81",
+          "derivedFrom": "MED-CUL-000013-003"
+        }
+      ],
+      "approvalHistory": [
+        {
+          "status": "approved",
+          "date": "2026-07-29",
+          "authority": "Japanese Maple Atlas media / visual-assets stream",
+          "note": "Rights, provenance, identity qualification, privacy treatment, visual role and deterministic derivatives reviewed under the Visual-First Catalogue contract."
+        }
+      ]
+    }
+  ],
+  "roleException": null,
+  "review": {
+    "reviewedBy": "Japanese Maple Atlas media / visual-assets stream",
+    "reviewedAt": "2026-07-29T07:30:00Z",
+    "notes": "Complete three-role Visual-First gallery; all items carry lawful reuse, attribution, identity-confidence qualification and privacy treatment."
+  }
+}
