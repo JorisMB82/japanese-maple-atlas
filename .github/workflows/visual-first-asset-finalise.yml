@@ -9,6 +9,9 @@ on:
 permissions:
   contents: write
 
+env:
+  FINALISATION_PASS: governed-inventory
+
 jobs:
   finalise:
     if: github.actor != 'github-actions[bot]'
