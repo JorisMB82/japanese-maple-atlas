@@ -56,16 +56,26 @@ test('compiler detects duplicate slugs across Catalogue identities', () => {
   fs.rmSync(root, { recursive: true, force: true });
 });
 
-test('canonical Catalogue directory compiles the published C-001 governed-gap batch', () => {
+test('canonical Catalogue directory compiles published C-001 and non-public C-002 editorial candidates', () => {
   const inputDir = path.join(ROOT, 'atlas-repository/catalogue-profiles');
   const registryPath = path.join(inputDir, 'contract/cultivar-identity-registry.json');
   const result = compileCatalogueDirectory({ inputDir, schemaPath, registryPath, taxonIds: new Set(['TAX-APAL', 'TAX-ASHI']) });
-  const expectedIds = ['CUL-000011', 'CUL-000012', 'CUL-000013', 'CUL-000014', 'CUL-000015'];
+  const expectedIds = Array.from({ length: 10 }, (_, index) => `CUL-${String(index + 11).padStart(6, '0')}`);
+  const c001 = result.records.filter(record => Number(record.cultivarId.slice(-6)) <= 15);
+  const c002 = result.records.filter(record => Number(record.cultivarId.slice(-6)) >= 16);
 
   assert.deepEqual(result.records.map(record => record.cultivarId), expectedIds);
   assert.deepEqual(result.diagnostics.map(item => item.status), expectedIds.map(() => 'pass'));
-  assert.equal(result.records.every(record => record.catalogueProfile.state === 'published'), true);
-  assert.equal(result.records.every(record => Boolean(record.catalogueProfile.publishedAt)), true);
-  assert.equal(result.records.every(record => record.catalogueProfile.review.approvalState === 'batch-approved'), true);
-  assert.equal(result.records.every(record => record.mediaState === 'governed-gap'), true);
+
+  assert.equal(c001.length, 5);
+  assert.equal(c001.every(record => record.catalogueProfile.state === 'published'), true);
+  assert.equal(c001.every(record => Boolean(record.catalogueProfile.publishedAt)), true);
+  assert.equal(c001.every(record => record.catalogueProfile.review.approvalState === 'batch-approved'), true);
+  assert.equal(c001.every(record => record.mediaState === 'governed-gap'), true);
+
+  assert.equal(c002.length, 5);
+  assert.equal(c002.every(record => record.catalogueProfile.state === 'review-ready'), true);
+  assert.equal(c002.every(record => record.catalogueProfile.publishedAt === null), true);
+  assert.equal(c002.every(record => record.catalogueProfile.review.approvalState === 'editorial-approved'), true);
+  assert.equal(c002.every(record => record.mediaState === 'candidate-under-review'), true);
 });
