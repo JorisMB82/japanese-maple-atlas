@@ -41,12 +41,12 @@ jobs:
             },
             {
               cultivarId: 'CUL-000011', mediaId: 'MED-CUL-000011-002',
-              title: "Acer palmatum 'Orange Dream' - 2020-05-08 - Andy Mabbett - 04.jpg",
+              title: "Acer palmatum 'Orange Dream' - 2020-05-08 - Andy Mabbett - 11.jpg",
               proposedRole: 'foliage-detail', creatorExpected: 'Andy Mabbett', licenceExpected: 'CC BY-SA 4.0'
             },
             {
               cultivarId: 'CUL-000011', mediaId: 'MED-CUL-000011-003',
-              title: "Acer palmatum 'Orange Dream' - 2020-05-08 - Andy Mabbett - 01.jpg",
+              title: "Acer palmatum 'Orange Dream' - 2020-05-08 - Andy Mabbett - 06.jpg",
               proposedRole: 'seasonal-diagnostic', creatorExpected: 'Andy Mabbett', licenceExpected: 'CC BY-SA 4.0'
             },
             {
@@ -56,8 +56,8 @@ jobs:
             },
             {
               cultivarId: 'CUL-000013', mediaId: 'MED-CUL-000013-002',
-              title: "Acer palmatum 'Inaba Shidare' IMG 2740.jpg",
-              proposedRole: 'foliage-detail', creatorExpected: 'Don McCulley', licenceExpected: 'CC BY-SA 4.0'
+              title: "Acer palmatum var. dissectum 'Inaba-shidare'.JPG",
+              proposedRole: 'foliage-detail', creatorExpected: 'James Steakley', licenceExpected: 'CC BY-SA 3.0'
             },
             {
               cultivarId: 'CUL-000013', mediaId: 'MED-CUL-000013-003',
@@ -132,10 +132,13 @@ jobs:
               sourceHeight: info.height,
               sourceMime: info.mime,
               creatorFromSource: artist,
+              rightsHolderFromSource: artist,
               licenceFromSource: licence,
-              licenceUrl: 'https://creativecommons.org/licenses/by-sa/4.0/',
+              licenceUrl: stripHtml(meta.LicenseUrl?.value) || null,
               attributionRequired: stripHtml(meta.AttributionRequired?.value),
               creditFromSource: stripHtml(meta.Credit?.value),
+              descriptionFromSource: stripHtml(meta.ImageDescription?.value),
+              dateFromSource: stripHtml(meta.DateTimeOriginal?.value),
               previewPath,
               previewSha256: sha256(preview.bytes),
               previewWidth: preview.width,
@@ -155,5 +158,5 @@ jobs:
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
           git add atlas-repository/media-sources/catalogue
           git add -f quality-reports/media-review
-          git commit -m "Media: acquire C-001 Commons source originals"
+          git commit -m "Media: acquire final C-001 Commons originals"
           git push origin HEAD:media/visual-first-assets-c001-c002
