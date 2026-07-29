@@ -1,10 +1,11 @@
 export default function MediaPlate({ media, cultivar, compact = false }) {
   if (!media?.assetPath) {
     const governedGap = cultivar?.mediaState === 'governed-gap';
-    return <div className={`mediaFallback ${compact ? 'compact' : ''}`} aria-label={governedGap ? `No approved cultivar-specific image is currently available for ${cultivar?.cultivar || 'this cultivar'}` : `No media available for ${cultivar?.cultivar || 'this cultivar'}`}>
+    const wording = cultivar?.mediaGovernedGap?.publicWording || 'No approved cultivar-specific image is currently available.';
+    return <div className={`mediaFallback ${compact ? 'compact' : ''}`} aria-label={governedGap ? wording : `No media available for ${cultivar?.cultivar || 'this cultivar'}`}>
       <span aria-hidden="true">楓</span>
-      <p>{governedGap ? 'No approved cultivar-specific image is currently available.' : 'Media reserved'}</p>
-      {governedGap && !compact && <small>The Atlas has recorded a governed visual gap and will add an image after rights, provenance and identity review.</small>}
+      <p>{governedGap ? wording : 'Media reserved'}</p>
+      {governedGap && !compact && <small>No generic or substitute cultivar image is displayed.</small>}
     </div>;
   }
 
