@@ -7,6 +7,10 @@ const gates = readJson(path.join(ROOT, 'quality', 'quality-gates.json'));
 const packageJson = readJson(path.join(ROOT, 'package.json'));
 const lock = readJson(path.join(ROOT, 'package-lock.json'));
 const manifest = readJson(path.join(ROOT, 'atlas-repository', 'manifest.json'));
+const catalogueDirectory = path.join(ROOT, 'atlas-repository', 'catalogue-profiles');
+const identityRegistry = readJson(path.join(catalogueDirectory, 'contract', 'cultivar-identity-registry.json'));
+const catalogueFiles = fs.readdirSync(catalogueDirectory).filter(file => /^CUL-\d{6}\.json$/.test(file)).sort();
+const catalogueProfiles = catalogueFiles.map(file => readJson(path.join(catalogueDirectory, file)));
 const failures = [];
 const checks = [];
 const check = (condition, label, detail = '') => {
@@ -22,7 +26,10 @@ check(manifest.compiler.version === gates.compilerVersion, 'compiler version mat
 check(manifest.compiler.atomicPublication === true, 'compiler publication is transactional');
 check(manifest.contract?.profile === 'canonical-rc-v1', 'canonical RC contract is active');
 check(manifest.objectTotal === gates.repositoryInvariants.objectTotal, 'repository object total is stable', manifest.objectTotal);
-check(manifest.objectCounts.cultivars === gates.repositoryInvariants.cultivars, 'cultivar count is stable');
+check(manifest.objectCounts.cultivars === gates.repositoryInvariants.cultivars, 'Reference Standard cultivar count is stable');
+check(catalogueFiles.length === gates.repositoryInvariants.catalogueProfiles, 'Catalogue Profile count matches governed quality configuration', catalogueFiles.length);
+check(identityRegistry.entries?.length === gates.repositoryInvariants.stableCultivarIdentities, 'stable cultivar identity inventory matches governed quality configuration', identityRegistry.entries?.length);
+check(identityRegistry.status === 'approved' && identityRegistry.identityFamily === 'CUL-######', 'approved stable cultivar identity contract is active');
 check(manifest.objectCounts.assertions === gates.repositoryInvariants.assertions, 'assertion count is stable');
 check(manifest.objectCounts.evidence === gates.repositoryInvariants.evidence, 'evidence count is stable');
 check(manifest.objectCounts.relationships === gates.repositoryInvariants.relationships, 'relationship count is stable');
@@ -36,12 +43,17 @@ for (const file of [
   'tests/unit/json-schema-validator.test.mjs',
   'tests/unit/atlas-explorer.test.mjs',
   'tests/unit/reference-standard-contract.test.mjs',
+  'tests/unit/catalogue-profile-contract.test.mjs',
+  'tests/unit/catalogue-discovery.test.mjs',
   'tests/integration/repository-regression.test.mjs',
   'tests/integration/compiler-determinism.test.mjs',
   'tests/integration/compiler-scaling.test.mjs',
   'tests/integration/schema-conformance.test.mjs',
+  'tests/integration/catalogue-profile-pipeline.test.mjs',
   'tests/regression/static-export.test.mjs',
   'scripts/validate-schemas.mjs',
+  'scripts/validate-catalogue-profiles.mjs',
+  'scripts/compile-catalogue-profiles.mjs',
   'scripts/scale-test-compiler.mjs',
   'scripts/validate-explorer.mjs',
   'scripts/run-coverage.mjs',
@@ -50,20 +62,27 @@ for (const file of [
   '.github/workflows/release-readiness.yml',
   'docs/QA-001_Testing-and-Quality-Infrastructure_v1.0.md',
   'docs/EXPLORER-001_Interactive-Atlas-Explorer_v1.0.md',
+  'docs/DR-ENGINEERING-002_Catalogue-MVP-Data-Path.md',
   'SPRINT-9.5.md',
   'SPRINT-10.md',
   'SPRINT-11.md',
   'docs/ROADMAP-002_Post-Sprint-10_RC-020-Visual-Atlas-Roadmap_v1.0.md',
+  'docs/ROADMAP-002A_Two-Speed-Catalogue-and-Reference-Standard-Addendum_v1.0_APPROVED.md',
   'docs/COMPILER-002_Scalable-Reference-Standard-Ingestion_v1.0.md',
   'docs/DR-011-001_Canonical-RC-Contract-and-Legacy-Adapters.md'
 ]) check(exists(file), `required quality file ${file}`);
 
 const workflow = exists('.github/workflows/repository-validation.yml') ? fs.readFileSync(path.join(ROOT, '.github/workflows/repository-validation.yml'), 'utf8') : '';
-for (const command of ['npm ci', 'validate:reference-standards', 'validate:scale', 'validate:schemas', 'validate:explorer', 'test:coverage', 'test:regression', 'validate:quality']) check(workflow.includes(command), `CI includes ${command}`);
+for (const command of ['npm ci', 'validate:reference-standards', 'validate:catalogue', 'compile:catalogue:check', 'validate:scale', 'validate:schemas', 'validate:explorer', 'test:coverage', 'test:regression', 'validate:quality']) check(workflow.includes(command), `CI includes ${command}`);
 const releaseWorkflow = exists('.github/workflows/release-readiness.yml') ? fs.readFileSync(path.join(ROOT, '.github/workflows/release-readiness.yml'), 'utf8') : '';
-for (const token of ['workflow_dispatch', 'refs/tags/v', 'release:manifest', 'upload-artifact', 'gh release create']) check(releaseWorkflow.includes(token), `release workflow includes ${token}`);
+for (const token of ['workflow_dispatch', 'refs/tags/v', 'verify', 'release:manifest', 'upload-artifact', 'gh release create']) check(releaseWorkflow.includes(token), `release workflow includes ${token}`);
 
 for (const file of gates.releaseFiles) check(exists(file), `release file ${file} exists`);
+for (const profile of catalogueProfiles) {
+  check(profile.publicationClass === 'catalogue-profile', `Catalogue input ${profile.cultivarId} declares its publication class`);
+  check(profile.catalogueState === 'published', `Catalogue input ${profile.cultivarId} is publishable before release`, profile.catalogueState);
+  check(profile.review?.approvalState === 'batch-approved', `Catalogue input ${profile.cultivarId} has batch approval`);
+}
 for (const temporary of [
   'scripts/finalize-sprint9.py',
   'scripts/finalize-sprint95.py',
@@ -72,7 +91,6 @@ for (const temporary of [
   '.github/workflows/sprint-9-5-lock-sync.yml',
   '.github/workflows/sprint-10-lock-sync.yml'
 ]) check(!exists(temporary), `temporary file removed: ${temporary}`);
-
 
 const scaleReportPath = path.join(ROOT, 'quality-reports', 'compiler-scale.json');
 check(fs.existsSync(scaleReportPath), 'compiler scale report exists', 'run npm run validate:scale');
@@ -86,7 +104,11 @@ if (fs.existsSync(scaleReportPath)) {
 const outputExists = exists('out');
 check(outputExists, 'production static export exists', 'run npm run build before npm run validate:quality');
 if (outputExists) {
-  for (const route of gates.requiredRoutes) {
+  const requiredRoutes = [
+    ...gates.requiredRoutes,
+    ...catalogueProfiles.map(profile => `/cultivars/${profile.slug}`)
+  ];
+  for (const route of requiredRoutes) {
     const clean = route === '/' ? '' : route.replace(/^\//, '').replace(/\/$/, '');
     const candidates = route === '/'
       ? [path.join(ROOT, 'out', 'index.html')]
@@ -95,7 +117,7 @@ if (outputExists) {
   }
 }
 
-console.log('Japanese Maple Atlas — Sprint 11 quality infrastructure validation');
+console.log('Japanese Maple Atlas — two-speed quality infrastructure validation');
 for (const line of checks) console.log(line);
 if (failures.length) {
   console.error(`\nErrors: ${failures.length}`);
