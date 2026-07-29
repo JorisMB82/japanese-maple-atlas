@@ -1,11 +1,10 @@
 name: Visual-First asset acquisition staging
 
 on:
-  push:
-    branches: [media/visual-first-assets-c001-c002]
+  pull_request:
+    branches: [main]
     paths:
       - .github/workflows/visual-first-asset-acquisition.yml
-  workflow_dispatch:
 
 permissions:
   contents: write
