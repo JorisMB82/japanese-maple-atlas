@@ -10,7 +10,9 @@ const manifest = readJson(path.join(ROOT, 'atlas-repository', 'manifest.json'));
 const catalogueDirectory = path.join(ROOT, 'atlas-repository', 'catalogue-profiles');
 const identityRegistry = readJson(path.join(catalogueDirectory, 'contract', 'cultivar-identity-registry.json'));
 const catalogueFiles = fs.readdirSync(catalogueDirectory).filter(file => /^CUL-\d{6}\.json$/.test(file)).sort();
-const catalogueProfiles = catalogueFiles.map(file => readJson(path.join(catalogueDirectory, file)));
+const catalogueInputs = catalogueFiles.map(file => readJson(path.join(catalogueDirectory, file)));
+const publishedCatalogueProfiles = catalogueInputs.filter(profile => profile.catalogueState === 'published');
+const nonPublicCatalogueProfiles = catalogueInputs.filter(profile => profile.catalogueState !== 'published');
 const failures = [];
 const checks = [];
 const check = (condition, label, detail = '') => {
@@ -18,6 +20,12 @@ const check = (condition, label, detail = '') => {
   else failures.push(`${label}${detail ? ` — ${detail}` : ''}`);
 };
 const exists = relative => fs.existsSync(path.join(ROOT, relative));
+const routeCandidates = route => {
+  const clean = route === '/' ? '' : route.replace(/^\//, '').replace(/\/$/, '');
+  return route === '/'
+    ? [path.join(ROOT, 'out', 'index.html')]
+    : [path.join(ROOT, 'out', `${clean}.html`), path.join(ROOT, 'out', clean, 'index.html')];
+};
 
 check(packageJson.version === gates.applicationVersion, 'application version matches governed quality configuration', packageJson.version);
 check(lock.version === packageJson.version && lock.packages?.['']?.version === packageJson.version, 'package lock is synchronised', `${lock.version}/${lock.packages?.['']?.version}`);
@@ -27,7 +35,7 @@ check(manifest.compiler.atomicPublication === true, 'compiler publication is tra
 check(manifest.contract?.profile === 'canonical-rc-v1', 'canonical RC contract is active');
 check(manifest.objectTotal === gates.repositoryInvariants.objectTotal, 'repository object total is stable', manifest.objectTotal);
 check(manifest.objectCounts.cultivars === gates.repositoryInvariants.cultivars, 'Reference Standard cultivar count is stable');
-check(catalogueFiles.length === gates.repositoryInvariants.catalogueProfiles, 'Catalogue Profile count matches governed quality configuration', catalogueFiles.length);
+check(publishedCatalogueProfiles.length === gates.repositoryInvariants.catalogueProfiles, 'published Catalogue Profile count matches governed quality configuration', publishedCatalogueProfiles.length);
 check(identityRegistry.entries?.length === gates.repositoryInvariants.stableCultivarIdentities, 'stable cultivar identity inventory matches governed quality configuration', identityRegistry.entries?.length);
 check(identityRegistry.status === 'approved' && identityRegistry.identityFamily === 'CUL-######', 'approved stable cultivar identity contract is active');
 check(manifest.objectCounts.assertions === gates.repositoryInvariants.assertions, 'assertion count is stable');
@@ -63,6 +71,7 @@ for (const file of [
   'docs/QA-001_Testing-and-Quality-Infrastructure_v1.0.md',
   'docs/EXPLORER-001_Interactive-Atlas-Explorer_v1.0.md',
   'docs/DR-ENGINEERING-002_Catalogue-MVP-Data-Path.md',
+  'docs/DR-ENGINEERING-003_Non-Public-Catalogue-Discovery-Boundary.md',
   'SPRINT-9.5.md',
   'SPRINT-10.md',
   'SPRINT-11.md',
@@ -78,10 +87,14 @@ const releaseWorkflow = exists('.github/workflows/release-readiness.yml') ? fs.r
 for (const token of ['workflow_dispatch', 'refs/tags/v', 'verify', 'release:manifest', 'upload-artifact', 'gh release create']) check(releaseWorkflow.includes(token), `release workflow includes ${token}`);
 
 for (const file of gates.releaseFiles) check(exists(file), `release file ${file} exists`);
-for (const profile of catalogueProfiles) {
+for (const profile of catalogueInputs) {
   check(profile.publicationClass === 'catalogue-profile', `Catalogue input ${profile.cultivarId} declares its publication class`);
-  check(profile.catalogueState === 'published', `Catalogue input ${profile.cultivarId} is publishable before release`, profile.catalogueState);
-  check(profile.review?.approvalState === 'batch-approved', `Catalogue input ${profile.cultivarId} has batch approval`);
+  if (profile.catalogueState === 'published') {
+    check(profile.review?.approvalState === 'batch-approved', `published Catalogue input ${profile.cultivarId} has batch approval`);
+    check(Boolean(profile.publishedAt), `published Catalogue input ${profile.cultivarId} records publication time`);
+  } else {
+    check(profile.publishedAt === null, `non-public Catalogue input ${profile.cultivarId} keeps publishedAt null`);
+  }
 }
 for (const temporary of [
   'scripts/finalize-sprint9.py',
@@ -106,14 +119,12 @@ check(outputExists, 'production static export exists', 'run npm run build before
 if (outputExists) {
   const requiredRoutes = [
     ...gates.requiredRoutes,
-    ...catalogueProfiles.map(profile => `/cultivars/${profile.slug}`)
+    ...publishedCatalogueProfiles.map(profile => `/cultivars/${profile.slug}`)
   ];
-  for (const route of requiredRoutes) {
-    const clean = route === '/' ? '' : route.replace(/^\//, '').replace(/\/$/, '');
-    const candidates = route === '/'
-      ? [path.join(ROOT, 'out', 'index.html')]
-      : [path.join(ROOT, 'out', `${clean}.html`), path.join(ROOT, 'out', clean, 'index.html')];
-    check(candidates.some(file => fs.existsSync(file)), `static route ${route} exists`);
+  for (const route of requiredRoutes) check(routeCandidates(route).some(file => fs.existsSync(file)), `static route ${route} exists`);
+  for (const profile of nonPublicCatalogueProfiles) {
+    const route = `/cultivars/${profile.slug}`;
+    check(routeCandidates(route).every(file => !fs.existsSync(file)), `non-public Catalogue input ${profile.cultivarId} has no static route`);
   }
 }
 
