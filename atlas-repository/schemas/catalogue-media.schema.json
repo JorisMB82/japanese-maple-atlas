@@ -1,0 +1,133 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://japanese-maple-atlas.org/schemas/catalogue-media.schema.json",
+  "title": "Japanese Maple Atlas Catalogue Media Sidecar",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "cultivarId", "publicationClass", "status", "assets", "roleException", "review"],
+  "properties": {
+    "schemaVersion": { "const": "1.0.0" },
+    "cultivarId": { "type": "string", "pattern": "^CUL-[0-9]{6}$" },
+    "publicationClass": { "const": "catalogue-profile" },
+    "status": { "enum": ["draft", "approved"] },
+    "assets": {
+      "type": "array",
+      "maxItems": 5,
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "cultivarId", "mediaType", "role", "isPrimary", "status", "assetPath", "thumbnailPath", "altText", "caption", "creator", "rightsHolder", "rightsBasis", "licence", "licenceUrl", "sourceUrl", "sourceItemId", "attributionText", "source", "identity", "privacy", "derivatives", "approvalHistory"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^MED-CUL-[0-9]{6}-[0-9]{3}$" },
+          "cultivarId": { "type": "string", "pattern": "^CUL-[0-9]{6}$" },
+          "mediaType": { "enum": ["photograph", "archival-photograph"] },
+          "role": { "enum": ["habit-primary", "habit-alternate", "foliage-detail", "seasonal-diagnostic", "seasonal-alternate", "bark-stem", "bud-flower-fruit", "scale-context", "archival-context", "diagnostic-detail"] },
+          "isPrimary": { "type": "boolean" },
+          "status": { "const": "approved" },
+          "assetPath": { "type": "string", "pattern": "^/media/derivatives/catalogue/" },
+          "thumbnailPath": { "type": "string", "pattern": "^/media/derivatives/catalogue/" },
+          "altText": { "type": "string", "minLength": 10, "maxLength": 500 },
+          "caption": { "type": "string", "minLength": 5, "maxLength": 500 },
+          "creator": { "type": "string", "minLength": 1, "maxLength": 200 },
+          "rightsHolder": { "type": "string", "minLength": 1, "maxLength": 200 },
+          "rightsBasis": { "enum": ["public-domain", "creative-commons", "explicit-permission", "contributor-owned", "other-approved-open-licence"] },
+          "licence": { "type": "string", "minLength": 2, "maxLength": 300 },
+          "licenceUrl": { "type": ["string", "null"], "format": "uri" },
+          "sourceUrl": { "type": "string", "format": "uri" },
+          "sourceItemId": { "type": ["string", "null"], "maxLength": 200 },
+          "attributionText": { "type": "string", "minLength": 3, "maxLength": 500 },
+          "source": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["path", "sha256", "preservation"],
+            "properties": {
+              "path": { "type": "string", "pattern": "^/?atlas-repository/media-sources/catalogue/" },
+              "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+              "preservation": { "type": "string", "minLength": 3, "maxLength": 200 }
+            }
+          },
+          "identity": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["confidence", "identificationBasis", "limitations", "publicQualification"],
+            "properties": {
+              "confidence": { "enum": ["documented", "source-asserted", "community-identified"] },
+              "identificationBasis": { "type": "string", "minLength": 5, "maxLength": 1000 },
+              "limitations": { "type": "string", "minLength": 3, "maxLength": 1000 },
+              "publicQualification": { "type": "string", "minLength": 10, "maxLength": 500 }
+            }
+          },
+          "privacy": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["status", "exifRetained", "gpsRetained", "locationGranularity"],
+            "properties": {
+              "status": { "enum": ["not-sensitive", "location-generalised", "personal-data-removed", "approved-with-conditions"] },
+              "exifRetained": { "const": false },
+              "gpsRetained": { "const": false },
+              "locationGranularity": { "type": "string", "minLength": 2, "maxLength": 120 }
+            }
+          },
+          "derivatives": {
+            "type": "array",
+            "minItems": 4,
+            "maxItems": 4,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["profile", "path", "width", "height", "mimeType", "sha256", "derivedFrom"],
+              "properties": {
+                "profile": { "enum": ["thumb", "card", "display", "archive"] },
+                "path": { "type": "string", "pattern": "^/media/derivatives/catalogue/" },
+                "width": { "type": "integer", "minimum": 1 },
+                "height": { "type": "integer", "minimum": 1 },
+                "mimeType": { "enum": ["image/jpeg", "image/png"] },
+                "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+                "derivedFrom": { "type": "string", "pattern": "^MED-CUL-[0-9]{6}-[0-9]{3}$" }
+              }
+            }
+          },
+          "approvalHistory": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["status", "date", "authority", "note"],
+              "properties": {
+                "status": { "const": "approved" },
+                "date": { "type": "string", "format": "date" },
+                "authority": { "type": "string", "minLength": 2 },
+                "note": { "type": "string", "minLength": 3, "maxLength": 500 }
+              }
+            }
+          }
+        }
+      }
+    },
+    "roleException": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "required": ["missingRoles", "reason", "reviewer", "approvedAt", "backfillPriority", "nextReviewAt"],
+      "properties": {
+        "missingRoles": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "enum": ["habit-primary", "foliage-detail", "seasonal-diagnostic"] } },
+        "reason": { "type": "string", "minLength": 10, "maxLength": 1000 },
+        "reviewer": { "type": "string", "minLength": 2 },
+        "approvedAt": { "type": "string", "format": "date-time" },
+        "backfillPriority": { "enum": ["low", "normal", "high", "critical"] },
+        "nextReviewAt": { "type": "string", "format": "date" }
+      }
+    },
+    "review": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["reviewedBy", "reviewedAt", "notes"],
+      "properties": {
+        "reviewedBy": { "type": "string", "minLength": 2 },
+        "reviewedAt": { "type": "string", "format": "date-time" },
+        "notes": { "type": "string", "maxLength": 1000 }
+      }
+    }
+  }
+}
