@@ -4,14 +4,15 @@ An evidence-aware botanical knowledge platform for finding, comparing and resear
 
 ## Current programme baseline — application v0.11.5
 
-The repository operates under the approved two-speed publication model:
+The repository operates under the approved two-speed, Visual-First publication model:
 
 - **Catalogue Profiles** provide reviewed, risk-qualified breadth through the lean C0–C3 workflow;
 - **Reference Standards** provide selected cultivars with deep G1–G9 assurance;
+- Catalogue imagery separates lawful reuse rights from transparent specimen-identity confidence;
 - one stable `CUL-######` identity persists across revision or later Reference Standard promotion;
 - the repository remains the source of truth and `main` remains the production source.
 
-ROADMAP-002A Version 1.0 is the governing amendment to the approved three-track roadmap.
+ROADMAP-002A Version 1.0 governs the two-speed model. ROADMAP-002B Version 1.0 adds the Visual-First Catalogue media standard.
 
 Current state:
 
@@ -19,22 +20,25 @@ Current state:
 - RC-006 through RC-010 have passed G4 but remain non-public while G5 media is blocked;
 - the Reference Standard repository contains 235 first-class objects;
 - Catalogue Batch C-001 publishes five LOW-risk Catalogue Profiles under C0–C3;
-- CUL-000011 through CUL-000015 use temporary owner-approved governed visual gaps and display no generic substitute imagery;
-- CUL-000016 through CUL-000025 remain approved assignments for the next two Catalogue batches;
+- CUL-000011 through CUL-000015 currently use temporary governed visual gaps and are assigned immediate Visual-First backfill;
+- CUL-000016 through CUL-000020 are the next Catalogue production batch and will use the Visual-First standard from the start;
 - all 25 stable identities remain governed by the approved registry;
-- media backfill continues with a formal C-001 review due 30 September 2026.
+- Reference Standard G5 remains unchanged.
 
 Authoritative programme documents:
 
 - [`ROADMAP-002A Version 1.0 — Approved two-speed governing amendment`](docs/ROADMAP-002A_Two-Speed-Catalogue-and-Reference-Standard-Addendum_v1.0_APPROVED.md)
-- [`DR-STRATEGY-002 — Project Owner ratification`](docs/DR-STRATEGY-002_Two-Speed-Owner-Ratification.md)
+- [`ROADMAP-002B Version 1.0 — Approved Visual-First Catalogue amendment`](docs/ROADMAP-002B_Visual-First-Catalogue-Amendment_v1.0_APPROVED.md)
+- [`DR-STRATEGY-003 — Visual-First Catalogue owner approval`](docs/DR-STRATEGY-003_Visual-First-Catalogue-Owner-Approval.md)
 - [`DR-CATALOGUE-001 — Assignments 011–025`](docs/DR-CATALOGUE-001_Owner-Approval-of-Cultivar-Assignments-011-025.md)
 - [`DR-CATALOGUE-002 — C-001 governed gaps and publication`](docs/DR-CATALOGUE-002_Owner-Approval-of-C-001-Governed-Gaps-and-Publication.md)
 - [`CATALOGUE-001 — Catalogue Profile specification`](docs/CATALOGUE-001_Catalogue-Profile-Specification_v0.1.md)
+- [`CATALOGUE-002 — Visual-First Catalogue media contract`](docs/CATALOGUE-002_Visual-First-Catalogue-Media-Contract_v1.0.md)
+- [`MEDIA-016 — Visual-First Catalogue policy`](docs/MEDIA-016_Visual-First-Catalogue-Policy_v1.0.md)
 - [`ARCH-002 — Stable cultivar identity and publication classes`](docs/ARCH-002_Stable-Cultivar-Identity-and-Publication-Class-Model_v0.1.md)
 - [`Cultivar identity programme register 001–025`](docs/PROGRAMME-REGISTER_RC-001-RC-025.md)
 
-The original ROADMAP-002 Version 1.1 remains authoritative for the three-track operating model except where ROADMAP-002A expressly amends the publication architecture.
+The original ROADMAP-002 Version 1.1 remains authoritative for the three-track operating model except where ROADMAP-002A or ROADMAP-002B expressly amends it.
 
 ## Publication classes and gates
 
@@ -48,28 +52,30 @@ It passes:
 
 - **C0** — owner-approved assignment and duplicate review;
 - **C1** — lean content, sources, risk and editorial review;
-- **C2** — one approved primary visual or an explicit governed visual gap;
+- **C2** — normally a lawful three-item visual gallery covering habit, foliage and seasonal or diagnostic representation, or a controlled exception or governed gap;
 - **C3** — schema, semantic, build, regression, release and production validation.
 
-High-risk profiles cannot use routine batch approval. A probable duplicate, unresolved identity or unqualified media candidate blocks publication.
+Catalogue images may be `documented`, `source-asserted` or `community-identified`. Every displayed item requires a lawful reuse basis, attribution and item-level identity-confidence disclosure. Rights-unresolved images may be retained as research candidates but cannot be displayed.
+
+High-risk profiles cannot use routine batch approval. A probable duplicate, unresolved rights issue or concealed identity dispute blocks publication.
 
 ### Reference Standard
 
 Reference Standards retain the existing canonical Markdown and sidecar contract, G1–G9, individual owner G8 freeze and deterministic Atlas Compiler publication path.
 
-Catalogue publication does not weaken or replace a Reference Standard.
+Catalogue publication and Visual-First identity qualification do not weaken or replace a Reference Standard or its G5 requirements.
 
 ## Three-track ownership
 
 - **Engineering/integration:** contracts, stable identity, schemas, compiler, validation, generated systems, application, CI, releases and batch integration.
-- **Editorial/content:** cultivar assignment proposals, duplicate/risk review, Catalogue content and compact sources, Reference Standard research and freeze recommendations.
-- **Media/visual assets:** candidates, rights, provenance, specimen-identity treatment, source preservation, derivatives, governed gaps, captions, alt text and coverage.
+- **Editorial/content:** cultivar assignment proposals, duplicate/risk review, Catalogue content, compact sources, visual-role guidance, Reference Standard research and freeze recommendations.
+- **Media/visual assets:** candidates, rights, provenance, identity-confidence treatment, source preservation, derivatives, governed gaps, captions, alt text and visual coverage.
 
 Branches normally use `engineering/`, `content/`, `media/` and `integration/` prefixes. No track should edit another track's owned files or assume that unmerged work exists.
 
 ## Repository principle
 
-The repository is the source of truth. The application is a derived interface. Only approved, validated repository knowledge may reach public outputs.
+The repository is the source of truth. The application is a derived interface. Only approved, validated repository knowledge and lawfully reusable media may reach public outputs.
 
 Searches, saved views, research sets, comparison pairs and exports never modify repository knowledge. Visual resemblance is never treated as cultivar authentication.
 
@@ -95,7 +101,7 @@ The public interface supports:
 - shareable URL state and browser-local saved views;
 - print/PDF, CSV and governed JSON export.
 
-Reference Standards expose structured assertions and evidence. Catalogue Profiles expose their compact sources, risk, review state, confidence and media state without implying equivalent assurance depth.
+Reference Standards expose structured assertions and evidence. Catalogue Profiles expose compact sources, risk, review state, confidence, media roles, rights basis and identity-confidence state without implying equivalent assurance depth.
 
 ## Quality commands
 
@@ -147,10 +153,10 @@ The first job explicitly validates both publication paths. The release workflow 
 - `tests/unit/`, `tests/integration/`, `tests/regression/` — contract, pipeline and static-export tests
 - `.github/workflows/repository-validation.yml` — protected pull-request and production gates
 - `.github/workflows/release-readiness.yml` — validated artefact and tagged-release automation
-- `docs/DR-ENGINEERING-002_Catalogue-MVP-Data-Path.md` — governed implementation decision
+- `docs/HANDOFF-ENGINEERING-CATALOGUE-003_Visual-First-Media-Implementation.md` — active Visual-First implementation authority
 
 ## Current publication boundary
 
-C-001 contains the first five public Catalogue Profiles. Their governed gaps are transparent temporary release states, not finished media coverage.
+C-001 contains the first five public Catalogue Profiles. Their governed gaps remain transparent temporary states until lawful galleries replace them.
 
-C-002 and C-003 remain non-public until their records independently pass C0–C3. No media candidate, synthetic fixture or unapproved image is a public cultivar asset.
+The Visual-First amendment authorises C-001 backfill and requires C-002 and later batches to target three-to-five-item lawful galleries. No rights-unresolved candidate, synthetic fixture or unapproved image is a public cultivar asset.
