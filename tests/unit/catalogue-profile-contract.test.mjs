@@ -4,6 +4,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import {
   compileCatalogueProfile,
+  isPublishedCatalogueRecord,
   stableCatalogueSlug,
   validateCatalogueProfile,
   validateIdentityRegistry
@@ -62,6 +63,18 @@ test('Catalogue profile validates and compiles through a stable cultivar identit
   assert.equal(compiled.catalogueProfile.batchId, 'C-001');
   assert.equal(compiled.mediaState, 'governed-gap');
   assert.deepEqual(compiled.sourceIds, ['SRC-CUL-000011-01']);
+});
+
+test('public Catalogue discovery includes only published compiled records', () => {
+  const published = compileCatalogueProfile(fixture);
+  assert.equal(isPublishedCatalogueRecord(published), true);
+  const reviewReadyProfile = clone(fixture);
+  reviewReadyProfile.catalogueState = 'review-ready';
+  reviewReadyProfile.review.approvalState = 'editorial-approved';
+  reviewReadyProfile.publishedAt = null;
+  const reviewReady = compileCatalogueProfile(reviewReadyProfile);
+  assert.equal(isPublishedCatalogueRecord(reviewReady), false);
+  assert.equal(isPublishedCatalogueRecord({ publicationClass: 'reference-standard' }), false);
 });
 
 test('Catalogue slug is deterministic and diacritic-insensitive', () => {
