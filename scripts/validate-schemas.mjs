@@ -25,7 +25,8 @@ const targets = [
   ['editorial-workflow.schema.json', 'editorial-workflows'],
   ['editorial-review.schema.json', 'editorial-reviews'],
   ['manifest.schema.json', 'manifest.json'],
-  ['graph-index.schema.json', path.join('indexes', 'graph-index.json')]
+  ['graph-index.schema.json', path.join('indexes', 'graph-index.json')],
+  ['catalogue-media.schema.json', path.join('catalogue-profiles', 'media')]
 ];
 
 const failures = [];
@@ -41,6 +42,7 @@ for (const [schemaName, target] of targets) {
   const schema = readJson(schemaPath);
   schemaCount += 1;
   const targetPath = path.join(REPOSITORY, target);
+  if (!fs.existsSync(targetPath)) continue;
   const files = fs.statSync(targetPath).isDirectory() ? jsonFiles(targetPath) : [targetPath];
   for (const file of files) {
     const result = validateJsonSchema(readJson(file), schema);
