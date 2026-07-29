@@ -56,19 +56,18 @@ test('compiler detects duplicate slugs across Catalogue identities', () => {
   fs.rmSync(root, { recursive: true, force: true });
 });
 
-test('canonical Catalogue directory compiles published C-001 and non-public C-002 editorial candidates', () => {
+test('canonical Catalogue directory compiles published C-001 and non-public C-002 and C-003 editorial candidates', () => {
   const inputDir = path.join(ROOT, 'atlas-repository/catalogue-profiles');
   const registryPath = path.join(inputDir, 'contract/cultivar-identity-registry.json');
   const result = compileCatalogueDirectory({ inputDir, schemaPath, registryPath, taxonIds: new Set(['TAX-APAL', 'TAX-ASHI']) });
-  const expectedIds = Array.from({ length: 10 }, (_, index) => `CUL-${String(index + 11).padStart(6, '0')}`);
-  const c001 = result.records.filter(record => {
+  const expectedIds = Array.from({ length: 15 }, (_, index) => `CUL-${String(index + 11).padStart(6, '0')}`);
+  const cohort = (start, end) => result.records.filter(record => {
     const programmeNumber = Number(record.cultivarId.slice(-6));
-    return programmeNumber >= 11 && programmeNumber <= 15;
+    return programmeNumber >= start && programmeNumber <= end;
   });
-  const c002 = result.records.filter(record => {
-    const programmeNumber = Number(record.cultivarId.slice(-6));
-    return programmeNumber >= 16 && programmeNumber <= 20;
-  });
+  const c001 = cohort(11, 15);
+  const c002 = cohort(16, 20);
+  const c003 = cohort(21, 25);
 
   assert.deepEqual(result.records.map(record => record.cultivarId), expectedIds);
   assert.deepEqual(result.diagnostics.map(item => item.status), expectedIds.map(() => 'pass'));
@@ -79,9 +78,11 @@ test('canonical Catalogue directory compiles published C-001 and non-public C-00
   assert.equal(c001.every(record => record.catalogueProfile.review.approvalState === 'batch-approved'), true);
   assert.equal(c001.every(record => record.mediaState === 'governed-gap'), true);
 
-  assert.equal(c002.length, 5);
-  assert.equal(c002.every(record => record.catalogueProfile.state === 'review-ready'), true);
-  assert.equal(c002.every(record => record.catalogueProfile.publishedAt === null), true);
-  assert.equal(c002.every(record => record.catalogueProfile.review.approvalState === 'editorial-approved'), true);
-  assert.equal(c002.every(record => record.mediaState === 'candidate-under-review'), true);
+  for (const editorialCohort of [c002, c003]) {
+    assert.equal(editorialCohort.length, 5);
+    assert.equal(editorialCohort.every(record => record.catalogueProfile.state === 'review-ready'), true);
+    assert.equal(editorialCohort.every(record => record.catalogueProfile.publishedAt === null), true);
+    assert.equal(editorialCohort.every(record => record.catalogueProfile.review.approvalState === 'editorial-approved'), true);
+    assert.equal(editorialCohort.every(record => record.mediaState === 'candidate-under-review'), true);
+  }
 });
