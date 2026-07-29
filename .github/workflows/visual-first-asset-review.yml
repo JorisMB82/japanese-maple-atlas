@@ -1,0 +1,25 @@
+name: Visual-First asset preview review
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - .github/workflows/visual-first-asset-review.yml
+
+permissions:
+  contents: read
+
+jobs:
+  review-package:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: media/visual-first-assets-c001-c002
+      - uses: actions/upload-artifact@v4
+        with:
+          name: visual-first-c001-review-previews
+          path: quality-reports/media-review/
+          if-no-files-found: error
+          retention-days: 7
