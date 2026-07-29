@@ -1,0 +1,144 @@
+name: Visual-First asset acquisition staging
+
+on:
+  push:
+    branches: [media/visual-first-assets-c001-c002]
+    paths:
+      - .github/workflows/visual-first-asset-acquisition.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  acquire:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: media/visual-first-assets-c001-c002
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci --no-audit --no-fund
+      - name: Acquire exact Wikimedia Commons originals
+        shell: bash
+        run: |
+          node --input-type=module <<'NODE'
+          import fs from 'node:fs';
+          import path from 'node:path';
+          import crypto from 'node:crypto';
+          import { renderRasterProfiles } from './lib/raster-media.mjs';
+
+          const records = [
+            {
+              cultivarId: 'CUL-000011', mediaId: 'MED-CUL-000011-001',
+              title: "Acer palmatum 'Orange Dream' Klon palmowy 2017-05-14 01.jpg",
+              proposedRole: 'habit-primary', creatorExpected: 'Agnieszka Kwiecień', licenceExpected: 'CC BY-SA 4.0'
+            },
+            {
+              cultivarId: 'CUL-000011', mediaId: 'MED-CUL-000011-002',
+              title: "Acer palmatum 'Orange Dream' - 2020-05-08 - Andy Mabbett - 04.jpg",
+              proposedRole: 'foliage-detail', creatorExpected: 'Andy Mabbett', licenceExpected: 'CC BY-SA 4.0'
+            },
+            {
+              cultivarId: 'CUL-000011', mediaId: 'MED-CUL-000011-003',
+              title: "Acer palmatum 'Orange Dream' - 2020-05-08 - Andy Mabbett - 01.jpg",
+              proposedRole: 'seasonal-diagnostic', creatorExpected: 'Andy Mabbett', licenceExpected: 'CC BY-SA 4.0'
+            },
+            {
+              cultivarId: 'CUL-000013', mediaId: 'MED-CUL-000013-001',
+              title: "Acer palmatum 'Inaba Shidare' IMG 1966.jpg",
+              proposedRole: 'habit-primary', creatorExpected: 'Don McCulley', licenceExpected: 'CC BY-SA 4.0'
+            },
+            {
+              cultivarId: 'CUL-000013', mediaId: 'MED-CUL-000013-002',
+              title: "Acer palmatum 'Inaba Shidare' IMG 2740.jpg",
+              proposedRole: 'foliage-detail', creatorExpected: 'Don McCulley', licenceExpected: 'CC BY-SA 4.0'
+            },
+            {
+              cultivarId: 'CUL-000013', mediaId: 'MED-CUL-000013-003',
+              title: "Acer palmatum 'Inaba Shidare' in autumn sunshine - 2021-10-17 - Andy Mabbett - 01.jpg",
+              proposedRole: 'seasonal-diagnostic', creatorExpected: 'Andy Mabbett', licenceExpected: 'CC BY-SA 4.0'
+            }
+          ];
+
+          const sha256 = bytes => crypto.createHash('sha256').update(bytes).digest('hex');
+          const stripHtml = value => String(value || '').replace(/<[^>]+>/g, ' ').replace(/&nbsp;/g, ' ').replace(/&amp;/g, '&').replace(/&#39;/g, "'").replace(/&quot;/g, '"').replace(/\s+/g, ' ').trim();
+          const manifest = [];
+
+          for (const record of records) {
+            const title = `File:${record.title}`;
+            const api = new URL('https://commons.wikimedia.org/w/api.php');
+            api.searchParams.set('action', 'query');
+            api.searchParams.set('format', 'json');
+            api.searchParams.set('prop', 'imageinfo');
+            api.searchParams.set('iiprop', 'url|size|mime|extmetadata');
+            api.searchParams.set('titles', title);
+            api.searchParams.set('origin', '*');
+            const response = await fetch(api, { headers: { 'user-agent': 'Japanese-Maple-Atlas/0.11.5 media-acquisition' } });
+            if (!response.ok) throw new Error(`${record.mediaId}: Commons API ${response.status}`);
+            const payload = await response.json();
+            const page = Object.values(payload.query.pages)[0];
+            const info = page?.imageinfo?.[0];
+            if (!info?.url) throw new Error(`${record.mediaId}: no original URL`);
+            const meta = info.extmetadata || {};
+            const licence = stripHtml(meta.LicenseShortName?.value);
+            const artist = stripHtml(meta.Artist?.value);
+            if (!licence.includes('CC BY-SA 4.0')) throw new Error(`${record.mediaId}: unexpected licence ${licence}`);
+            if (!artist.toLowerCase().includes(record.creatorExpected.split(' ')[0].toLowerCase())) throw new Error(`${record.mediaId}: creator check failed: ${artist}`);
+
+            const imageResponse = await fetch(info.url, { headers: { 'user-agent': 'Japanese-Maple-Atlas/0.11.5 media-acquisition' } });
+            if (!imageResponse.ok) throw new Error(`${record.mediaId}: original download ${imageResponse.status}`);
+            const bytes = Buffer.from(await imageResponse.arrayBuffer());
+            if (bytes.length !== info.size) throw new Error(`${record.mediaId}: byte count mismatch ${bytes.length} != ${info.size}`);
+
+            const sourceDir = path.join('atlas-repository/media-sources/catalogue', record.cultivarId);
+            fs.mkdirSync(sourceDir, { recursive: true });
+            const sourcePath = path.join(sourceDir, `${record.mediaId}-source.jpg`);
+            fs.writeFileSync(sourcePath, bytes);
+
+            const preview = renderRasterProfiles(bytes, { display: [960, 693] }).display;
+            const reviewDir = path.join('quality-reports/media-review', record.cultivarId);
+            fs.mkdirSync(reviewDir, { recursive: true });
+            const previewPath = path.join(reviewDir, `${record.mediaId}-display.jpg`);
+            fs.writeFileSync(previewPath, preview.bytes);
+
+            manifest.push({
+              ...record,
+              sourcePage: `https://commons.wikimedia.org/wiki/${encodeURIComponent(title).replaceAll('%20', '_')}`,
+              originalUrl: info.url,
+              sourcePath,
+              sourceSha256: sha256(bytes),
+              sourceBytes: bytes.length,
+              sourceWidth: info.width,
+              sourceHeight: info.height,
+              sourceMime: info.mime,
+              creatorFromSource: artist,
+              licenceFromSource: licence,
+              licenceUrl: 'https://creativecommons.org/licenses/by-sa/4.0/',
+              attributionRequired: stripHtml(meta.AttributionRequired?.value),
+              creditFromSource: stripHtml(meta.Credit?.value),
+              previewPath,
+              previewSha256: sha256(preview.bytes),
+              previewWidth: preview.width,
+              previewHeight: preview.height,
+              previewMime: preview.mimeType
+            });
+          }
+
+          fs.mkdirSync('quality-reports/media-review', { recursive: true });
+          fs.writeFileSync('quality-reports/media-review/acquisition-manifest.json', `${JSON.stringify({ generatedAt: new Date().toISOString(), records: manifest }, null, 2)}\n`);
+          NODE
+      - name: Commit source bytes and review previews
+        shell: bash
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add atlas-repository/media-sources/catalogue quality-reports/media-review
+          git commit -m "Media: acquire C-001 Commons source originals"
+          git push origin HEAD:media/visual-first-assets-c001-c002
