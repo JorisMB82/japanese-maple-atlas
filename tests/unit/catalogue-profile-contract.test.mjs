@@ -24,16 +24,31 @@ const assignedRegistry = () => {
   });
   return registry;
 };
+const reservedRegistry = () => {
+  const registry = clone(canonicalRegistry);
+  const entry = registry.entries.find(item => item.cultivarId === 'CUL-000011');
+  Object.assign(entry, {
+    state: 'reserved-catalogue-slot',
+    assignedWorkingName: null,
+    assignmentDecision: null
+  });
+  delete entry.batchId;
+  delete entry.preliminaryRisk;
+  return registry;
+};
 
 function messages(result) {
   return result.errors.join('\n');
 }
 
-test('approved identity registry preserves deterministic RC mappings and reserved Catalogue slots', () => {
+test('approved identity registry preserves deterministic RC mappings and owner-approved Catalogue assignments', () => {
   const result = validateIdentityRegistry(canonicalRegistry);
   assert.equal(result.valid, true, messages(result));
   assert.equal(result.byId.get('CUL-000001').referenceStandardId, 'RC-001');
-  assert.equal(result.byId.get('CUL-000025').state, 'reserved-catalogue-slot');
+  assert.equal(result.byId.get('CUL-000011').state, 'assigned-catalogue');
+  assert.equal(result.byId.get('CUL-000011').assignedWorkingName, 'Orange Dream');
+  assert.equal(result.byId.get('CUL-000025').state, 'assigned-catalogue');
+  assert.equal(result.byId.get('CUL-000025').assignedWorkingName, 'Red Pygmy');
 });
 
 test('Catalogue profile validates and compiles through a stable cultivar identity', () => {
@@ -54,7 +69,7 @@ test('Catalogue slug is deterministic and diacritic-insensitive', () => {
 });
 
 test('reserved identity blocks real Catalogue publication until owner assignment', () => {
-  const result = validateCatalogueProfile(fixture, schema, canonicalRegistry, { taxonIds: new Set(['TAX-APAL']) });
+  const result = validateCatalogueProfile(fixture, schema, reservedRegistry(), { taxonIds: new Set(['TAX-APAL']) });
   assert.equal(result.valid, false);
   assert.match(messages(result), /not assigned for Catalogue publication/);
 });
