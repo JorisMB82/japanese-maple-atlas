@@ -1,0 +1,211 @@
+name: Temporary Shin-deshōjō seasonal asset correction
+
+on:
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  correct-seasonal-asset:
+    if: github.head_ref == 'media/visual-first-assets-c002-01'
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: media/visual-first-assets-c002-01
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Replace duplicate spring frame with lawful summer diagnostic
+        run: |
+          cat > .tmp-correct-shin-seasonal.mjs <<'NODE'
+          import fs from 'node:fs';
+          import crypto from 'node:crypto';
+
+          const sha256 = bytes => crypto.createHash('sha256').update(bytes).digest('hex');
+          const sleep = milliseconds => new Promise(resolve => setTimeout(resolve, milliseconds));
+          const cleanHtml = value => String(value || '').replace(/<[^>]+>/g, ' ').replace(/&nbsp;/g, ' ').replace(/&amp;/g, '&').replace(/\s+/g, ' ').trim();
+          const title = 'Acer Palmatum bonsai.jpg';
+          const pageUrl = `https://commons.wikimedia.org/wiki/File:${encodeURIComponent(title).replace(/%2F/g, '/')}`;
+          const params = new URLSearchParams({
+            action:'query', format:'json', formatversion:'2', prop:'imageinfo', titles:`File:${title}`,
+            iiprop:'url|size|mime|sha1|extmetadata'
+          });
+          const apiUrl = `https://commons.wikimedia.org/w/api.php?${params}`;
+
+          async function fetchWithRetry(url, label) {
+            let response;
+            for (let attempt = 0; attempt < 6; attempt += 1) {
+              await sleep(attempt === 0 ? 1000 : 0);
+              response = await fetch(url, { headers:{ 'User-Agent':'JapaneseMapleAtlas/1.0 media-acquisition' } });
+              if (response.status !== 429 && response.status < 500) return response;
+              if (attempt === 5) return response;
+              const retryAfter = Number(response.headers.get('retry-after'));
+              const delay = Number.isFinite(retryAfter) && retryAfter > 0 ? retryAfter * 1000 : 5000 * (2 ** attempt);
+              console.log(`${label}: HTTP ${response.status}; retrying in ${delay} ms`);
+              await sleep(delay);
+            }
+            return response;
+          }
+
+          const apiResponse = await fetchWithRetry(apiUrl, 'Commons metadata');
+          if (!apiResponse.ok) throw new Error(`Commons API ${apiResponse.status}`);
+          const data = await apiResponse.json();
+          const info = data.query?.pages?.[0]?.imageinfo?.[0];
+          if (!info?.url) throw new Error('Exact original URL missing');
+          if (info.mime !== 'image/jpeg') throw new Error(`Expected JPEG, got ${info.mime}`);
+          const observedLicence = cleanHtml(info.extmetadata?.LicenseShortName?.value);
+          if (observedLicence !== 'CC BY-SA 4.0') throw new Error(`Expected CC BY-SA 4.0, got ${observedLicence}`);
+
+          const response = await fetchWithRetry(info.url, 'Commons original');
+          if (!response.ok) throw new Error(`Original download ${response.status}`);
+          const sourceBytes = Buffer.from(await response.arrayBuffer());
+          if (!sourceBytes.subarray(0,2).equals(Buffer.from([0xff,0xd8]))) throw new Error('Downloaded bytes are not JPEG');
+
+          const sourcePath = 'atlas-repository/media-sources/catalogue/CUL-000019/MED-CUL-000019-003-source.jpg';
+          fs.writeFileSync(sourcePath, sourceBytes);
+
+          const sidecarPath = 'atlas-repository/catalogue-profiles/media/CUL-000019.media.json';
+          const sidecar = JSON.parse(fs.readFileSync(sidecarPath, 'utf8'));
+          const asset = sidecar.assets.find(item => item.id === 'MED-CUL-000019-003');
+          if (!asset) throw new Error('MED-CUL-000019-003 missing from sidecar');
+          Object.assign(asset, {
+            role:'seasonal-diagnostic',
+            isPrimary:false,
+            altText:'Labelled ‘Shindeshojo’ Japanese maple bonsai showing a greener midsummer canopy at the 2008 Tatton Park Flower Show.',
+            caption:'Separate source-identified ‘Shindeshojo’ bonsai photographed in late July 2008, used only to illustrate a greener summer expression alongside the Meise spring-flush images.',
+            creator:'Mike Peel',
+            rightsHolder:'Mike Peel',
+            rightsBasis:'creative-commons',
+            licence:'CC BY-SA 4.0',
+            licenceUrl:'https://creativecommons.org/licenses/by-sa/4.0/',
+            sourceUrl:pageUrl,
+            sourceItemId:'Wikimedia Commons Acer Palmatum bonsai.jpg',
+            attributionText:'Photograph by Mike Peel, CC BY-SA 4.0, via Wikimedia Commons.',
+            source:{
+              path:`/${sourcePath}`,
+              sha256:sha256(sourceBytes),
+              preservation:'Exact original JPEG bytes downloaded from Wikimedia Commons and retained without modification.'
+            },
+            identity:{
+              confidence:'source-asserted',
+              identificationBasis:'The photographer records the tree as Acer palmatum “Shindeshojo”, and the visible exhibition label repeats that name at the 2008 Tatton Park Flower Show.',
+              limitations:'This is a separately labelled trained bonsai, not the Meise specimen shown in the spring images. The exhibition label is the identity basis, and bonsai form is not representative of ordinary garden habit.',
+              publicQualification:'Source-identified from an exhibition label; not independently authenticated by the Japanese Maple Atlas. Shown only as a separate summer-expression specimen; bonsai form is not cultivar habit.'
+            },
+            privacy:{
+              status:'not-sensitive',
+              exifRetained:false,
+              gpsRetained:false,
+              locationGranularity:'Tatton Park Flower Show, England, United Kingdom'
+            },
+            derivatives:[],
+            approvalHistory:[{
+              status:'approved',
+              date:'2026-07-29',
+              authority:'Japanese Maple Atlas media / visual-assets stream',
+              note:'Selected after visual review to supply a distinct midsummer seasonal role. Rights, exhibition-label identity basis, separate-specimen limitation, bonsai-context limitation, privacy treatment and deterministic derivatives were reviewed.'
+            }]
+          });
+          sidecar.review = {
+            reviewedBy:'Japanese Maple Atlas media / visual-assets stream',
+            reviewedAt:'2026-07-29T19:25:00Z',
+            notes:'Complete three-role Visual-First gallery. The spring habit and foliage items show one Meise specimen; the seasonal diagnostic is a separately labelled July bonsai and is explicitly limited to summer colour expression, not ordinary cultivar habit or same-plant sequence.'
+          };
+          fs.writeFileSync(sidecarPath, `${JSON.stringify(sidecar, null, 2)}\n`);
+
+          const registerPath = 'docs/registers/MEDIA-SOURCE-ACQUISITION_C-002-01.json';
+          const register = JSON.parse(fs.readFileSync(registerPath, 'utf8'));
+          const record = register.items.find(item => item.mediaId === 'MED-CUL-000019-003');
+          if (!record) throw new Error('MED-CUL-000019-003 missing from acquisition register');
+          Object.assign(record, {
+            fileTitle:title,
+            sourcePage:pageUrl,
+            exactOriginalUrl:info.url,
+            commonsApiUrl:apiUrl,
+            creator:'Mike Peel',
+            rightsHolder:'Mike Peel',
+            licence:'CC BY-SA 4.0',
+            licenceUrl:'https://creativecommons.org/licenses/by-sa/4.0/',
+            commonsSha1:info.sha1,
+            sourceSha256:sha256(sourceBytes),
+            originalWidth:info.width,
+            originalHeight:info.height,
+            originalBytes:sourceBytes.length,
+            description:cleanHtml(info.extmetadata?.ImageDescription?.value),
+            dateTimeOriginal:cleanHtml(info.extmetadata?.DateTimeOriginal?.value) || '26 July 2008',
+            role:'seasonal-diagnostic',
+            primary:false,
+            identityConfidence:'source-asserted',
+            identityQualification:'Source-identified from an exhibition label; not independently authenticated by the Japanese Maple Atlas. Separate bonsai specimen used only for midsummer expression.',
+            privacyTreatment:'Original preserved; deterministic public derivatives are pixel-decoded and re-encoded without EXIF, GPS or text metadata.'
+          });
+          fs.writeFileSync(registerPath, `${JSON.stringify(register, null, 2)}\n`);
+          console.log(`Replaced MED-CUL-000019-003 with ${title}; SHA-256 ${sha256(sourceBytes)}`);
+          NODE
+          node .tmp-correct-shin-seasonal.mjs
+          rm .tmp-correct-shin-seasonal.mjs
+
+      - name: Regenerate canonical derivatives and manifest
+        run: npm run process:media
+
+      - name: Validate complete corrected package
+        run: |
+          set -o pipefail
+          {
+            npm run validate:media
+            npm run process:media:check
+            npm run validate:catalogue
+            npm run compile:atlas:check
+            npm run compile:catalogue:check
+            npm run validate:schemas
+            npm run validate:repository
+            npm run validate:search
+            npm run validate:graph
+            npm run validate:explorer
+            npm run test:unit
+            npm run test:integration
+            npm run test:coverage
+            npm run build
+            npm run validate:quality
+            npm run release:manifest
+          } 2>&1 | tee validation-c002-01-corrected.log
+
+      - name: Upload corrected inspection artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: c002-lawful-assets-01-corrected
+          if-no-files-found: error
+          retention-days: 14
+          path: |
+            atlas-repository/media-sources/catalogue/CUL-000016/
+            atlas-repository/media-sources/catalogue/CUL-000019/
+            public/media/derivatives/catalogue/cul-000016/
+            public/media/derivatives/catalogue/cul-000019/
+            atlas-repository/catalogue-profiles/media/CUL-000016.media.json
+            atlas-repository/catalogue-profiles/media/CUL-000019.media.json
+            atlas-repository/catalogue-profiles/CUL-000016.json
+            atlas-repository/catalogue-profiles/CUL-000019.json
+            docs/registers/MEDIA-SOURCE-ACQUISITION_C-002-01.json
+            public/media/derivatives/manifest.json
+            validation-c002-01-corrected.log
+
+      - name: Commit correction and remove temporary workflow
+        run: |
+          rm .github/workflows/asset-correct-shin-seasonal.yml
+          git config user.name "Japanese Maple Atlas Media Bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add -A
+          git commit -m "Media: correct Shin-deshōjō seasonal diagnostic"
+          git push origin HEAD:media/visual-first-assets-c002-01
