@@ -1,0 +1,123 @@
+name: Temporary Shin-deshōjō derivative correction
+
+on:
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  correct-seasonal-asset:
+    if: github.head_ref == 'media/visual-first-assets-c002-01'
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: media/visual-first-assets-c002-01
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Replace the source and regenerate declared derivatives
+        run: |
+          sed -n "/cat > .tmp-correct-shin-seasonal.mjs <<'NODE'/,/^          NODE$/p" .github/workflows/asset-correct-shin-seasonal.yml \
+            | sed '1d;$d;s/^          //' > .tmp-correct-shin-seasonal.mjs
+          sed -i '/derivatives:\[\],/d' .tmp-correct-shin-seasonal.mjs
+          node .tmp-correct-shin-seasonal.mjs
+          rm .tmp-correct-shin-seasonal.mjs
+
+          cat > .tmp-regenerate-shin-derivatives.mjs <<'NODE'
+          import fs from 'node:fs';
+          import path from 'node:path';
+          import crypto from 'node:crypto';
+          import { renderRasterProfiles } from './lib/raster-media.mjs';
+
+          const sourcePath = 'atlas-repository/media-sources/catalogue/CUL-000019/MED-CUL-000019-003-source.jpg';
+          const sidecarPath = 'atlas-repository/catalogue-profiles/media/CUL-000019.media.json';
+          const profiles = { thumb:[320,231], card:[560,404], display:[960,693], archive:[1440,1040] };
+          const sourceBytes = fs.readFileSync(sourcePath);
+          const rendered = renderRasterProfiles(sourceBytes, profiles);
+          const sidecar = JSON.parse(fs.readFileSync(sidecarPath, 'utf8'));
+          const asset = sidecar.assets.find(item => item.id === 'MED-CUL-000019-003');
+          if (!asset) throw new Error('MED-CUL-000019-003 missing');
+          for (const derivative of asset.derivatives) {
+            const output = rendered[derivative.profile];
+            if (!output) throw new Error(`Missing rendered profile ${derivative.profile}`);
+            const target = path.join(process.cwd(), 'public', derivative.path.replace(/^\//, ''));
+            fs.mkdirSync(path.dirname(target), { recursive:true });
+            fs.writeFileSync(target, output.bytes);
+            derivative.width = output.width;
+            derivative.height = output.height;
+            derivative.mimeType = output.mimeType;
+            derivative.sha256 = crypto.createHash('sha256').update(output.bytes).digest('hex');
+            derivative.derivedFrom = asset.id;
+          }
+          fs.writeFileSync(sidecarPath, `${JSON.stringify(sidecar, null, 2)}\n`);
+          console.log('Regenerated four declared derivatives for MED-CUL-000019-003.');
+          NODE
+          node .tmp-regenerate-shin-derivatives.mjs
+          rm .tmp-regenerate-shin-derivatives.mjs
+
+      - name: Verify canonical media processing
+        run: npm run process:media
+
+      - name: Validate complete corrected package
+        run: |
+          set -o pipefail
+          {
+            npm run validate:media
+            npm run process:media:check
+            npm run validate:catalogue
+            npm run compile:atlas:check
+            npm run compile:catalogue:check
+            npm run validate:schemas
+            npm run validate:repository
+            npm run validate:search
+            npm run validate:graph
+            npm run validate:explorer
+            npm run test:unit
+            npm run test:integration
+            npm run test:coverage
+            npm run build
+            npm run validate:quality
+            npm run release:manifest
+          } 2>&1 | tee validation-c002-01-corrected.log
+
+      - name: Upload corrected inspection artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: c002-lawful-assets-01-corrected
+          if-no-files-found: error
+          retention-days: 14
+          path: |
+            atlas-repository/media-sources/catalogue/CUL-000016/
+            atlas-repository/media-sources/catalogue/CUL-000019/
+            public/media/derivatives/catalogue/cul-000016/
+            public/media/derivatives/catalogue/cul-000019/
+            atlas-repository/catalogue-profiles/media/CUL-000016.media.json
+            atlas-repository/catalogue-profiles/media/CUL-000019.media.json
+            atlas-repository/catalogue-profiles/CUL-000016.json
+            atlas-repository/catalogue-profiles/CUL-000019.json
+            docs/registers/MEDIA-SOURCE-ACQUISITION_C-002-01.json
+            public/media/derivatives/manifest.json
+            validation-c002-01-corrected.log
+
+      - name: Commit correction and remove temporary workflows
+        run: |
+          rm .github/workflows/asset-correct-shin-seasonal.yml
+          rm .github/workflows/asset-correct-shin-seasonal-rerun.yml
+          rm .github/workflows/asset-correct-shin-seasonal-rerun2.yml
+          git config user.name "Japanese Maple Atlas Media Bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add -A
+          git commit -m "Media: correct Shin-deshōjō seasonal diagnostic"
+          git push origin HEAD:media/visual-first-assets-c002-01
