@@ -3,8 +3,11 @@ import path from 'node:path';
 import crypto from 'node:crypto';
 import { ROOT, PROFILES, buildMedia, resolveDerivativePath, resolveSourcePath } from './process-media.mjs';
 import { decodeRaster, detectRasterMime, hasRasterPrivacyMetadata, isRasterMediaType } from '../lib/raster-media.mjs';
+import { loadCatalogueMediaDirectory } from '../lib/catalogue-media.mjs';
 
 const SIDE = path.join(ROOT, 'atlas-repository/reference-standards/media');
+const CAT_SIDE = path.join(ROOT, 'atlas-repository/catalogue-profiles/media');
+const CAT_SCHEMA = path.join(ROOT, 'atlas-repository/schemas/catalogue-media.schema.json');
 const PLAN = path.join(ROOT, 'atlas-repository/media-coverage.json');
 const sha = value => crypto.createHash('sha256').update(value).digest('hex');
 const read = file => JSON.parse(fs.readFileSync(file, 'utf8'));
@@ -17,35 +20,12 @@ function actualMime(bytes) {
   return detectRasterMime(bytes);
 }
 
-export function validateAsset(asset, { root = ROOT } = {}) {
+function validateSourceAndDerivatives(asset, { root = ROOT, requireRasterSource = false } = {}) {
   const errors = [];
   const label = asset?.id || 'unknown-media';
-  const required = ['id','cultivarId','mediaType','role','status','assetPath','altText','evidentiaryStatus','creator','rightsHolder','licence','source','identification','privacy','derivatives','approvalHistory'];
-  for (const key of required) if (asset?.[key] == null) errors.push(`${label}: missing ${key}`);
-  if (errors.length) return errors;
-
-  if (asset.status !== 'approved') errors.push(`${label}: asset not approved`);
-  for (const key of ['creator','rightsHolder','licence','altText']) if (!text(asset[key])) errors.push(`${label}: ${key} must be non-empty`);
-  if (!text(asset.source?.preservation)) errors.push(`${label}: source preservation statement is required`);
-  if (!text(asset.identification?.specimenIdentity) || !text(asset.identification?.confidence) || !text(asset.identification?.editorialStatus)) {
-    errors.push(`${label}: complete identification metadata is required`);
-  }
-  if (asset.privacy?.gpsRetained !== false) errors.push(`${label}: precise GPS must not be retained publicly`);
-
   const raster = isRasterMediaType(asset.mediaType);
-  if (asset.mediaType === 'atlas-illustration') {
-    if (asset.evidentiaryStatus !== 'illustrative-not-evidence') errors.push(`${label}: Atlas illustrations must remain non-evidentiary`);
-    if (!text(asset.syntheticLabel) || asset.syntheticLabel.trim().length < 20) errors.push(`${label}: conspicuous synthetic label is required`);
-  }
-  if (raster) {
-    if (!/^\/?atlas-repository\/media-sources\//.test(asset.source.path)) errors.push(`${label}: raster original must be preserved beneath atlas-repository/media-sources`);
-    if (asset.privacy?.exifRetained !== false) errors.push(`${label}: public raster derivatives must not retain EXIF`);
-    if (['supporting-evidence','primary-evidence'].includes(asset.evidentiaryStatus)) {
-      if (asset.identification.confidence === 'not-applicable' || asset.identification.editorialStatus === 'illustrative') {
-        errors.push(`${label}: evidentiary photographs require substantive identity metadata`);
-      }
-    }
-  }
+  if (requireRasterSource && !raster) errors.push(`${label}: Catalogue visual must be a raster photograph`);
+  if (raster && !/^\/?atlas-repository\/media-sources\//.test(asset.source.path)) errors.push(`${label}: raster original must be preserved beneath atlas-repository/media-sources`);
 
   const sourcePath = resolveSourcePath(root, asset.source.path);
   let sourceRaster = null;
@@ -74,9 +54,7 @@ export function validateAsset(asset, { root = ROOT } = {}) {
   for (const derivative of derivatives) {
     const derivativeLabel = `${label}/${derivative.profile || 'unknown'}`;
     if (derivative.derivedFrom !== asset.id) errors.push(`${derivativeLabel}: derivedFrom must reference the asset`);
-    if (!Number.isInteger(derivative.width) || derivative.width < 1 || !Number.isInteger(derivative.height) || derivative.height < 1) {
-      errors.push(`${derivativeLabel}: invalid dimensions`);
-    }
+    if (!Number.isInteger(derivative.width) || derivative.width < 1 || !Number.isInteger(derivative.height) || derivative.height < 1) errors.push(`${derivativeLabel}: invalid dimensions`);
     if (!['image/svg+xml','image/jpeg','image/png'].includes(derivative.mimeType)) errors.push(`${derivativeLabel}: unsupported MIME type`);
     const target = resolveDerivativePath(root, derivative.path);
     if (!fs.existsSync(target)) {
@@ -111,25 +89,79 @@ export function validateAsset(asset, { root = ROOT } = {}) {
   return errors;
 }
 
+export function validateAsset(asset, { root = ROOT } = {}) {
+  const errors = [];
+  const label = asset?.id || 'unknown-media';
+  const required = ['id','cultivarId','mediaType','role','status','assetPath','altText','evidentiaryStatus','creator','rightsHolder','licence','source','identification','privacy','derivatives','approvalHistory'];
+  for (const key of required) if (asset?.[key] == null) errors.push(`${label}: missing ${key}`);
+  if (errors.length) return errors;
+
+  if (asset.status !== 'approved') errors.push(`${label}: asset not approved`);
+  for (const key of ['creator','rightsHolder','licence','altText']) if (!text(asset[key])) errors.push(`${label}: ${key} must be non-empty`);
+  if (!text(asset.source?.preservation)) errors.push(`${label}: source preservation statement is required`);
+  if (!text(asset.identification?.specimenIdentity) || !text(asset.identification?.confidence) || !text(asset.identification?.editorialStatus)) errors.push(`${label}: complete identification metadata is required`);
+  if (asset.privacy?.gpsRetained !== false) errors.push(`${label}: precise GPS must not be retained publicly`);
+
+  const raster = isRasterMediaType(asset.mediaType);
+  if (asset.mediaType === 'atlas-illustration') {
+    if (asset.evidentiaryStatus !== 'illustrative-not-evidence') errors.push(`${label}: Atlas illustrations must remain non-evidentiary`);
+    if (!text(asset.syntheticLabel) || asset.syntheticLabel.trim().length < 20) errors.push(`${label}: conspicuous synthetic label is required`);
+  }
+  if (raster && asset.privacy?.exifRetained !== false) errors.push(`${label}: public raster derivatives must not retain EXIF`);
+  if (raster && ['supporting-evidence','primary-evidence'].includes(asset.evidentiaryStatus)) {
+    if (asset.identification.confidence === 'not-applicable' || asset.identification.editorialStatus === 'illustrative') errors.push(`${label}: evidentiary photographs require substantive identity metadata`);
+  }
+
+  errors.push(...validateSourceAndDerivatives(asset, { root }));
+  return errors;
+}
+
+export function validateCatalogueAsset(asset, { root = ROOT } = {}) {
+  const errors = [];
+  const label = asset?.id || 'unknown-catalogue-media';
+  if (asset?.status !== 'approved') errors.push(`${label}: Catalogue asset not approved`);
+  for (const key of ['creator','rightsHolder','rightsBasis','licence','sourceUrl','attributionText','altText','caption']) if (!text(asset?.[key])) errors.push(`${label}: ${key} must be non-empty`);
+  if (asset?.rightsBasis === 'creative-commons' && !text(asset?.licenceUrl)) errors.push(`${label}: Creative Commons asset requires licenceUrl`);
+  if (!text(asset?.identity?.identificationBasis) || !text(asset?.identity?.limitations) || !text(asset?.identity?.publicQualification)) errors.push(`${label}: complete identity-confidence metadata is required`);
+  if (asset?.privacy?.gpsRetained !== false || asset?.privacy?.exifRetained !== false) errors.push(`${label}: public Catalogue derivatives must remove GPS and EXIF`);
+  errors.push(...validateSourceAndDerivatives(asset, { root, requireRasterSource:true }));
+  return errors;
+}
+
 export function validateMediaRepository({
   root = ROOT,
   sideDirectory = path.join(root, 'atlas-repository/reference-standards/media'),
+  catalogueSideDirectory = path.join(root, 'atlas-repository/catalogue-profiles/media'),
+  catalogueSchemaPath = path.join(root, 'atlas-repository/schemas/catalogue-media.schema.json'),
   coveragePlan = path.join(root, 'atlas-repository/media-coverage.json'),
   requireCoverage = true
 } = {}) {
   const errors = [];
-  let assets = 0;
+  let referenceAssets = 0;
+  let catalogueAssets = 0;
   const files = fs.readdirSync(sideDirectory).filter(file => /^RC-\d{3}\.media\.json$/.test(file)).sort();
   for (const file of files) {
     const sidecar = read(path.join(sideDirectory, file));
     if (sidecar.status !== 'approved') errors.push(`${sidecar.recordId}: sidecar not approved`);
     for (const asset of sidecar.assets) {
-      assets += 1;
+      referenceAssets += 1;
       errors.push(...validateAsset(asset, { root }));
     }
   }
 
-  try { buildMedia({ check:true, root, sideDirectory, manifestDirectory:path.join(root, 'public/media/derivatives') }); }
+  try {
+    const catalogue = loadCatalogueMediaDirectory({ directory:catalogueSideDirectory, schemaPath:catalogueSchemaPath });
+    for (const sidecar of catalogue.sidecars) {
+      for (const asset of sidecar.assets) {
+        catalogueAssets += 1;
+        errors.push(...validateCatalogueAsset(asset, { root }));
+      }
+    }
+  } catch (error) {
+    errors.push(error.message);
+  }
+
+  try { buildMedia({ check:true, root, sideDirectory, catalogueSideDirectory, manifestDirectory:path.join(root, 'public/media/derivatives') }); }
   catch (error) { errors.push(error.message); }
 
   if (requireCoverage) {
@@ -142,14 +174,15 @@ export function validateMediaRepository({
     }
     for (const row of plan.records.slice(0,5)) if (row.releaseMinimum !== 'met') errors.push(`${row.recordId}: release minimum not met`);
   }
-  return { errors, assets, derivatives:assets * requiredProfiles.length };
+  const assets = referenceAssets + catalogueAssets;
+  return { errors, assets, referenceAssets, catalogueAssets, derivatives:assets * requiredProfiles.length };
 }
 
 if (import.meta.url === `file://${process.argv[1]}`) {
-  const result = validateMediaRepository({ root:ROOT, sideDirectory:SIDE, coveragePlan:PLAN });
+  const result = validateMediaRepository({ root:ROOT, sideDirectory:SIDE, catalogueSideDirectory:CAT_SIDE, catalogueSchemaPath:CAT_SCHEMA, coveragePlan:PLAN });
   if (result.errors.length) {
     console.error(result.errors.join('\n'));
     process.exit(1);
   }
-  console.log(`Media validation: PASS — ${result.assets} governed assets; ${result.derivatives} derivatives; 20-record coverage plan`);
+  console.log(`Media validation: PASS — ${result.referenceAssets} Reference Standard assets; ${result.catalogueAssets} Catalogue assets; ${result.derivatives} derivatives; 20-record RC coverage plan`);
 }
