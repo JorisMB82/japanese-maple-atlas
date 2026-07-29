@@ -8,9 +8,15 @@ const packageJson = readJson(path.join(ROOT, 'package.json'));
 const lock = readJson(path.join(ROOT, 'package-lock.json'));
 const manifest = readJson(path.join(ROOT, 'atlas-repository', 'manifest.json'));
 const catalogueDirectory = path.join(ROOT, 'atlas-repository', 'catalogue-profiles');
+const catalogueMediaDirectory = path.join(catalogueDirectory, 'media');
 const identityRegistry = readJson(path.join(catalogueDirectory, 'contract', 'cultivar-identity-registry.json'));
 const catalogueFiles = fs.readdirSync(catalogueDirectory).filter(file => /^CUL-\d{6}\.json$/.test(file)).sort();
 const catalogueInputs = catalogueFiles.map(file => readJson(path.join(catalogueDirectory, file)));
+const catalogueMediaFiles = fs.existsSync(catalogueMediaDirectory)
+  ? fs.readdirSync(catalogueMediaDirectory).filter(file => /^CUL-\d{6}\.media\.json$/.test(file)).sort()
+  : [];
+const catalogueMediaInputs = catalogueMediaFiles.map(file => readJson(path.join(catalogueMediaDirectory, file)));
+const catalogueMediaAssets = catalogueMediaInputs.flatMap(sidecar => sidecar.assets || []);
 const publishedCatalogueProfiles = catalogueInputs.filter(profile => profile.catalogueState === 'published');
 const nonPublicCatalogueProfiles = catalogueInputs.filter(profile => profile.catalogueState !== 'published');
 const failures = [];
@@ -36,6 +42,8 @@ check(manifest.contract?.profile === 'canonical-rc-v1', 'canonical RC contract i
 check(manifest.objectTotal === gates.repositoryInvariants.objectTotal, 'repository object total is stable', manifest.objectTotal);
 check(manifest.objectCounts.cultivars === gates.repositoryInvariants.cultivars, 'Reference Standard cultivar count is stable');
 check(publishedCatalogueProfiles.length === gates.repositoryInvariants.catalogueProfiles, 'published Catalogue Profile count matches governed quality configuration', publishedCatalogueProfiles.length);
+check(catalogueMediaInputs.length === gates.repositoryInvariants.catalogueMediaSidecars, 'Catalogue media sidecar count matches governed quality configuration', catalogueMediaInputs.length);
+check(catalogueMediaAssets.length === gates.repositoryInvariants.catalogueMediaAssets, 'Catalogue media asset count matches governed quality configuration', catalogueMediaAssets.length);
 check(identityRegistry.entries?.length === gates.repositoryInvariants.stableCultivarIdentities, 'stable cultivar identity inventory matches governed quality configuration', identityRegistry.entries?.length);
 check(identityRegistry.status === 'approved' && identityRegistry.identityFamily === 'CUL-######', 'approved stable cultivar identity contract is active');
 check(manifest.objectCounts.assertions === gates.repositoryInvariants.assertions, 'assertion count is stable');
@@ -53,12 +61,15 @@ for (const file of [
   'tests/unit/reference-standard-contract.test.mjs',
   'tests/unit/catalogue-profile-contract.test.mjs',
   'tests/unit/catalogue-discovery.test.mjs',
+  'tests/unit/catalogue-media.test.mjs',
   'tests/integration/repository-regression.test.mjs',
   'tests/integration/compiler-determinism.test.mjs',
   'tests/integration/compiler-scaling.test.mjs',
   'tests/integration/schema-conformance.test.mjs',
   'tests/integration/catalogue-profile-pipeline.test.mjs',
+  'tests/integration/catalogue-media-pipeline.test.mjs',
   'tests/regression/static-export.test.mjs',
+  'lib/catalogue-media.mjs',
   'scripts/validate-schemas.mjs',
   'scripts/validate-catalogue-profiles.mjs',
   'scripts/compile-catalogue-profiles.mjs',
@@ -72,6 +83,10 @@ for (const file of [
   'docs/EXPLORER-001_Interactive-Atlas-Explorer_v1.0.md',
   'docs/DR-ENGINEERING-002_Catalogue-MVP-Data-Path.md',
   'docs/DR-ENGINEERING-003_Non-Public-Catalogue-Discovery-Boundary.md',
+  'docs/DR-STRATEGY-003_Visual-First-Catalogue-Owner-Approval.md',
+  'docs/ROADMAP-002B_Visual-First-Catalogue-Amendment_v1.0_APPROVED.md',
+  'docs/CATALOGUE-002_Visual-First-Catalogue-Media-Contract_v1.0.md',
+  'docs/MEDIA-016_Visual-First-Catalogue-Policy_v1.0.md',
   'SPRINT-9.5.md',
   'SPRINT-10.md',
   'SPRINT-11.md',
@@ -80,6 +95,11 @@ for (const file of [
   'docs/COMPILER-002_Scalable-Reference-Standard-Ingestion_v1.0.md',
   'docs/DR-011-001_Canonical-RC-Contract-and-Legacy-Adapters.md'
 ]) check(exists(file), `required quality file ${file}`);
+
+check(
+  fs.readFileSync(path.join(ROOT, 'atlas-repository/schemas/catalogue-media.schema.json'), 'utf8') === fs.readFileSync(path.join(ROOT, 'schemas/catalogue-media.schema.json'), 'utf8'),
+  'Catalogue media canonical and mirrored schemas match exactly'
+);
 
 const workflow = exists('.github/workflows/repository-validation.yml') ? fs.readFileSync(path.join(ROOT, '.github/workflows/repository-validation.yml'), 'utf8') : '';
 for (const command of ['npm ci', 'validate:reference-standards', 'validate:catalogue', 'compile:catalogue:check', 'validate:scale', 'validate:schemas', 'validate:explorer', 'test:coverage', 'test:regression', 'validate:quality']) check(workflow.includes(command), `CI includes ${command}`);
@@ -95,6 +115,12 @@ for (const profile of catalogueInputs) {
   } else {
     check(profile.publishedAt === null, `non-public Catalogue input ${profile.cultivarId} keeps publishedAt null`);
   }
+}
+for (const sidecar of catalogueMediaInputs) {
+  check(sidecar.publicationClass === 'catalogue-profile', `Catalogue media ${sidecar.cultivarId} declares its publication class`);
+  check(sidecar.status === 'approved', `Catalogue media ${sidecar.cultivarId} is approved before release`);
+  check((sidecar.assets || []).length <= 5, `Catalogue media ${sidecar.cultivarId} stays within five-item gallery maximum`);
+  check((sidecar.assets || []).every(asset => asset.rightsBasis !== 'rights-unresolved'), `Catalogue media ${sidecar.cultivarId} contains no rights-unresolved public asset`);
 }
 for (const temporary of [
   'scripts/finalize-sprint9.py',
@@ -128,7 +154,7 @@ if (outputExists) {
   }
 }
 
-console.log('Japanese Maple Atlas — two-speed quality infrastructure validation');
+console.log('Japanese Maple Atlas — Visual-First two-speed quality infrastructure validation');
 for (const line of checks) console.log(line);
 if (failures.length) {
   console.error(`\nErrors: ${failures.length}`);
