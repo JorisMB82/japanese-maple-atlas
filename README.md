@@ -4,49 +4,71 @@ An evidence-aware botanical knowledge platform for finding, comparing and resear
 
 ## Current programme baseline — application v0.11.5
 
-The repository is operating under **ROADMAP-002 Version 1.1 — Approved and governing**, an integrated three-track plan for engineering, editorial/content production and media/visual assets.
+The repository operates under the approved two-speed publication model:
+
+- **Catalogue Profiles** provide reviewed, risk-qualified breadth through the lean C0–C3 workflow;
+- **Reference Standards** provide selected cultivars with deep G1–G9 assurance;
+- one stable `CUL-######` identity persists across revision or later Reference Standard promotion;
+- the repository remains the source of truth and `main` remains the production source.
+
+ROADMAP-002A Version 1.0 is the governing amendment to the approved three-track roadmap.
 
 Current state:
 
-- Sprint 11 scalable ingestion is complete;
-- Sprint 11.5 media governance and deterministic visual derivatives are complete and merged;
-- RC-001 through RC-005 remain the five frozen public Reference Standards;
-- the repository contains 235 first-class objects;
-- RC-006 through RC-010 are the first coordinated publication wave;
-- editorial and media work proceed in separate streams and converge through engineering/integration validation.
+- RC-001 through RC-005 are the five frozen public Reference Standards;
+- RC-006 through RC-010 have passed G4 but remain non-public while G5 media is blocked;
+- the Reference Standard repository contains 235 first-class objects;
+- the Catalogue MVP schema, identity registry, validator, compiler and class-aware front end are implemented without publishing a real Catalogue Profile;
+- `CUL-000011` through `CUL-000025` are reserved programme identities, not assigned cultivars;
+- editorial is preparing the owner decision for the actual 011–025 assignments;
+- media is planning governed visual coverage across identities 001–025.
 
 Authoritative programme documents:
 
-- [`ROADMAP-002 Version 1.1 — Approved Integrated Three-Track Operating Plan`](docs/ROADMAP-002_Post-Sprint-10_RC-020-Visual-Atlas-Roadmap_v1.1_APPROVED.docx)
-- [`DR-ROADMAP-002-001 — Approval and implementation record`](docs/DR-ROADMAP-002-001_Approval-of-ROADMAP-002-v1.1.md)
-- [`STATUS-002 — Post-Sprint-11.5 three-track baseline`](docs/STATUS-002_Post-Sprint-11.5-Three-Track-Baseline.md)
+- [`ROADMAP-002A Version 1.0 — Approved two-speed governing amendment`](docs/ROADMAP-002A_Two-Speed-Catalogue-and-Reference-Standard-Addendum_v1.0_APPROVED.md)
+- [`DR-STRATEGY-002 — Project Owner ratification`](docs/DR-STRATEGY-002_Two-Speed-Owner-Ratification.md)
+- [`CATALOGUE-001 — Catalogue Profile specification`](docs/CATALOGUE-001_Catalogue-Profile-Specification_v0.1.md)
+- [`ARCH-002 — Stable cultivar identity and publication classes`](docs/ARCH-002_Stable-Cultivar-Identity-and-Publication-Class-Model_v0.1.md)
 - [`RC-001–RC-025 programme register`](docs/PROGRAMME-REGISTER_RC-001-RC-025.md)
 
-The historical Version 1.0 Markdown roadmap remains in the repository for traceability but is operationally superseded by Version 1.1.
+The original ROADMAP-002 Version 1.1 remains authoritative for the three-track operating model except where ROADMAP-002A expressly amends the publication architecture.
+
+## Publication classes and gates
+
+### Catalogue Profile
+
+A normal low-risk Catalogue Profile uses one canonical JSON input under:
+
+`atlas-repository/catalogue-profiles/CUL-######.json`
+
+It passes:
+
+- **C0** — owner-approved assignment and duplicate review;
+- **C1** — lean content, sources, risk and editorial review;
+- **C2** — one approved primary visual or an explicit governed visual gap;
+- **C3** — schema, semantic, build, regression, release and production validation.
+
+High-risk profiles cannot use routine batch approval. A probable duplicate, unresolved identity or unqualified media candidate blocks publication.
+
+### Reference Standard
+
+Reference Standards retain the existing canonical Markdown and sidecar contract, G1–G9, individual owner G8 freeze and deterministic Atlas Compiler publication path.
+
+Catalogue publication does not weaken or replace a Reference Standard.
 
 ## Three-track ownership
 
-- **Engineering/integration:** contracts, schemas, compiler, validation, generated systems, application, CI and deployment.
-- **Editorial/content:** cultivar selection, RC Markdown, source sidecars, evidence synthesis, editorial decisions and freeze recommendations.
-- **Media/visual assets:** source assets, media sidecars, rights/provenance, specimen-identity treatment, captions, alt text and coverage.
+- **Engineering/integration:** contracts, stable identity, schemas, compiler, validation, generated systems, application, CI, releases and batch integration.
+- **Editorial/content:** cultivar assignment proposals, duplicate/risk review, Catalogue content and compact sources, Reference Standard research and freeze recommendations.
+- **Media/visual assets:** candidates, rights, provenance, specimen-identity treatment, source preservation, derivatives, governed gaps, captions, alt text and coverage.
 
-Branches should normally use `engineering/`, `content/`, `media/` and `integration/` prefixes. No track should edit another track's owned files or assume that unmerged files in another conversation exist.
-
-## Sprint 11.5 media governance
-
-Sprint 11.5 adds the governed visual layer required before RC-006 production:
-
-- media-v2 rights, licence, provenance, privacy and approval metadata;
-- preserved source checksums and deterministic thumb, card, display and archive derivatives;
-- conspicuous non-evidentiary labelling for Atlas illustrations and reconstructions;
-- RC-001 through RC-020 coverage accounting with explicit governed gaps;
-- media processing, drift validation, schema checks, tests and CI integration.
-
-The five frozen botanical records and 235 repository objects remain unchanged. Visual attractiveness is presentation only and is never cultivar-identification evidence.
+Branches normally use `engineering/`, `content/`, `media/` and `integration/` prefixes. No track should edit another track's owned files or assume that unmerged work exists.
 
 ## Repository principle
 
-The repository is the source of truth. The application is a derived interface. Contributions enter through governed inputs and only approved, validated repository knowledge may reach publication outputs. Explorer searches, saved views, selections, comparison pairs and exports never modify repository knowledge.
+The repository is the source of truth. The application is a derived interface. Only approved, validated repository knowledge may reach public outputs.
+
+Searches, saved views, research sets, comparison pairs and exports never modify repository knowledge. Visual resemblance is never treated as cultivar authentication.
 
 ## Install and run locally
 
@@ -55,96 +77,77 @@ npm ci
 npm run dev
 ```
 
-Open `http://localhost:3000`. The integrated Explorer is at `http://localhost:3000/explorer`; the graph remains at `http://localhost:3000/graph`.
+Open `http://localhost:3000`. The class-aware Explorer is at `http://localhost:3000/explorer`; the relationship graph is at `http://localhost:3000/graph`.
 
-## Explorer workflows
+## Explorer and comparison workflows
 
-The Explorer supports:
+The public interface supports:
 
-- everyday searches such as `upright laceleaf`, `weeping red`, or `partial shade`;
-- common filters for growth habit, leaf form and foliage colour;
-- advanced filters for exposure, mature scale and growing considerations;
+- filtering by **Catalogue Profile** or **Reference Standard**;
+- stable cultivar identity and record-ID disclosure;
+- everyday searches such as `upright laceleaf`, `weeping red` or `partial shade`;
+- common and advanced horticultural facets;
 - gallery, trait-table, seasonal and relationship views;
-- separate spring, summer, autumn and winter-interest inspection;
-- explicit comparison-pair selection inside a research set of up to five cultivars;
+- cross-class comparison with evidence-depth and media-state disclosure;
 - shareable URL state and browser-local saved views;
-- print/PDF, CSV and machine-readable JSON export.
+- print/PDF, CSV and governed JSON export.
 
-Technical evidence, relationship rationale, confidence, repository versions and hashes remain available through contextual disclosures and repository pages.
+Reference Standards expose structured assertions and evidence. Catalogue Profiles expose their compact sources, risk, review state, confidence and media state without implying equivalent assurance depth.
 
 ## Quality commands
 
 ```bash
-npm run process:media                # generate deterministic visual derivatives
-npm run validate:media               # rights, provenance, privacy and coverage checks
-npm run validate:reference-standards # canonical RC and sidecar preflight
-npm run compile:atlas:dry-run        # build and report without publishing
-npm run verify:repository            # contributor, compiler, schema, repository, search, graph and explorer checks
-npm run validate:explorer            # explorer projection, state, comparison, saved-view and export checks
-npm run test:unit                    # pure services and usability source invariants
-npm run test:integration             # repository, compiler and schema boundaries
-npm run test:coverage                # governed native Node coverage thresholds
-npm run build                        # validated production static export
-npm run test:regression              # exported routes, links, content and assets
-npm run validate:scale               # synthetic 20-, 25- and 150-record compiler proof
-npm run validate:quality             # quality-infrastructure and release invariants
-npm run verify                       # complete local release-readiness sequence
-npm run release:manifest             # release evidence and SHA-256 checksums
+npm run process:media                 # generate deterministic visual derivatives
+npm run validate:media                # rights, provenance, privacy and coverage checks
+npm run validate:reference-standards  # canonical RC and sidecar preflight
+npm run validate:catalogue            # Catalogue schema and C0–C3 semantic checks
+npm run compile:atlas:check           # Reference Standard output drift check
+npm run compile:catalogue:check       # Catalogue validation and deterministic compile check
+npm run verify:repository             # full repository, compiler, schema, search, graph and Explorer checks
+npm run test:unit                     # pure services and contract behaviour
+npm run test:integration              # repository and compiler boundaries
+npm run test:coverage                 # governed native Node thresholds
+npm run build                         # validated production static export
+npm run test:regression               # exported routes, links, disclosures and assets
+npm run validate:scale                # synthetic 20-, 25- and 150-record compiler proof
+npm run validate:quality              # quality and release invariants
+npm run verify                        # complete local release-readiness sequence
+npm run release:manifest              # release evidence and SHA-256 checksums
 ```
 
-Coverage thresholds and release invariants are governed in `quality/quality-gates.json`. The production static export is written to `out/`; release evidence is written to `release-artifacts/`.
-
-## Create a contribution
-
-```bash
-npm run contribution:new -- \
-  --target RC-001 \
-  --type evidence-addition \
-  --title "Add verified observation" \
-  --contributor CTR-CONTRIBUTOR-ID
-```
-
-Then complete the generated file under `editorial-inbox/submissions/` and run:
-
-```bash
-npm run compile:atlas
-npm run verify
-```
-
-Do not edit generated JSON under `atlas-repository/` or `lib/repository-registry.js` directly. Relationship proposals must enter through the governed relationship standards or contributor workflow and retain evidence selectors, rationale, uncertainty and review history.
+Coverage thresholds, required routes, stable identity counts and release files are governed in `quality/quality-gates.json`. Release manifests checksum the stable identity registry, Catalogue schemas, every canonical Catalogue input and the static export.
 
 ## Continuous integration and releases
 
-Every pull request and `main` update runs Reference Standard preflight, compiler drift and scale validation, repository and schema conformance, search, graph and Explorer validation, unit and integration tests, coverage thresholds, the production build and static-export regression tests. Quality and release evidence are retained as GitHub Actions artifacts.
+Every pull request and `main` update runs the three protected checks:
 
-The release-readiness workflow can be run manually. A pushed `v*` tag executes the complete verification chain, packages the static export, generates checksums and creates a GitHub release from the verified tag.
+- `Repository, schemas and tests`;
+- `Native Node coverage thresholds`;
+- `Production build and static regression`.
+
+The first job explicitly validates both publication paths. The release workflow executes the complete verification chain, generates a Catalogue-aware release manifest and packages the static export for version tags.
 
 ## Repository structure
 
-- `atlas-repository/reference-standards/` — frozen cultivar inputs plus governed contract, source-provenance and media sidecars
-- `atlas-repository/relationship-standards/` — governed relationship vocabulary and specifications
-- `editorial-inbox/` — governed contributor and submission inputs
-- `app/explorer/` — integrated interactive research workspace
-- `components/AtlasExplorerWorkspace.js` — coordinated Explorer interface
-- `lib/atlas-explorer.mjs` — deterministic Explorer state, pairing and export services
+- `atlas-repository/reference-standards/` — Reference Standard Markdown, contracts and sidecars
+- `atlas-repository/catalogue-profiles/` — Catalogue inputs plus stable identity contract
+- `atlas-repository/catalogue-profiles/contract/cultivar-identity-registry.json` — governed `CUL-######` registry
+- `atlas-repository/schemas/catalogue-profile.schema.json` — canonical Catalogue schema
+- `lib/catalogue-profile-compiler.mjs` — semantic validation and generic Catalogue compiler
+- `lib/catalogue-runtime.js` — build-time Catalogue discovery
+- `lib/catalogue-data.js` — class-aware application data layer
+- `lib/catalogue-explorer.mjs` — publication-class Explorer state and exports
+- `scripts/validate-catalogue-profiles.mjs` — canonical Catalogue validator
+- `scripts/compile-catalogue-profiles.mjs` — deterministic Catalogue check command
+- `app/explorer/` and `components/AtlasExplorerWorkspace.js` — class-aware research workspace
 - `quality/quality-gates.json` — governed thresholds, routes and release invariants
-- `tests/unit/` — search, graph, Explorer, usability and schema-validator behaviour
-- `tests/integration/` — repository, compiler and schema boundary tests
-- `tests/regression/` — production static-export regression tests
-- `scripts/compile-atlas.mjs` — deterministic, contract-driven and transactional repository compiler
-- `scripts/scale-test-compiler.mjs` — synthetic 20-, 25- and 150-record scale validation
-- `scripts/validate-explorer.mjs` — Explorer-state and repository-projection validation
-- `scripts/validate-quality.mjs` — quality-infrastructure verification
-- `.github/workflows/repository-validation.yml` — pull-request and production quality gates
-- `.github/workflows/release-readiness.yml` — validated artifact and tagged-release automation
-- `docs/EXPLORER-001_Interactive-Atlas-Explorer_v1.0.md` — Explorer architecture and operating boundary
-- `docs/UX-001_Sprint-10-Usability-Remediation_v1.0.md` — remediation decisions, tests and residual limits
-- `docs/QA-001_Testing-and-Quality-Infrastructure_v1.0.md` — quality architecture and operations
-- `docs/ROADMAP-002_Post-Sprint-10_RC-020-Visual-Atlas-Roadmap_v1.1_APPROVED.docx` — approved and governing three-track operating plan
-- `docs/ROADMAP-002_Post-Sprint-10_RC-020-Visual-Atlas-Roadmap_v1.0.md` — superseded historical roadmap
-- `docs/STATUS-002_Post-Sprint-11.5-Three-Track-Baseline.md` — current programme status addendum
-- `docs/PROGRAMME-REGISTER_RC-001-RC-025.md` — live cross-track operating register
-- `docs/COMPILER-002_Scalable-Reference-Standard-Ingestion_v1.0.md` — canonical ingestion and publication contract
-- `SPRINT-11.md` — Sprint 11 implementation and review boundary
-- `SPRINT-11.5.md` — completed governed media pipeline record
-- `docs/MEDIA-002_Visual-Asset-Governance-and-Pipeline_v1.0.md` — media contract and operating procedure
+- `tests/unit/`, `tests/integration/`, `tests/regression/` — contract, pipeline and static-export tests
+- `.github/workflows/repository-validation.yml` — protected pull-request and production gates
+- `.github/workflows/release-readiness.yml` — validated artefact and tagged-release automation
+- `docs/DR-ENGINEERING-002_Catalogue-MVP-Data-Path.md` — governed implementation decision
+
+## Current publication boundary
+
+The generic Catalogue path is infrastructure only until the Project Owner approves the actual cultivar assignments for slots 011–025.
+
+No reserved identity, synthetic fixture or media candidate is a public cultivar record. The first real batch may be published only after its assignments are approved and every record passes C0–C3.
