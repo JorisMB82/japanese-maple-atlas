@@ -7,7 +7,16 @@ export default function MediaGallery({ cultivar }) {
   const [selected, setSelected] = useState(cultivar.media?.[0]?.id || null);
   const active = cultivar.media?.find(item => item.id === selected) || cultivar.media?.[0];
 
-  if (!cultivar.media?.length) return <div className="empty card"><h3>No media objects</h3><p>The repository has no media attached to this cultivar.</p></div>;
+  if (!cultivar.media?.length) {
+    const governedGap = cultivar.mediaState === 'governed-gap';
+    return <div className="empty card">
+      <h3>{governedGap ? 'Governed visual gap' : 'No media objects'}</h3>
+      <p>{governedGap
+        ? 'No approved cultivar-specific image is currently available. The Atlas has recorded this as a governed visual gap and will add an image after rights, provenance and identity review.'
+        : 'The repository has no media attached to this cultivar.'}</p>
+      {governedGap && <p>No generic or substitute cultivar image is displayed.</p>}
+    </div>;
+  }
 
   return <div className="mediaGallery">
     <MediaPlate media={active} cultivar={cultivar} />
