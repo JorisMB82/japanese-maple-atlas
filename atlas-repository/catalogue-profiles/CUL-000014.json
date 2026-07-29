@@ -7,8 +7,8 @@
   "taxonId": "TAX-APAL",
   "scientificName": "Acer palmatum ‘Beni-kawa’",
   "publicationClass": "catalogue-profile",
-  "profileVersion": "1.0.0",
-  "catalogueState": "review-ready",
+  "profileVersion": "1.1.0",
+  "catalogueState": "published",
   "riskLevel": "low",
   "riskReasons": [
     "The accepted name, supported taxon and coral-stem identity are consistent across two strong institutional profiles.",
@@ -18,154 +18,54 @@
   "duplicateCheck": {
     "reviewedBy": "Japanese Maple Atlas editorial stream",
     "reviewedAt": "2026-07-28T23:30:00Z",
-    "comparedIds": [
-      "RC-001",
-      "RC-002",
-      "RC-003",
-      "RC-004",
-      "RC-005",
-      "RC-006",
-      "RC-007",
-      "RC-008",
-      "RC-009",
-      "RC-010",
-      "CUL-000011",
-      "CUL-000012",
-      "CUL-000013",
-      "CUL-000015",
-      "CUL-000016",
-      "CUL-000017",
-      "CUL-000018",
-      "CUL-000019",
-      "CUL-000020",
-      "CUL-000021",
-      "CUL-000022",
-      "CUL-000023",
-      "CUL-000024",
-      "CUL-000025"
-    ],
-    "comparedNames": [
-      "Bloodgood",
-      "Seiryu",
-      "Sango-kaku",
-      "Crimson Queen",
-      "Aureum",
-      "Osakazuki",
-      "Butterfly",
-      "Shishi-gashira",
-      "Katsura",
-      "Mikawa-yatsubusa",
-      "Orange Dream",
-      "Koto-no-ito",
-      "Inaba-shidare",
-      "Trompenburg",
-      "Autumn Moon",
-      "Waterfall",
-      "Aoyagi",
-      "Shin-deshōjō",
-      "Red Dragon",
-      "Tamukeyama",
-      "Orangeola",
-      "Higasa-yama",
-      "Arakawa",
-      "Red Pygmy",
-      "Sango Kaku"
-    ],
+    "comparedIds": ["RC-001","RC-002","RC-003","RC-004","RC-005","RC-006","RC-007","RC-008","RC-009","RC-010","CUL-000011","CUL-000012","CUL-000013","CUL-000015","CUL-000016","CUL-000017","CUL-000018","CUL-000019","CUL-000020","CUL-000021","CUL-000022","CUL-000023","CUL-000024","CUL-000025"],
+    "comparedNames": ["Bloodgood","Seiryu","Sango-kaku","Crimson Queen","Aureum","Osakazuki","Butterfly","Shishi-gashira","Katsura","Mikawa-yatsubusa","Orange Dream","Koto-no-ito","Inaba-shidare","Trompenburg","Autumn Moon","Waterfall","Aoyagi","Shin-deshōjō","Red Dragon","Tamukeyama","Orangeola","Higasa-yama","Arakawa","Red Pygmy","Sango Kaku"],
     "result": "unique",
     "notes": "Compared with all RC-001–RC-010 records and all other approved Catalogue assignments. It is distinct from RC-003 ‘Sango-kaku’: RHS explicitly calls it similar, but the accepted name, published size and foliage sequence remain separate. It is also distinct from CUL-000018 ‘Aoyagi’ and CUL-000024 ‘Arakawa’. C0 resolves as unique."
   },
-  "namingVariants": [
-    "Beni kawa",
-    "Beni Kawa"
-  ],
+  "namingVariants": ["Beni kawa","Beni Kawa"],
   "identityNotes": "The Atlas uses the RHS accepted hyphenated form ‘Beni-kawa’. Spaced forms are retained for search only. No synonym is approved. Coral-red young stems are a descriptive trait, not proof of identity.",
   "content": {
     "summary": "A compact to medium coral-bark Japanese maple with vivid red young stems in winter, green summer foliage and a yellow to golden autumn display.",
     "habit": "Bushy, spreading-branched to upright-rounded deciduous small tree. It is often relatively compact in its first decade and broadens with age.",
     "leafForm": "Palmate leaves with five to seven slender, pointed lobes and serrated margins. The foliage is not dissected; the main distinguishing emphasis is the combination of young-stem colour and seasonal leaves.",
-    "seasonal": {
-      "spring": "RHS reports pinkish-yellow opening leaves, while Missouri Botanical Garden describes soft-green emergence; small reddish flowers may occur.",
-      "summer": "Leaves mature green while young stems retain the cultivar's coral-red interest most strongly outside the leafy season.",
-      "autumn": "Foliage turns yellow to golden yellow, with source and site variation."
-    },
-    "size": {
-      "height": "2.5–4.6 m",
-      "spread": "2.5–4.6 m",
-      "qualifier": "RHS gives 2.5–4 m; Missouri Botanical Garden gives eventual dimensions of 12–15 ft, with about 5–7 ft reported over the first ten years."
-    },
+    "seasonal": {"spring":"RHS reports pinkish-yellow opening leaves, while Missouri Botanical Garden describes soft-green emergence; small reddish flowers may occur.","summer":"Leaves mature green while young stems retain the cultivar's coral-red interest most strongly outside the leafy season.","autumn":"Foliage turns yellow to golden yellow, with source and site variation."},
+    "size": {"height":"2.5–4.6 m","spread":"2.5–4.6 m","qualifier":"RHS gives 2.5–4 m; Missouri Botanical Garden gives eventual dimensions of 12–15 ft, with about 5–7 ft reported over the first ten years."},
     "cultivation": "Provide moist, well-drained soil and a sheltered site in full sun to partial shade. In hotter climates, partial shade and consistent soil moisture reduce scorch; avoid persistently dry or exposed locations.",
     "diagnostic": "The comparison with RC-003 ‘Sango-kaku’ is deliberate: both have coral-toned young stems, but ‘Beni-kawa’ is maintained as a separate accepted cultivar with a generally smaller published framework and its own foliage sequence. Bark colour alone cannot authenticate either cultivar.",
     "confidence": "High confidence in accepted name, taxon, young-stem colour and broad habit; moderate confidence in exact spring emergence colour and mature dimensions because the two institutional profiles use different descriptions and timeframes.",
     "unresolvedIssue": "The pinkish-yellow versus soft-green spring-emergence wording remains source-specific, and the lean profile does not investigate original selection history."
   },
   "sources": [
-    {
-      "id": "SRC-CUL-000014-01",
-      "sourceClass": "institutional",
-      "title": "Acer palmatum 'Beni-kawa' (P) — plant profile",
-      "authority": "Royal Horticultural Society",
-      "url": "https://www.rhs.org.uk/plants/46878/acer-palmatum-beni-kawa-p/details",
-      "accessedAt": "2026-07-28T23:30:00Z",
-      "locator": "Plant profile sections: accepted name, comparison with Sango-kaku, stem and leaf sequence, size, cultivation and propagation.",
-      "claimsSupported": [
-        "identity",
-        "name status",
-        "comparison",
-        "habit",
-        "leaf form",
-        "seasonality",
-        "size",
-        "cultivation",
-        "propagation"
-      ],
-      "limitations": "UK-centred framework; the similarity statement does not establish synonymy or authenticate individual plants.",
-      "confidence": "high"
-    },
-    {
-      "id": "SRC-CUL-000014-02",
-      "sourceClass": "institutional",
-      "title": "Acer palmatum 'Beni-kawa' — Plant Finder",
-      "authority": "Missouri Botanical Garden",
-      "url": "https://www.missouribotanicalgarden.org/PlantFinder/PlantFinderDetails.aspx?basic=acer+palmatum&isprofile=1&taxonid=241777",
-      "accessedAt": "2026-07-28T23:30:00Z",
-      "locator": "Cultivar profile: coral-red stems, habit, first-decade and mature size, leaf morphology, autumn colour and culture.",
-      "claimsSupported": [
-        "identity",
-        "habit",
-        "stem colour",
-        "leaf form",
-        "seasonality",
-        "size",
-        "cultivation"
-      ],
-      "limitations": "US garden framework; dimensions and first-decade growth are contextual and not universal.",
-      "confidence": "high"
-    }
+    {"id":"SRC-CUL-000014-01","sourceClass":"institutional","title":"Acer palmatum 'Beni-kawa' (P) — plant profile","authority":"Royal Horticultural Society","url":"https://www.rhs.org.uk/plants/46878/acer-palmatum-beni-kawa-p/details","accessedAt":"2026-07-28T23:30:00Z","locator":"Plant profile sections: accepted name, comparison with Sango-kaku, stem and leaf sequence, size, cultivation and propagation.","claimsSupported":["identity","name status","comparison","habit","leaf form","seasonality","size","cultivation","propagation"],"limitations":"UK-centred framework; the similarity statement does not establish synonymy or authenticate individual plants.","confidence":"high"},
+    {"id":"SRC-CUL-000014-02","sourceClass":"institutional","title":"Acer palmatum 'Beni-kawa' — Plant Finder","authority":"Missouri Botanical Garden","url":"https://www.missouribotanicalgarden.org/PlantFinder/PlantFinderDetails.aspx?basic=acer+palmatum&isprofile=1&taxonid=241777","accessedAt":"2026-07-28T23:30:00Z","locator":"Cultivar profile: coral-red stems, habit, first-decade and mature size, leaf morphology, autumn colour and culture.","claimsSupported":["identity","habit","stem colour","leaf form","seasonality","size","cultivation"],"limitations":"US garden framework; dimensions and first-decade growth are contextual and not universal.","confidence":"high"}
   ],
   "media": {
-    "state": "candidate-under-review",
+    "state": "governed-gap",
     "primaryMediaId": null,
     "candidateMediaIds": [],
-    "governedGap": null,
+    "governedGap": {
+      "reason": "MVG-CUL-000014-001 approved temporarily: institutional candidates exist, but reuse rights, original delivery, accession mapping and adequate dormant-stem coverage remain unresolved.",
+      "reviewer": "Project Owner",
+      "reviewedAt": "2026-07-29T02:20:00Z",
+      "backfillPriority": "high",
+      "publicWording": "No approved cultivar-specific image is currently available. The Atlas has recorded this as a governed visual gap and will add an image after rights, provenance and identity review."
+    },
     "visualComplete": false,
-    "identityBasis": "uncertain"
+    "identityBasis": "asserted"
   },
   "review": {
-    "reviewedBy": "Japanese Maple Atlas editorial stream",
-    "reviewedAt": "2026-07-28T23:30:00Z",
-    "approvalState": "editorial-approved",
-    "notes": "C0 duplicate and naming review is complete and C1 editorial/source readiness is approved. Media remains outside editorial approval and publication remains blocked pending C2 and C3."
+    "reviewedBy": "Project Owner and CTO / engineering",
+    "reviewedAt": "2026-07-29T02:20:00Z",
+    "approvalState": "batch-approved",
+    "notes": "C0 and C1 passed. The Project Owner approved temporary governed gap MVG-CUL-000014-001 with high-priority backfill and a 30 September 2026 review. C3 publication remains subject to the protected workflow and production inspection."
   },
   "batchId": "C-001",
   "promotionStatus": "not-nominated",
   "referenceStandardId": null,
-  "publishedAt": null,
+  "publishedAt": "2026-07-29T02:20:00Z",
   "revisionHistory": [
-    {
-      "version": "1.0.0",
-      "date": "2026-07-28T23:30:00Z",
-      "actor": "Japanese Maple Atlas editorial stream",
-      "change": "Created the canonical non-public Catalogue Profile input; completed C0 duplicate/naming review and C1 editorial/source review."
-    }
+    {"version":"1.0.0","date":"2026-07-28T23:30:00Z","actor":"Japanese Maple Atlas editorial stream","change":"Created the canonical non-public Catalogue Profile input; completed C0 duplicate/naming review and C1 editorial/source review."},
+    {"version":"1.1.0","date":"2026-07-29T02:20:00Z","actor":"Project Owner and CTO / engineering","change":"Approved temporary governed visual gap MVG-CUL-000014-001, batch-approved the low-risk profile and initiated C3 publication for Catalogue Batch C-001."}
   ]
 }

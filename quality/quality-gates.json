@@ -1,5 +1,5 @@
 {
-  "schemaVersion": "1.5.0",
+  "schemaVersion": "1.6.0",
   "nodeVersion": 24,
   "applicationVersion": "0.11.5",
   "repositoryVersion": "0.11.0",
@@ -11,7 +11,7 @@
   "repositoryInvariants": {
     "objectTotal": 235,
     "cultivars": 5,
-    "catalogueProfiles": 0,
+    "catalogueProfiles": 5,
     "stableCultivarIdentities": 25,
     "assertions": 110,
     "evidence": 35,
@@ -35,7 +35,12 @@
     "/cultivars/seiryu",
     "/cultivars/sango-kaku",
     "/cultivars/crimson-queen",
-    "/cultivars/aureum"
+    "/cultivars/aureum",
+    "/cultivars/orange-dream",
+    "/cultivars/koto-no-ito",
+    "/cultivars/inaba-shidare",
+    "/cultivars/beni-kawa",
+    "/cultivars/trompenburg"
   ],
   "requiredPackageScripts": [
     "test:unit",
@@ -64,8 +69,10 @@
     "docs/ROADMAP-002A_Two-Speed-Catalogue-and-Reference-Standard-Addendum_v1.0_APPROVED.md",
     "docs/DR-STRATEGY-002_Two-Speed-Owner-Ratification.md",
     "docs/DR-CATALOGUE-001_Owner-Approval-of-Cultivar-Assignments-011-025.md",
+    "docs/DR-CATALOGUE-002_Owner-Approval-of-C-001-Governed-Gaps-and-Publication.md",
     "docs/DR-ENGINEERING-002_Catalogue-MVP-Data-Path.md",
     "docs/DR-ENGINEERING-003_Non-Public-Catalogue-Discovery-Boundary.md",
+    "docs/HANDOFF-ENGINEERING-CATALOGUE-002_C-001-C3-Publication.md",
     "docs/COMPILER-002_Scalable-Reference-Standard-Ingestion_v1.0.md",
     "docs/DR-011-001_Canonical-RC-Contract-and-Legacy-Adapters.md",
     "atlas-repository/reference-standards/contract/rc-contract.json",
@@ -85,9 +92,5 @@
     "atlas-repository/media-coverage.json"
   ],
   "compilerVersion": "2.0.0",
-  "compilerScaleTargets": [
-    20,
-    25,
-    150
-  ]
+  "compilerScaleTargets": [20,25,150]
 }

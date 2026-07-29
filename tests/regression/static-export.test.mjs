@@ -71,6 +71,16 @@ test('navigation, repository, compare and records expose usability safeguards', 
   assert.match(htmlFor('/graph'), /Try:/i);
 });
 
+test('published Catalogue profiles disclose class and temporary governed visual gaps', () => {
+  for (const slug of ['orange-dream', 'koto-no-ito', 'inaba-shidare', 'beni-kawa', 'trompenburg']) {
+    const profile = htmlFor(`/cultivars/${slug}`);
+    assert.match(profile, /Catalogue Profile/i);
+    assert.match(profile, /No approved cultivar-specific image is currently available/i);
+    assert.match(profile, /No generic or substitute cultivar image is displayed/i);
+    assert.match(profile, /governed visual gap/i);
+  }
+});
+
 test('internal application links resolve to exported routes', () => {
   const htmlFiles = allFiles(OUT).filter(file => file.endsWith('.html'));
   const broken = [];

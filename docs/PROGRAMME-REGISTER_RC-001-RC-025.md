@@ -3,7 +3,6 @@
 **Register status:** ACTIVE  
 **Governing roadmap:** ROADMAP-002 Version 1.1 as amended by ROADMAP-002A Version 1.0  
 **Register owner:** Engineering / integration stream  
-**Approval baseline:** `4a4c67ec400644431b2c54cdd13ab842da847d00`  
 **Publication model:** Catalogue Profiles for scalable breadth; Reference Standards for deep assurance
 
 > The historical filename is retained for link compatibility. Programme identities 011–025 are Catalogue identities, not RC identifiers. An `RC-###` identifier is created only through a separately governed Reference Standard promotion decision.
@@ -12,17 +11,17 @@
 
 - Public Reference Standards: **5** — RC-001 through RC-005.
 - Non-public Reference Standard candidates: **5** — RC-006 through RC-010; all G4 PASS and G5 BLOCKED.
-- Public Catalogue Profiles: **0**.
+- Public Catalogue Profiles: **5** — CUL-000011 through CUL-000015.
 - Stable cultivar identities: **25** — CUL-000001 through CUL-000025.
 - CUL-000001 through CUL-000010: mapped to RC-001 through RC-010 without modifying frozen source records.
 - CUL-000011 through CUL-000025: Project Owner-approved Catalogue assignments under DR-CATALOGUE-001.
-- Generic Catalogue MVP: merged and operational.
+- CUL-000011 through CUL-000015: C0–C3 complete and published as Catalogue Batch C-001.
+- All five C-001 media states are temporary governed gaps approved under DR-CATALOGUE-002.
 - Stage 2 branch protection: active and validated.
-- Visual programme: V-001 through V-005 approved as an operating plan; no new asset or governed gap approved by that plan.
 
 ## 2. Operating rule
 
-This register records repository-authoritative state only. Assignment approval authorises production but does not equal C0 completion, media approval or publication.
+This register records repository-authoritative state only. Assignment approval authorises production but does not equal publication. Catalogue publication requires C0–C3; Reference Standard publication requires G0–G9.
 
 The two workflows are:
 
@@ -44,72 +43,70 @@ The two workflows are:
 | CUL-000009 | RC-009 | *Acer palmatum* ‘Katsura’ | G4 PASS | G5 BLOCKED — second RS media priority | BLOCKED | NOT PUBLIC | Secure a governed emergence/spring visual and full G5 package. |
 | CUL-000010 | RC-010 | *Acer palmatum* ‘Mikawa-yatsubusa’ | G4 PASS | G5 BLOCKED — first RS media priority | BLOCKED | NOT PUBLIC | Secure a dwarf-scale or layered-foliage visual and full G5 package. |
 
-## 4. Approved Catalogue assignments — identities 011–025
+## 4. Catalogue register — identities 011–025
 
-All assignments below were approved by the Project Owner on 2026-07-29 through DR-CATALOGUE-001. Assignment state is `assigned-catalogue`. C0 remains incomplete until the required duplicate, naming, taxon and risk review is documented.
+| Stable identity | Batch | Cultivar | Risk | Current gate | Media | Publication | Next action |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| CUL-000011 | C-001 | *Acer palmatum* ‘Orange Dream’ | LOW | C3 PASS | Temporary governed gap; high-priority backfill | PUBLISHED | Review gap by 2026-09-30; replace only through governed asset workflow. |
+| CUL-000012 | C-001 | *Acer palmatum* ‘Koto-no-ito’ | LOW | C3 PASS | Temporary governed gap; high-priority backfill | PUBLISHED | Obtain permission, originals and specimen mapping. |
+| CUL-000013 | C-001 | *Acer palmatum* ‘Inaba-shidare’ | LOW | C3 PASS | Temporary governed gap; high-priority backfill | PUBLISHED | Obtain stronger identity evidence distinguishing similar dissectums. |
+| CUL-000014 | C-001 | *Acer palmatum* ‘Beni-kawa’ | LOW | C3 PASS | Temporary governed gap; high-priority backfill | PUBLISHED | Resolve rights, accession mapping and winter-stem coverage. |
+| CUL-000015 | C-001 | *Acer palmatum* ‘Trompenburg’ | LOW | C3 PASS | Temporary governed gap; high-priority backfill | PUBLISHED | Obtain permission, originals and image-to-accession confirmation. |
+| CUL-000016 | C-002 | *Acer shirasawanum* ‘Autumn Moon’ | MEDIUM | C0 AUTHORISED — targeted review | Feasibility authorised | NOT PUBLIC | Resolve taxon-aware aliases. |
+| CUL-000017 | C-002 | *Acer palmatum* ‘Waterfall’ | LOW | C0 AUTHORISED | Feasibility authorised | NOT PUBLIC | Complete routine duplicate and naming review. |
+| CUL-000018 | C-002 | *Acer palmatum* ‘Aoyagi’ | LOW | C0 AUTHORISED | Feasibility authorised | NOT PUBLIC | Distinguish ‘Yamato-aoyagi’. |
+| CUL-000019 | C-002 | *Acer palmatum* ‘Shin-deshōjō’ | MEDIUM | C0 AUTHORISED — targeted review | Feasibility authorised | NOT PUBLIC | Resolve romanisation and label variants. |
+| CUL-000020 | C-002 | *Acer palmatum* ‘Red Dragon’ | LOW | C0 AUTHORISED | Feasibility authorised | NOT PUBLIC | Complete routine duplicate and naming review. |
+| CUL-000021 | C-003 | *Acer palmatum* ‘Tamukeyama’ | MEDIUM | C0 AUTHORISED — targeted review | Feasibility authorised | NOT PUBLIC | Resolve ‘Beni-hagoromo’ synonym scope. |
+| CUL-000022 | C-003 | *Acer palmatum* ‘Orangeola’ | LOW | C0 AUTHORISED | Feasibility authorised | NOT PUBLIC | Complete routine duplicate and naming review. |
+| CUL-000023 | C-003 | *Acer palmatum* ‘Higasa-yama’ | MEDIUM | C0 AUTHORISED — targeted review | Feasibility authorised | NOT PUBLIC | Normalise ‘Higasayama’ spelling evidence. |
+| CUL-000024 | C-003 | *Acer palmatum* ‘Arakawa’ | MEDIUM | C0 AUTHORISED — targeted review | Feasibility authorised | NOT PUBLIC | Resolve accepted-name and rough-bark aliases. |
+| CUL-000025 | C-003 | *Acer palmatum* ‘Red Pygmy’ | LOW | C0 AUTHORISED | Feasibility authorised | NOT PUBLIC | Complete routine duplicate and naming review. |
 
-| Stable identity | Batch | Approved cultivar | Taxon | Preliminary risk | Current gate | Media | Publication | Next action |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| CUL-000011 | C-001 | *Acer palmatum* ‘Orange Dream’ | TAX-APAL | LOW | C0 AUTHORISED | Feasibility authorised | NOT PUBLIC | Complete routine duplicate and naming review. |
-| CUL-000012 | C-001 | *Acer palmatum* ‘Koto-no-ito’ | TAX-APAL | LOW | C0 AUTHORISED | Feasibility authorised | NOT PUBLIC | Distinguish related near-names and complete duplicate review. |
-| CUL-000013 | C-001 | *Acer palmatum* ‘Inaba-shidare’ | TAX-APAL | LOW | C0 AUTHORISED | Feasibility authorised | NOT PUBLIC | Complete routine duplicate and naming review. |
-| CUL-000014 | C-001 | *Acer palmatum* ‘Beni-kawa’ | TAX-APAL | LOW | C0 AUTHORISED | Feasibility authorised | NOT PUBLIC | Complete routine duplicate and naming review. |
-| CUL-000015 | C-001 | *Acer palmatum* ‘Trompenburg’ | TAX-APAL | LOW | C0 AUTHORISED | Feasibility authorised | NOT PUBLIC | Distinguish ‘Green Trompenburg’ and complete duplicate review. |
-| CUL-000016 | C-002 | *Acer shirasawanum* ‘Autumn Moon’ | TAX-ASHI | MEDIUM | C0 AUTHORISED — targeted review | Feasibility authorised | NOT PUBLIC | Resolve taxon-aware aliases. |
-| CUL-000017 | C-002 | *Acer palmatum* ‘Waterfall’ | TAX-APAL | LOW | C0 AUTHORISED | Feasibility authorised | NOT PUBLIC | Complete routine duplicate and naming review. |
-| CUL-000018 | C-002 | *Acer palmatum* ‘Aoyagi’ | TAX-APAL | LOW | C0 AUTHORISED | Feasibility authorised | NOT PUBLIC | Distinguish ‘Yamato-aoyagi’. |
-| CUL-000019 | C-002 | *Acer palmatum* ‘Shin-deshōjō’ | TAX-APAL | MEDIUM | C0 AUTHORISED — targeted review | Feasibility authorised | NOT PUBLIC | Resolve romanisation and label variants. |
-| CUL-000020 | C-002 | *Acer palmatum* ‘Red Dragon’ | TAX-APAL | LOW | C0 AUTHORISED | Feasibility authorised | NOT PUBLIC | Complete routine duplicate and naming review. |
-| CUL-000021 | C-003 | *Acer palmatum* ‘Tamukeyama’ | TAX-APAL | MEDIUM | C0 AUTHORISED — targeted review | Feasibility authorised | NOT PUBLIC | Resolve ‘Beni-hagoromo’ synonym scope. |
-| CUL-000022 | C-003 | *Acer palmatum* ‘Orangeola’ | TAX-APAL | LOW | C0 AUTHORISED | Feasibility authorised | NOT PUBLIC | Complete routine duplicate and naming review. |
-| CUL-000023 | C-003 | *Acer palmatum* ‘Higasa-yama’ | TAX-APAL | MEDIUM | C0 AUTHORISED — targeted review | Feasibility authorised | NOT PUBLIC | Normalise ‘Higasayama’ spelling evidence. |
-| CUL-000024 | C-003 | *Acer palmatum* ‘Arakawa’ | TAX-APAL | MEDIUM | C0 AUTHORISED — targeted review | Feasibility authorised | NOT PUBLIC | Resolve accepted-name and rough-bark aliases. |
-| CUL-000025 | C-003 | *Acer palmatum* ‘Red Pygmy’ | TAX-APAL | LOW | C0 AUTHORISED | Feasibility authorised | NOT PUBLIC | Complete routine duplicate and naming review. |
+### Batch disposition
 
-### Batch rationale
+- **C-001:** first published Catalogue batch; five LOW-risk profiles; five temporary governed gaps; photo backfill remains active.
+- **C-002:** next production priority; three LOW-risk records and two targeted MEDIUM-risk reviews.
+- **C-003:** sequenced after C-002 unless bounded parallel research is authorised.
+- Approved cohort distribution: **10 LOW, 5 MEDIUM, 0 HIGH**.
 
-- **C-001:** authorised first production batch; five LOW-risk profiles with distinct horticultural roles and high preliminary media feasibility.
-- **C-002:** four LOW-risk profiles plus the first targeted taxon/alias review.
-- **C-003:** collector-oriented batch with four targeted naming/identity reviews and one LOW-risk linearilobum comparator.
-- Cohort distribution: **10 LOW, 5 MEDIUM, 0 HIGH**.
+## 5. C-001 publication contract
 
-## 5. Catalogue platform readiness
+The five published profiles provide:
 
-The merged Catalogue MVP provides:
+- stable CUL identity and Catalogue Profile disclosure;
+- concise horticultural profile and compact sources;
+- completed duplicate/naming review;
+- published-only runtime discovery;
+- home, Explorer, search and comparison visibility;
+- explicit governed-gap warning;
+- no generic or substitute cultivar image;
+- release checksums and static-route requirements;
+- additive rollback without frozen Reference Standard mutation.
 
-- stable identity registry and assigned Catalogue state;
-- canonical Catalogue Profile schema;
-- C0–C3 semantic validation;
-- deterministic Catalogue compiler checks;
-- class-aware home, Explorer, profile and comparison views;
-- publication-class, evidence-depth and media-state disclosure;
-- dynamic static-route validation;
-- release checksums and Catalogue inventory/hash;
-- additive rollback with no frozen Reference Standard mutation.
+Current public cultivar total: **10** — five Reference Standards plus five Catalogue Profiles.
 
-Current canonical Catalogue Profile count remains **0**.
+## 6. Media programme
 
-## 6. Media programme readiness
-
-The merged media plan provides:
+The visual programme remains:
 
 - V-001 — identities 001–005 photographic uplift;
 - V-002 — identities 006–010 Reference Standard G5 work;
-- V-003 — C-001 visual coverage;
+- V-003 — C-001 high-priority governed-gap backfill;
 - V-004 — C-002 visual coverage;
-- V-005 — C-003 visual coverage;
-- scalable acquisition operations and governed visual-gap policy.
+- V-005 — C-003 visual coverage.
 
-For a Catalogue Profile, C2 requires one approved primary visual or an approved governed visual gap. Candidate media and non-evidentiary illustrations do not satisfy C2.
+For a Catalogue Profile, C2 is satisfied by one approved primary visual or an approved governed visual gap. Candidate media and non-evidentiary illustrations do not satisfy C2. Gap approval never approves a candidate asset.
 
 ## 7. Active production sequence
 
-1. Merge DR-CATALOGUE-001, the assigned registry and this register update through the protected PR path.
-2. Editorial completes C0 for C-001 and creates five canonical Catalogue Profile inputs with compact source records.
-3. Media completes cultivar-specific feasibility and resolves C2 for each C-001 identity.
-4. Engineering validates C0–C3, class disclosure, routes, protected CI, release evidence and production output.
-5. The CTO may batch-approve and publish qualifying LOW-risk C-001 profiles.
-6. Measure effort, correction count, source count, governed-gap rate and production defects before C-002.
+1. Inspect the five C-001 production routes after deployment.
+2. Continue high-priority C-001 photo acquisition with formal review by 2026-09-30.
+3. Start C-002 C0/C1 editorial work, including targeted reviews for ‘Autumn Moon’ and ‘Shin-deshōjō’.
+4. Start C-002 candidate and rights discovery in parallel.
+5. Implement the CUL-compatible governed media asset contract before integrating an approved Catalogue photograph.
+6. Measure C-001 effort, corrections, source count, governed-gap rate and deployment defects.
+7. Publish C-002 independently after all five records pass C0–C3.
 
 Reference Standard G5 work continues in parallel, with RC-010 first and RC-009 second.
 
@@ -133,23 +130,31 @@ Reference Standard G5 work continues in parallel, with RC-010 first and RC-009 s
 ## 9. Current assessment
 
 - **Two-speed strategy and governance:** PASS.
-- **Catalogue MVP platform:** PASS.
+- **Catalogue platform:** PASS.
 - **Assignments CUL-000011–CUL-000025:** OWNER APPROVED.
-- **C-001 production:** AUTHORISED AND ACTIVE.
-- **C-002/C-003 production:** ASSIGNED; sequenced after C-001 unless bounded parallel research is authorised.
-- **Media 001–025 programme:** PASS AS OPERATING PLAN; no new asset approval.
-- **Catalogue publication:** BLOCKED pending C0–C3 completion.
+- **C-001 editorial C0/C1:** PASS.
+- **C-001 media C2:** PASS through five temporary governed gaps.
+- **C-001 publication:** PASS after protected C3 merge and route inspection.
+- **C-001 visual completeness:** FALSE for all five profiles; high-priority backfill active.
+- **C-002 production:** NEXT PRIORITY.
 - **Reference Standard Wave 1 publication:** BLOCKED at G5.
 
 ## 10. Status evidence
+
+### 2026-07-29 — Catalogue Batch C-001 publication
+
+- C0/C1 editorial profiles merged through PR #36 / `e9b9676a25feea7dde6a29d8e2d956be1924712e`.
+- Media evidence and five pending gap requests merged through PR #34 / `6fb12135d27804196466b33e74d3084e74ce37e9`.
+- Project Owner approved all five gaps through DR-CATALOGUE-002 with high backfill priority and 2026-09-30 review.
+- Engineering represented the approved gap state, required the five routes and executed C3 through the protected workflow.
+- No photograph, media source byte, source checksum or derivative was approved by the publication.
 
 ### 2026-07-29 — Owner approval of Catalogue assignments
 
 - Project Owner approved all fifteen assignments and the C-001, C-002 and C-003 groupings.
 - Medium-risk assignments remain subject to targeted C0 reviews.
 - DR-CATALOGUE-001 records the authority, assignments, limitations and production sequence.
-- Registry version 1.1.0 changes identities 011–025 from `reserved-catalogue-slot` to `assigned-catalogue`.
-- This approval creates no Catalogue Profile, public route, media approval, governed gap or Reference Standard.
+- Registry version 1.1.0 records identities 011–025 as `assigned-catalogue`.
 
 ### 2026-07-29 — Two-speed platform and planning cycle integrated
 

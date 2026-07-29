@@ -1,8 +1,11 @@
 export default function MediaPlate({ media, cultivar, compact = false }) {
   if (!media?.assetPath) {
-    return <div className={`mediaFallback ${compact ? 'compact' : ''}`} aria-label={`No media available for ${cultivar?.cultivar || 'this cultivar'}`}>
+    const governedGap = cultivar?.mediaState === 'governed-gap';
+    const wording = cultivar?.mediaGovernedGap?.publicWording || 'No approved cultivar-specific image is currently available.';
+    return <div className={`mediaFallback ${compact ? 'compact' : ''}`} aria-label={governedGap ? wording : `No media available for ${cultivar?.cultivar || 'this cultivar'}`}>
       <span aria-hidden="true">楓</span>
-      <p>Media reserved</p>
+      <p>{governedGap ? wording : 'Media reserved'}</p>
+      {governedGap && !compact && <small>No generic or substitute cultivar image is displayed.</small>}
     </div>;
   }
 
