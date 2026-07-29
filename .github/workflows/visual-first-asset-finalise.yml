@@ -26,7 +26,7 @@ jobs:
       - run: npm ci --no-audit --no-fund
       - name: Build sidecars, profile transitions and publication-path fix
         run: node scripts/finalise-visual-first-c001.mjs
-      - name: Align tests with public paths and first Catalogue galleries
+      - name: Align tests and cover both derivative resolver paths
         run: node scripts/patch-media-public-fixture.mjs
       - name: Generate outputs and run full validation
         shell: bash
