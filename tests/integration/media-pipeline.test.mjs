@@ -35,16 +35,18 @@ test('media pipeline generates and verifies twenty deterministic illustration de
   const checked = run('scripts/process-media.mjs',['--check']);
   assert.equal(checked.status,0,checked.stderr);
   const manifest = JSON.parse(fs.readFileSync(path.join(ROOT,'public/media/derivatives/manifest.json'),'utf8'));
-  assert.equal(manifest.version, 'media-pipeline-v2.1');
+  assert.equal(manifest.version, 'media-pipeline-v2.2');
   assert.equal(manifest.derivativeCount,20);
+  assert.deepEqual(manifest.publicationClasses, ['reference-standard']);
   assert.equal(new Set(manifest.entries.map(entry => entry.sha256)).size,20);
   assert.ok(manifest.entries.every(entry => entry.mimeType === 'image/svg+xml'));
+  assert.ok(manifest.entries.every(entry => entry.publicationClass === 'reference-standard'));
 });
 
 test('media governance validator passes the five-record illustration cohort and RC-020 plan', () => {
   const result = run('scripts/validate-media.mjs');
   assert.equal(result.status,0,result.stderr);
-  assert.match(result.stdout,/5 governed assets; 20 derivatives; 20-record coverage plan/);
+  assert.match(result.stdout,/5 Reference Standard assets; 0 Catalogue assets; 20 derivatives; 20-record RC coverage plan/);
 });
 
 test('governed JPEG photograph generates deterministic private-source derivatives and passes validation', () => {
@@ -102,6 +104,7 @@ test('governed JPEG photograph generates deterministic private-source derivative
 
     const generated = buildMedia({ root, sideDirectory, manifestDirectory:path.join(root,'public/media/derivatives') });
     assert.equal(generated.derivativeCount,4);
+    assert.deepEqual(generated.publicationClasses, ['reference-standard']);
     const checked = buildMedia({ check:true, root, sideDirectory, manifestDirectory:path.join(root,'public/media/derivatives') });
     assert.deepEqual(checked, generated);
     const validation = validateMediaRepository({ root, sideDirectory, requireCoverage:false });
