@@ -84,7 +84,7 @@ Use this contribution invitation, adapted only for the cultivar name and request
 ### CUL-000016 — *Acer shirasawanum* ‘Autumn Moon’
 
 - **Habit-primary:** a mature bushy, spreading or upright-rounded whole plant showing the broad crown and scale.
-- **Foliage-detail:** attached rounded leaves with nine to thirteen shallow lobes, photographed flat enough to show the full-moon leaf outline and with twig context.
+- **Foliage-detail:** attached rounded leaves photographed flat enough to show the full-moon outline and twig context. Prefer the cultivar-specific approximately eleven-lobed form; a broader nine-to-thirteen-lobe range is species-level context and must not be used by itself to authenticate ‘Autumn Moon’.
 - **Seasonal-diagnostic:** spring or early-summer yellow to yellow-green foliage with burnt-orange or salmon tones; an orange-red autumn view is the preferred alternate.
 - **Optional roles:** summer foliage showing yellow-green or greener development; paired fruits or branch architecture when clearly attached to the same identified plant.
 - **Visual confusion risks:** RC-005 *Acer shirasawanum* ‘Aureum’, ‘Moonrise’, yellow-leaved *Acer palmatum* cultivars and commercial plants labelled *Acer japonicum* ‘Autumn Moon’.

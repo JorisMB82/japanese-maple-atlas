@@ -61,8 +61,14 @@ test('canonical Catalogue directory compiles published C-001 and non-public C-00
   const registryPath = path.join(inputDir, 'contract/cultivar-identity-registry.json');
   const result = compileCatalogueDirectory({ inputDir, schemaPath, registryPath, taxonIds: new Set(['TAX-APAL', 'TAX-ASHI']) });
   const expectedIds = Array.from({ length: 10 }, (_, index) => `CUL-${String(index + 11).padStart(6, '0')}`);
-  const c001 = result.records.filter(record => Number(record.cultivarId.slice(-6)) <= 15);
-  const c002 = result.records.filter(record => Number(record.cultivarId.slice(-6)) >= 16);
+  const c001 = result.records.filter(record => {
+    const programmeNumber = Number(record.cultivarId.slice(-6));
+    return programmeNumber >= 11 && programmeNumber <= 15;
+  });
+  const c002 = result.records.filter(record => {
+    const programmeNumber = Number(record.cultivarId.slice(-6));
+    return programmeNumber >= 16 && programmeNumber <= 20;
+  });
 
   assert.deepEqual(result.records.map(record => record.cultivarId), expectedIds);
   assert.deepEqual(result.diagnostics.map(item => item.status), expectedIds.map(() => 'pass'));
