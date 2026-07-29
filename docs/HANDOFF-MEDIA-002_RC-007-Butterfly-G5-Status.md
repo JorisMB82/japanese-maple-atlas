@@ -1,11 +1,15 @@
 # HANDOFF-MEDIA-002 — RC-007 ‘Butterfly’ G5 Status
 
 **Handoff status:** BLOCKED  
-**Inspected `main`:** `1af3d20c574e851ce55d01f9639caa8fda3a8e54`  
-**Branch:** `media/rc-006-010`  
+**Inspected `main`:** `f8aeff982c5d155ae4880a618453dc38c40f008e`  
+**Branch:** `media/visual-coverage-001-025-planning`  
 **RC:** RC-007 — *Acer palmatum* ‘Butterfly’  
-**Editorial state:** G1–G3 complete; G4 CONDITIONAL  
+**Editorial state:** G4 PASS — owner condition accepted; non-public freeze candidate  
 **Engineering dependency:** RESOLVED
+
+## Status change since prior handoff
+
+The Project Owner accepted the bounded ‘Kochō-no-mai’ treatment and preserved ‘White Butterfly’ as a separate cultivar. G4 is no longer a blocker. No media, freeze or publication approval follows from that decision.
 
 ## Package state
 
@@ -37,13 +41,12 @@ A nursery or garden label supports only asserted identity unless strengthened by
 - branch-distribution and scaled-detail coverage;
 - final caption, alt text, focal point and privacy treatment;
 - approved sidecar or owner-approved governed gap;
-- derivative generation, validation and visual inspection;
-- G4 completion.
+- derivative generation, validation and visual inspection.
 
 ## G5 assessment
 
-**BLOCKED.** Candidate research is actionable, but no approved source asset or approved governed-gap sidecar exists.
+**BLOCKED.** G4 is complete and candidate research is actionable, but no approved source asset or approved governed-gap sidecar exists.
 
 ## Requested next action
 
-Media continues item-level acquisition and rights review. If a compliant asset is selected, create its provenance record, preserve the original, process derivatives and complete `RC-007.media.json`; otherwise obtain owner approval for an explicit governed gap. Next receiver after completion: CTO / engineering and integration.
+Media continues item-level acquisition and rights review. If a compliant asset is selected, create its provenance record, preserve the original, process derivatives and complete `RC-007.media.json`; otherwise obtain Project Owner approval for an explicit governed gap. Next receiver after completion: CTO / engineering and integration.

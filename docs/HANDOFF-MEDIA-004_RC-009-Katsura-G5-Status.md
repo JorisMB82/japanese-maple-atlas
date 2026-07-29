@@ -1,15 +1,20 @@
 # HANDOFF-MEDIA-004 — RC-009 ‘Katsura’ G5 Status
 
-**Handoff status:** BLOCKED  
-**Inspected `main`:** `1af3d20c574e851ce55d01f9639caa8fda3a8e54`  
-**Branch:** `media/rc-006-010`  
+**Handoff status:** BLOCKED — second execution priority  
+**Inspected `main`:** `f8aeff982c5d155ae4880a618453dc38c40f008e`  
+**Branch:** `media/visual-coverage-001-025-planning`  
 **RC:** RC-009 — *Acer palmatum* ‘Katsura’  
-**Editorial state:** G1–G3 complete; G4 CONDITIONAL  
+**Editorial state:** G4 PASS — non-public freeze candidate  
 **Engineering dependency:** RESOLVED
+
+## Status change since prior handoff
+
+G4 is confirmed PASS. The media execution sequence now places RC-009 immediately after RC-010. No new asset, source, licence approval or derivative has been completed.
 
 ## Package state
 
 - Acquisition plan: `docs/MEDIA-008_RC-009-Katsura-Acquisition-Plan_v1.0.md`
+- Priority plan: `docs/MEDIA-011_Reference-Standard-G5-Priority_RC-006-RC-010_v1.0.md`
 - Candidate register: `docs/registers/MEDIA-CANDIDATE-REGISTER_RC-006-RC-010.md`
 - Planned sidecar: `atlas-repository/reference-standards/media/RC-009.media.json`
 - Preserved source assets: none
@@ -22,7 +27,7 @@ Whole-plant early-spring habit; bud-break and first-leaf sequence; scaled leaf a
 
 ## Candidate position
 
-JCRA images 683044–683047, all dated 1 May 2018, provide the strongest immediate spring lead but require written permission, original delivery, visual role review and accession mapping. Wikimedia Commons candidates provide named cultivated material with item-level licence leads, but source acquisition, exact licence selection and qualified identity review remain pending. A project-owned same-accession seasonal capture remains preferred because the defining window is brief.
+JCRA images 683044–683047, all dated 1 May 2018 and attributed on their item records to Nancy Doubrava, provide the strongest immediate spring lead. They require written permission, original delivery, visual-role review and accession mapping. Wikimedia Commons candidates provide named cultivated material with item-level licence leads, but source acquisition, exact licence selection and qualified identity review remain pending. A project-owned same-accession seasonal capture remains preferred because the defining window is brief.
 
 ## Rights and identity basis
 
@@ -38,13 +43,12 @@ One yellow-orange early leaf does not authenticate ‘Katsura’. Spring margina
 - colour/white-balance disclosure not yet available;
 - final caption, alt text, focal point and privacy treatment;
 - approved sidecar or owner-approved governed gap;
-- derivative generation, validation and visual inspection;
-- G4 completion.
+- derivative generation, validation and visual inspection.
 
 ## G5 assessment
 
-**BLOCKED.** The principal seasonal role, rights, source preservation, identity, sidecar approval and derivative validation remain incomplete.
+**BLOCKED.** G4 is complete, but the principal seasonal role, rights, source preservation, identity, sidecar approval and derivative validation remain incomplete.
 
 ## Requested next action
 
-Prioritise permissioned early-spring acquisition before the next emergence window closes. After selection, preserve the source, complete provenance and identity review, process all four derivatives and approve `RC-009.media.json`; otherwise obtain owner approval for a governed gap. Next receiver after completion: CTO / engineering and integration.
+Request permission, full-resolution originals and accession mapping for JCRA images 683044–683047. After selection, preserve the source, complete provenance and identity review, process all four derivatives and approve `RC-009.media.json`; otherwise obtain Project Owner approval for a governed gap. Next receiver after completion: CTO / engineering and integration.
