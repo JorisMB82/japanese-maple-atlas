@@ -28,6 +28,8 @@ jobs:
         run: node scripts/finalise-visual-first-c001.mjs
       - name: Align tests and cover both derivative resolver paths
         run: node scripts/patch-media-public-fixture.mjs
+      - name: Align static export expectations with approved galleries
+        run: node scripts/patch-visual-first-static-regression.mjs
       - name: Generate outputs and run full validation
         shell: bash
         run: |
