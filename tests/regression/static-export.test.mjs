@@ -90,6 +90,21 @@ test('published Catalogue profiles disclose approved galleries or controlled vis
   }
 });
 
+test('visual library exposes lawful Catalogue photography and separates identity plates', () => {
+  const media = htmlFor('/media');
+  assert.match(media, /A growing library of lawful Japanese maple photographs/i);
+  assert.match(media, /Orange Dream/i);
+  assert.match(media, /Inaba-shidare/i);
+  assert.match(media, /Whole plant · habit/i);
+  assert.match(media, /Foliage detail/i);
+  assert.match(media, /Seasonal · diagnostic/i);
+  assert.match(media, /Rights and identity are reviewed separately/i);
+  assert.match(media, /Reference Standard visual layer/i);
+  assert.match(media, /Not photographs/i);
+  assert.match(media, /Open visual gaps/i);
+  assert.doesNotMatch(media, /the current identity plates are editorial illustrations/i);
+});
+
 test('internal application links resolve to exported routes', () => {
   const htmlFiles = allFiles(OUT).filter(file => file.endsWith('.html'));
   const broken = [];
