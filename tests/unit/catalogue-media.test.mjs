@@ -1,11 +1,13 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
+import os from 'node:os';
 import path from 'node:path';
 import { ROOT } from '../helpers/repository-fixture.mjs';
-import { identityQualification, validateCatalogueMediaSidecar } from '../../lib/catalogue-media.mjs';
+import { identityQualification, loadCatalogueMediaDirectory, validateCatalogueMediaSidecar } from '../../lib/catalogue-media.mjs';
 
-const schema = JSON.parse(fs.readFileSync(path.join(ROOT, 'atlas-repository/schemas/catalogue-media.schema.json'), 'utf8'));
+const schemaPath = path.join(ROOT, 'atlas-repository/schemas/catalogue-media.schema.json');
+const schema = JSON.parse(fs.readFileSync(schemaPath, 'utf8'));
 const clone = value => structuredClone(value);
 
 function derivative(id, profile) {
@@ -123,4 +125,40 @@ test('Catalogue media IDs and cultivar ownership cannot cross identities', () =>
   const result = validateCatalogueMediaSidecar(candidate, schema);
   assert.equal(result.valid, false);
   assert.match(result.errors.join('\n'), /cultivarId must match sidecar/);
+});
+
+test('Catalogue media discovery accepts an empty directory without reading a schema fixture', () => {
+  const result = loadCatalogueMediaDirectory({
+    directory: path.join(os.tmpdir(), `atlas-missing-${Date.now()}`),
+    schemaPath: path.join(os.tmpdir(), 'schema-does-not-exist.json')
+  });
+  assert.deepEqual(result.sidecars, []);
+  assert.equal(result.byCultivarId.size, 0);
+  assert.deepEqual(result.diagnostics, []);
+});
+
+test('Catalogue media discovery indexes a valid sidecar by stable cultivar identity', () => {
+  const directory = fs.mkdtempSync(path.join(os.tmpdir(), 'atlas-catalogue-media-unit-'));
+  try {
+    fs.writeFileSync(path.join(directory, 'CUL-000011.media.json'), `${JSON.stringify(sidecar(), null, 2)}\n`);
+    const result = loadCatalogueMediaDirectory({ directory, schemaPath });
+    assert.equal(result.sidecars.length, 1);
+    assert.equal(result.byCultivarId.get('CUL-000011').assets.length, 3);
+    assert.deepEqual(result.diagnostics[0].missingRoles, []);
+  } finally {
+    fs.rmSync(directory, { recursive: true, force: true });
+  }
+});
+
+test('Catalogue media discovery rejects a filename that does not match its cultivar identity', () => {
+  const directory = fs.mkdtempSync(path.join(os.tmpdir(), 'atlas-catalogue-media-name-'));
+  try {
+    fs.writeFileSync(path.join(directory, 'CUL-000012.media.json'), `${JSON.stringify(sidecar(), null, 2)}\n`);
+    assert.throws(
+      () => loadCatalogueMediaDirectory({ directory, schemaPath }),
+      /filename must be CUL-000011\.media\.json/
+    );
+  } finally {
+    fs.rmSync(directory, { recursive: true, force: true });
+  }
 });
