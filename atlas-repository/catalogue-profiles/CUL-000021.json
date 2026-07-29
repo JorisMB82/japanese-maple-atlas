@@ -1,0 +1,111 @@
+{
+  "cultivarId": "CUL-000021",
+  "programmeSlot": "021",
+  "slug": "tamukeyama",
+  "acceptedWorkingName": "Tamukeyama",
+  "cultivarEpithet": "Tamukeyama",
+  "taxonId": "TAX-APAL",
+  "scientificName": "Acer palmatum ‘Tamukeyama’",
+  "publicationClass": "catalogue-profile",
+  "profileVersion": "1.0.0",
+  "catalogueState": "review-ready",
+  "riskLevel": "medium",
+  "riskReasons": [
+    "RHS treats ‘Beni-hagoromo’ as a synonym, but the historical scope and priority of that name were not established in the lean review.",
+    "Institutional descriptions consistently support a red-purple dissectum with a mounding, cascading habit, while mature dimensions vary by source and specimen age.",
+    "Generic red-laceleaf appearance creates a practical identification risk but no evidence indicates a duplicate identity."
+  ],
+  "duplicateCheck": {
+    "reviewedBy": "Japanese Maple Atlas editorial stream",
+    "reviewedAt": "2026-07-29T06:55:00Z",
+    "comparedIds": ["RC-001","RC-002","RC-003","RC-004","RC-005","RC-006","RC-007","RC-008","RC-009","RC-010","CUL-000011","CUL-000012","CUL-000013","CUL-000014","CUL-000015","CUL-000016","CUL-000017","CUL-000018","CUL-000019","CUL-000020","CUL-000022","CUL-000023","CUL-000024","CUL-000025"],
+    "comparedNames": ["Bloodgood","Seiryu","Sango-kaku","Crimson Queen","Aureum","Osakazuki","Butterfly","Shishi-gashira","Katsura","Mikawa-yatsubusa","Orange Dream","Koto-no-ito","Inaba-shidare","Beni-kawa","Trompenburg","Autumn Moon","Waterfall","Aoyagi","Shin-deshōjō","Red Dragon","Orangeola","Higasa-yama","Arakawa","Red Pygmy","Tamuke yama","Beni-hagoromo","Hagoromo","Dissectum Atropurpureum"],
+    "result": "unique",
+    "notes": "Compared with RC-004 ‘Crimson Queen’, CUL-000013 ‘Inaba-shidare’, CUL-000020 ‘Red Dragon’, CUL-000022 ‘Orangeola’ and other red dissectums. The cultivar is maintained as a distinct accepted identity. RHS-recorded ‘Beni-hagoromo’ is retained as a probable synonym requiring bounded historical caution; ‘Hagoromo’ is a separate accepted cultivar. C0 resolves as unique."
+  },
+  "namingVariants": ["Tamuke yama","Tamuke-yama","Acer palmatum ‘Beni-hagoromo’"],
+  "identityNotes": "The Atlas uses the compact RHS form ‘Tamukeyama’. JC Raulston Arboretum uses ‘Tamuke yama’ for a living accession; that spacing variant resolves to the same stable identity. RHS records ‘Beni-hagoromo’ as a synonym, but this lean profile does not claim a complete historical synonymy. ‘Hagoromo’ remains a separate cultivar.",
+  "content": {
+    "summary": "A mounding red laceleaf Japanese maple with cascading shoots, finely dissected foliage that emerges purple to burgundy red, becomes greener-purple in summer and finishes orange to bright red in autumn.",
+    "habit": "Mound-forming deciduous shrub or small tree with arching, weeping and cascading branches, typically broader than tall unless trained on a higher stem.",
+    "leafForm": "Deeply dissected, feathery leaves in the dissectum horticultural group. The narrow divisions and cascading habit support comparison, but they are shared with several other red laceleaf cultivars.",
+    "seasonal": {
+      "spring": "Leaves emerge purple to burgundy red; small purple-red flowers may be visible at close range.",
+      "summer": "Foliage commonly becomes greenish-purple while retaining variable red tone according to exposure, heat and moisture.",
+      "autumn": "Leaves turn orange and brighter red; exact intensity and timing remain site-dependent."
+    },
+    "size": {
+      "height": "1.5–2.7 m",
+      "spread": "2.5–3.7 m",
+      "qualifier": "RHS gives 1.5–2.5 m high and 2.5–4 m wide; Missouri Botanical Garden gives 6–8 ft high and 8–12 ft wide, while a JC Raulston accession was measured at 9 ft in 2022. Treat these as contextual garden ranges."
+    },
+    "cultivation": "Grow in moist, organically rich, well-drained soil in full sun to partial shade, with reliable moisture and shelter from drying wind. Afternoon shade is useful in hotter climates; exposed or dry sites increase scorch risk.",
+    "diagnostic": "Compared with ‘Crimson Queen’, ‘Inaba-shidare’, ‘Red Dragon’ and ‘Orangeola’, ‘Tamukeyama’ is presented as a broad mounding red dissectum with its own accepted name and seasonal sequence. A photograph of generic red laceleaf foliage cannot authenticate the clone.",
+    "confidence": "High confidence in accepted name, Acer palmatum placement, dissected foliage, cascading architecture and broad colour sequence. Moderate confidence in synonym scope and mature dimensions.",
+    "unresolvedIssue": "The historical basis and exact scope of the RHS-recorded synonym ‘Beni-hagoromo’ remain unresolved; no primary naming history was established."
+  },
+  "sources": [
+    {
+      "id": "SRC-CUL-000021-01",
+      "sourceClass": "institutional",
+      "title": "Acer palmatum 'Tamukeyama' (D) — plant profile",
+      "authority": "Royal Horticultural Society",
+      "url": "https://www.rhs.org.uk/plants/191092/acer-palmatum-tamukeyama-d/details",
+      "accessedAt": "2026-07-29T06:55:00Z",
+      "locator": "Accepted-name profile: synonyms, dissectum classification, habit, seasonal colour, dimensions, cultivation and propagation.",
+      "claimsSupported": ["accepted identity","recorded synonym","habit","leaf form","seasonality","size","cultivation","propagation"],
+      "limitations": "UK-centred horticultural framework; the synonym list does not establish historical priority or independently authenticate marketed plants.",
+      "confidence": "high"
+    },
+    {
+      "id": "SRC-CUL-000021-02",
+      "sourceClass": "institutional",
+      "title": "Acer palmatum var. dissectum 'Tamukeyama' — Plant Finder",
+      "authority": "Missouri Botanical Garden",
+      "url": "https://www.missouribotanicalgarden.org/PlantFinder/PlantFinderDetails.aspx?taxonid=241789",
+      "accessedAt": "2026-07-29T06:55:00Z",
+      "locator": "Cultivar profile: mounded cascading habit, dissected foliage, summer colour retention, dimensions, culture and fall colour.",
+      "claimsSupported": ["identity","dissectum placement","habit","leaf form","seasonality","size","cultivation"],
+      "limitations": "Uses a horticultural varietal formulation; dimensions and comparative colour retention are site-contextual.",
+      "confidence": "high"
+    },
+    {
+      "id": "SRC-CUL-000021-03",
+      "sourceClass": "institutional",
+      "title": "Acer palmatum 'Tamuke yama' — living collection",
+      "authority": "JC Raulston Arboretum",
+      "url": "https://jcra.ncsu.edu/horticulture/our-plants/results-by-name-serial-number.php?serial=108618",
+      "accessedAt": "2026-07-29T06:55:00Z",
+      "locator": "Living accession 030405; received 10 March 2003 and measured 9 ft on 8 June 2022.",
+      "claimsSupported": ["living collection","spacing variant","habit context","measured height","visual acquisition route"],
+      "limitations": "One accession using a spaced name; it does not resolve synonym history or establish a universal size ceiling.",
+      "confidence": "high"
+    }
+  ],
+  "media": {
+    "state": "candidate-under-review",
+    "primaryMediaId": null,
+    "candidateMediaIds": [],
+    "governedGap": null,
+    "visualComplete": false,
+    "identityBasis": "asserted"
+  },
+  "review": {
+    "reviewedBy": "Japanese Maple Atlas editorial stream",
+    "reviewedAt": "2026-07-29T06:55:00Z",
+    "approvalState": "editorial-approved",
+    "notes": "C0 targeted synonym-scope review and C1 lean editorial/source review completed for Batch C-003. Profile remains non-public; no media approval, C2 or C3 is claimed."
+  },
+  "batchId": "C-003",
+  "promotionStatus": "not-nominated",
+  "referenceStandardId": null,
+  "publishedAt": null,
+  "revisionHistory": [
+    {
+      "version": "1.0.0",
+      "date": "2026-07-29T06:55:00Z",
+      "actor": "Japanese Maple Atlas editorial stream",
+      "change": "Created the canonical non-public C-003 Catalogue Profile; completed C0 duplicate/naming review and C1 editorial/source review."
+    }
+  ]
+}

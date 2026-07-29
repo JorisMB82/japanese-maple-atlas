@@ -1,0 +1,123 @@
+{
+  "cultivarId": "CUL-000023",
+  "programmeSlot": "023",
+  "slug": "higasa-yama",
+  "acceptedWorkingName": "Higasa-yama",
+  "cultivarEpithet": "Higasa-yama",
+  "taxonId": "TAX-APAL",
+  "scientificName": "Acer palmatum ‘Higasa-yama’",
+  "publicationClass": "catalogue-profile",
+  "profileVersion": "1.0.0",
+  "catalogueState": "review-ready",
+  "riskLevel": "medium",
+  "riskReasons": [
+    "RHS accepts the hyphenated name, while institutional and commercial records also use ‘Higasa yama’ and ‘Higasayama’.",
+    "The cultivar's spring variegation and leaf shape can change markedly through the season, creating visual and descriptive inconsistency.",
+    "Credible sources support a distinct variegated Acer palmatum, but the lean review does not resolve every historical near-name or older synonym claim."
+  ],
+  "duplicateCheck": {
+    "reviewedBy": "Japanese Maple Atlas editorial stream",
+    "reviewedAt": "2026-07-29T06:55:00Z",
+    "comparedIds": ["RC-001","RC-002","RC-003","RC-004","RC-005","RC-006","RC-007","RC-008","RC-009","RC-010","CUL-000011","CUL-000012","CUL-000013","CUL-000014","CUL-000015","CUL-000016","CUL-000017","CUL-000018","CUL-000019","CUL-000020","CUL-000021","CUL-000022","CUL-000024","CUL-000025"],
+    "comparedNames": ["Bloodgood","Seiryu","Sango-kaku","Crimson Queen","Aureum","Osakazuki","Butterfly","Shishi-gashira","Katsura","Mikawa-yatsubusa","Orange Dream","Koto-no-ito","Inaba-shidare","Beni-kawa","Trompenburg","Autumn Moon","Waterfall","Aoyagi","Shin-deshōjō","Red Dragon","Tamukeyama","Orangeola","Arakawa","Red Pygmy","Higasa yama","Higasayama","Hikasa-yama","Shin-higasa","Roseomarginatum","Cristatum Variegatum"],
+    "result": "unique",
+    "notes": "Compared with RC-007 ‘Butterfly’ and other variegated maples. RHS accepted usage, a dated RHS specimen and two living collections support a distinct cultivar identity. ‘Higasa yama’ and ‘Higasayama’ are orthographic variants; unverified historical names are not promoted to synonyms. C0 resolves as unique with targeted spelling review complete."
+  },
+  "namingVariants": ["Higasa yama","Higasayama"],
+  "identityNotes": "The Atlas uses the RHS accepted hyphenated form ‘Higasa-yama’. The spaced form used by JC Raulston and Dawes and the joined herbarium-label form ‘Higasayama’ resolve to the same stable identity. Potential near-names and historical labels require separate evidence and are not adopted as synonyms in this lean profile.",
+  "content": {
+    "summary": "An upright variegated Japanese maple whose crinkled seven-lobed leaves open with cream, pink and green tones, become greener as the season advances and finish in mixed orange, yellow and red.",
+    "habit": "Vigorous upright deciduous shrub or small tree, developing a broad crown with age. Living-collection records support a medium to larger garden specimen rather than a permanent dwarf.",
+    "leafForm": "Palmate leaves commonly described with seven slender, pointed, toothed and crinkled lobes. Spring variegation combines cream, pink and green, but the pattern can fade or change as leaves mature.",
+    "seasonal": {
+      "spring": "New leaves unfurl tightly and display the strongest cream-to-pink variegation with green structure; timing and intensity vary.",
+      "summer": "Foliage becomes greener, often retaining cream or pale vein and margin effects; some shoots may appear less variegated.",
+      "autumn": "Leaves may turn orange, dark yellow and red; the mix is variable and should not be represented as a fixed palette."
+    },
+    "size": {
+      "height": "3.5–6 m",
+      "spread": "3.5–6 m",
+      "qualifier": "JC Raulston lists 15–20 ft and measured one accession at 12 ft in 2023; Dawes describes about 20 ft high and wide. Treat these as mature living-collection contexts, not a universal maximum."
+    },
+    "cultivation": "Grow in moist but well-drained soil in sun to partial shade, with shelter from drying exposure. Variegated spring foliage benefits from protection from intense heat and unreliable moisture.",
+    "diagnostic": "Compare with RC-007 ‘Butterfly’: both are variegated Acer palmatum, but ‘Higasa-yama’ is characterised by crinkled, many-toned spring leaves and an upright larger framework, rather than ‘Butterfly’s’ irregular pale margins. Variegation alone does not authenticate either cultivar.",
+    "confidence": "High confidence in the accepted cultivar identity, Acer palmatum placement and broad variegated seasonal character. Moderate confidence in stable year-to-year patterning, exact mature size and historical synonymy.",
+    "unresolvedIssue": "Seasonal variegation may be weak, altered or partly green on some growth. The lean review does not resolve all historical names sometimes associated with the cultivar, so only the spelling variants are governed."
+  },
+  "sources": [
+    {
+      "id": "SRC-CUL-000023-01",
+      "sourceClass": "institutional",
+      "title": "Acer palmatum 'Higasa-yama' (P/v) — plant profile",
+      "authority": "Royal Horticultural Society",
+      "url": "https://www.rhs.org.uk/plants/97642/acer-palmatum-higasa-yama-pv/details",
+      "accessedAt": "2026-07-29T06:55:00Z",
+      "locator": "Accepted-name profile and horticultural classification record.",
+      "claimsSupported": ["accepted identity","supported taxon","hyphenated name","variegated classification"],
+      "limitations": "Current profile supplies limited descriptive text; it cannot alone support detailed seasonal synthesis.",
+      "confidence": "high"
+    },
+    {
+      "id": "SRC-CUL-000023-02",
+      "sourceClass": "institutional",
+      "title": "Acer palmatum 'Higasa-yama' — herbarium specimen WSY0056485",
+      "authority": "RHS Digital Collections",
+      "url": "https://collections.rhs.org.uk/view/174723/acer-palmatum-higasa-yama-p-v",
+      "accessedAt": "2026-07-29T06:55:00Z",
+      "locator": "Herbarium specimen WSY0056485, collected 5 June 1989; label uses ‘Higasayama’.",
+      "claimsSupported": ["documented name use","joined spelling variant","specimen record","collection date"],
+      "limitations": "Single specimen and historical label; does not establish complete synonymy or whole-plant behaviour.",
+      "confidence": "high"
+    },
+    {
+      "id": "SRC-CUL-000023-03",
+      "sourceClass": "institutional",
+      "title": "Acer palmatum 'Higasa yama' — living collection",
+      "authority": "JC Raulston Arboretum",
+      "url": "https://jcra.ncsu.edu/horticulture/our-plants/results-by-name-serial-number.php?serial=100160",
+      "accessedAt": "2026-07-29T06:55:00Z",
+      "locator": "Living accession xx0074; variegated Japanese maple, listed 15–20 ft and measured 12 ft on 18 August 2023.",
+      "claimsSupported": ["living collection","spaced spelling variant","habit","size context","exposure","visual acquisition route"],
+      "limitations": "One accession; the concise record does not quantify seasonal variegation or resolve historical names.",
+      "confidence": "high"
+    },
+    {
+      "id": "SRC-CUL-000023-04",
+      "sourceClass": "institutional",
+      "title": "Acer palmatum 'Higasa yama' — accession profile",
+      "authority": "The Dawes Arboretum",
+      "url": "https://dawesarb.arboretumexplorer.org/taxon-19448.aspx",
+      "accessedAt": "2026-07-29T06:55:00Z",
+      "locator": "Accession D2003-0142.002: seven-lobed crinkled variegated leaves, seasonal colours, upright habit and approximate mature dimensions.",
+      "claimsSupported": ["living collection","leaf form","variegation","seasonality","habit","size"],
+      "limitations": "Interpretive accession description; colour and dimensions reflect a particular collection framework and should not imply uniform expression.",
+      "confidence": "medium"
+    }
+  ],
+  "media": {
+    "state": "candidate-under-review",
+    "primaryMediaId": null,
+    "candidateMediaIds": [],
+    "governedGap": null,
+    "visualComplete": false,
+    "identityBasis": "asserted"
+  },
+  "review": {
+    "reviewedBy": "Japanese Maple Atlas editorial stream",
+    "reviewedAt": "2026-07-29T06:55:00Z",
+    "approvalState": "editorial-approved",
+    "notes": "C0 targeted spelling and near-name review and C1 lean editorial/source review completed for Batch C-003. Profile remains non-public; no media approval, C2 or C3 is claimed."
+  },
+  "batchId": "C-003",
+  "promotionStatus": "not-nominated",
+  "referenceStandardId": null,
+  "publishedAt": null,
+  "revisionHistory": [
+    {
+      "version": "1.0.0",
+      "date": "2026-07-29T06:55:00Z",
+      "actor": "Japanese Maple Atlas editorial stream",
+      "change": "Created the canonical non-public C-003 Catalogue Profile; completed C0 duplicate/naming review and C1 editorial/source review."
+    }
+  ]
+}

@@ -1,0 +1,111 @@
+{
+  "cultivarId": "CUL-000025",
+  "programmeSlot": "025",
+  "slug": "red-pygmy",
+  "acceptedWorkingName": "Red Pygmy",
+  "cultivarEpithet": "Red Pygmy",
+  "taxonId": "TAX-APAL",
+  "scientificName": "Acer palmatum ‘Red Pygmy’",
+  "publicationClass": "catalogue-profile",
+  "profileVersion": "1.0.0",
+  "catalogueState": "review-ready",
+  "riskLevel": "low",
+  "riskReasons": [
+    "RHS accepts the name and consistently places the cultivar in the linearilobum group with seven narrow red-purple lobes.",
+    "Published size differs sharply between the compact RHS framework and a much taller JC Raulston living accession; the conflict is retained as an age, site or specimen-context issue.",
+    "No material synonym conflict was found, but the English words ‘Red’ and ‘Pygmy’ create cross-genus and near-name search noise."
+  ],
+  "duplicateCheck": {
+    "reviewedBy": "Japanese Maple Atlas editorial stream",
+    "reviewedAt": "2026-07-29T06:55:00Z",
+    "comparedIds": ["RC-001","RC-002","RC-003","RC-004","RC-005","RC-006","RC-007","RC-008","RC-009","RC-010","CUL-000011","CUL-000012","CUL-000013","CUL-000014","CUL-000015","CUL-000016","CUL-000017","CUL-000018","CUL-000019","CUL-000020","CUL-000021","CUL-000022","CUL-000023","CUL-000024"],
+    "comparedNames": ["Bloodgood","Seiryu","Sango-kaku","Crimson Queen","Aureum","Osakazuki","Butterfly","Shishi-gashira","Katsura","Mikawa-yatsubusa","Orange Dream","Koto-no-ito","Inaba-shidare","Beni-kawa","Trompenburg","Autumn Moon","Waterfall","Aoyagi","Shin-deshōjō","Red Dragon","Tamukeyama","Orangeola","Higasa-yama","Arakawa","Red pygmy","Red Pigmy","Sharp's Pygmy","Coonara Pygmy","Villa Taranto"],
+    "result": "unique",
+    "notes": "Compared with CUL-000012 ‘Koto-no-ito’ and other linearilobum cultivars, and with ‘Sharp’s Pygmy’ and ‘Coonara Pygmy’. ‘Red Pygmy’ is maintained as a distinct red-purple, narrow-lobed cultivar; cross-genus homonyms and misspellings are not duplicates. C0 resolves as unique."
+  },
+  "namingVariants": ["Red pygmy","Red Pygmy Japanese maple"],
+  "identityNotes": "The accepted working name follows RHS. ‘Red Pigmy’ is treated as a misspelling rather than a governed synonym. ‘Sharp’s Pygmy’ and ‘Coonara Pygmy’ are separate cultivars. Cross-genus plants named ‘Red Pygmy’ are excluded through the Acer palmatum taxon.",
+  "content": {
+    "summary": "A slow-growing narrow-leaved Japanese maple with red to brownish-red foliage divided into seven long strap-like lobes, usually forming a compact mound but capable of greater size in long-term living collections.",
+    "habit": "Slow-growing bushy or mound-forming deciduous shrub or small tree. The usual compact garden presentation should be qualified by evidence of substantially taller mature specimens.",
+    "leafForm": "Linearilobum foliage with mostly seven long, narrow, almost untoothed or lightly serrated lobes. The red-purple colour distinguishes it from green ‘Koto-no-ito’, but leaf shape alone is not authentication.",
+    "seasonal": {
+      "spring": "Leaves emerge red to red-purple; small purple flowers may occur.",
+      "summer": "Foliage remains brownish-red to red-purple and may become greener or bronzier under heat or strong exposure.",
+      "autumn": "Autumn colour may strengthen toward red, with some orange or yellow variation; the exact sequence is less consistently documented than the leaf form."
+    },
+    "size": {
+      "height": "1–5.2 m",
+      "spread": "1–3.7 m",
+      "qualifier": "RHS gives 1–1.5 m high and wide at 10–20 years, while JC Raulston lists 4–6 ft with a 12-ft maximum and measured one accession at 17 ft in 2022. Preserve this substantial contextual divergence."
+    },
+    "cultivation": "Grow in moist but well-drained soil in full sun to partial shade, sheltered from excessive exposure. Reliable summer moisture and some protection in hotter climates reduce scorch on the narrow foliage.",
+    "diagnostic": "Compare with ‘Koto-no-ito’: both have linearilobum leaves, but ‘Red Pygmy’ is red-purple and usually more compact in published garden profiles. Also separate it from ‘Sharp’s Pygmy’, ‘Coonara Pygmy’ and red narrow-leaved cultivars such as ‘Villa Taranto’.",
+    "confidence": "High confidence in accepted name, taxon, linearilobum placement and red-purple seven-lobed foliage. Moderate confidence in mature size and exact late-season colour because credible sources diverge.",
+    "unresolvedIssue": "The 17-ft JC Raulston accession conflicts with the compact RHS range. The lean review records the discrepancy but does not determine whether rootstock, age, training, site or accession history explains it."
+  },
+  "sources": [
+    {
+      "id": "SRC-CUL-000025-01",
+      "sourceClass": "institutional",
+      "title": "Acer palmatum 'Red Pygmy' (L) — plant profile",
+      "authority": "Royal Horticultural Society",
+      "url": "https://www.rhs.org.uk/plants/83779/acer-palmatum-red-pygmy-l/details",
+      "accessedAt": "2026-07-29T06:55:00Z",
+      "locator": "Accepted-name profile: slow mound-forming habit, seven narrow nearly untoothed lobes, red-purple foliage, dimensions, cultivation and propagation.",
+      "claimsSupported": ["accepted identity","linearilobum classification","habit","leaf form","colour","size","cultivation","propagation"],
+      "limitations": "UK-centred horticultural framework; does not explain the much larger living-collection specimen or provide a full origin history.",
+      "confidence": "high"
+    },
+    {
+      "id": "SRC-CUL-000025-02",
+      "sourceClass": "institutional",
+      "title": "Acer palmatum 'Red Pygmy' — living collection",
+      "authority": "JC Raulston Arboretum",
+      "url": "https://jcra.ncsu.edu/horticulture/our-plants/results-by-name-serial-number.php?serial=116547",
+      "accessedAt": "2026-07-29T06:55:00Z",
+      "locator": "Living accession 080217; listed 4–6 ft with 12-ft maximum and measured 17 ft on 22 March 2022.",
+      "claimsSupported": ["living collection","supported taxon","narrowleaf identity","size conflict","exposure","visual acquisition route"],
+      "limitations": "One unusually tall accession; the record does not explain provenance, rootstock, training or why measured height exceeds the listed maximum.",
+      "confidence": "high"
+    },
+    {
+      "id": "SRC-CUL-000025-03",
+      "sourceClass": "scholarly",
+      "title": "Acer palmatum cultivar account — ‘Red Pygmy’",
+      "authority": "Trees and Shrubs Online",
+      "url": "https://www.treesandshrubsonline.org/articles/acer/acer-palmatum/",
+      "accessedAt": "2026-07-29T06:55:00Z",
+      "locator": "Cultivar account describing very slow mound-like habit and brownish-red leaves divided into mostly seven slender, almost entire segments.",
+      "claimsSupported": ["historical cultivar description","habit","leaf form","foliage colour"],
+      "limitations": "Secondary compiled account rather than a registry or accession record; it does not provide current garden dimensions or complete provenance.",
+      "confidence": "medium"
+    }
+  ],
+  "media": {
+    "state": "candidate-under-review",
+    "primaryMediaId": null,
+    "candidateMediaIds": [],
+    "governedGap": null,
+    "visualComplete": false,
+    "identityBasis": "asserted"
+  },
+  "review": {
+    "reviewedBy": "Japanese Maple Atlas editorial stream",
+    "reviewedAt": "2026-07-29T06:55:00Z",
+    "approvalState": "editorial-approved",
+    "notes": "C0 duplicate/naming review and C1 lean editorial/source review completed for Batch C-003. Profile remains non-public; no media approval, C2 or C3 is claimed."
+  },
+  "batchId": "C-003",
+  "promotionStatus": "not-nominated",
+  "referenceStandardId": null,
+  "publishedAt": null,
+  "revisionHistory": [
+    {
+      "version": "1.0.0",
+      "date": "2026-07-29T06:55:00Z",
+      "actor": "Japanese Maple Atlas editorial stream",
+      "change": "Created the canonical non-public C-003 Catalogue Profile; completed C0 duplicate/naming review and C1 editorial/source review."
+    }
+  ]
+}
