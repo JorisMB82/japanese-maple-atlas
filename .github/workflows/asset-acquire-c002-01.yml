@@ -1,0 +1,341 @@
+name: Temporary C-002 lawful asset acquisition
+
+on:
+  push:
+    branches:
+      - media/visual-first-assets-c002-01
+
+permissions:
+  contents: write
+
+jobs:
+  acquire-process-validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Acquire exact Commons originals and build governed media packages
+        run: |
+          cat > /tmp/acquire-c002-01.mjs <<'NODE'
+          import fs from 'node:fs';
+          import path from 'node:path';
+          import crypto from 'node:crypto';
+          import { renderRasterProfiles } from './lib/raster-media.mjs';
+
+          const ROOT = process.cwd();
+          const PROFILES = { thumb:[320,231], card:[560,404], display:[960,693], archive:[1440,1040] };
+          const sha256 = bytes => crypto.createHash('sha256').update(bytes).digest('hex');
+          const writeJson = (file, value) => {
+            fs.mkdirSync(path.dirname(file), { recursive:true });
+            fs.writeFileSync(file, `${JSON.stringify(value, null, 2)}\n`);
+          };
+          const cleanHtml = value => String(value || '').replace(/<[^>]+>/g, ' ').replace(/&nbsp;/g, ' ').replace(/&amp;/g, '&').replace(/\s+/g, ' ').trim();
+          const filePage = title => `https://commons.wikimedia.org/wiki/File:${encodeURIComponent(title).replace(/%2F/g, '/')}`;
+
+          const sources = [
+            {
+              cultivarId:'CUL-000016', cultivar:'Autumn Moon', id:'MED-CUL-000016-001',
+              fileTitle:'Full Moon Maple ‘Autumn Moon’ Acer shirasawanum ‘Autumn Moon’ habit spring.jpg',
+              role:'habit-primary', isPrimary:true,
+              altText:'Whole source-identified ‘Autumn Moon’ full-moon maple showing its rounded spring crown at Cossey Park Arboretum.',
+              caption:'Spring whole-plant habit of source-identified Tree 063 ‘Autumn Moon’ at Cossey Park Arboretum.',
+              creator:'Cossey25', rightsHolder:'Cossey25', licence:'CC BY-SA 4.0', licenceUrl:'https://creativecommons.org/licenses/by-sa/4.0/',
+              attributionText:'Cossey25, CC BY-SA 4.0, via Wikimedia Commons.',
+              identityBasis:'The Commons source records this plant as Tree 063, Acer shirasawanum ‘Autumn Moon’, at Cossey Park Arboretum.',
+              identityLimitations:'The tree record is a source identification, not an independently verified propagation or clonal-authentication record.',
+              publicQualification:'Source-identified as Tree 063 at Cossey Park Arboretum; not independently authenticated by the Japanese Maple Atlas.',
+              location:'Cossey Park Arboretum, Fredericksburg, Virginia, United States', expectedLicence:'CC BY-SA 4.0'
+            },
+            {
+              cultivarId:'CUL-000016', cultivar:'Autumn Moon', id:'MED-CUL-000016-002',
+              fileTitle:'Full Moon Maple ‘Autumn Moon’ Acer shirasawanum ‘Autumn Moon’ leaf summer 01.jpg',
+              role:'foliage-detail', isPrimary:false,
+              altText:'Attached summer leaves of source-identified ‘Autumn Moon’ showing the rounded many-lobed leaf outline.',
+              caption:'Summer foliage detail from source-identified Tree 063 ‘Autumn Moon’ at Cossey Park Arboretum.',
+              creator:'Cossey25', rightsHolder:'Cossey25', licence:'CC BY-SA 4.0', licenceUrl:'https://creativecommons.org/licenses/by-sa/4.0/',
+              attributionText:'Cossey25, CC BY-SA 4.0, via Wikimedia Commons.',
+              identityBasis:'The Commons source records this foliage as Tree 063, Acer shirasawanum ‘Autumn Moon’, at Cossey Park Arboretum.',
+              identityLimitations:'The tree record is a source identification; leaf form alone does not authenticate the cultivar or resolve historical taxon labels.',
+              publicQualification:'Source-identified as Tree 063 at Cossey Park Arboretum; not independently authenticated by the Japanese Maple Atlas.',
+              location:'Cossey Park Arboretum, Fredericksburg, Virginia, United States', expectedLicence:'CC BY-SA 4.0'
+            },
+            {
+              cultivarId:'CUL-000016', cultivar:'Autumn Moon', id:'MED-CUL-000016-003',
+              fileTitle:'Full Moon Maple ‘Autumn Moon’ Acer shirasawanum ‘Autumn Moon’ habit fall.jpg',
+              role:'seasonal-diagnostic', isPrimary:false,
+              altText:'Whole source-identified ‘Autumn Moon’ maple displaying its autumn crown at Cossey Park Arboretum.',
+              caption:'Autumn whole-plant expression of source-identified Tree 063 ‘Autumn Moon’ at Cossey Park Arboretum.',
+              creator:'Cossey25', rightsHolder:'Cossey25', licence:'CC BY-SA 4.0', licenceUrl:'https://creativecommons.org/licenses/by-sa/4.0/',
+              attributionText:'Cossey25, CC BY-SA 4.0, via Wikimedia Commons.',
+              identityBasis:'The Commons source records this autumn view as Tree 063, Acer shirasawanum ‘Autumn Moon’, at Cossey Park Arboretum.',
+              identityLimitations:'Seasonal colour is site-sensitive and does not independently authenticate the clone.',
+              publicQualification:'Source-identified as Tree 063 at Cossey Park Arboretum; not independently authenticated by the Japanese Maple Atlas.',
+              location:'Cossey Park Arboretum, Fredericksburg, Virginia, United States', expectedLicence:'CC BY-SA 4.0'
+            },
+            {
+              cultivarId:'CUL-000019', cultivar:'Shin-deshōjō', id:'MED-CUL-000019-001',
+              fileTitle:'Acer palmatum Shin Deshojo BG Meise 37972.JPG',
+              role:'habit-primary', isPrimary:true,
+              altText:'Source-identified ‘Shin Deshojo’ Japanese maple photographed during its red spring flush at Meise Botanic Garden.',
+              caption:'Spring view of the source-identified ‘Shin Deshojo’ specimen at Meise Botanic Garden in April 2024.',
+              creator:'Michael Wolf', rightsHolder:'Michael Wolf', licence:'CC BY-SA 3.0', licenceUrl:'https://creativecommons.org/licenses/by-sa/3.0/',
+              attributionText:'Michael Wolf, Penig, CC BY-SA 3.0, via Wikimedia Commons.',
+              identityBasis:'The photographer identifies the specimen as Acer palmatum ‘Shin Deshojo’ in Meise Botanic Garden, Belgium.',
+              identityLimitations:'No accession mapping or propagation record was recovered; the source spelling is retained and red spring colour alone is not diagnostic.',
+              publicQualification:'Source-identified at Meise Botanic Garden; not independently authenticated by the Japanese Maple Atlas.',
+              location:'Meise Botanic Garden, Belgium', expectedLicence:'CC BY-SA 3.0'
+            },
+            {
+              cultivarId:'CUL-000019', cultivar:'Shin-deshōjō', id:'MED-CUL-000019-002',
+              fileTitle:'Acer palmatum Shin Deshojo BG Meise 37973.JPG',
+              role:'foliage-detail', isPrimary:false,
+              altText:'Attached red spring leaves on the source-identified ‘Shin Deshojo’ specimen at Meise Botanic Garden.',
+              caption:'Attached spring foliage on the source-identified ‘Shin Deshojo’ specimen at Meise Botanic Garden.',
+              creator:'Michael Wolf', rightsHolder:'Michael Wolf', licence:'CC BY-SA 3.0', licenceUrl:'https://creativecommons.org/licenses/by-sa/3.0/',
+              attributionText:'Michael Wolf, Penig, CC BY-SA 3.0, via Wikimedia Commons.',
+              identityBasis:'The photographer identifies the specimen as Acer palmatum ‘Shin Deshojo’ in Meise Botanic Garden, Belgium.',
+              identityLimitations:'No accession mapping or propagation record was recovered; similar spring-red cultivars may be difficult to distinguish from foliage alone.',
+              publicQualification:'Source-identified at Meise Botanic Garden; not independently authenticated by the Japanese Maple Atlas.',
+              location:'Meise Botanic Garden, Belgium', expectedLicence:'CC BY-SA 3.0'
+            },
+            {
+              cultivarId:'CUL-000019', cultivar:'Shin-deshōjō', id:'MED-CUL-000019-003',
+              fileTitle:'Acer palmatum Shin Deshojo BG Meise 37974.JPG',
+              role:'seasonal-diagnostic', isPrimary:false,
+              altText:'Branch-scale view of the red spring flush on the source-identified ‘Shin Deshojo’ specimen at Meise Botanic Garden.',
+              caption:'Branch-scale spring-colour expression on the source-identified ‘Shin Deshojo’ specimen at Meise Botanic Garden.',
+              creator:'Michael Wolf', rightsHolder:'Michael Wolf', licence:'CC BY-SA 3.0', licenceUrl:'https://creativecommons.org/licenses/by-sa/3.0/',
+              attributionText:'Michael Wolf, Penig, CC BY-SA 3.0, via Wikimedia Commons.',
+              identityBasis:'The photographer identifies the specimen as Acer palmatum ‘Shin Deshojo’ in Meise Botanic Garden, Belgium.',
+              identityLimitations:'No accession mapping or propagation record was recovered; spring colour is useful context but is not unique cultivar proof.',
+              publicQualification:'Source-identified at Meise Botanic Garden; not independently authenticated by the Japanese Maple Atlas.',
+              location:'Meise Botanic Garden, Belgium', expectedLicence:'CC BY-SA 3.0'
+            }
+          ];
+
+          const grouped = new Map();
+          const provenance = [];
+
+          for (const spec of sources) {
+            const params = new URLSearchParams({
+              action:'query', format:'json', formatversion:'2', prop:'imageinfo', titles:`File:${spec.fileTitle}`,
+              iiprop:'url|size|mime|sha1|extmetadata'
+            });
+            const apiUrl = `https://commons.wikimedia.org/w/api.php?${params}`;
+            const apiResponse = await fetch(apiUrl, { headers:{ 'User-Agent':'JapaneseMapleAtlas/1.0 media-acquisition' } });
+            if (!apiResponse.ok) throw new Error(`${spec.id}: Commons API ${apiResponse.status}`);
+            const data = await apiResponse.json();
+            const page = data.query?.pages?.[0];
+            const info = page?.imageinfo?.[0];
+            if (!info?.url) throw new Error(`${spec.id}: exact original URL missing`);
+            if (info.mime !== 'image/jpeg') throw new Error(`${spec.id}: expected JPEG, got ${info.mime}`);
+            const observedLicence = cleanHtml(info.extmetadata?.LicenseShortName?.value);
+            if (observedLicence !== spec.expectedLicence) throw new Error(`${spec.id}: expected ${spec.expectedLicence}, got ${observedLicence}`);
+
+            const response = await fetch(info.url, { headers:{ 'User-Agent':'JapaneseMapleAtlas/1.0 media-acquisition' } });
+            if (!response.ok) throw new Error(`${spec.id}: original download ${response.status}`);
+            const sourceBytes = Buffer.from(await response.arrayBuffer());
+            if (!sourceBytes.subarray(0,2).equals(Buffer.from([0xff,0xd8]))) throw new Error(`${spec.id}: downloaded bytes are not JPEG`);
+
+            const cultivarSlug = spec.cultivarId.toLowerCase();
+            const sourceRelative = `atlas-repository/media-sources/catalogue/${spec.cultivarId}/${spec.id}-source.jpg`;
+            const sourceFile = path.join(ROOT, sourceRelative);
+            fs.mkdirSync(path.dirname(sourceFile), { recursive:true });
+            fs.writeFileSync(sourceFile, sourceBytes);
+
+            const rendered = renderRasterProfiles(sourceBytes, PROFILES);
+            const derivatives = [];
+            for (const profile of Object.keys(PROFILES)) {
+              const item = rendered[profile];
+              const derivativeRelative = `public/media/derivatives/catalogue/${cultivarSlug}/${spec.id.toLowerCase()}-${profile}.jpg`;
+              const derivativeFile = path.join(ROOT, derivativeRelative);
+              fs.mkdirSync(path.dirname(derivativeFile), { recursive:true });
+              fs.writeFileSync(derivativeFile, item.bytes);
+              derivatives.push({
+                profile,
+                path:`/${derivativeRelative.replace(/^public\//,'')}`,
+                width:item.width,
+                height:item.height,
+                mimeType:item.mimeType,
+                sha256:sha256(item.bytes),
+                derivedFrom:spec.id
+              });
+            }
+
+            const asset = {
+              id:spec.id,
+              cultivarId:spec.cultivarId,
+              mediaType:'photograph',
+              role:spec.role,
+              isPrimary:spec.isPrimary,
+              status:'approved',
+              assetPath:derivatives.find(item => item.profile === 'display').path,
+              thumbnailPath:derivatives.find(item => item.profile === 'thumb').path,
+              altText:spec.altText,
+              caption:spec.caption,
+              creator:spec.creator,
+              rightsHolder:spec.rightsHolder,
+              rightsBasis:'creative-commons',
+              licence:spec.licence,
+              licenceUrl:spec.licenceUrl,
+              sourceUrl:filePage(spec.fileTitle),
+              sourceItemId:`Wikimedia Commons ${spec.fileTitle}`,
+              attributionText:spec.attributionText,
+              source:{
+                path:`/${sourceRelative}`,
+                sha256:sha256(sourceBytes),
+                preservation:'Exact original JPEG bytes downloaded from Wikimedia Commons and retained without modification.'
+              },
+              identity:{
+                confidence:'source-asserted',
+                identificationBasis:spec.identityBasis,
+                limitations:spec.identityLimitations,
+                publicQualification:spec.publicQualification
+              },
+              privacy:{
+                status:'location-generalised',
+                exifRetained:false,
+                gpsRetained:false,
+                locationGranularity:spec.location
+              },
+              derivatives,
+              approvalHistory:[{
+                status:'approved',
+                date:'2026-07-29',
+                authority:'Japanese Maple Atlas media / visual-assets stream',
+                note:'Exact source rights, creator attribution, source-asserted identity qualification, privacy treatment, visual role and deterministic derivatives reviewed under the Visual-First Catalogue contract.'
+              }]
+            };
+
+            if (!grouped.has(spec.cultivarId)) grouped.set(spec.cultivarId, []);
+            grouped.get(spec.cultivarId).push(asset);
+            provenance.push({
+              mediaId:spec.id,
+              cultivarId:spec.cultivarId,
+              fileTitle:spec.fileTitle,
+              sourcePage:filePage(spec.fileTitle),
+              exactOriginalUrl:info.url,
+              commonsApiUrl:apiUrl,
+              creator:spec.creator,
+              rightsHolder:spec.rightsHolder,
+              licence:spec.licence,
+              licenceUrl:spec.licenceUrl,
+              commonsSha1:info.sha1,
+              sourceSha256:asset.source.sha256,
+              originalWidth:info.width,
+              originalHeight:info.height,
+              originalBytes:sourceBytes.length,
+              description:cleanHtml(info.extmetadata?.ImageDescription?.value),
+              dateTimeOriginal:cleanHtml(info.extmetadata?.DateTimeOriginal?.value),
+              role:spec.role,
+              primary:spec.isPrimary,
+              identityConfidence:'source-asserted',
+              identityQualification:spec.publicQualification,
+              privacyTreatment:'Original preserved; deterministic public derivatives are pixel-decoded and re-encoded without EXIF, GPS or text metadata.'
+            });
+          }
+
+          for (const [cultivarId, assets] of grouped) {
+            writeJson(path.join(ROOT, `atlas-repository/catalogue-profiles/media/${cultivarId}.media.json`), {
+              schemaVersion:'1.0.0',
+              cultivarId,
+              publicationClass:'catalogue-profile',
+              status:'approved',
+              assets
+            });
+
+            const profilePath = path.join(ROOT, `atlas-repository/catalogue-profiles/${cultivarId}.json`);
+            const profile = JSON.parse(fs.readFileSync(profilePath, 'utf8'));
+            profile.profileVersion = '1.1.0';
+            profile.media = {
+              state:'approved-primary',
+              primaryMediaId:assets.find(asset => asset.isPrimary).id,
+              candidateMediaIds:assets.filter(asset => !asset.isPrimary).map(asset => asset.id),
+              governedGap:null,
+              visualComplete:true,
+              identityBasis:'asserted'
+            };
+            profile.review.notes = `${profile.review.notes} A lawful three-role Visual-First gallery has completed media review; the profile remains non-public and publication is not claimed.`;
+            profile.revisionHistory.push({
+              version:'1.1.0',
+              date:'2026-07-29T18:35:00Z',
+              actor:'Japanese Maple Atlas media / visual-assets stream',
+              change:'Added an approved lawful three-role Catalogue gallery with exact source preservation, Creative Commons attribution, source-asserted identity qualification, privacy-treated deterministic derivatives and canonical primary linkage; publication state remains unchanged.'
+            });
+            writeJson(profilePath, profile);
+          }
+
+          writeJson(path.join(ROOT, 'docs/registers/MEDIA-SOURCE-ACQUISITION_C-002-01.json'), {
+            schemaVersion:'1.0.0',
+            repositoryBaseline:'6d510bbd7c1c686eb1a5cffead3bb240ad92e6f7',
+            acquisitionDate:'2026-07-29',
+            batch:'C-002 asset package 01',
+            items:provenance
+          });
+          console.log(`Acquired and processed ${provenance.length} exact source originals.`);
+          NODE
+          node /tmp/acquire-c002-01.mjs
+
+      - name: Generate canonical media manifest
+        run: npm run process:media
+
+      - name: Validate complete repository package
+        run: |
+          set -o pipefail
+          {
+            npm run validate:media
+            npm run process:media:check
+            npm run validate:catalogue
+            npm run compile:atlas:check
+            npm run compile:catalogue:check
+            npm run validate:schemas
+            npm run validate:repository
+            npm run validate:search
+            npm run validate:graph
+            npm run validate:explorer
+            npm run test:unit
+            npm run test:integration
+            npm run test:coverage
+            npm run build
+            npm run validate:quality
+            npm run release:manifest
+          } 2>&1 | tee validation-c002-01.log
+
+      - name: Upload inspection and validation artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: c002-lawful-assets-01
+          if-no-files-found: error
+          retention-days: 14
+          path: |
+            atlas-repository/media-sources/catalogue/CUL-000016/
+            atlas-repository/media-sources/catalogue/CUL-000019/
+            public/media/derivatives/catalogue/cul-000016/
+            public/media/derivatives/catalogue/cul-000019/
+            atlas-repository/catalogue-profiles/media/CUL-000016.media.json
+            atlas-repository/catalogue-profiles/media/CUL-000019.media.json
+            atlas-repository/catalogue-profiles/CUL-000016.json
+            atlas-repository/catalogue-profiles/CUL-000019.json
+            docs/registers/MEDIA-SOURCE-ACQUISITION_C-002-01.json
+            public/media/derivatives/manifest.json
+            validation-c002-01.log
+
+      - name: Commit generated lawful asset package and remove temporary workflow
+        run: |
+          rm .github/workflows/asset-acquire-c002-01.yml
+          git config user.name "Japanese Maple Atlas Media Bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add -A
+          git commit -m "Media: add lawful galleries for Autumn Moon and Shin-deshōjō"
+          git push origin HEAD:media/visual-first-assets-c002-01
