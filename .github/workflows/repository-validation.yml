@@ -31,7 +31,9 @@ jobs:
       - run: npm run process:media:check
       - run: npm run validate:contributions
       - run: npm run validate:reference-standards
+      - run: npm run validate:catalogue
       - run: npm run compile:atlas:check
+      - run: npm run compile:catalogue:check
       - run: npm run validate:scale
       - run: npm run validate:schemas
       - run: npm run validate:repository
