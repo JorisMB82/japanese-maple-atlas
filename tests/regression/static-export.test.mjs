@@ -39,12 +39,17 @@ test('production export contains every governed public route', () => {
   }
 });
 
-test('critical pages retain the remediated first-touch experience', () => {
+test('critical pages retain the remediated two-speed first-touch experience', () => {
   const home = htmlFor('/');
   assert.match(home, /Find, understand and compare Japanese maples/i);
-  assert.match(home, /Browse the five pilot cultivars/i);
+  assert.match(home, /Browse the cultivar profiles/i);
+  assert.match(home, /Catalogue Profiles/i);
+  assert.match(home, /Reference Standards/i);
+  assert.match(home, /Publication class/i);
   const explorer = htmlFor('/explorer');
   assert.match(explorer, /Find Japanese maples by the traits that matter to you/i);
+  assert.match(explorer, /Publication class/i);
+  assert.match(explorer, /All classes/i);
   assert.match(explorer, /More filters/i);
   assert.match(explorer, /Try a guided starting point/i);
   assert.match(explorer, /Trait table/i);
@@ -59,7 +64,10 @@ test('navigation, repository, compare and records expose usability safeguards', 
   assert.match(home, /aria-controls="primary-navigation"/);
   assert.match(htmlFor('/repository'), /Copy repository hash/i);
   assert.match(htmlFor('/compare'), /Preparing the cultivar selectors/i);
-  assert.match(htmlFor('/cultivars/seiryu'), /On this record/i);
+  const cultivar = htmlFor('/cultivars/seiryu');
+  assert.match(cultivar, /On this record/i);
+  assert.match(cultivar, /Reference Standard/i);
+  assert.match(cultivar, /Stable cultivar ID/i);
   assert.match(htmlFor('/graph'), /Try:/i);
 });
 
