@@ -101,5 +101,6 @@
     "docs/DR-011-002_Governed-Media-Derivatives.md",
     "atlas-repository/media-coverage.json"
   ],
+  "compilerVersion": "2.0.0",
   "compilerScaleTargets": [20, 25, 150]
 }
