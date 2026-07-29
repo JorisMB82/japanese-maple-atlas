@@ -1,9 +1,11 @@
 {
-  "version": "1.0.0",
+  "version": "1.1.0",
   "status": "approved",
   "approvedAt": "2026-07-28",
+  "assignmentApprovedAt": "2026-07-29",
   "authority": "Project Owner / Editor-in-Chief",
   "decisionRecord": "DR-STRATEGY-002",
+  "assignmentDecisionRecord": "DR-CATALOGUE-001",
   "identityFamily": "CUL-######",
   "publicationClasses": [
     "catalogue-profile",
@@ -113,152 +115,182 @@
     {
       "cultivarId": "CUL-000011",
       "programmeSlot": "011",
-      "state": "reserved-catalogue-slot",
+      "state": "assigned-catalogue",
       "referenceStandardId": null,
-      "assignedWorkingName": null,
+      "assignedWorkingName": "Orange Dream",
       "publicationClass": "catalogue-profile",
-      "assignmentDecision": null,
-      "notes": "Reserved for the owner-approved first Catalogue cohort; cultivar assignment remains pending C0 review."
+      "assignmentDecision": "DR-CATALOGUE-001",
+      "batchId": "C-001",
+      "preliminaryRisk": "low",
+      "notes": "Project Owner assignment approved on 2026-07-29. Routine C0 duplicate and naming confirmation required. Assignment approval authorises Catalogue production but does not publish the profile or approve media."
     },
     {
       "cultivarId": "CUL-000012",
       "programmeSlot": "012",
-      "state": "reserved-catalogue-slot",
+      "state": "assigned-catalogue",
       "referenceStandardId": null,
-      "assignedWorkingName": null,
+      "assignedWorkingName": "Koto-no-ito",
       "publicationClass": "catalogue-profile",
-      "assignmentDecision": null,
-      "notes": "Reserved for the owner-approved first Catalogue cohort; cultivar assignment remains pending C0 review."
+      "assignmentDecision": "DR-CATALOGUE-001",
+      "batchId": "C-001",
+      "preliminaryRisk": "low",
+      "notes": "Project Owner assignment approved on 2026-07-29. Routine C0 duplicate and naming confirmation required; distinguish related near-names. Assignment approval authorises Catalogue production but does not publish the profile or approve media."
     },
     {
       "cultivarId": "CUL-000013",
       "programmeSlot": "013",
-      "state": "reserved-catalogue-slot",
+      "state": "assigned-catalogue",
       "referenceStandardId": null,
-      "assignedWorkingName": null,
+      "assignedWorkingName": "Inaba-shidare",
       "publicationClass": "catalogue-profile",
-      "assignmentDecision": null,
-      "notes": "Reserved for the owner-approved first Catalogue cohort; cultivar assignment remains pending C0 review."
+      "assignmentDecision": "DR-CATALOGUE-001",
+      "batchId": "C-001",
+      "preliminaryRisk": "low",
+      "notes": "Project Owner assignment approved on 2026-07-29. Routine C0 duplicate and naming confirmation required. Assignment approval authorises Catalogue production but does not publish the profile or approve media."
     },
     {
       "cultivarId": "CUL-000014",
       "programmeSlot": "014",
-      "state": "reserved-catalogue-slot",
+      "state": "assigned-catalogue",
       "referenceStandardId": null,
-      "assignedWorkingName": null,
+      "assignedWorkingName": "Beni-kawa",
       "publicationClass": "catalogue-profile",
-      "assignmentDecision": null,
-      "notes": "Reserved for the owner-approved first Catalogue cohort; cultivar assignment remains pending C0 review."
+      "assignmentDecision": "DR-CATALOGUE-001",
+      "batchId": "C-001",
+      "preliminaryRisk": "low",
+      "notes": "Project Owner assignment approved on 2026-07-29. Routine C0 duplicate and naming confirmation required. Assignment approval authorises Catalogue production but does not publish the profile or approve media."
     },
     {
       "cultivarId": "CUL-000015",
       "programmeSlot": "015",
-      "state": "reserved-catalogue-slot",
+      "state": "assigned-catalogue",
       "referenceStandardId": null,
-      "assignedWorkingName": null,
+      "assignedWorkingName": "Trompenburg",
       "publicationClass": "catalogue-profile",
-      "assignmentDecision": null,
-      "notes": "Reserved for the owner-approved first Catalogue cohort; cultivar assignment remains pending C0 review."
+      "assignmentDecision": "DR-CATALOGUE-001",
+      "batchId": "C-001",
+      "preliminaryRisk": "low",
+      "notes": "Project Owner assignment approved on 2026-07-29. Routine C0 duplicate and naming confirmation required; keep distinct from Green Trompenburg. Assignment approval authorises Catalogue production but does not publish the profile or approve media."
     },
     {
       "cultivarId": "CUL-000016",
       "programmeSlot": "016",
-      "state": "reserved-catalogue-slot",
+      "state": "assigned-catalogue",
       "referenceStandardId": null,
-      "assignedWorkingName": null,
+      "assignedWorkingName": "Autumn Moon",
       "publicationClass": "catalogue-profile",
-      "assignmentDecision": null,
-      "notes": "Reserved for the owner-approved first Catalogue cohort; cultivar assignment remains pending C0 review."
+      "assignmentDecision": "DR-CATALOGUE-001",
+      "batchId": "C-002",
+      "preliminaryRisk": "medium",
+      "notes": "Project Owner assignment approved on 2026-07-29. Targeted C0 taxon and alias review required. Assignment approval authorises Catalogue production but does not publish the profile or approve media."
     },
     {
       "cultivarId": "CUL-000017",
       "programmeSlot": "017",
-      "state": "reserved-catalogue-slot",
+      "state": "assigned-catalogue",
       "referenceStandardId": null,
-      "assignedWorkingName": null,
+      "assignedWorkingName": "Waterfall",
       "publicationClass": "catalogue-profile",
-      "assignmentDecision": null,
-      "notes": "Reserved for the owner-approved first Catalogue cohort; cultivar assignment remains pending C0 review."
+      "assignmentDecision": "DR-CATALOGUE-001",
+      "batchId": "C-002",
+      "preliminaryRisk": "low",
+      "notes": "Project Owner assignment approved on 2026-07-29. Routine C0 duplicate and naming confirmation required. Assignment approval authorises Catalogue production but does not publish the profile or approve media."
     },
     {
       "cultivarId": "CUL-000018",
       "programmeSlot": "018",
-      "state": "reserved-catalogue-slot",
+      "state": "assigned-catalogue",
       "referenceStandardId": null,
-      "assignedWorkingName": null,
+      "assignedWorkingName": "Aoyagi",
       "publicationClass": "catalogue-profile",
-      "assignmentDecision": null,
-      "notes": "Reserved for the owner-approved first Catalogue cohort; cultivar assignment remains pending C0 review."
+      "assignmentDecision": "DR-CATALOGUE-001",
+      "batchId": "C-002",
+      "preliminaryRisk": "low",
+      "notes": "Project Owner assignment approved on 2026-07-29. Routine C0 duplicate and naming confirmation required; distinguish Yamato-aoyagi. Assignment approval authorises Catalogue production but does not publish the profile or approve media."
     },
     {
       "cultivarId": "CUL-000019",
       "programmeSlot": "019",
-      "state": "reserved-catalogue-slot",
+      "state": "assigned-catalogue",
       "referenceStandardId": null,
-      "assignedWorkingName": null,
+      "assignedWorkingName": "Shin-deshōjō",
       "publicationClass": "catalogue-profile",
-      "assignmentDecision": null,
-      "notes": "Reserved for the owner-approved first Catalogue cohort; cultivar assignment remains pending C0 review."
+      "assignmentDecision": "DR-CATALOGUE-001",
+      "batchId": "C-002",
+      "preliminaryRisk": "medium",
+      "notes": "Project Owner assignment approved on 2026-07-29. Targeted C0 romanisation and label-variant review required. Assignment approval authorises Catalogue production but does not publish the profile or approve media."
     },
     {
       "cultivarId": "CUL-000020",
       "programmeSlot": "020",
-      "state": "reserved-catalogue-slot",
+      "state": "assigned-catalogue",
       "referenceStandardId": null,
-      "assignedWorkingName": null,
+      "assignedWorkingName": "Red Dragon",
       "publicationClass": "catalogue-profile",
-      "assignmentDecision": null,
-      "notes": "Reserved for the owner-approved first Catalogue cohort; cultivar assignment remains pending C0 review."
+      "assignmentDecision": "DR-CATALOGUE-001",
+      "batchId": "C-002",
+      "preliminaryRisk": "low",
+      "notes": "Project Owner assignment approved on 2026-07-29. Routine C0 duplicate and naming confirmation required. Assignment approval authorises Catalogue production but does not publish the profile or approve media."
     },
     {
       "cultivarId": "CUL-000021",
       "programmeSlot": "021",
-      "state": "reserved-catalogue-slot",
+      "state": "assigned-catalogue",
       "referenceStandardId": null,
-      "assignedWorkingName": null,
+      "assignedWorkingName": "Tamukeyama",
       "publicationClass": "catalogue-profile",
-      "assignmentDecision": null,
-      "notes": "Reserved for the owner-approved first Catalogue cohort; cultivar assignment remains pending C0 review."
+      "assignmentDecision": "DR-CATALOGUE-001",
+      "batchId": "C-003",
+      "preliminaryRisk": "medium",
+      "notes": "Project Owner assignment approved on 2026-07-29. Targeted C0 synonym-scope review required for Beni-hagoromo. Assignment approval authorises Catalogue production but does not publish the profile or approve media."
     },
     {
       "cultivarId": "CUL-000022",
       "programmeSlot": "022",
-      "state": "reserved-catalogue-slot",
+      "state": "assigned-catalogue",
       "referenceStandardId": null,
-      "assignedWorkingName": null,
+      "assignedWorkingName": "Orangeola",
       "publicationClass": "catalogue-profile",
-      "assignmentDecision": null,
-      "notes": "Reserved for the owner-approved first Catalogue cohort; cultivar assignment remains pending C0 review."
+      "assignmentDecision": "DR-CATALOGUE-001",
+      "batchId": "C-003",
+      "preliminaryRisk": "low",
+      "notes": "Project Owner assignment approved on 2026-07-29. Routine C0 duplicate and naming confirmation required. Assignment approval authorises Catalogue production but does not publish the profile or approve media."
     },
     {
       "cultivarId": "CUL-000023",
       "programmeSlot": "023",
-      "state": "reserved-catalogue-slot",
+      "state": "assigned-catalogue",
       "referenceStandardId": null,
-      "assignedWorkingName": null,
+      "assignedWorkingName": "Higasa-yama",
       "publicationClass": "catalogue-profile",
-      "assignmentDecision": null,
-      "notes": "Reserved for the owner-approved first Catalogue cohort; cultivar assignment remains pending C0 review."
+      "assignmentDecision": "DR-CATALOGUE-001",
+      "batchId": "C-003",
+      "preliminaryRisk": "medium",
+      "notes": "Project Owner assignment approved on 2026-07-29. Targeted C0 spelling-normalisation review required for Higasayama. Assignment approval authorises Catalogue production but does not publish the profile or approve media."
     },
     {
       "cultivarId": "CUL-000024",
       "programmeSlot": "024",
-      "state": "reserved-catalogue-slot",
+      "state": "assigned-catalogue",
       "referenceStandardId": null,
-      "assignedWorkingName": null,
+      "assignedWorkingName": "Arakawa",
       "publicationClass": "catalogue-profile",
-      "assignmentDecision": null,
-      "notes": "Reserved for the owner-approved first Catalogue cohort; cultivar assignment remains pending C0 review."
+      "assignmentDecision": "DR-CATALOGUE-001",
+      "batchId": "C-003",
+      "preliminaryRisk": "medium",
+      "notes": "Project Owner assignment approved on 2026-07-29. Targeted C0 accepted-name and rough-bark alias review required. Assignment approval authorises Catalogue production but does not publish the profile or approve media."
     },
     {
       "cultivarId": "CUL-000025",
       "programmeSlot": "025",
-      "state": "reserved-catalogue-slot",
+      "state": "assigned-catalogue",
       "referenceStandardId": null,
-      "assignedWorkingName": null,
+      "assignedWorkingName": "Red Pygmy",
       "publicationClass": "catalogue-profile",
-      "assignmentDecision": null,
-      "notes": "Reserved for the owner-approved first Catalogue cohort; cultivar assignment remains pending C0 review."
+      "assignmentDecision": "DR-CATALOGUE-001",
+      "batchId": "C-003",
+      "preliminaryRisk": "low",
+      "notes": "Project Owner assignment approved on 2026-07-29. Routine C0 duplicate and naming confirmation required. Assignment approval authorises Catalogue production but does not publish the profile or approve media."
     }
   ]
 }
