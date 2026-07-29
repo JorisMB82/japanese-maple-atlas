@@ -1,5 +1,5 @@
 {
-  "schemaVersion": "1.3.0",
+  "schemaVersion": "1.4.0",
   "nodeVersion": 24,
   "applicationVersion": "0.11.5",
   "repositoryVersion": "0.11.0",
@@ -63,6 +63,7 @@
     "docs/ROADMAP-002_Post-Sprint-10_RC-020-Visual-Atlas-Roadmap_v1.0.md",
     "docs/ROADMAP-002A_Two-Speed-Catalogue-and-Reference-Standard-Addendum_v1.0_APPROVED.md",
     "docs/DR-STRATEGY-002_Two-Speed-Owner-Ratification.md",
+    "docs/DR-CATALOGUE-001_Owner-Approval-of-Cultivar-Assignments-011-025.md",
     "docs/DR-ENGINEERING-002_Catalogue-MVP-Data-Path.md",
     "docs/COMPILER-002_Scalable-Reference-Standard-Ingestion_v1.0.md",
     "docs/DR-011-001_Canonical-RC-Contract-and-Legacy-Adapters.md",
