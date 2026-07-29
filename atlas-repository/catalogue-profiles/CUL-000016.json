@@ -7,7 +7,7 @@
   "taxonId": "TAX-ASHI",
   "scientificName": "Acer shirasawanum ‘Autumn Moon’",
   "publicationClass": "catalogue-profile",
-  "profileVersion": "1.0.0",
+  "profileVersion": "1.1.0",
   "catalogueState": "review-ready",
   "riskLevel": "medium",
   "riskReasons": [
@@ -178,18 +178,21 @@
     }
   ],
   "media": {
-    "state": "candidate-under-review",
-    "primaryMediaId": null,
-    "candidateMediaIds": [],
+    "state": "approved-primary",
+    "primaryMediaId": "MED-CUL-000016-001",
+    "candidateMediaIds": [
+      "MED-CUL-000016-002",
+      "MED-CUL-000016-003"
+    ],
     "governedGap": null,
-    "visualComplete": false,
+    "visualComplete": true,
     "identityBasis": "asserted"
   },
   "review": {
     "reviewedBy": "Japanese Maple Atlas editorial stream",
     "reviewedAt": "2026-07-29T04:00:00Z",
     "approvalState": "editorial-approved",
-    "notes": "C0 targeted taxon and alias review completed; C1 content and four-source package ready. Profile remains non-public and C2 is not claimed."
+    "notes": "C0 targeted taxon and alias review completed; C1 content and four-source package ready. Profile remains non-public and C2 is not claimed. A lawful three-role Visual-First gallery has completed media review; the profile remains non-public and publication is not claimed."
   },
   "batchId": "C-002",
   "promotionStatus": "not-nominated",
@@ -201,6 +204,12 @@
       "date": "2026-07-29T04:00:00Z",
       "actor": "Japanese Maple Atlas editorial stream",
       "change": "Created the canonical non-public C-002 Catalogue Profile; completed targeted C0 taxon/alias review and C1 editorial/source review."
+    },
+    {
+      "version": "1.1.0",
+      "date": "2026-07-29T18:35:00Z",
+      "actor": "Japanese Maple Atlas media / visual-assets stream",
+      "change": "Added an approved lawful three-role Catalogue gallery with exact source preservation, Creative Commons attribution, source-asserted identity qualification, privacy-treated deterministic derivatives and canonical primary linkage; publication state remains unchanged."
     }
   ]
 }
