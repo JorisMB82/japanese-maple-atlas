@@ -1,0 +1,84 @@
+name: Visual-First C-001 asset finalisation
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - .github/workflows/visual-first-asset-finalise.yml
+
+permissions:
+  contents: write
+
+jobs:
+  finalise:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: media/visual-first-assets-c001-c002
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci --no-audit --no-fund
+      - name: Build sidecars, profile transitions and publication-path fix
+        run: node scripts/finalise-visual-first-c001.mjs
+      - name: Generate outputs and run full validation
+        shell: bash
+        run: |
+          set -o pipefail
+          mkdir -p quality-reports
+          {
+            echo '== regenerate Catalogue and Atlas outputs =='
+            node scripts/compile-catalogue-profiles.mjs
+            npm run compile:atlas
+            echo '== media processing and checks =='
+            npm run process:media
+            npm run validate:media
+            npm run process:media:check
+            echo '== repository and compiler validation =='
+            npm run validate:contributions
+            npm run validate:reference-standards
+            npm run validate:catalogue
+            npm run compile:atlas:check
+            npm run compile:catalogue:check
+            npm run validate:scale
+            npm run validate:schemas
+            npm run validate:repository
+            npm run validate:search
+            npm run validate:graph
+            npm run validate:explorer
+            echo '== tests and production build =='
+            npm run test:unit
+            npm run test:integration
+            npm run test:coverage
+            npm run build
+            npm run test:regression 2>&1 | tee quality-reports/regression.txt
+            npm run validate:scale
+            npm run validate:quality
+            npm run release:manifest
+          } 2>&1 | tee quality-reports/media-finalisation.txt
+      - name: Upload final visual review and validation evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: visual-first-c001-final-package-review
+          path: |
+            public/media/derivatives/catalogue/
+            atlas-repository/catalogue-profiles/media/CUL-000011.media.json
+            atlas-repository/catalogue-profiles/media/CUL-000013.media.json
+            docs/HANDOFF-MEDIA-CATALOGUE-006_Visual-First-C001-Asset-Package-01.md
+            quality-reports/media-finalisation.txt
+          if-no-files-found: error
+          retention-days: 14
+      - name: Commit validated media package
+        shell: bash
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add -A
+          git add -f public/media/derivatives
+          git commit -m "Media: publish first Visual-First C-001 galleries"
+          git push origin HEAD:media/visual-first-assets-c001-c002
