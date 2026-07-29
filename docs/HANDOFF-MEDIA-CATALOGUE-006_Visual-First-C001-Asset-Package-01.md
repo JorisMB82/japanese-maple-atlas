@@ -1,7 +1,7 @@
 # HANDOFF-MEDIA-CATALOGUE-006 — Visual-First C-001 Asset Package 01
 
 **Status:** EXECUTED — PROTECTED VALIDATION REQUIRED  
-**Baseline:** `b33feecb617b23a7c9c31fe86b25459e891e8818`  
+**Current protected baseline:** `ddace69ff7594c9118169a4ad1b3f71b326d2881`  
 **Branch:** `media/visual-first-assets-c001-c002`  
 **Scope:** CUL-000011 and CUL-000013 complete galleries; CUL-000014 remains partial
 
@@ -39,4 +39,4 @@ Every displayed item uses a documented Creative Commons licence and item-level a
 
 ## Validation
 
-The finalisation workflow runs media processing, derivative drift checks, Catalogue and repository validation, compiler checks, unit/integration/coverage tests, production build, static regression, aggregate quality validation and release-manifest generation. Protected PR results remain the final merge gate.
+The package is reconciled onto protected `main` `ddace69ff7594c9118169a4ad1b3f71b326d2881`, preserving the complete C-003 editorial cohort. Media processing, derivative drift checks, Catalogue and repository validation, compiler checks, unit/integration/coverage tests, production build, static regression, aggregate quality validation and release-manifest generation remain mandatory. A normal successful protected PR workflow is the final merge gate.
