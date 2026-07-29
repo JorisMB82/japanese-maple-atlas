@@ -2,6 +2,7 @@
 
 **Handoff status:** COMPLETE MEDIA EXECUTION PACKAGE — FIVE GAP APPROVALS REQUIRED  
 **Inspected `main`:** `3e1bb1906635233b71498c771077ab7fb33abf1b`  
+**CTO integration review baseline:** `e9b9676a25feea7dde6a29d8e2d956be1924712e`  
 **Branch:** `media/catalogue-c-001`  
 **Assignment authority:** `DR-CATALOGUE-001`  
 **Execution authority:** `HANDOFF-MEDIA-CATALOGUE-002`  
@@ -13,6 +14,7 @@
 - `media/catalogue-c-001` existed and was identical to that commit before execution.
 - The branch merge base was the current authoritative `main`, which contains the approved assignment baseline and the active C-001 handoff.
 - `CUL-000011` through `CUL-000015` were verified as `assigned-catalogue` identities in Batch `C-001`.
+- CTO integration review was repeated against `e9b9676a25feea7dde6a29d8e2d956be1924712e`, after the non-public discovery correction and the five C0/C1 canonical profiles merged. The media findings and requested decisions remain unchanged.
 
 ## C2 outcome by identity
 
