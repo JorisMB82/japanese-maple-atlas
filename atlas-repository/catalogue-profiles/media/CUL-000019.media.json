@@ -179,68 +179,68 @@
       "status": "approved",
       "assetPath": "/media/derivatives/catalogue/cul-000019/med-cul-000019-003-display.jpg",
       "thumbnailPath": "/media/derivatives/catalogue/cul-000019/med-cul-000019-003-thumb.jpg",
-      "altText": "Branch-scale view of the red spring flush on the source-identified ‘Shin Deshojo’ specimen at Meise Botanic Garden.",
-      "caption": "Branch-scale spring-colour expression on the source-identified ‘Shin Deshojo’ specimen at Meise Botanic Garden.",
-      "creator": "Michael Wolf",
-      "rightsHolder": "Michael Wolf",
+      "altText": "Labelled ‘Shindeshojo’ Japanese maple bonsai showing a greener midsummer canopy at the 2008 Tatton Park Flower Show.",
+      "caption": "Separate source-identified ‘Shindeshojo’ bonsai photographed in late July 2008, used only to illustrate a greener summer expression alongside the Meise spring-flush images.",
+      "creator": "Mike Peel",
+      "rightsHolder": "Mike Peel",
       "rightsBasis": "creative-commons",
-      "licence": "CC BY-SA 3.0",
-      "licenceUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
-      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Acer%20palmatum%20Shin%20Deshojo%20BG%20Meise%2037974.JPG",
-      "sourceItemId": "Wikimedia Commons Acer palmatum Shin Deshojo BG Meise 37974.JPG",
-      "attributionText": "Michael Wolf, Penig, CC BY-SA 3.0, via Wikimedia Commons.",
+      "licence": "CC BY-SA 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Acer%20Palmatum%20bonsai.jpg",
+      "sourceItemId": "Wikimedia Commons Acer Palmatum bonsai.jpg",
+      "attributionText": "Photograph by Mike Peel, CC BY-SA 4.0, via Wikimedia Commons.",
       "source": {
         "path": "/atlas-repository/media-sources/catalogue/CUL-000019/MED-CUL-000019-003-source.jpg",
-        "sha256": "d145b2fea787ed7267e1c890c9527c878ddd5f7b53d914901109f27e2bb5c1e6",
+        "sha256": "fc36de4513cd8ff34a9972c7aed778ab8318d7538fdc61bad7e3ffe5d9cb1612",
         "preservation": "Exact original JPEG bytes downloaded from Wikimedia Commons and retained without modification."
       },
       "identity": {
         "confidence": "source-asserted",
-        "identificationBasis": "The photographer identifies the specimen as Acer palmatum ‘Shin Deshojo’ in Meise Botanic Garden, Belgium.",
-        "limitations": "No accession mapping or propagation record was recovered; spring colour is useful context but is not unique cultivar proof.",
-        "publicQualification": "Source-identified at Meise Botanic Garden; not independently authenticated by the Japanese Maple Atlas."
+        "identificationBasis": "The photographer records the tree as Acer palmatum “Shindeshojo”, and the visible exhibition label repeats that name at the 2008 Tatton Park Flower Show.",
+        "limitations": "This is a separately labelled trained bonsai, not the Meise specimen shown in the spring images. The exhibition label is the identity basis, and bonsai form is not representative of ordinary garden habit.",
+        "publicQualification": "Source-identified from an exhibition label; not independently authenticated by the Japanese Maple Atlas. Shown only as a separate summer-expression specimen; bonsai form is not cultivar habit."
       },
       "privacy": {
-        "status": "location-generalised",
+        "status": "not-sensitive",
         "exifRetained": false,
         "gpsRetained": false,
-        "locationGranularity": "Meise Botanic Garden, Belgium"
+        "locationGranularity": "Tatton Park Flower Show, England, United Kingdom"
       },
       "derivatives": [
         {
           "profile": "thumb",
           "path": "/media/derivatives/catalogue/cul-000019/med-cul-000019-003-thumb.jpg",
-          "width": 173,
+          "width": 245,
           "height": 231,
           "mimeType": "image/jpeg",
-          "sha256": "8091288456138ecfffa8dcca1a014d8213b6640db71493c830abe536d9a036c4",
+          "sha256": "49f5badb76a8afcbbf1570d16c910accd81749823b075228249c634d0637f44c",
           "derivedFrom": "MED-CUL-000019-003"
         },
         {
           "profile": "card",
           "path": "/media/derivatives/catalogue/cul-000019/med-cul-000019-003-card.jpg",
-          "width": 303,
+          "width": 428,
           "height": 404,
           "mimeType": "image/jpeg",
-          "sha256": "7061525066385056c9e0a92ea36064949f2483734fc04c2d8d6cf7200b4106f5",
+          "sha256": "81f3c7a9a805e569039006551064d0061740701d06906fbf8d32d5a7627dd070",
           "derivedFrom": "MED-CUL-000019-003"
         },
         {
           "profile": "display",
           "path": "/media/derivatives/catalogue/cul-000019/med-cul-000019-003-display.jpg",
-          "width": 519,
+          "width": 735,
           "height": 693,
           "mimeType": "image/jpeg",
-          "sha256": "cddf9d06fdffc7c3d07b112f2b3e30251545e9c64fe5e67ec5a7ba4bce263127",
+          "sha256": "8f9f9c47ec545133df1ff9a84357e5452939ed44f7a91882b0fa093c0636a324",
           "derivedFrom": "MED-CUL-000019-003"
         },
         {
           "profile": "archive",
           "path": "/media/derivatives/catalogue/cul-000019/med-cul-000019-003-archive.jpg",
-          "width": 780,
+          "width": 1103,
           "height": 1040,
           "mimeType": "image/jpeg",
-          "sha256": "d8b940a64326e7652a501aa476fccbc7fed865aedc1f0a0cfe2b847efeb16406",
+          "sha256": "4c9fde63923d446c4411b82a87c8871fc44e21ae03d6a5da02186a3aef31b76c",
           "derivedFrom": "MED-CUL-000019-003"
         }
       ],
@@ -249,7 +249,7 @@
           "status": "approved",
           "date": "2026-07-29",
           "authority": "Japanese Maple Atlas media / visual-assets stream",
-          "note": "Exact source rights, creator attribution, source-asserted identity qualification, privacy treatment, visual role and deterministic derivatives reviewed under the Visual-First Catalogue contract."
+          "note": "Selected after visual review to supply a distinct midsummer seasonal role. Rights, exhibition-label identity basis, separate-specimen limitation, bonsai-context limitation, privacy treatment and deterministic derivatives were reviewed."
         }
       ]
     }
@@ -257,7 +257,7 @@
   "roleException": null,
   "review": {
     "reviewedBy": "Japanese Maple Atlas media / visual-assets stream",
-    "reviewedAt": "2026-07-29T19:00:00Z",
-    "notes": "Complete three-role Visual-First gallery; every item carries a lawful Creative Commons reuse basis, complete attribution, source-asserted identity qualification, exact source preservation and privacy-treated deterministic derivatives."
+    "reviewedAt": "2026-07-29T19:25:00Z",
+    "notes": "Complete three-role Visual-First gallery. The spring habit and foliage items show one Meise specimen; the seasonal diagnostic is a separately labelled July bonsai and is explicitly limited to summer colour expression, not ordinary cultivar habit or same-plant sequence."
   }
 }
