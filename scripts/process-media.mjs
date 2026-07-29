@@ -22,20 +22,30 @@ export function resolveDerivativePath(root, derivativePath) {
   return path.join(root, clean(derivativePath));
 }
 
+function discoverSidecars(directory, pattern, publicationClass) {
+  if (!fs.existsSync(directory)) return [];
+  return fs.readdirSync(directory)
+    .filter(file => pattern.test(file))
+    .sort()
+    .map(file => ({ file:path.join(directory, file), publicationClass }));
+}
+
 export function buildMedia({
   check = false,
   root = ROOT,
   sideDirectory = path.join(root, 'atlas-repository/reference-standards/media'),
+  catalogueSideDirectory = path.join(root, 'atlas-repository/catalogue-profiles/media'),
   manifestDirectory = path.join(root, 'public/media/derivatives')
 } = {}) {
   const entries = [];
   const errors = [];
-  const sidecarFiles = fs.readdirSync(sideDirectory)
-    .filter(file => /^RC-\d{3}\.media\.json$/.test(file))
-    .sort();
+  const sidecars = [
+    ...discoverSidecars(sideDirectory, /^RC-\d{3}\.media\.json$/, 'reference-standard'),
+    ...discoverSidecars(catalogueSideDirectory, /^CUL-\d{6}\.media\.json$/, 'catalogue-profile')
+  ];
 
-  for (const name of sidecarFiles) {
-    const sidecar = json(path.join(sideDirectory, name));
+  for (const descriptor of sidecars) {
+    const sidecar = json(descriptor.file);
     for (const asset of sidecar.assets) {
       const sourcePath = resolveSourcePath(root, asset.source.path);
       if (!fs.existsSync(sourcePath)) {
@@ -90,15 +100,14 @@ export function buildMedia({
 
         const target = resolveDerivativePath(root, derivative.path);
         if (check) {
-          if (!fs.existsSync(target) || !fs.readFileSync(target).equals(content)) {
-            errors.push(`${asset.id}/${derivative.profile}: derivative drift`);
-          }
+          if (!fs.existsSync(target) || !fs.readFileSync(target).equals(content)) errors.push(`${asset.id}/${derivative.profile}: derivative drift`);
         } else {
-          fs.mkdirSync(path.dirname(target), { recursive: true });
+          fs.mkdirSync(path.dirname(target), { recursive:true });
           fs.writeFileSync(target, content);
         }
         entries.push({
           mediaId: asset.id,
+          publicationClass: descriptor.publicationClass,
           profile: derivative.profile,
           path: derivative.path,
           width,
@@ -110,7 +119,12 @@ export function buildMedia({
     }
   }
 
-  const manifest = { version:'media-pipeline-v2.1', derivativeCount:entries.length, entries };
+  const manifest = {
+    version:'media-pipeline-v2.2',
+    derivativeCount:entries.length,
+    publicationClasses:[...new Set(entries.map(entry => entry.publicationClass))].sort(),
+    entries
+  };
   const manifestPath = path.join(manifestDirectory, 'manifest.json');
   const text = `${JSON.stringify(manifest, null, 2)}\n`;
   if (check) {
