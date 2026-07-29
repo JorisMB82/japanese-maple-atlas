@@ -30,9 +30,10 @@ jobs:
       - name: Extract and execute governed acquisition script
         run: |
           sed -n "/cat > \/tmp\/acquire-c002-01.mjs <<'NODE'/,/^          NODE$/p" .github/workflows/asset-acquire-c002-01.yml \
-            | sed '1d;$d;s/^          //' > /tmp/acquire-c002-01.mjs
-          test -s /tmp/acquire-c002-01.mjs
-          node /tmp/acquire-c002-01.mjs
+            | sed '1d;$d;s/^          //' > .tmp-acquire-c002-01.mjs
+          test -s .tmp-acquire-c002-01.mjs
+          node .tmp-acquire-c002-01.mjs
+          rm .tmp-acquire-c002-01.mjs
 
       - name: Generate canonical media manifest
         run: npm run process:media
