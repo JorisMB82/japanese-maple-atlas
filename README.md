@@ -18,18 +18,21 @@ Current state:
 - RC-001 through RC-005 are the five frozen public Reference Standards;
 - RC-006 through RC-010 have passed G4 but remain non-public while G5 media is blocked;
 - the Reference Standard repository contains 235 first-class objects;
-- the Catalogue MVP schema, identity registry, validator, compiler and class-aware front end are implemented without publishing a real Catalogue Profile;
-- `CUL-000011` through `CUL-000025` are reserved programme identities, not assigned cultivars;
-- editorial is preparing the owner decision for the actual 011–025 assignments;
-- media is planning governed visual coverage across identities 001–025.
+- Catalogue Batch C-001 publishes five LOW-risk Catalogue Profiles under C0–C3;
+- CUL-000011 through CUL-000015 use temporary owner-approved governed visual gaps and display no generic substitute imagery;
+- CUL-000016 through CUL-000025 remain approved assignments for the next two Catalogue batches;
+- all 25 stable identities remain governed by the approved registry;
+- media backfill continues with a formal C-001 review due 30 September 2026.
 
 Authoritative programme documents:
 
 - [`ROADMAP-002A Version 1.0 — Approved two-speed governing amendment`](docs/ROADMAP-002A_Two-Speed-Catalogue-and-Reference-Standard-Addendum_v1.0_APPROVED.md)
 - [`DR-STRATEGY-002 — Project Owner ratification`](docs/DR-STRATEGY-002_Two-Speed-Owner-Ratification.md)
+- [`DR-CATALOGUE-001 — Assignments 011–025`](docs/DR-CATALOGUE-001_Owner-Approval-of-Cultivar-Assignments-011-025.md)
+- [`DR-CATALOGUE-002 — C-001 governed gaps and publication`](docs/DR-CATALOGUE-002_Owner-Approval-of-C-001-Governed-Gaps-and-Publication.md)
 - [`CATALOGUE-001 — Catalogue Profile specification`](docs/CATALOGUE-001_Catalogue-Profile-Specification_v0.1.md)
 - [`ARCH-002 — Stable cultivar identity and publication classes`](docs/ARCH-002_Stable-Cultivar-Identity-and-Publication-Class-Model_v0.1.md)
-- [`RC-001–RC-025 programme register`](docs/PROGRAMME-REGISTER_RC-001-RC-025.md)
+- [`Cultivar identity programme register 001–025`](docs/PROGRAMME-REGISTER_RC-001-RC-025.md)
 
 The original ROADMAP-002 Version 1.1 remains authoritative for the three-track operating model except where ROADMAP-002A expressly amends the publication architecture.
 
@@ -134,7 +137,7 @@ The first job explicitly validates both publication paths. The release workflow 
 - `atlas-repository/catalogue-profiles/contract/cultivar-identity-registry.json` — governed `CUL-######` registry
 - `atlas-repository/schemas/catalogue-profile.schema.json` — canonical Catalogue schema
 - `lib/catalogue-profile-compiler.mjs` — semantic validation and generic Catalogue compiler
-- `lib/catalogue-runtime.js` — build-time Catalogue discovery
+- `lib/catalogue-runtime.js` — published-only build-time Catalogue discovery
 - `lib/catalogue-data.js` — class-aware application data layer
 - `lib/catalogue-explorer.mjs` — publication-class Explorer state and exports
 - `scripts/validate-catalogue-profiles.mjs` — canonical Catalogue validator
@@ -148,6 +151,6 @@ The first job explicitly validates both publication paths. The release workflow 
 
 ## Current publication boundary
 
-The generic Catalogue path is infrastructure only until the Project Owner approves the actual cultivar assignments for slots 011–025.
+C-001 contains the first five public Catalogue Profiles. Their governed gaps are transparent temporary release states, not finished media coverage.
 
-No reserved identity, synthetic fixture or media candidate is a public cultivar record. The first real batch may be published only after its assignments are approved and every record passes C0–C3.
+C-002 and C-003 remain non-public until their records independently pass C0–C3. No media candidate, synthetic fixture or unapproved image is a public cultivar asset.
