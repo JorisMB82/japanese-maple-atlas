@@ -28,7 +28,9 @@ export default function CultivarPage({ params }) {
   const similar = getSimilarCultivars(c.slug, 3);
   const isReferenceStandard = c.publicationClass === 'reference-standard';
   const evidenceCount = c.assertions?.length || 0;
-  const visualState = c.mediaState === 'governed-gap' ? 'A governed visual gap is recorded; no generic image is substituted.' : 'The displayed visual follows the governed media record.';
+  const visualState = c.mediaState === 'governed-gap'
+    ? 'No approved cultivar-specific image is currently available. No generic or substitute cultivar image is displayed.'
+    : 'The displayed visual follows the governed media record.';
   return <>
     <nav className="breadcrumb"><a href="/explorer">Explorer</a><span>›</span><span>{c.cultivar}</span></nav>
     <section className="profileHero mediaProfileHero" id="overview">
