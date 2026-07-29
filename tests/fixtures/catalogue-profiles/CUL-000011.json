@@ -1,0 +1,99 @@
+{
+  "cultivarId": "CUL-000011",
+  "programmeSlot": "011",
+  "slug": "synthetic-amber-fan",
+  "acceptedWorkingName": "Synthetic Amber Fan",
+  "cultivarEpithet": "Synthetic Amber Fan",
+  "taxonId": "TAX-APAL",
+  "scientificName": "Acer palmatum 'Synthetic Amber Fan'",
+  "publicationClass": "catalogue-profile",
+  "profileVersion": "1.0.0",
+  "catalogueState": "published",
+  "riskLevel": "low",
+  "riskReasons": [],
+  "duplicateCheck": {
+    "reviewedBy": "Synthetic fixture reviewer",
+    "reviewedAt": "2026-07-28T12:00:00Z",
+    "comparedIds": [
+      "RC-001",
+      "RC-002"
+    ],
+    "comparedNames": [
+      "Bloodgood",
+      "Emperor I"
+    ],
+    "result": "unique",
+    "notes": "Synthetic fixture reviewed only to exercise the generic Catalogue contract."
+  },
+  "namingVariants": [],
+  "identityNotes": "Synthetic fixture; not a real cultivar and never eligible for production publication.",
+  "content": {
+    "summary": "A synthetic low-risk profile used only to verify deterministic Catalogue validation and compilation.",
+    "habit": "Compact upright branching with a rounded crown in the synthetic fixture.",
+    "leafForm": "Palmate leaves with five narrow lobes in the synthetic fixture description.",
+    "seasonal": {
+      "spring": "Amber spring foliage.",
+      "summer": "Green summer foliage.",
+      "autumn": "Orange autumn foliage."
+    },
+    "size": {
+      "height": "2–3 m",
+      "spread": "1.5–2.5 m",
+      "qualifier": "Synthetic published range used only for contract testing."
+    },
+    "cultivation": "Use ordinary Japanese maple cultivation conditions; this statement exists only for testing.",
+    "diagnostic": "The synthetic amber spring colour and compact upright habit distinguish the test fixture.",
+    "confidence": "High confidence that the fixture exercises the intended fields; no botanical claim is made.",
+    "unresolvedIssue": null
+  },
+  "sources": [
+    {
+      "id": "SRC-CUL-000011-01",
+      "sourceClass": "institutional",
+      "title": "Synthetic institutional profile",
+      "authority": "Japanese Maple Atlas test suite",
+      "url": null,
+      "accessedAt": "2026-07-28T12:00:00Z",
+      "locator": "tests/fixtures/catalogue-profiles/CUL-000011.json",
+      "claimsSupported": [
+        "identity",
+        "habit",
+        "seasonality"
+      ],
+      "limitations": "Synthetic test evidence only.",
+      "confidence": "high"
+    }
+  ],
+  "media": {
+    "state": "governed-gap",
+    "primaryMediaId": null,
+    "candidateMediaIds": [],
+    "governedGap": {
+      "reason": "Synthetic fixtures do not use public photographs or production media assets.",
+      "reviewer": "Synthetic fixture reviewer",
+      "reviewedAt": "2026-07-28T12:00:00Z",
+      "backfillPriority": "low",
+      "publicWording": "No production image is associated with this synthetic test fixture."
+    },
+    "visualComplete": false,
+    "identityBasis": "not-applicable"
+  },
+  "review": {
+    "reviewedBy": "Synthetic fixture reviewer",
+    "reviewedAt": "2026-07-28T12:00:00Z",
+    "approvalState": "batch-approved",
+    "notes": "Approved solely for automated contract tests."
+  },
+  "batchId": "C-001",
+  "promotionStatus": "not-nominated",
+  "referenceStandardId": null,
+  "publishedAt": "2026-07-28T12:00:00Z",
+  "revisionHistory": [
+    {
+      "version": "1.0.0",
+      "date": "2026-07-28T12:00:00Z",
+      "actor": "Synthetic fixture reviewer",
+      "change": "Created the non-production Catalogue compiler fixture."
+    }
+  ]
+}

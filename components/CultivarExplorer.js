@@ -9,6 +9,7 @@ import {
   suggestSearchTerms
 } from '@/lib/search';
 import StatusBadge from './StatusBadge';
+import PublicationClassBadge from './PublicationClassBadge';
 import MediaPlate from './MediaPlate';
 
 const SEMANTIC_FILTERS = [
@@ -20,8 +21,14 @@ const SEMANTIC_FILTERS = [
   ['risk', 'Cultivation risk']
 ];
 
+const PUBLICATION_CLASS_LABELS = {
+  'reference-standard': 'Reference Standards',
+  'catalogue-profile': 'Catalogue Profiles'
+};
+
 const initialState = {
   query: '',
+  publicationClass: 'All',
   species: 'All',
   habit: 'All',
   leaf: 'All',
@@ -32,10 +39,10 @@ const initialState = {
   sort: 'relevance'
 };
 
-const URL_KEYS = { query: 'q', species: 'species', habit: 'habit', leaf: 'leaf', colour: 'colour', exposure: 'exposure', size: 'size', risk: 'risk', sort: 'sort' };
+const URL_KEYS = { query: 'q', publicationClass: 'class', species: 'species', habit: 'habit', leaf: 'leaf', colour: 'colour', exposure: 'exposure', size: 'size', risk: 'risk', sort: 'sort' };
 const VALID_SORTS = new Set(['relevance', 'reference', 'name', 'species']);
 const FIELD_LABELS = {
-  id: 'reference ID', cultivar: 'cultivar name', scientificName: 'scientific name', species: 'species',
+  id: 'record ID', cultivar: 'cultivar name', scientificName: 'scientific name', species: 'species',
   summary: 'profile summary', habit: 'growth habit', leafForm: 'leaf form', light: 'light guidance',
   sizeClass: 'plant scale', springColor: 'spring colour', summerColor: 'summer colour',
   autumnColor: 'autumn colour', bark: 'bark', diagnosticTraits: 'diagnostic traits', status: 'record status'
@@ -45,7 +52,6 @@ function readUrlState() {
   if (typeof window === 'undefined') return initialState;
   const params = new URLSearchParams(window.location.search);
   const state = { ...initialState };
-
   for (const key of Object.keys(initialState)) {
     const value = params.get(URL_KEYS[key]);
     if (key === 'query') state[key] = value || '';
@@ -101,6 +107,7 @@ export default function CultivarExplorer({ cultivars, facets = {}, examples = []
   const suggestions = useMemo(() => suggestSearchTerms(state.query), [state.query]);
 
   const activeFilters = [
+    ...(state.publicationClass !== 'All' ? [{ key: 'publicationClass', label: PUBLICATION_CLASS_LABELS[state.publicationClass] || state.publicationClass }] : []),
     ...(state.species !== 'All' ? [{ key: 'species', label: state.species }] : []),
     ...SEMANTIC_FILTERS.filter(([key]) => state[key] !== 'All').map(([key, label]) => ({
       key,
@@ -118,20 +125,22 @@ export default function CultivarExplorer({ cultivars, facets = {}, examples = []
 
   return <section aria-labelledby="directory-heading">
     <div className="sectionHeading">
-      <div><div className="kicker">Quick search on this page</div><h2 id="directory-heading">Browse the five pilot cultivars</h2><p>Use the full <a href="/explorer">Cultivar Explorer</a> for saved views, trait tables, relationships and research-set export.</p></div>
+      <div><div className="kicker">Quick search on this page</div><h2 id="directory-heading">Browse the cultivar profiles</h2><p>Use the full <a href="/explorer">Cultivar Explorer</a> for saved views, trait tables, publication classes, relationships and research-set export.</p></div>
       <p aria-live="polite">{filtered.length} of {cultivars.length} records</p>
     </div>
 
     <div className="searchPanel semanticSearchPanel">
       <div className="searchLeadRow">
         <label className="searchField">
-          <span>Search these five cultivars by name or trait</span>
-          <input
-            aria-label="Search cultivars"
-            placeholder='Try “upright”, “weeping red” or “partial shade”'
-            value={state.query}
-            onChange={event => update('query', event.target.value)}
-          />
+          <span>Search cultivars by name or trait</span>
+          <input aria-label="Search cultivars" placeholder='Try “upright”, “weeping red” or “partial shade”' value={state.query} onChange={event => update('query', event.target.value)}/>
+        </label>
+        <label className="speciesFilter">
+          <span>Publication class</span>
+          <select value={state.publicationClass} onChange={event => update('publicationClass', event.target.value)}>
+            <option value="All">All classes</option>
+            {(facets.publicationClasses || []).map(publicationClass => <option key={publicationClass} value={publicationClass}>{PUBLICATION_CLASS_LABELS[publicationClass] || publicationClass} ({contextualCounts.publicationClass?.[publicationClass] || 0})</option>)}
+          </select>
         </label>
         <label className="speciesFilter">
           <span>Species</span>
@@ -142,76 +151,35 @@ export default function CultivarExplorer({ cultivars, facets = {}, examples = []
         </label>
       </div>
 
-      {queryAnalysis.labels.length > 0 && <div className="queryInterpretation" aria-live="polite">
-        <strong>Interpreted as</strong>
-        {queryAnalysis.labels.map(label => <span key={label}>{label}</span>)}
-        {queryAnalysis.exclusions.map(exclusion => <span className="excludedQuery" key={exclusion}>Exclude {exclusion.replace(/^-/, '')}</span>)}
-      </div>}
+      {queryAnalysis.labels.length > 0 && <div className="queryInterpretation" aria-live="polite"><strong>Interpreted as</strong>{queryAnalysis.labels.map(label => <span key={label}>{label}</span>)}{queryAnalysis.exclusions.map(exclusion => <span className="excludedQuery" key={exclusion}>Exclude {exclusion.replace(/^-/, '')}</span>)}</div>}
 
-      {examples.length > 0 && <div className="queryExamples">
-        <span>Examples:</span>
-        {examples.map(example => <button type="button" className="queryChip" key={example} onClick={() => update('query', example)}>{example}</button>)}
-      </div>}
+      {examples.length > 0 && <div className="queryExamples"><span>Examples:</span>{examples.map(example => <button type="button" className="queryChip" key={example} onClick={() => update('query', example)}>{example}</button>)}</div>}
 
       <div className="semanticFilterGrid">
-        {SEMANTIC_FILTERS.slice(0, showAdvanced ? SEMANTIC_FILTERS.length : 2).map(([key, label]) => <label key={key}>
-          <span>{label}</span>
-          <select value={state[key]} onChange={event => update(key, event.target.value)}>
-            <option value="All">All</option>
-            {(facets.semantic?.[key] || []).map(option => {
-              const count = contextualCounts[key]?.[option.id] || 0;
-              return <option key={option.id} value={option.id} disabled={count === 0 && state[key] !== option.id}>{option.label} ({count})</option>;
-            })}
-          </select>
-        </label>)}
+        {SEMANTIC_FILTERS.slice(0, showAdvanced ? SEMANTIC_FILTERS.length : 2).map(([key, label]) => <label key={key}><span>{label}</span><select value={state[key]} onChange={event => update(key, event.target.value)}><option value="All">All</option>{(facets.semantic?.[key] || []).map(option => { const count = contextualCounts[key]?.[option.id] || 0; return <option key={option.id} value={option.id} disabled={count === 0 && state[key] !== option.id}>{option.label} ({count})</option>; })}</select></label>)}
       </div>
 
       <div className="searchToolbar">
-        <div className="searchToolbarLeft">
-          <button className="textButton" type="button" onClick={() => setShowAdvanced(value => !value)}>{showAdvanced ? 'Hide more filters' : 'Show more filters'}</button>
-          {active && <button className="textButton" type="button" onClick={reset}>Clear quick search</button>}
-        </div>
-        <label className="sortControl">
-          <span>Sort</span>
-          <select value={state.sort} onChange={event => update('sort', event.target.value)}>
-            <option value="relevance">Relevance</option>
-            <option value="reference">Reference ID</option>
-            <option value="name">Cultivar name</option>
-            <option value="species">Species</option>
-          </select>
-        </label>
+        <div className="searchToolbarLeft"><button className="textButton" type="button" onClick={() => setShowAdvanced(value => !value)}>{showAdvanced ? 'Hide more filters' : 'Show more filters'}</button>{active && <button className="textButton" type="button" onClick={reset}>Clear quick search</button>}</div>
+        <label className="sortControl"><span>Sort</span><select value={state.sort} onChange={event => update('sort', event.target.value)}><option value="relevance">Relevance</option><option value="reference">Record ID</option><option value="name">Cultivar name</option><option value="species">Species</option></select></label>
       </div>
 
-      {activeFilters.length > 0 && <div className="activeFilterBar" aria-label="Active filters">
-        <span>Active filters</span>
-        {activeFilters.map(filter => <button type="button" key={filter.key} onClick={() => clearFilter(filter.key)}>{filter.label} ×</button>)}
-      </div>}
+      {activeFilters.length > 0 && <div className="activeFilterBar" aria-label="Active filters"><span>Active filters</span>{activeFilters.map(filter => <button type="button" key={filter.key} onClick={() => clearFilter(filter.key)}>{filter.label} ×</button>)}</div>}
     </div>
 
-    {compare.length > 0 && <div className="compareTray">
-      <div><strong>Comparison tray</strong><span>{compare.length}/2 selected</span></div>
-      <div className="compareTrayNames">{compare.map(slug => <button type="button" key={slug} onClick={() => toggle(slug)}>{cultivars.find(cultivar => cultivar.slug === slug)?.cultivar || slug} ×</button>)}</div>
-      <a className={`button ${compare.length < 2 ? 'secondary' : ''}`} href={compareUrl}>{compare.length === 2 ? 'Compare selected' : 'Choose one more'}</a>
-    </div>}
+    {compare.length > 0 && <div className="compareTray"><div><strong>Comparison tray</strong><span>{compare.length}/2 selected</span></div><div className="compareTrayNames">{compare.map(slug => <button type="button" key={slug} onClick={() => toggle(slug)}>{cultivars.find(cultivar => cultivar.slug === slug)?.cultivar || slug} ×</button>)}</div><a className={`button ${compare.length < 2 ? 'secondary' : ''}`} href={compareUrl}>{compare.length === 2 ? 'Compare selected' : 'Choose one more'}</a></div>}
 
     {filtered.length ? <div className="cultivarGrid">{filtered.map(cultivar => <article className="cultivarCard discoveryCard mediaCultivarCard" key={cultivar.id}>
-      <div className="cardTop"><span className="referenceId">{cultivar.id}</span><StatusBadge status={cultivar.status} /></div>
+      <div className="cardTop"><span className="referenceId">{cultivar.displayId || cultivar.id}</span><div className="cardBadgeGroup"><PublicationClassBadge publicationClass={cultivar.publicationClass}/><StatusBadge status={cultivar.status}/></div></div>
       <a className="cardMainLink" href={`/cultivars/${cultivar.slug}`}>
         <MediaPlate media={cultivar.primaryMedia} cultivar={cultivar} compact />
         <p className="speciesName"><em>{cultivar.species}</em></p>
         <h3>{cultivar.cultivar}</h3>
         <p>{cultivar.summary}</p>
-        {cultivar._searchMeta?.matchReasons?.length > 0 && <div className="matchReasonLine" aria-label="Why this record matched">
-          {cultivar._searchMeta.matchReasons.slice(0, 3).map((reason, index) => <span key={`${reason.field}-${index}`}>{reasonLabel(reason)}</span>)}
-        </div>}
+        {cultivar._searchMeta?.matchReasons?.length > 0 && <div className="matchReasonLine" aria-label="Why this record matched">{cultivar._searchMeta.matchReasons.slice(0, 3).map((reason, index) => <span key={`${reason.field}-${index}`}>{reasonLabel(reason)}</span>)}</div>}
         <div className="traitLine"><span>{cultivar.habit}</span><span>{cultivar.leafForm}</span><span>{cultivar.autumnColor}</span></div>
       </a>
       <div className="cardFooterActions"><a href={`/cultivars/${cultivar.slug}`}>Open profile →</a><button type="button" className={compare.includes(cultivar.slug) ? 'selectedCompare' : ''} onClick={() => toggle(cultivar.slug)}>{compare.includes(cultivar.slug) ? 'Selected ✓' : 'Add to compare'}</button></div>
-    </article>)}</div> : <div className="empty card searchEmptyState">
-      <h3>No matching cultivars</h3>
-      <p>The current query and filters do not match a governed record. Broaden the query, remove a filter, or try one of these controlled concepts.</p>
-      <div className="searchSuggestions">{suggestions.map(suggestion => <button type="button" key={`${suggestion.query}-${suggestion.label}`} onClick={() => update('query', suggestion.query)}><strong>{suggestion.label}</strong><span>{suggestion.query}</span></button>)}</div>
-      <button type="button" onClick={reset}>Reset search</button>
-    </div>}
+    </article>)}</div> : <div className="empty card searchEmptyState"><h3>No matching cultivars</h3><p>The current query and filters do not match a governed record. Broaden the query, remove a filter, or try one of these controlled concepts.</p><div className="searchSuggestions">{suggestions.map(suggestion => <button type="button" key={`${suggestion.query}-${suggestion.label}`} onClick={() => update('query', suggestion.query)}><strong>{suggestion.label}</strong><span>{suggestion.query}</span></button>)}</div><button type="button" onClick={reset}>Reset search</button></div>}
   </section>;
 }

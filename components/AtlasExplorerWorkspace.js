@@ -23,9 +23,10 @@ import {
   projectCultivarForExplorer,
   serialiseExplorerState,
   toggleExplorerSelection
-} from '@/lib/atlas-explorer.mjs';
+} from '@/lib/catalogue-explorer.mjs';
 import MediaPlate from './MediaPlate';
 import StatusBadge from './StatusBadge';
+import PublicationClassBadge from './PublicationClassBadge';
 
 const COMMON_FACETS = [
   ['habit', 'Growth habit'],
@@ -37,9 +38,14 @@ const ADVANCED_FACETS = [
   ['size', 'Mature scale'],
   ['risk', 'Growing considerations']
 ];
+const PUBLICATION_CLASS_LABELS = {
+  'reference-standard': 'Reference Standards',
+  'catalogue-profile': 'Catalogue Profiles'
+};
 const VIEW_LABELS = { gallery: 'Gallery', matrix: 'Trait table', seasonal: 'Seasons', relationships: 'Relationships' };
 const LENS_LABELS = { overview: 'Overview', identity: 'Identity', morphology: 'Form and foliage', seasonal: 'Seasonal colour', cultivation: 'Growing context', evidence: 'Evidence' };
 const FIELD_LABELS = {
+  publicationClassLabel: 'Publication class', cultivarId: 'Stable cultivar ID', evidenceDepth: 'Evidence depth',
   scientificName: 'Scientific name', species: 'Species', status: 'Status', diagnosticTraits: 'Diagnostic traits',
   habit: 'Growth habit', leafForm: 'Leaf form', bark: 'Bark / winter interest', sizeClass: 'Scale',
   springColor: 'Spring', summerColor: 'Summer', autumnColor: 'Autumn', light: 'Exposure',
@@ -81,7 +87,7 @@ function GalleryView({ records, state, onFocus, onToggle }) {
   return <div className="explorerGallery">{records.map(cultivar => <article className={`explorerRecordCard ${state.focus === cultivar.slug ? 'focused' : ''} ${state.selected.includes(cultivar.slug) ? 'selectedForResearch' : ''}`} key={cultivar.id}>
     <button type="button" className="explorerCardFocus" onClick={() => onFocus(cultivar.slug)} aria-label={`Inspect ${cultivar.cultivar}`}>
       <MediaPlate media={cultivar.primaryMedia} cultivar={cultivar} compact />
-      <div className="explorerCardHeader"><code>{cultivar.id}</code><StatusBadge status={cultivar.status}/></div>
+      <div className="explorerCardHeader"><code>{cultivar.displayId || cultivar.id}</code><span className="explorerBadgeGroup"><PublicationClassBadge publicationClass={cultivar.publicationClass}/><StatusBadge status={cultivar.status}/></span></div>
       <p className="speciesName"><em>{cultivar.species}</em></p>
       <h3>{cultivar.cultivar}</h3>
       <p>{cultivar.summary}</p>
@@ -100,7 +106,7 @@ function MatrixView({ records, lens, state, onFocus, onToggle }) {
     <thead><tr><th scope="col">Set</th><th scope="col">Cultivar</th>{fields.map(field => <th scope="col" key={field}>{FIELD_LABELS[field] || field}</th>)}</tr></thead>
     <tbody>{records.map(cultivar => <tr key={cultivar.id} className={`${state.focus === cultivar.slug ? 'focusedRow' : ''} ${state.selected.includes(cultivar.slug) ? 'selectedForResearch' : ''}`}>
       <td><input aria-label={`Add ${cultivar.cultivar} to research set`} type="checkbox" checked={state.selected.includes(cultivar.slug)} onChange={() => onToggle(cultivar.slug)}/></td>
-      <th scope="row"><button type="button" className="matrixCultivarButton" onClick={() => onFocus(cultivar.slug)}><code>{cultivar.id}</code><strong>{cultivar.cultivar}</strong><em>{cultivar.species}</em></button></th>
+      <th scope="row"><button type="button" className="matrixCultivarButton" onClick={() => onFocus(cultivar.slug)}><code>{cultivar.displayId || cultivar.id}</code><strong>{cultivar.cultivar}</strong><em>{cultivar.species}</em></button></th>
       {fields.map(field => <td key={field}>{displayValue(cultivar[field])}</td>)}
     </tr>)}</tbody>
   </table></div>;
@@ -108,31 +114,32 @@ function MatrixView({ records, lens, state, onFocus, onToggle }) {
 
 function SeasonalView({ records, state, onFocus, onToggle }) {
   return <div className="explorerSeasonalGrid">{records.map(cultivar => <article key={cultivar.id} className={`${state.focus === cultivar.slug ? 'focused' : ''} ${state.selected.includes(cultivar.slug) ? 'selectedForResearch' : ''}`}>
-    <header><button type="button" onClick={() => onFocus(cultivar.slug)}><code>{cultivar.id}</code><strong>{cultivar.cultivar}</strong><em>{cultivar.species}</em></button><label><input type="checkbox" checked={state.selected.includes(cultivar.slug)} onChange={() => onToggle(cultivar.slug)}/> Add to set</label></header>
-    <div className="seasonalBand"><section><span>Spring</span><p>{cultivar.springColor}</p></section><section><span>Summer</span><p>{cultivar.summerColor}</p></section><section><span>Autumn</span><p>{cultivar.autumnColor}</p></section><section><span>Winter</span><p>{cultivar.bark}</p></section></div>
+    <header><button type="button" onClick={() => onFocus(cultivar.slug)}><code>{cultivar.displayId || cultivar.id}</code><strong>{cultivar.cultivar}</strong><em>{cultivar.species}</em><PublicationClassBadge publicationClass={cultivar.publicationClass}/></button><label><input type="checkbox" checked={state.selected.includes(cultivar.slug)} onChange={() => onToggle(cultivar.slug)}/> Add to set</label></header>
+    <div className="seasonalBand"><section><span>Spring</span><p>{cultivar.springColor}</p></section><section><span>Summer</span><p>{cultivar.summerColor}</p></section><section><span>Autumn</span><p>{cultivar.autumnColor}</p></section><section><span>Winter</span><p>{cultivar.bark || 'Not reviewed'}</p></section></div>
   </article>)}</div>;
 }
 
 function RelationshipView({ records, state, onFocus, onToggle }) {
   return <div className="explorerRelationshipList">{records.map(cultivar => <article key={cultivar.id} className={`${state.focus === cultivar.slug ? 'focused' : ''} ${state.selected.includes(cultivar.slug) ? 'selectedForResearch' : ''}`}>
-    <header><button type="button" onClick={() => onFocus(cultivar.slug)}><code>{cultivar.id}</code><strong>{cultivar.cultivar}</strong><em>{cultivar.species}</em></button><label><input type="checkbox" checked={state.selected.includes(cultivar.slug)} onChange={() => onToggle(cultivar.slug)}/> Add to set</label></header>
+    <header><button type="button" onClick={() => onFocus(cultivar.slug)}><code>{cultivar.displayId || cultivar.id}</code><strong>{cultivar.cultivar}</strong><em>{cultivar.species}</em><PublicationClassBadge publicationClass={cultivar.publicationClass}/></button><label><input type="checkbox" checked={state.selected.includes(cultivar.slug)} onChange={() => onToggle(cultivar.slug)}/> Add to set</label></header>
     <div className="relationshipStrip">{cultivar.relationships.length ? cultivar.relationships.map(relationship => <a key={relationship.id} href={`/graph?node=${cultivar.id}`}>
       <span><code>{relationship.id}</code><strong>{relationship.label}</strong></span>
       <span><b>{relationship.relatedCultivar}</b><small>{relationship.category} · strength {relationship.strength}/5 · {relationship.confidence}</small></span>
       <p>{relationship.rationale}</p>
-    </a>) : <p className="graphMuted">No direct cultivar relationship.</p>}</div>
+    </a>) : <p className="graphMuted">No explicit cultivar relationship. Catalogue publication does not require a completed graph.</p>}</div>
   </article>)}</div>;
 }
 
 function Inspector({ cultivar, onClose, selected, onToggle }) {
   if (!cultivar) return null;
+  const hasGraph = cultivar.publicationClass === 'reference-standard';
   return <aside className="explorerInspector">
     <button type="button" className="inspectorBack" onClick={onClose}>← Back to results</button>
-    <div className="inspectorTop"><div><div className="kicker">Focused record · {cultivar.id}</div><h2>{cultivar.cultivar}</h2><p><em>{cultivar.scientificName}</em></p></div><button type="button" className="inspectorClose" aria-label="Close record inspector" onClick={onClose}>×</button></div>
+    <div className="inspectorTop"><div><div className="kicker">Focused record · {cultivar.displayId || cultivar.id}</div><PublicationClassBadge publicationClass={cultivar.publicationClass}/><h2>{cultivar.cultivar}</h2><p><em>{cultivar.scientificName}</em></p></div><button type="button" className="inspectorClose" aria-label="Close record inspector" onClick={onClose}>×</button></div>
     <p>{cultivar.summary}</p>
-    <dl className="inspectorTraits"><dt>Habit</dt><dd>{cultivar.habit}</dd><dt>Leaf form</dt><dd>{cultivar.leafForm}</dd><dt>Exposure</dt><dd>{cultivar.light}</dd><dt>Scale</dt><dd>{cultivar.sizeClass}</dd></dl>
+    <dl className="inspectorTraits"><dt>Stable ID</dt><dd><code>{cultivar.cultivarId}</code></dd><dt>Evidence depth</dt><dd>{cultivar.evidenceDepth}</dd><dt>Media state</dt><dd>{cultivar.mediaState}</dd><dt>Habit</dt><dd>{cultivar.habit}</dd><dt>Leaf form</dt><dd>{cultivar.leafForm}</dd><dt>Exposure</dt><dd>{cultivar.light}</dd><dt>Scale</dt><dd>{cultivar.sizeClass}</dd></dl>
     <div className="inspectorMetrics"><span><strong>{cultivar.assertionCount}</strong> assertions</span><span><strong>{cultivar.evidenceCount}</strong> evidence records</span><span><strong>{cultivar.relationshipCount}</strong> cultivar links</span></div>
-    <div className="inspectorActions"><button type="button" onClick={() => onToggle(cultivar.slug)}>{selected ? 'Remove from set' : 'Add to research set'}</button><a className="button secondary" href={`/cultivars/${cultivar.slug}`}>Full profile</a><a className="button secondary" href={`/graph?node=${cultivar.id}`}>Graph node</a></div>
+    <div className="inspectorActions"><button type="button" onClick={() => onToggle(cultivar.slug)}>{selected ? 'Remove from set' : 'Add to research set'}</button><a className="button secondary" href={`/cultivars/${cultivar.slug}`}>Full profile</a>{hasGraph && <a className="button secondary" href={`/graph?node=${cultivar.id}`}>Graph node</a>}</div>
   </aside>;
 }
 
@@ -215,7 +222,7 @@ export default function AtlasExplorerWorkspace({ cultivars, facets, manifest }) 
     const cleanup = () => document.body.classList.remove('printingResearchSet');
     window.addEventListener('afterprint', cleanup, { once: true });
     window.print();
-    window.setTimeout(cleanup, 1000);
+    setTimeout(cleanup, 1000);
   };
   const compareUrl = summary.comparisonReady ? `/compare?a=${state.compareA}&b=${state.compareB}` : '/compare';
 
@@ -223,13 +230,14 @@ export default function AtlasExplorerWorkspace({ cultivars, facets, manifest }) 
     <section className="explorerCommandBar" aria-label="Atlas explorer controls">
       <div className="explorerSearchRow">
         <label className="searchField"><span>What are you looking for?</span><input value={state.query} onChange={event => update('query', event.target.value)} placeholder='Try “upright laceleaf”, “coral bark” or “partial shade”'/></label>
+        <label><span>Publication class</span><select value={state.publicationClass} onChange={event => update('publicationClass', event.target.value)}><option value="All">All classes</option>{(facets.publicationClasses || []).map(publicationClass => <option key={publicationClass} value={publicationClass}>{PUBLICATION_CLASS_LABELS[publicationClass] || publicationClass} ({contextualCounts.publicationClass?.[publicationClass] || 0})</option>)}</select></label>
         <label><span>Species</span><select value={state.species} onChange={event => update('species', event.target.value)}><option>All</option>{facets.species.map(species => <option key={species} value={species}>{species} ({contextualCounts.species?.[species] || 0})</option>)}</select></label>
-        <label><span>Sort results</span><select value={state.sort} onChange={event => update('sort', event.target.value)}><option value="relevance">Best match</option><option value="reference">Reference ID</option><option value="name">Cultivar name</option><option value="species">Species</option></select></label>
+        <label><span>Sort results</span><select value={state.sort} onChange={event => update('sort', event.target.value)}><option value="relevance">Best match</option><option value="reference">Record ID</option><option value="name">Cultivar name</option><option value="species">Species</option></select></label>
       </div>
       <div className="explorerCommonFacetGrid">{COMMON_FACETS.map(facet => <FacetSelect key={facet[0]} facets={facets} contextualCounts={contextualCounts} state={state} facet={facet} onChange={update}/>)}</div>
       <details className="explorerAdvancedFilters"><summary>More filters</summary><div className="explorerAdvancedFacetGrid">{ADVANCED_FACETS.map(facet => <FacetSelect key={facet[0]} facets={facets} contextualCounts={contextualCounts} state={state} facet={facet} onChange={update}/>)}</div></details>
       {queryAnalysis.labels.length > 0 && <div className="queryInterpretation"><strong>Search understood as</strong>{queryAnalysis.labels.map(label => <span key={label}>{label}</span>)}</div>}
-      <details className="explorerGuided"><summary>Try a guided starting point</summary><p>Examples apply a useful search and view; your research set is preserved.</p><div className="explorerPresetBar">{EXPLORER_PRESETS.map(preset => <button type="button" key={preset.id} title={preset.description} onClick={() => applyPreset(preset.id)}>{preset.label}</button>)}</div></details>
+      <details className="explorerGuided"><summary>Try a guided starting point</summary><p>Examples apply a useful search and view; your publication-class choice and research set are preserved.</p><div className="explorerPresetBar">{EXPLORER_PRESETS.map(preset => <button type="button" key={preset.id} title={preset.description} onClick={() => applyPreset(preset.id)}>{preset.label}</button>)}</div></details>
       <div className={`explorerDisplayBar ${state.view === 'matrix' ? 'withAnalysis' : ''}`}>
         <div role="group" aria-label="Explorer view">{Object.entries(VIEW_LABELS).map(([id, label]) => <button type="button" className={state.view === id ? 'active' : ''} aria-pressed={state.view === id} key={id} onClick={() => update('view', id)}>{label}</button>)}</div>
         {state.view === 'matrix' && <label className="analysisOptions"><span>Columns to show</span><select value={state.lens} onChange={event => update('lens', event.target.value)}>{Object.entries(LENS_LABELS).map(([id, label]) => <option key={id} value={id}>{label}</option>)}</select></label>}
@@ -239,7 +247,7 @@ export default function AtlasExplorerWorkspace({ cultivars, facets, manifest }) 
       {message && <p className="explorerMessage" role="status">{message}</p>}
     </section>
 
-    <section className="explorerStatusBar" aria-live="polite"><div><strong>{records.length}</strong><span>cultivar{records.length === 1 ? '' : 's'} shown</span></div><div><strong>{state.selected.length}</strong><span>saved for research</span></div><details><summary>Data and evidence details</summary><p>Repository v{manifest.repositoryVersion} · {manifest.objectTotal} verified objects. Search, saved views and exports do not change the source records.</p></details></section>
+    <section className="explorerStatusBar" aria-live="polite"><div><strong>{records.length}</strong><span>cultivar{records.length === 1 ? '' : 's'} shown</span></div><div><strong>{state.selected.length}</strong><span>saved for research</span></div><details><summary>Data and evidence details</summary><p>Repository v{manifest.repositoryVersion} · {manifest.objectTotal} compiled Reference Standard objects. Catalogue Profiles disclose their lean evidence depth and media state separately. Search, saved views and exports do not change source records.</p></details></section>
 
     <div className={`explorerWorkspaceGrid ${focused ? 'withInspector' : ''}`}>
       <section className="explorerResults" id="explorer-results" aria-label={`${VIEW_LABELS[state.view]} results`}>
@@ -255,13 +263,13 @@ export default function AtlasExplorerWorkspace({ cultivars, facets, manifest }) 
 
     {state.selected.length > 0 && <section className="explorerResearchTray" aria-label="Research set">
       <div className="researchTraySummary"><div><div className="kicker">Research set</div><strong>{summary.selectedCount}/{EXPLORER_MAX_SELECTION} cultivars</strong><small>A temporary group for comparison and export.</small></div><div><span>{summary.speciesCount} species</span><span>{summary.assertionCount} assertions</span><span>{summary.evidenceCount} evidence records</span></div></div>
-      <div className="researchTrayRecords">{selectedRecords.map(cultivar => <span key={cultivar.slug}><button type="button" className="researchRecordFocus" onClick={() => update('focus', cultivar.slug)}><code>{cultivar.id}</code><strong>{cultivar.cultivar}</strong></button><button type="button" className="researchRecordRemove" onClick={() => toggleSelection(cultivar.slug)} aria-label={`Remove ${cultivar.cultivar} from research set`}>×</button></span>)}</div>
+      <div className="researchTrayRecords">{selectedRecords.map(cultivar => <span key={cultivar.slug}><button type="button" className="researchRecordFocus" onClick={() => update('focus', cultivar.slug)}><code>{cultivar.displayId || cultivar.id}</code><strong>{cultivar.cultivar}</strong></button><button type="button" className="researchRecordRemove" onClick={() => toggleSelection(cultivar.slug)} aria-label={`Remove ${cultivar.cultivar} from research set`}>×</button></span>)}</div>
       {summary.comparisonReady && <fieldset className="comparisonPairChooser"><legend>Pair to compare</legend><label><span>A</span><select aria-label="First cultivar to compare" value={state.compareA} onChange={event => update('compareA', event.target.value)}>{selectedRecords.map(cultivar => <option key={cultivar.slug} value={cultivar.slug}>{cultivar.cultivar}</option>)}</select></label><label><span>B</span><select aria-label="Second cultivar to compare" value={state.compareB} onChange={event => update('compareB', event.target.value)}>{selectedRecords.filter(cultivar => cultivar.slug !== state.compareA).map(cultivar => <option key={cultivar.slug} value={cultivar.slug}>{cultivar.cultivar}</option>)}</select></label></fieldset>}
       <div className="researchTrayActions"><a className={`button ${summary.comparisonReady ? '' : 'secondary'}`} href={compareUrl}>{summary.comparisonReady ? `Compare ${compareARecord?.cultivar} + ${compareBRecord?.cultivar}` : 'Add one more to compare'}</a><button type="button" disabled={!summary.exportReady} onClick={() => exportDialog.current?.showModal()}>Export research set</button><button type="button" className="textButton" onClick={() => update('selected', [])}>Clear set</button></div>
     </section>}
 
-    <dialog ref={saveDialog} className="atlasDialog" aria-labelledby="save-view-title"><form method="dialog" onSubmit={saveView}><div className="kicker">Saved view</div><h2 id="save-view-title">Name this Explorer view</h2><p>This saves the current search, filters, view and research set in this browser only.</p><label><span>View name</span><input autoFocus maxLength="60" value={saveName} onChange={event => setSaveName(event.target.value)} required/></label><div className="dialogActions"><button type="button" className="button secondary" onClick={() => saveDialog.current?.close()}>Cancel</button><button type="submit">Save view</button></div></form></dialog>
+    <dialog ref={saveDialog} className="atlasDialog" aria-labelledby="save-view-title"><form method="dialog" onSubmit={saveView}><div className="kicker">Saved view</div><h2 id="save-view-title">Name this Explorer view</h2><p>This saves the current search, publication class, filters, view and research set in this browser only.</p><label><span>View name</span><input autoFocus maxLength="60" value={saveName} onChange={event => setSaveName(event.target.value)} required/></label><div className="dialogActions"><button type="button" className="button secondary" onClick={() => saveDialog.current?.close()}>Cancel</button><button type="submit">Save view</button></div></form></dialog>
 
-    <dialog ref={exportDialog} className="atlasDialog" aria-labelledby="export-title"><div className="kicker">Research set</div><h2 id="export-title">Choose an export format</h2><p>Readable formats are intended for garden planning and discussion. JSON retains the governed repository provenance for data use.</p><div className="exportChoices"><button type="button" onClick={printSet}><strong>Print / save as PDF</strong><span>Human-readable browser summary</span></button><button type="button" onClick={exportCsv}><strong>Download CSV</strong><span>Open in a spreadsheet</span></button><button type="button" onClick={exportJson}><strong>Download JSON</strong><span>Machine-readable with provenance</span></button></div><div className="dialogActions"><button type="button" className="button secondary" onClick={() => exportDialog.current?.close()}>Cancel</button></div></dialog>
+    <dialog ref={exportDialog} className="atlasDialog" aria-labelledby="export-title"><div className="kicker">Research set</div><h2 id="export-title">Choose an export format</h2><p>Readable formats are intended for garden planning and discussion. JSON retains repository provenance, stable cultivar identity and publication-class disclosure.</p><div className="exportChoices"><button type="button" onClick={printSet}><strong>Print / save as PDF</strong><span>Human-readable browser summary</span></button><button type="button" onClick={exportCsv}><strong>Download CSV</strong><span>Open in a spreadsheet</span></button><button type="button" onClick={exportJson}><strong>Download JSON</strong><span>Machine-readable with provenance</span></button></div><div className="dialogActions"><button type="button" className="button secondary" onClick={() => exportDialog.current?.close()}>Cancel</button></div></dialog>
   </div>;
 }

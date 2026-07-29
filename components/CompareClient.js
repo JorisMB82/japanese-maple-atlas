@@ -3,12 +3,14 @@
 import { useEffect, useMemo, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import MediaPlate from './MediaPlate';
+import PublicationClassBadge from './PublicationClassBadge';
 
 const groups = [
-  ['Identity', [['Species', 'species'], ['Reference ID', 'id'], ['Data status', 'status']]],
+  ['Identity', [['Species', 'species'], ['Stable cultivar ID', 'cultivarId'], ['Publication class', 'publicationClassLabel'], ['Record ID', 'displayId'], ['Evidence depth', 'evidenceDepth'], ['Data status', 'status']]],
   ['Form', [['Habit', 'habit'], ['Leaf form', 'leafForm'], ['Size class', 'sizeClass'], ['Bark', 'bark']]],
   ['Season', [['Spring colour', 'springColor'], ['Summer colour', 'summerColor'], ['Autumn colour', 'autumnColor']]],
-  ['Cultivation', [['Light', 'light']]]
+  ['Cultivation', [['Light', 'light']]],
+  ['Media', [['Media state', 'mediaState']]]
 ];
 
 export default function CompareClient({ cultivars }) {
@@ -40,16 +42,16 @@ export default function CompareClient({ cultivars }) {
 
   const swap = () => { setA(b); setB(a); };
   return <>
-    <section className="comparePairSummary" aria-live="polite"><strong>Comparing {left.cultivar} with {right.cultivar}</strong><span>The pair is reflected in the page link and can be changed below.</span></section>
-    <div className="compareControls"><label><span>First cultivar</span><select value={a} onChange={event => setA(event.target.value)}>{cultivars.map(cultivar => <option key={cultivar.id} value={cultivar.slug} disabled={cultivar.slug === b}>{cultivar.id} · {cultivar.cultivar}</option>)}</select></label><button type="button" className="swapButton" aria-label="Swap compared cultivars" onClick={swap}>⇄</button><label><span>Second cultivar</span><select value={b} onChange={event => setB(event.target.value)}>{cultivars.map(cultivar => <option key={cultivar.id} value={cultivar.slug} disabled={cultivar.slug === a}>{cultivar.id} · {cultivar.cultivar}</option>)}</select></label></div>
+    <section className="comparePairSummary" aria-live="polite"><strong>Comparing {left.cultivar} with {right.cultivar}</strong><span>Publication class and evidence depth are shown explicitly when the records differ.</span></section>
+    <div className="compareControls"><label><span>First cultivar</span><select value={a} onChange={event => setA(event.target.value)}>{cultivars.map(cultivar => <option key={cultivar.id} value={cultivar.slug} disabled={cultivar.slug === b}>{cultivar.displayId || cultivar.id} · {cultivar.cultivar} · {cultivar.publicationClassLabel}</option>)}</select></label><button type="button" className="swapButton" aria-label="Swap compared cultivars" onClick={swap}>⇄</button><label><span>Second cultivar</span><select value={b} onChange={event => setB(event.target.value)}>{cultivars.map(cultivar => <option key={cultivar.id} value={cultivar.slug} disabled={cultivar.slug === a}>{cultivar.displayId || cultivar.id} · {cultivar.cultivar} · {cultivar.publicationClassLabel}</option>)}</select></label></div>
     {a === b && <div className="notice"><strong>Choose two different cultivars</strong> to make the comparison meaningful.</div>}
-    <div className="compareVisuals">{[left, right].map(cultivar => <article key={cultivar.id}><MediaPlate media={cultivar.primaryMedia} cultivar={cultivar} compact/><span className="referenceId">{cultivar.id}</span><h2>{cultivar.cultivar}</h2><p><em>{cultivar.scientificName}</em></p><div className="tags">{cultivar.diagnosticTraits.map(trait => <span className="tag" key={trait}>{trait}</span>)}</div></article>)}</div>
-    <div className="mediaComparisonNotice">Identity plates use the same canvas and framing for direct visual comparison. They are illustrations, not diagnostic evidence.</div>
+    <div className="compareVisuals">{[left, right].map(cultivar => <article key={cultivar.id}><MediaPlate media={cultivar.primaryMedia} cultivar={cultivar} compact/><span className="referenceId">{cultivar.displayId || cultivar.id}</span><PublicationClassBadge publicationClass={cultivar.publicationClass}/><h2>{cultivar.cultivar}</h2><p><em>{cultivar.scientificName}</em></p><div className="tags">{cultivar.diagnosticTraits.map((trait, index) => <span className="tag" key={`${trait}-${index}`}>{trait}</span>)}</div></article>)}</div>
+    <div className="mediaComparisonNotice">Visuals may be governed photographs, illustrations or explicit gaps. They support comparison but do not authenticate a specimen.</div>
     <label className="checkRow"><input type="checkbox" checked={differencesOnly} onChange={event => setDifferencesOnly(event.target.checked)}/> Show differences only</label>
     <div className="comparisonSections">{groups.map(([group, rows]) => {
       const visible = differencesOnly ? rows.filter(([, key]) => left[key] !== right[key]) : rows;
       if (!visible.length) return null;
-      return <section className="comparisonGroup" key={group}><h2>{group}</h2><div className="tableWrap"><table><thead><tr><th>Trait</th><th>{left.cultivar}</th><th>{right.cultivar}</th></tr></thead><tbody>{visible.map(([label, key]) => <tr className={left[key] === right[key] ? 'sameValue' : ''} key={key}><th>{label}</th><td>{left[key]}</td><td>{right[key]}</td></tr>)}</tbody></table></div></section>;
-    })}<section className="comparisonGroup"><h2>Diagnostic traits</h2><div className="compareTraits"><div>{left.diagnosticTraits.map(trait => <span className="tag" key={trait}>{trait}</span>)}</div><div>{right.diagnosticTraits.map(trait => <span className="tag" key={trait}>{trait}</span>)}</div></div></section></div>
+      return <section className="comparisonGroup" key={group}><h2>{group}</h2><div className="tableWrap"><table><thead><tr><th>Trait</th><th>{left.cultivar}</th><th>{right.cultivar}</th></tr></thead><tbody>{visible.map(([label, key]) => <tr className={left[key] === right[key] ? 'sameValue' : ''} key={key}><th>{label}</th><td>{left[key] || '—'}</td><td>{right[key] || '—'}</td></tr>)}</tbody></table></div></section>;
+    })}<section className="comparisonGroup"><h2>Diagnostic traits</h2><div className="compareTraits"><div>{left.diagnosticTraits.map((trait, index) => <span className="tag" key={`${trait}-${index}`}>{trait}</span>)}</div><div>{right.diagnosticTraits.map((trait, index) => <span className="tag" key={`${trait}-${index}`}>{trait}</span>)}</div></div></section></div>
   </>;
 }
