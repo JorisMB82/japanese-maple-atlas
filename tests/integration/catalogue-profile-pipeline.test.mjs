@@ -56,7 +56,7 @@ test('compiler detects duplicate slugs across Catalogue identities', () => {
   fs.rmSync(root, { recursive: true, force: true });
 });
 
-test('canonical Catalogue directory compiles the non-public C-001 editorial candidates', () => {
+test('canonical Catalogue directory compiles the published C-001 governed-gap batch', () => {
   const inputDir = path.join(ROOT, 'atlas-repository/catalogue-profiles');
   const registryPath = path.join(inputDir, 'contract/cultivar-identity-registry.json');
   const result = compileCatalogueDirectory({ inputDir, schemaPath, registryPath, taxonIds: new Set(['TAX-APAL', 'TAX-ASHI']) });
@@ -64,8 +64,8 @@ test('canonical Catalogue directory compiles the non-public C-001 editorial cand
 
   assert.deepEqual(result.records.map(record => record.cultivarId), expectedIds);
   assert.deepEqual(result.diagnostics.map(item => item.status), expectedIds.map(() => 'pass'));
-  assert.equal(result.records.every(record => record.catalogueProfile.state === 'review-ready'), true);
-  assert.equal(result.records.every(record => record.catalogueProfile.publishedAt === null), true);
-  assert.equal(result.records.every(record => record.catalogueProfile.review.approvalState === 'editorial-approved'), true);
-  assert.equal(result.records.every(record => record.mediaState === 'candidate-under-review'), true);
+  assert.equal(result.records.every(record => record.catalogueProfile.state === 'published'), true);
+  assert.equal(result.records.every(record => Boolean(record.catalogueProfile.publishedAt)), true);
+  assert.equal(result.records.every(record => record.catalogueProfile.review.approvalState === 'batch-approved'), true);
+  assert.equal(result.records.every(record => record.mediaState === 'governed-gap'), true);
 });
