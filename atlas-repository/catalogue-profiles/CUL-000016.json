@@ -110,7 +110,16 @@
       "url": "https://www.rhs.org.uk/plants/167917/acer-shirasawanum-autumn-moon/details",
       "accessedAt": "2026-07-29T04:00:00Z",
       "locator": "Accepted-name profile: synonyms, description, leaf form, seasonal colour, size, cultivation, hardiness and propagation.",
-      "claimsSupported": ["accepted identity", "supported taxon", "recorded synonyms", "habit", "leaf form", "seasonality", "size", "cultivation"],
+      "claimsSupported": [
+        "accepted identity",
+        "supported taxon",
+        "recorded synonyms",
+        "habit",
+        "leaf form",
+        "seasonality",
+        "size",
+        "cultivation"
+      ],
       "limitations": "UK-centred horticultural framework; synonym listing does not explain the historical sequence of every taxon label or authenticate individual plants.",
       "confidence": "high"
     },
@@ -122,7 +131,14 @@
       "url": "https://www.chicagobotanic.org/plant-information/plant-finder/acer-shirasawanum-autumn-moon-autumn-moon-fullmoon-maple",
       "accessedAt": "2026-07-29T04:00:00Z",
       "locator": "Living-collection profile: accepted taxon, upright habit, dimensions, leaf colour, flowers, fruit and exposure.",
-      "claimsSupported": ["supported taxon", "living collection", "habit", "seasonality", "size", "cultivation"],
+      "claimsSupported": [
+        "supported taxon",
+        "living collection",
+        "habit",
+        "seasonality",
+        "size",
+        "cultivation"
+      ],
       "limitations": "Concise garden profile; the statement that the species is similar to Acer japonicum is not synonymy and the dimensions are site-specific.",
       "confidence": "high"
     },
@@ -134,7 +150,13 @@
       "url": "https://plants.ces.ncsu.edu/plants/acer-shirasawanum/",
       "accessedAt": "2026-07-29T04:00:00Z",
       "locator": "Species profile and cultivar-labelled images for ‘Autumn Moon’; species morphology, size, culture and scorch guidance.",
-      "claimsSupported": ["supported species", "rounded leaf framework", "general size", "cultivation", "visual-labelled occurrence"],
+      "claimsSupported": [
+        "supported species",
+        "rounded leaf framework",
+        "general size",
+        "cultivation",
+        "visual-labelled occurrence"
+      ],
       "limitations": "The page does not provide a full cultivar text treatment; cultivar-labelled images do not independently authenticate all plants sold under the name.",
       "confidence": "medium"
     },
@@ -146,7 +168,11 @@
       "url": "https://www.loennursery.com/products/acr-sh-agm",
       "accessedAt": "2026-07-29T04:00:00Z",
       "locator": "Commercial product label and horticultural description using Acer japonicum ‘Autumn Moon’.",
-      "claimsSupported": ["commercial taxon variant", "commercial label usage", "approximate size claim"],
+      "claimsSupported": [
+        "commercial taxon variant",
+        "commercial label usage",
+        "approximate size claim"
+      ],
       "limitations": "Commercial source used only to document current misapplied or legacy label usage; it does not override institutional Acer shirasawanum treatment.",
       "confidence": "medium"
     }
@@ -154,7 +180,10 @@
   "media": {
     "state": "approved-primary",
     "primaryMediaId": "MED-CUL-000016-001",
-    "candidateMediaIds": ["MED-CUL-000016-002", "MED-CUL-000016-003"],
+    "candidateMediaIds": [
+      "MED-CUL-000016-002",
+      "MED-CUL-000016-003"
+    ],
     "governedGap": null,
     "visualComplete": true,
     "identityBasis": "asserted"
@@ -170,8 +199,23 @@
   "referenceStandardId": null,
   "publishedAt": "2026-07-30T16:15:00Z",
   "revisionHistory": [
-    {"version": "1.0.0", "date": "2026-07-29T04:00:00Z", "actor": "Japanese Maple Atlas editorial stream", "change": "Created the canonical non-public C-002 Catalogue Profile; completed targeted C0 taxon/alias review and C1 editorial/source review."},
-    {"version": "1.1.0", "date": "2026-07-29T18:35:00Z", "actor": "Japanese Maple Atlas media / visual-assets stream", "change": "Added an approved lawful three-role Catalogue gallery with exact source preservation, Creative Commons attribution, source-asserted identity qualification, privacy-treated deterministic derivatives and canonical primary linkage; publication state remains unchanged."},
-    {"version": "1.2.0", "date": "2026-07-30T16:15:00Z", "actor": "Project Owner and Japanese Maple Atlas editorial stream", "change": "Authorised controlled C-002 Publication Tranche 01, batch-approved the profile and initiated C3 publication with the existing approved identity-qualified gallery; final effectiveness remains subject to CTO review, protected merge and production inspection."}
+    {
+      "version": "1.0.0",
+      "date": "2026-07-29T04:00:00Z",
+      "actor": "Japanese Maple Atlas editorial stream",
+      "change": "Created the canonical non-public C-002 Catalogue Profile; completed targeted C0 taxon/alias review and C1 editorial/source review."
+    },
+    {
+      "version": "1.1.0",
+      "date": "2026-07-29T18:35:00Z",
+      "actor": "Japanese Maple Atlas media / visual-assets stream",
+      "change": "Added an approved lawful three-role Catalogue gallery with exact source preservation, Creative Commons attribution, source-asserted identity qualification, privacy-treated deterministic derivatives and canonical primary linkage; publication state remains unchanged."
+    },
+    {
+      "version": "1.2.0",
+      "date": "2026-07-30T16:15:00Z",
+      "actor": "Project Owner and Japanese Maple Atlas editorial stream",
+      "change": "Authorised controlled C-002 Publication Tranche 01, batch-approved the profile and initiated C3 publication with the existing approved identity-qualified gallery; final effectiveness remains subject to CTO review, protected merge and production inspection."
+    }
   ]
 }
