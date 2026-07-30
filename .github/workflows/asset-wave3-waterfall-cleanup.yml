@@ -1,0 +1,73 @@
+name: Temporary Waterfall package withdrawal
+
+on:
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  withdraw:
+    if: github.head_ref == 'media/visual-first-assets-wave-3'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: media/visual-first-assets-wave-3
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - name: Restore protected baseline and remove invalid gallery
+        run: |
+          git fetch origin main
+          git checkout origin/main -- \
+            atlas-repository/catalogue-profiles/CUL-000017.json \
+            docs/MEDIA-017_Visual-First-Permission-and-Source-Acquisition-Queue.md \
+            docs/registers/MEDIA-CANDIDATE-REGISTER_C-002.md \
+            public/media/derivatives/manifest.json \
+            quality/quality-gates.json \
+            tests/integration/catalogue-profile-pipeline.test.mjs \
+            tests/integration/media-pipeline.test.mjs
+          git rm -f .github/workflows/asset-wave3-waterfall-probe.yml
+          git rm -f .github/workflows/asset-wave3-waterfall-probe-rerun.yml
+          git rm -f atlas-repository/catalogue-profiles/media/CUL-000017.media.json
+          git rm -rf atlas-repository/media-sources/catalogue/CUL-000017
+          git rm -f docs/HANDOFF-MEDIA-CATALOGUE-007_Wave-3-Waterfall-Gallery.md
+          git rm -f docs/registers/MEDIA-SOURCE-ACQUISITION_WAVE-3-WATERFALL-01.json
+          git rm -rf public/media/derivatives/catalogue/cul-000017
+          git rm -f .github/workflows/asset-wave3-waterfall-cleanup.yml
+      - name: Validate restored repository state
+        run: |
+          npm ci --no-audit --no-fund
+          npm run process:media
+          npm run validate:media
+          npm run process:media:check
+          npm run validate:contributions
+          npm run validate:reference-standards
+          npm run validate:catalogue
+          npm run compile:atlas:check
+          npm run compile:catalogue:check
+          npm run validate:schemas
+          npm run validate:repository
+          npm run validate:search
+          npm run validate:graph
+          npm run validate:explorer
+          npm run test:unit
+          npm run test:integration
+          npm run test:coverage
+          npm run build
+          npm run test:regression
+          npm run validate:quality
+          npm run release:manifest
+      - name: Commit withdrawal
+        run: |
+          git config user.name "Japanese Maple Atlas Media Bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add -A
+          git commit -m "Media: withdraw incomplete Waterfall gallery"
+          git push origin HEAD:media/visual-first-assets-wave-3
