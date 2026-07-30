@@ -101,7 +101,7 @@ test('Shin-deshōjō public gallery preserves the separate bonsai limitation', (
   assert.match(profile, /separate source-identified.*bonsai/i);
   assert.match(profile, /bonsai form is not cultivar habit/i);
   assert.match(profile, /not independently authenticated by the Japanese Maple Atlas/i);
-  assert.doesNotMatch(profile, /same-plant seasonal sequence/i);
+  assert.match(profile, /not a same-plant seasonal sequence/i);
 });
 
 test('profiles outside controlled C-002 tranche 01 remain absent from public routes', () => {
