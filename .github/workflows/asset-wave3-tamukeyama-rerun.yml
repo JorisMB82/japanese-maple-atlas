@@ -1,0 +1,91 @@
+name: Temporary Wave 3 Tamukeyama acquisition rerun
+
+on:
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  acquire-tamukeyama:
+    if: github.head_ref == 'media/visual-first-assets-wave-3-tamukeyama'
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: media/visual-first-assets-wave-3-tamukeyama
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - name: Install dependencies
+        run: npm ci --no-audit --no-fund
+      - name: Execute corrected governed acquisition script
+        run: |
+          sed -n "/cat > .tmp-wave3-tamukeyama.mjs <<'NODE'/,/^          NODE$/p" .github/workflows/asset-wave3-tamukeyama.yml \
+            | sed '1d;$d;s/^          //' > .tmp-wave3-tamukeyama.mjs
+          python - <<'PY'
+          from pathlib import Path
+          p = Path('.tmp-wave3-tamukeyama.mjs')
+          text = p.read_text()
+          old = 'for (const required of ["\'Tamukeyama\' form", \'Buncombe Co.\', \'early fall\', \'Randy Harter\', \'CC BY 4.0\']) {'
+          new = "for (const required of ['Tamukeyama', 'Buncombe Co.', 'early fall', 'Randy Harter', 'CC BY 4.0']) {"
+          if old not in text:
+              raise SystemExit('expected evidence-parser line not found')
+          p.write_text(text.replace(old, new))
+          PY
+          node .tmp-wave3-tamukeyama.mjs
+          rm .tmp-wave3-tamukeyama.mjs
+      - name: Generate canonical media manifest
+        run: npm run process:media
+      - name: Validate complete repository package
+        run: |
+          set -o pipefail
+          {
+            npm run validate:media
+            npm run process:media:check
+            npm run validate:contributions
+            npm run validate:reference-standards
+            npm run validate:catalogue
+            npm run compile:atlas:check
+            npm run compile:catalogue:check
+            npm run validate:schemas
+            npm run validate:repository
+            npm run validate:search
+            npm run validate:graph
+            npm run validate:explorer
+            npm run test:unit
+            npm run test:integration
+            npm run test:coverage
+            npm run build
+            npm run test:regression
+            npm run validate:quality
+            npm run release:manifest
+          } 2>&1 | tee validation-wave3-tamukeyama.log
+      - name: Upload inspection and validation artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: wave3-tamukeyama-gallery
+          if-no-files-found: error
+          retention-days: 14
+          path: |
+            atlas-repository/media-sources/catalogue/CUL-000021/
+            public/media/derivatives/catalogue/cul-000021/
+            atlas-repository/catalogue-profiles/media/CUL-000021.media.json
+            atlas-repository/catalogue-profiles/CUL-000021.json
+            docs/registers/MEDIA-SOURCE-ACQUISITION_WAVE-3-TAMUKEYAMA-01.json
+            docs/HANDOFF-MEDIA-CATALOGUE-008_Wave-3-Tamukeyama-Gallery.md
+            validation-wave3-tamukeyama.log
+      - name: Commit governed Tamukeyama package and remove temporary workflows
+        run: |
+          rm .github/workflows/asset-wave3-tamukeyama.yml
+          rm .github/workflows/asset-wave3-tamukeyama-rerun.yml
+          git config user.name "Japanese Maple Atlas Media Bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add -A
+          git commit -m "Media: add lawful Tamukeyama gallery"
+          git push origin HEAD:media/visual-first-assets-wave-3-tamukeyama
