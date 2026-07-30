@@ -18,12 +18,73 @@
   "duplicateCheck": {
     "reviewedBy": "Japanese Maple Atlas editorial stream",
     "reviewedAt": "2026-07-29T04:00:00Z",
-    "comparedIds": ["RC-001", "RC-002", "RC-003", "RC-004", "RC-005", "RC-006", "RC-007", "RC-008", "RC-009", "RC-010", "CUL-000011", "CUL-000012", "CUL-000013", "CUL-000014", "CUL-000015", "CUL-000016", "CUL-000017", "CUL-000018", "CUL-000020", "CUL-000021", "CUL-000022", "CUL-000023", "CUL-000024", "CUL-000025"],
-    "comparedNames": ["Bloodgood", "Seiryu", "Sango-kaku", "Crimson Queen", "Aureum", "Osakazuki", "Butterfly", "Shishi-gashira", "Katsura", "Mikawa-yatsubusa", "Orange Dream", "Koto-no-ito", "Inaba-shidare", "Beni-kawa", "Trompenburg", "Autumn Moon", "Waterfall", "Aoyagi", "Red Dragon", "Tamukeyama", "Orangeola", "Higasa-yama", "Arakawa", "Red Pygmy", "Shin-deshojo", "Shindeshojo", "Shin deshojo", "Deshōjō", "Deshojo", "Deshōjō-nishiki"],
+    "comparedIds": [
+      "RC-001",
+      "RC-002",
+      "RC-003",
+      "RC-004",
+      "RC-005",
+      "RC-006",
+      "RC-007",
+      "RC-008",
+      "RC-009",
+      "RC-010",
+      "CUL-000011",
+      "CUL-000012",
+      "CUL-000013",
+      "CUL-000014",
+      "CUL-000015",
+      "CUL-000016",
+      "CUL-000017",
+      "CUL-000018",
+      "CUL-000020",
+      "CUL-000021",
+      "CUL-000022",
+      "CUL-000023",
+      "CUL-000024",
+      "CUL-000025"
+    ],
+    "comparedNames": [
+      "Bloodgood",
+      "Seiryu",
+      "Sango-kaku",
+      "Crimson Queen",
+      "Aureum",
+      "Osakazuki",
+      "Butterfly",
+      "Shishi-gashira",
+      "Katsura",
+      "Mikawa-yatsubusa",
+      "Orange Dream",
+      "Koto-no-ito",
+      "Inaba-shidare",
+      "Beni-kawa",
+      "Trompenburg",
+      "Autumn Moon",
+      "Waterfall",
+      "Aoyagi",
+      "Red Dragon",
+      "Tamukeyama",
+      "Orangeola",
+      "Higasa-yama",
+      "Arakawa",
+      "Red Pygmy",
+      "Shin-deshojo",
+      "Shindeshojo",
+      "Shin deshojo",
+      "Deshōjō",
+      "Deshojo",
+      "Deshōjō-nishiki"
+    ],
     "result": "unique",
     "notes": "Compared with RC-001–RC-010 and all other approved Catalogue assignments. Shin-deshōjō, Shin-deshojo and Shindeshojo are orthographic forms of this one identity, not separate cultivars. RHS separately accepts ‘Deshōjō’ and ‘Deshōjō-nishiki’; neither is treated as a synonym. C0 resolves as unique with targeted romanisation review complete."
   },
-  "namingVariants": ["Shin-deshojo", "Shindeshojo", "Shin deshojo", "Shin Deshojo"],
+  "namingVariants": [
+    "Shin-deshojo",
+    "Shindeshojo",
+    "Shin deshojo",
+    "Shin Deshojo"
+  ],
   "identityNotes": "The public working form is ‘Shin-deshōjō’, following the current RHS accepted heading and preserving the macrons and hyphen. Non-diacritic ‘Shin-deshojo’, joined ‘Shindeshojo’ and spaced label forms are search variants for the same cultivar. ‘Deshōjō’ and ‘Deshōjō-nishiki’ remain separate accepted cultivars.",
   "content": {
     "summary": "A compact, bushy Japanese maple prized for an intense crimson-red spring flush that gradually shifts through reddish green to green in summer and returns to red and orange tones in autumn.",
@@ -53,7 +114,15 @@
       "url": "https://www.rhs.org.uk/plants/99981/acer-palmatum-shin-deshojo-p/details",
       "accessedAt": "2026-07-29T04:00:00Z",
       "locator": "Accepted-name profile: diacritic and non-diacritic display forms, habit, seasonal colour, size, cultivation, hardiness and propagation.",
-      "claimsSupported": ["accepted identity", "public working form", "supported taxon", "habit", "seasonality", "size", "cultivation"],
+      "claimsSupported": [
+        "accepted identity",
+        "public working form",
+        "supported taxon",
+        "habit",
+        "seasonality",
+        "size",
+        "cultivation"
+      ],
       "limitations": "UK-centred profile; white summer speckling is not corroborated by every reviewed source and no primary romanisation history is supplied.",
       "confidence": "high"
     },
@@ -65,7 +134,15 @@
       "url": "https://www.missouribotanicalgarden.org/PlantFinder/PlantFinderDetails.aspx?bt=4&isprofile=0&taxonid=241558",
       "accessedAt": "2026-07-29T04:00:00Z",
       "locator": "Cultivar profile under joined spelling: compact habit, dimensions, five- to seven-lobed leaves, crimson spring colour, summer transition, autumn colour and culture.",
-      "claimsSupported": ["joined naming variant", "supported taxon", "habit", "leaf form", "seasonality", "size", "cultivation"],
+      "claimsSupported": [
+        "joined naming variant",
+        "supported taxon",
+        "habit",
+        "leaf form",
+        "seasonality",
+        "size",
+        "cultivation"
+      ],
       "limitations": "Uses a joined non-diacritic spelling and does not mention RHS-reported white speckling; origin language is secondary.",
       "confidence": "high"
     },
@@ -77,7 +154,11 @@
       "url": "https://www.rhs.org.uk/plants/91829/acer-palmatum-deshojo-p/details",
       "accessedAt": "2026-07-29T04:00:00Z",
       "locator": "Accepted-name and descriptive profile for the separate cultivar ‘Deshōjō’.",
-      "claimsSupported": ["duplicate review", "separate accepted identity", "near-name comparison"],
+      "claimsSupported": [
+        "duplicate review",
+        "separate accepted identity",
+        "near-name comparison"
+      ],
       "limitations": "Comparison source only; similar spring colour does not establish synonymy or support the content of ‘Shin-deshōjō’.",
       "confidence": "high"
     },
@@ -89,7 +170,11 @@
       "url": "https://www.rhs.org.uk/plants/209978/acer-palmatum-deshojo-nishiki-p/details",
       "accessedAt": "2026-07-29T04:00:00Z",
       "locator": "Accepted-name and descriptive profile for the separate near-name cultivar ‘Deshōjō-nishiki’.",
-      "claimsSupported": ["duplicate review", "separate accepted identity", "near-name comparison"],
+      "claimsSupported": [
+        "duplicate review",
+        "separate accepted identity",
+        "near-name comparison"
+      ],
       "limitations": "Comparison source only; it does not support the main profile's morphology or seasonal synthesis.",
       "confidence": "high"
     }
@@ -97,7 +182,10 @@
   "media": {
     "state": "approved-primary",
     "primaryMediaId": "MED-CUL-000019-001",
-    "candidateMediaIds": ["MED-CUL-000019-002", "MED-CUL-000019-003"],
+    "candidateMediaIds": [
+      "MED-CUL-000019-002",
+      "MED-CUL-000019-003"
+    ],
     "governedGap": null,
     "visualComplete": true,
     "identityBasis": "asserted"
@@ -113,8 +201,23 @@
   "referenceStandardId": null,
   "publishedAt": "2026-07-30T16:15:00Z",
   "revisionHistory": [
-    {"version": "1.0.0", "date": "2026-07-29T04:00:00Z", "actor": "Japanese Maple Atlas editorial stream", "change": "Created the canonical non-public C-002 Catalogue Profile; completed targeted C0 romanisation/near-name review and C1 editorial/source review."},
-    {"version": "1.1.0", "date": "2026-07-29T18:35:00Z", "actor": "Japanese Maple Atlas media / visual-assets stream", "change": "Added an approved lawful three-role Catalogue gallery with exact source preservation, Creative Commons attribution, source-asserted identity qualification, privacy-treated deterministic derivatives and canonical primary linkage; publication state remains unchanged."},
-    {"version": "1.2.0", "date": "2026-07-30T16:15:00Z", "actor": "Project Owner and Japanese Maple Atlas editorial stream", "change": "Authorised controlled C-002 Publication Tranche 01, batch-approved the profile and initiated C3 publication with the existing approved identity-qualified gallery, including the separate-specimen bonsai limitation; final effectiveness remains subject to CTO review, protected merge and production inspection."}
+    {
+      "version": "1.0.0",
+      "date": "2026-07-29T04:00:00Z",
+      "actor": "Japanese Maple Atlas editorial stream",
+      "change": "Created the canonical non-public C-002 Catalogue Profile; completed targeted C0 romanisation/near-name review and C1 editorial/source review."
+    },
+    {
+      "version": "1.1.0",
+      "date": "2026-07-29T18:35:00Z",
+      "actor": "Japanese Maple Atlas media / visual-assets stream",
+      "change": "Added an approved lawful three-role Catalogue gallery with exact source preservation, Creative Commons attribution, source-asserted identity qualification, privacy-treated deterministic derivatives and canonical primary linkage; publication state remains unchanged."
+    },
+    {
+      "version": "1.2.0",
+      "date": "2026-07-30T16:15:00Z",
+      "actor": "Project Owner and Japanese Maple Atlas editorial stream",
+      "change": "Authorised controlled C-002 Publication Tranche 01, batch-approved the profile and initiated C3 publication with the existing approved identity-qualified gallery, including the separate-specimen bonsai limitation; final effectiveness remains subject to CTO review, protected merge and production inspection."
+    }
   ]
 }
