@@ -7,7 +7,7 @@
   "taxonId": "TAX-APAL",
   "scientificName": "Acer palmatum ‘Tamukeyama’",
   "publicationClass": "catalogue-profile",
-  "profileVersion": "1.0.0",
+  "profileVersion": "1.1.0",
   "catalogueState": "review-ready",
   "riskLevel": "medium",
   "riskReasons": [
@@ -18,12 +18,70 @@
   "duplicateCheck": {
     "reviewedBy": "Japanese Maple Atlas editorial stream",
     "reviewedAt": "2026-07-29T06:55:00Z",
-    "comparedIds": ["RC-001","RC-002","RC-003","RC-004","RC-005","RC-006","RC-007","RC-008","RC-009","RC-010","CUL-000011","CUL-000012","CUL-000013","CUL-000014","CUL-000015","CUL-000016","CUL-000017","CUL-000018","CUL-000019","CUL-000020","CUL-000022","CUL-000023","CUL-000024","CUL-000025"],
-    "comparedNames": ["Bloodgood","Seiryu","Sango-kaku","Crimson Queen","Aureum","Osakazuki","Butterfly","Shishi-gashira","Katsura","Mikawa-yatsubusa","Orange Dream","Koto-no-ito","Inaba-shidare","Beni-kawa","Trompenburg","Autumn Moon","Waterfall","Aoyagi","Shin-deshōjō","Red Dragon","Orangeola","Higasa-yama","Arakawa","Red Pygmy","Tamuke yama","Beni-hagoromo","Hagoromo","Dissectum Atropurpureum"],
+    "comparedIds": [
+      "RC-001",
+      "RC-002",
+      "RC-003",
+      "RC-004",
+      "RC-005",
+      "RC-006",
+      "RC-007",
+      "RC-008",
+      "RC-009",
+      "RC-010",
+      "CUL-000011",
+      "CUL-000012",
+      "CUL-000013",
+      "CUL-000014",
+      "CUL-000015",
+      "CUL-000016",
+      "CUL-000017",
+      "CUL-000018",
+      "CUL-000019",
+      "CUL-000020",
+      "CUL-000022",
+      "CUL-000023",
+      "CUL-000024",
+      "CUL-000025"
+    ],
+    "comparedNames": [
+      "Bloodgood",
+      "Seiryu",
+      "Sango-kaku",
+      "Crimson Queen",
+      "Aureum",
+      "Osakazuki",
+      "Butterfly",
+      "Shishi-gashira",
+      "Katsura",
+      "Mikawa-yatsubusa",
+      "Orange Dream",
+      "Koto-no-ito",
+      "Inaba-shidare",
+      "Beni-kawa",
+      "Trompenburg",
+      "Autumn Moon",
+      "Waterfall",
+      "Aoyagi",
+      "Shin-deshōjō",
+      "Red Dragon",
+      "Orangeola",
+      "Higasa-yama",
+      "Arakawa",
+      "Red Pygmy",
+      "Tamuke yama",
+      "Beni-hagoromo",
+      "Hagoromo",
+      "Dissectum Atropurpureum"
+    ],
     "result": "unique",
     "notes": "Compared with RC-004 ‘Crimson Queen’, CUL-000013 ‘Inaba-shidare’, CUL-000020 ‘Red Dragon’, CUL-000022 ‘Orangeola’ and other red dissectums. The cultivar is maintained as a distinct accepted identity. RHS-recorded ‘Beni-hagoromo’ is retained as a probable synonym requiring bounded historical caution; ‘Hagoromo’ is a separate accepted cultivar. C0 resolves as unique."
   },
-  "namingVariants": ["Tamuke yama","Tamuke-yama","Acer palmatum ‘Beni-hagoromo’"],
+  "namingVariants": [
+    "Tamuke yama",
+    "Tamuke-yama",
+    "Acer palmatum ‘Beni-hagoromo’"
+  ],
   "identityNotes": "The Atlas uses the compact RHS form ‘Tamukeyama’. JC Raulston Arboretum uses ‘Tamuke yama’ for a living accession; that spacing variant resolves to the same stable identity. RHS records ‘Beni-hagoromo’ as a synonym, but this lean profile does not claim a complete historical synonymy. ‘Hagoromo’ remains a separate cultivar.",
   "content": {
     "summary": "A mounding red laceleaf Japanese maple with cascading shoots, finely dissected foliage that emerges purple to burgundy red, becomes greener-purple in summer and finishes orange to bright red in autumn.",
@@ -53,7 +111,16 @@
       "url": "https://www.rhs.org.uk/plants/191092/acer-palmatum-tamukeyama-d/details",
       "accessedAt": "2026-07-29T06:55:00Z",
       "locator": "Accepted-name profile: synonyms, dissectum classification, habit, seasonal colour, dimensions, cultivation and propagation.",
-      "claimsSupported": ["accepted identity","recorded synonym","habit","leaf form","seasonality","size","cultivation","propagation"],
+      "claimsSupported": [
+        "accepted identity",
+        "recorded synonym",
+        "habit",
+        "leaf form",
+        "seasonality",
+        "size",
+        "cultivation",
+        "propagation"
+      ],
       "limitations": "UK-centred horticultural framework; the synonym list does not establish historical priority or independently authenticate marketed plants.",
       "confidence": "high"
     },
@@ -65,7 +132,15 @@
       "url": "https://www.missouribotanicalgarden.org/PlantFinder/PlantFinderDetails.aspx?taxonid=241789",
       "accessedAt": "2026-07-29T06:55:00Z",
       "locator": "Cultivar profile: mounded cascading habit, dissected foliage, summer colour retention, dimensions, culture and fall colour.",
-      "claimsSupported": ["identity","dissectum placement","habit","leaf form","seasonality","size","cultivation"],
+      "claimsSupported": [
+        "identity",
+        "dissectum placement",
+        "habit",
+        "leaf form",
+        "seasonality",
+        "size",
+        "cultivation"
+      ],
       "limitations": "Uses a horticultural varietal formulation; dimensions and comparative colour retention are site-contextual.",
       "confidence": "high"
     },
@@ -77,24 +152,33 @@
       "url": "https://jcra.ncsu.edu/horticulture/our-plants/results-by-name-serial-number.php?serial=108618",
       "accessedAt": "2026-07-29T06:55:00Z",
       "locator": "Living accession 030405; received 10 March 2003 and measured 9 ft on 8 June 2022.",
-      "claimsSupported": ["living collection","spacing variant","habit context","measured height","visual acquisition route"],
+      "claimsSupported": [
+        "living collection",
+        "spacing variant",
+        "habit context",
+        "measured height",
+        "visual acquisition route"
+      ],
       "limitations": "One accession using a spaced name; it does not resolve synonym history or establish a universal size ceiling.",
       "confidence": "high"
     }
   ],
   "media": {
-    "state": "candidate-under-review",
-    "primaryMediaId": null,
-    "candidateMediaIds": [],
+    "state": "approved-primary",
+    "primaryMediaId": "MED-CUL-000021-001",
+    "candidateMediaIds": [
+      "MED-CUL-000021-002",
+      "MED-CUL-000021-003"
+    ],
     "governedGap": null,
-    "visualComplete": false,
+    "visualComplete": true,
     "identityBasis": "asserted"
   },
   "review": {
     "reviewedBy": "Japanese Maple Atlas editorial stream",
     "reviewedAt": "2026-07-29T06:55:00Z",
     "approvalState": "editorial-approved",
-    "notes": "C0 targeted synonym-scope review and C1 lean editorial/source review completed for Batch C-003. Profile remains non-public; no media approval, C2 or C3 is claimed."
+    "notes": "C0 targeted synonym-scope review and C1 lean editorial/source review completed for Batch C-003. Profile remains non-public; no media approval, C2 or C3 is claimed. A lawful three-role Visual-First gallery has completed media review; the profile remains non-public and publication is not claimed."
   },
   "batchId": "C-003",
   "promotionStatus": "not-nominated",
@@ -106,6 +190,12 @@
       "date": "2026-07-29T06:55:00Z",
       "actor": "Japanese Maple Atlas editorial stream",
       "change": "Created the canonical non-public C-003 Catalogue Profile; completed C0 duplicate/naming review and C1 editorial/source review."
+    },
+    {
+      "version": "1.1.0",
+      "date": "2026-07-30T17:00:00Z",
+      "actor": "Japanese Maple Atlas media / visual-assets stream",
+      "change": "Added an approved lawful three-role Catalogue gallery with exact source preservation, Creative Commons and public-domain rights records, red-dissectum identity qualifications, privacy-treated deterministic derivatives and canonical primary linkage; publication state remains unchanged."
     }
   ]
 }

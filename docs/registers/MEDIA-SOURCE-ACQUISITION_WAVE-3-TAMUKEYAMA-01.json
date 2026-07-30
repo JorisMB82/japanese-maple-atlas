@@ -1,0 +1,193 @@
+{
+  "schemaVersion": "1.0.0",
+  "repositoryBaseline": "82900b9e071d733cbdccd34771454f6154a83fc8",
+  "branch": "media/visual-first-assets-wave-3-tamukeyama",
+  "reviewedAt": "2026-07-30T17:00:00Z",
+  "packageId": "WAVE-3-TAMUKEYAMA-01",
+  "status": "complete-three-role-gallery",
+  "items": [
+    {
+      "mediaId": "MED-CUL-000021-001",
+      "cultivarId": "CUL-000021",
+      "fileTitle": "Acer palmatum 'Tamukeyama' at Coker Arboretum.jpg",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Acer%20palmatum%20'Tamukeyama'%20at%20Coker%20Arboretum.jpg",
+      "exactOriginalUrl": "https://upload.wikimedia.org/wikipedia/commons/8/8e/Acer_palmatum_%27Tamukeyama%27_at_Coker_Arboretum.jpg",
+      "sourceApiUrl": "https://commons.wikimedia.org/w/api.php?action=query&format=json&formatversion=2&prop=imageinfo&titles=File%3AAcer+palmatum+%27Tamukeyama%27+at+Coker+Arboretum.jpg&iiprop=url%7Csize%7Cmime%7Csha1%7Cextmetadata",
+      "creator": "Mx. Granger",
+      "rightsHolder": "Mx. Granger",
+      "licence": "CC0 1.0",
+      "licenceUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "sourceSha256": "0270d78bd2c6f1bc2826ddae4499e2235b76d7ca418defbc1d962cb2027a2d65",
+      "originalWidth": 2592,
+      "originalHeight": 1944,
+      "originalBytes": 2764921,
+      "description": "Acer palmatum 'Tamukeyama' at Coker Arboretum .",
+      "dateTimeOriginal": "2014-08-24",
+      "role": "habit-primary",
+      "primary": true,
+      "identityConfidence": "source-asserted",
+      "identityQualification": "Source-identified at Coker Arboretum; not independently authenticated by the Japanese Maple Atlas. Similar red dissectum cultivars remain visually confusable.",
+      "privacyTreatment": "Original preserved; public derivatives are pixel-decoded and re-encoded without EXIF, GPS or text metadata.",
+      "derivatives": [
+        {
+          "profile": "thumb",
+          "path": "/media/derivatives/catalogue/cul-000021/med-cul-000021-001-thumb.jpg",
+          "width": 308,
+          "height": 231,
+          "mimeType": "image/jpeg",
+          "sha256": "f8e2f8ce5df18553dc1deea38b18d02e00534f89921239e685804f2c216b051e",
+          "derivedFrom": "MED-CUL-000021-001"
+        },
+        {
+          "profile": "card",
+          "path": "/media/derivatives/catalogue/cul-000021/med-cul-000021-001-card.jpg",
+          "width": 538,
+          "height": 404,
+          "mimeType": "image/jpeg",
+          "sha256": "a4cdba64ad249bfd92e52a537021b1935ccb482ab3aa2413240a901d7e188afe",
+          "derivedFrom": "MED-CUL-000021-001"
+        },
+        {
+          "profile": "display",
+          "path": "/media/derivatives/catalogue/cul-000021/med-cul-000021-001-display.jpg",
+          "width": 923,
+          "height": 693,
+          "mimeType": "image/jpeg",
+          "sha256": "0e3588c8220ec97541a8b9f18d453943838d5731d2835e23536a6b5eb9fa4939",
+          "derivedFrom": "MED-CUL-000021-001"
+        },
+        {
+          "profile": "archive",
+          "path": "/media/derivatives/catalogue/cul-000021/med-cul-000021-001-archive.jpg",
+          "width": 1386,
+          "height": 1040,
+          "mimeType": "image/jpeg",
+          "sha256": "3b1125a870cfd561aeda5d13ab42000039679bca22845ce9d5aa02b657bd977c",
+          "derivedFrom": "MED-CUL-000021-001"
+        }
+      ]
+    },
+    {
+      "mediaId": "MED-CUL-000021-002",
+      "cultivarId": "CUL-000021",
+      "fileTitle": "Acer palmatum var. dissectum Tamukeyama 0zz.jpg",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Acer%20palmatum%20var.%20dissectum%20Tamukeyama%200zz.jpg",
+      "exactOriginalUrl": "https://upload.wikimedia.org/wikipedia/commons/b/b2/Acer_palmatum_var._dissectum_Tamukeyama_0zz.jpg",
+      "sourceApiUrl": "https://commons.wikimedia.org/w/api.php?action=query&format=json&formatversion=2&prop=imageinfo&titles=File%3AAcer+palmatum+var.+dissectum+Tamukeyama+0zz.jpg&iiprop=url%7Csize%7Cmime%7Csha1%7Cextmetadata",
+      "creator": "David J. Stang",
+      "rightsHolder": "David J. Stang",
+      "licence": "CC BY-SA 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "sourceSha256": "4c93123977e73196a45dd3059aaf6f2e678d10ed11b25698430f8fa8890912f8",
+      "originalWidth": 1000,
+      "originalHeight": 667,
+      "originalBytes": 253497,
+      "description": "Location taken: Behnke Nurseries, Potomac MD USA. Names: Acer palmatum var. dissectum 'Tamukeyama' Thunb., Cutleaf Japanese Maple, Tamukeyama Laceleaf Japanese Maple, Threadleaf Japanese Mapl Classification: Plantae &gt; Tracheophyta &gt; Spermatopsida &gt; Sapindales &gt; Sapindaceae &gt; Acer &gt; Acer palmatum var. dissectum 'Tamukeyama' .",
+      "dateTimeOriginal": "2006-10-12",
+      "role": "foliage-detail",
+      "primary": false,
+      "identityConfidence": "source-asserted",
+      "identityQualification": "Source-identified at Behnke Nurseries; not independently authenticated by the Japanese Maple Atlas. Similar red dissectum foliage must not be treated as cultivar proof.",
+      "privacyTreatment": "Original preserved; public derivatives are pixel-decoded and re-encoded without EXIF, GPS or text metadata.",
+      "derivatives": [
+        {
+          "profile": "thumb",
+          "path": "/media/derivatives/catalogue/cul-000021/med-cul-000021-002-thumb.jpg",
+          "width": 320,
+          "height": 213,
+          "mimeType": "image/jpeg",
+          "sha256": "a7f0d5e4924eb92e21d0022804e7546a7d14652c09ffc38b5bcae1e1118a0af1",
+          "derivedFrom": "MED-CUL-000021-002"
+        },
+        {
+          "profile": "card",
+          "path": "/media/derivatives/catalogue/cul-000021/med-cul-000021-002-card.jpg",
+          "width": 560,
+          "height": 373,
+          "mimeType": "image/jpeg",
+          "sha256": "6ff761c41f786a9981f3cffc1ad249534ceb665b0dcae77086ae3d954c1e44fe",
+          "derivedFrom": "MED-CUL-000021-002"
+        },
+        {
+          "profile": "display",
+          "path": "/media/derivatives/catalogue/cul-000021/med-cul-000021-002-display.jpg",
+          "width": 960,
+          "height": 640,
+          "mimeType": "image/jpeg",
+          "sha256": "8ebdf460e551cdb30b35dbbbce0659a8d699cbd05fcebaf778f3cd90797c1f13",
+          "derivedFrom": "MED-CUL-000021-002"
+        },
+        {
+          "profile": "archive",
+          "path": "/media/derivatives/catalogue/cul-000021/med-cul-000021-002-archive.jpg",
+          "width": 1000,
+          "height": 667,
+          "mimeType": "image/jpeg",
+          "sha256": "0f053353a72c0c03e93a0037a7cf2ee6e9e4c526a87b5d658e250e99cba7cb7d",
+          "derivedFrom": "MED-CUL-000021-002"
+        }
+      ]
+    },
+    {
+      "mediaId": "MED-CUL-000021-003",
+      "cultivarId": "CUL-000021",
+      "fileTitle": "'Tamukeyama' form, Buncombe Co. NC, early fall",
+      "sourcePage": "https://plants.ces.ncsu.edu/plants/acer-palmatum-subsp-matsumurae/common-name/laceleaf-japanese-maple/",
+      "exactOriginalUrl": "https://eit-planttoolbox-prod.s3.amazonaws.com/media/images/Acer_palmatum_dissec_lbDQs5OzMAVf.jpeg?AWSAccessKeyId=AKIAILRBSC3CQKL5NNSQ&Signature=zf%2FtfKMCStKcIfI0w%2Fe9h5yGvoo%3D&Expires=1785433880",
+      "sourceApiUrl": null,
+      "creator": "Randy Harter",
+      "rightsHolder": "Randy Harter",
+      "licence": "CC BY 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "sourceSha256": "54dd9b2885fa2e573b6cedb7f2105d2c69581e8f9458ea120fded6c2ba7adb49",
+      "originalWidth": 442,
+      "originalHeight": 315,
+      "originalBytes": 134589,
+      "description": "'Tamukeyama' form, Buncombe Co. NC, early fall",
+      "dateTimeOriginal": null,
+      "role": "seasonal-diagnostic",
+      "primary": false,
+      "identityConfidence": "source-asserted",
+      "identityQualification": "Source-identified by the NC State Extension Gardener Plant Toolbox; not independently authenticated by the Japanese Maple Atlas. Early-fall colour and narrow dissected foliage do not alone prove cultivar identity.",
+      "privacyTreatment": "Original preserved; public derivatives are pixel-decoded and re-encoded without EXIF, GPS or text metadata.",
+      "derivatives": [
+        {
+          "profile": "thumb",
+          "path": "/media/derivatives/catalogue/cul-000021/med-cul-000021-003-thumb.jpg",
+          "width": 320,
+          "height": 228,
+          "mimeType": "image/jpeg",
+          "sha256": "282bfa5189c69f098d8718847e08b8e284efd83d71e40c5e52de359e8f6347af",
+          "derivedFrom": "MED-CUL-000021-003"
+        },
+        {
+          "profile": "card",
+          "path": "/media/derivatives/catalogue/cul-000021/med-cul-000021-003-card.jpg",
+          "width": 442,
+          "height": 315,
+          "mimeType": "image/jpeg",
+          "sha256": "3debbc014a2b8a9bc2951303a795206f0f286a8a0e1bf90f79343d49623be2b0",
+          "derivedFrom": "MED-CUL-000021-003"
+        },
+        {
+          "profile": "display",
+          "path": "/media/derivatives/catalogue/cul-000021/med-cul-000021-003-display.jpg",
+          "width": 442,
+          "height": 315,
+          "mimeType": "image/jpeg",
+          "sha256": "3debbc014a2b8a9bc2951303a795206f0f286a8a0e1bf90f79343d49623be2b0",
+          "derivedFrom": "MED-CUL-000021-003"
+        },
+        {
+          "profile": "archive",
+          "path": "/media/derivatives/catalogue/cul-000021/med-cul-000021-003-archive.jpg",
+          "width": 442,
+          "height": 315,
+          "mimeType": "image/jpeg",
+          "sha256": "3debbc014a2b8a9bc2951303a795206f0f286a8a0e1bf90f79343d49623be2b0",
+          "derivedFrom": "MED-CUL-000021-003"
+        }
+      ]
+    }
+  ]
+}

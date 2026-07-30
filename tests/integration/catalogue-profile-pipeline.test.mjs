@@ -100,5 +100,11 @@ test('canonical Catalogue directory compiles published C-001 and non-public C-00
   assert.equal(c003.every(record => record.catalogueProfile.state === 'review-ready'), true);
   assert.equal(c003.every(record => record.catalogueProfile.publishedAt === null), true);
   assert.equal(c003.every(record => record.catalogueProfile.review.approvalState === 'editorial-approved'), true);
-  assert.equal(c003.every(record => record.mediaState === 'candidate-under-review'), true);
+  assert.deepEqual(c003.map(record => [record.cultivarId, record.mediaState]), [
+    ['CUL-000021', 'approved-primary'],
+    ['CUL-000022', 'candidate-under-review'],
+    ['CUL-000023', 'candidate-under-review'],
+    ['CUL-000024', 'candidate-under-review'],
+    ['CUL-000025', 'candidate-under-review']
+  ]);
 });

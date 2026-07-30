@@ -36,18 +36,19 @@ test('media pipeline generates and verifies Reference Standard and Catalogue der
   assert.equal(checked.status,0,checked.stderr);
   const manifest = JSON.parse(fs.readFileSync(path.join(ROOT,'public/media/derivatives/manifest.json'),'utf8'));
   assert.equal(manifest.version, 'media-pipeline-v2.2');
-  assert.equal(manifest.derivativeCount,68);
+  assert.equal(manifest.derivativeCount,80);
   assert.deepEqual([...manifest.publicationClasses].sort(), ['catalogue-profile','reference-standard']);
-  assert.equal(new Set(manifest.entries.map(entry => entry.sha256)).size,68);
+  assert.equal(new Set(manifest.entries.map(entry => `${entry.mediaId}/${entry.profile}`)).size,80);
+  assert.equal(manifest.entries.every(entry => /^[a-f0-9]{64}$/.test(entry.sha256)), true);
   assert.equal(manifest.entries.filter(entry => entry.mimeType === 'image/svg+xml').length,20);
-  assert.equal(manifest.entries.filter(entry => entry.mimeType === 'image/jpeg').length,48);
+  assert.equal(manifest.entries.filter(entry => entry.mimeType === 'image/jpeg').length,60);
   assert.deepEqual([...new Set(manifest.entries.map(entry => entry.publicationClass))].sort(), ['catalogue-profile','reference-standard']);
 });
 
 test('media governance validator passes the governed Reference Standard and Catalogue cohorts', () => {
   const result = run('scripts/validate-media.mjs');
   assert.equal(result.status,0,result.stderr);
-  assert.match(result.stdout,/5 Reference Standard assets; 12 Catalogue assets; 68 derivatives; 20-record RC coverage plan/);
+  assert.match(result.stdout,/5 Reference Standard assets; 15 Catalogue assets; 80 derivatives; 20-record RC coverage plan/);
 });
 
 test('governed JPEG photograph generates deterministic private-source derivatives and passes validation', () => {

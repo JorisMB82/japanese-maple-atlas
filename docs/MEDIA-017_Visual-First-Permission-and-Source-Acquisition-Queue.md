@@ -93,3 +93,8 @@ All six items have exact source hashes, deterministic thumb/card/display/archive
 ## 7. Remaining controlled gaps
 
 CUL-000012 ‘Koto-no-ito’, CUL-000014 ‘Beni-kawa’ and CUL-000015 ‘Trompenburg’ remain incomplete. Permission-dependent candidates are still leads only and have not been copied into public display packages.
+
+## Wave 3 Tamukeyama update — 2026-07-30
+
+- CUL-000021 Tamukeyama: complete three-role open-rights gallery acquired, hashed, processed and linked internally.
+- JCRA remains an optional accession-mapped strengthening route. No request sent and no permission claimed.
