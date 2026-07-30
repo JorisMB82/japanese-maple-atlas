@@ -111,3 +111,13 @@ Search and source metadata must preserve variants including `Shin Deshojo`, `Shi
 3. CUL-000017 — two open items plus a strong JCRA accession route.
 4. CUL-000018 — permission-dependent but coherent single-accession route.
 5. CUL-000020 — permission-dependent and highest cultivar-confusion risk.
+
+## Wave 3 execution update — CUL-000017 Waterfall
+
+Three exact Wikimedia Commons originals completed the governed minimum gallery on 2026-07-30:
+
+- MED-CUL-000017-001 — habit-primary — Acer palmatum cv waterfall 1.jpg — Mark Pellegrini — Creative Commons.
+- MED-CUL-000017-002 — foliage-detail — Acer palmatum cv waterfall 2.jpg — Mark Pellegrini — Creative Commons.
+- MED-CUL-000017-003 — seasonal-diagnostic — Acer palmatum 'Waterfall' JPG1.jpg — Jean-Pol GRANDMONT — Creative Commons; documented Robert Lenoir specimen S48A–205, planted 1980.
+
+The two Longwood frames remain separate roles only after visual inspection confirms distinct whole-plant and attached-foliage compositions. Generic green dissectum resemblance remains insufficient for authentication.

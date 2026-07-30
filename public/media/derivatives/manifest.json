@@ -1,6 +1,6 @@
 {
   "version": "media-pipeline-v2.2",
-  "derivativeCount": 68,
+  "derivativeCount": 80,
   "publicationClasses": [
     "catalogue-profile",
     "reference-standard"
@@ -565,6 +565,126 @@
       "height": 1040,
       "mimeType": "image/jpeg",
       "sha256": "2163508a18e65a637000aea798a352282caa20f52a51a395e2e637cb9dcd0204"
+    },
+    {
+      "mediaId": "MED-CUL-000017-001",
+      "publicationClass": "catalogue-profile",
+      "profile": "thumb",
+      "path": "/media/derivatives/catalogue/cul-000017/med-cul-000017-001-thumb.jpg",
+      "width": 173,
+      "height": 231,
+      "mimeType": "image/jpeg",
+      "sha256": "fa42eb2d0d287d25a6548b197bec826bbb6ae1a1475478389a9401b9853a2438"
+    },
+    {
+      "mediaId": "MED-CUL-000017-001",
+      "publicationClass": "catalogue-profile",
+      "profile": "card",
+      "path": "/media/derivatives/catalogue/cul-000017/med-cul-000017-001-card.jpg",
+      "width": 303,
+      "height": 404,
+      "mimeType": "image/jpeg",
+      "sha256": "8b6609cdaf85c80af6454584b6ce178dc5a68fa6dc4d6d87af75cc4484a3c507"
+    },
+    {
+      "mediaId": "MED-CUL-000017-001",
+      "publicationClass": "catalogue-profile",
+      "profile": "display",
+      "path": "/media/derivatives/catalogue/cul-000017/med-cul-000017-001-display.jpg",
+      "width": 519,
+      "height": 693,
+      "mimeType": "image/jpeg",
+      "sha256": "88383df8d455fee59759ab4617f42415ac2bf75079a5890f6091b90640a13365"
+    },
+    {
+      "mediaId": "MED-CUL-000017-001",
+      "publicationClass": "catalogue-profile",
+      "profile": "archive",
+      "path": "/media/derivatives/catalogue/cul-000017/med-cul-000017-001-archive.jpg",
+      "width": 780,
+      "height": 1040,
+      "mimeType": "image/jpeg",
+      "sha256": "49862a54b54fd7cf2660ffdbfd63ccff3ac75c22855b012f4e03c3ff98e43bd7"
+    },
+    {
+      "mediaId": "MED-CUL-000017-002",
+      "publicationClass": "catalogue-profile",
+      "profile": "thumb",
+      "path": "/media/derivatives/catalogue/cul-000017/med-cul-000017-002-thumb.jpg",
+      "width": 173,
+      "height": 231,
+      "mimeType": "image/jpeg",
+      "sha256": "6dfe5fddd0df90f9e96f7af49eb8dc7bb0382dda6869033d84e5cf5367eb4e47"
+    },
+    {
+      "mediaId": "MED-CUL-000017-002",
+      "publicationClass": "catalogue-profile",
+      "profile": "card",
+      "path": "/media/derivatives/catalogue/cul-000017/med-cul-000017-002-card.jpg",
+      "width": 303,
+      "height": 404,
+      "mimeType": "image/jpeg",
+      "sha256": "da6805b304129e9ce39e3c72cef04773c203cb9b364110405ea964f6ca3ac2d7"
+    },
+    {
+      "mediaId": "MED-CUL-000017-002",
+      "publicationClass": "catalogue-profile",
+      "profile": "display",
+      "path": "/media/derivatives/catalogue/cul-000017/med-cul-000017-002-display.jpg",
+      "width": 519,
+      "height": 693,
+      "mimeType": "image/jpeg",
+      "sha256": "c296e70111d829eaea3f5f2c82108c1495bae3c29c5c5239f267ab0ad87d8ba1"
+    },
+    {
+      "mediaId": "MED-CUL-000017-002",
+      "publicationClass": "catalogue-profile",
+      "profile": "archive",
+      "path": "/media/derivatives/catalogue/cul-000017/med-cul-000017-002-archive.jpg",
+      "width": 780,
+      "height": 1040,
+      "mimeType": "image/jpeg",
+      "sha256": "fb6aec7244cfd93bf07ab1428115841ad37f61b018edf8405a260b5e66ff7d0b"
+    },
+    {
+      "mediaId": "MED-CUL-000017-003",
+      "publicationClass": "catalogue-profile",
+      "profile": "thumb",
+      "path": "/media/derivatives/catalogue/cul-000017/med-cul-000017-003-thumb.jpg",
+      "width": 320,
+      "height": 213,
+      "mimeType": "image/jpeg",
+      "sha256": "6f13a909bc80cfe79bd678a542206e517eef890739529e219c9ad2ecd68f7376"
+    },
+    {
+      "mediaId": "MED-CUL-000017-003",
+      "publicationClass": "catalogue-profile",
+      "profile": "card",
+      "path": "/media/derivatives/catalogue/cul-000017/med-cul-000017-003-card.jpg",
+      "width": 560,
+      "height": 373,
+      "mimeType": "image/jpeg",
+      "sha256": "9f3875f797986ac70524863a0061892ad56866fed6894319b880215b1ae858f9"
+    },
+    {
+      "mediaId": "MED-CUL-000017-003",
+      "publicationClass": "catalogue-profile",
+      "profile": "display",
+      "path": "/media/derivatives/catalogue/cul-000017/med-cul-000017-003-display.jpg",
+      "width": 960,
+      "height": 640,
+      "mimeType": "image/jpeg",
+      "sha256": "14bf82ab3412bb4ae673152d522f424ea34c0323cfb45db71b18e72efea86454"
+    },
+    {
+      "mediaId": "MED-CUL-000017-003",
+      "publicationClass": "catalogue-profile",
+      "profile": "archive",
+      "path": "/media/derivatives/catalogue/cul-000017/med-cul-000017-003-archive.jpg",
+      "width": 1439,
+      "height": 959,
+      "mimeType": "image/jpeg",
+      "sha256": "56f798ef89845c90b9f88ef50ab3760f3de266b081de1cff5d9735ad8803697d"
     },
     {
       "mediaId": "MED-CUL-000019-001",

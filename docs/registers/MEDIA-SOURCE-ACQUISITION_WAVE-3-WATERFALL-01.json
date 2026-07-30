@@ -1,0 +1,196 @@
+{
+  "schemaVersion": "1.0.0",
+  "repositoryBaseline": "82900b9e071d733cbdccd34771454f6154a83fc8",
+  "branch": "media/visual-first-assets-wave-3",
+  "reviewedAt": "2026-07-30T16:45:00Z",
+  "packageId": "WAVE-3-WATERFALL-01",
+  "status": "complete-three-role-gallery",
+  "items": [
+    {
+      "mediaId": "MED-CUL-000017-001",
+      "cultivarId": "CUL-000017",
+      "fileTitle": "Acer palmatum cv waterfall 1.jpg",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Acer%20palmatum%20cv%20waterfall%201.jpg",
+      "exactOriginalUrl": "https://upload.wikimedia.org/wikipedia/commons/5/50/Acer_palmatum_cv_waterfall_1.jpg",
+      "commonsApiUrl": "https://commons.wikimedia.org/w/api.php?action=query&format=json&formatversion=2&prop=imageinfo&titles=File%3AAcer+palmatum+cv+waterfall+1.jpg&iiprop=url%7Csize%7Cmime%7Csha1%7Cextmetadata",
+      "creator": "Mark Pellegrini",
+      "rightsHolder": "Mark Pellegrini",
+      "licence": "CC BY-SA 2.5",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.5/",
+      "commonsSha1": "7268a612333fd6a51bd44d575c7de581c1f32e55",
+      "sourceSha256": "20b4418cf4899d20aa664210ebbbb65d4c493f5f390411f2fb965db3fec8f056",
+      "originalWidth": 1512,
+      "originalHeight": 2016,
+      "originalBytes": 1087573,
+      "description": "Pictures taken by myself at Longwood Gardens",
+      "dateTimeOriginal": "2009-04-26",
+      "role": "habit-primary",
+      "primary": true,
+      "identityConfidence": "source-asserted",
+      "identityQualification": "Source-identified at Longwood Gardens; not independently authenticated by the Japanese Maple Atlas. Similar green dissectum cultivars remain visually confusable.",
+      "privacyTreatment": "Original preserved; public derivatives are pixel-decoded and re-encoded without EXIF, GPS or text metadata.",
+      "derivatives": [
+        {
+          "profile": "thumb",
+          "path": "/media/derivatives/catalogue/cul-000017/med-cul-000017-001-thumb.jpg",
+          "width": 173,
+          "height": 231,
+          "mimeType": "image/jpeg",
+          "sha256": "fa42eb2d0d287d25a6548b197bec826bbb6ae1a1475478389a9401b9853a2438",
+          "derivedFrom": "MED-CUL-000017-001"
+        },
+        {
+          "profile": "card",
+          "path": "/media/derivatives/catalogue/cul-000017/med-cul-000017-001-card.jpg",
+          "width": 303,
+          "height": 404,
+          "mimeType": "image/jpeg",
+          "sha256": "8b6609cdaf85c80af6454584b6ce178dc5a68fa6dc4d6d87af75cc4484a3c507",
+          "derivedFrom": "MED-CUL-000017-001"
+        },
+        {
+          "profile": "display",
+          "path": "/media/derivatives/catalogue/cul-000017/med-cul-000017-001-display.jpg",
+          "width": 519,
+          "height": 693,
+          "mimeType": "image/jpeg",
+          "sha256": "88383df8d455fee59759ab4617f42415ac2bf75079a5890f6091b90640a13365",
+          "derivedFrom": "MED-CUL-000017-001"
+        },
+        {
+          "profile": "archive",
+          "path": "/media/derivatives/catalogue/cul-000017/med-cul-000017-001-archive.jpg",
+          "width": 780,
+          "height": 1040,
+          "mimeType": "image/jpeg",
+          "sha256": "49862a54b54fd7cf2660ffdbfd63ccff3ac75c22855b012f4e03c3ff98e43bd7",
+          "derivedFrom": "MED-CUL-000017-001"
+        }
+      ]
+    },
+    {
+      "mediaId": "MED-CUL-000017-002",
+      "cultivarId": "CUL-000017",
+      "fileTitle": "Acer palmatum cv waterfall 2.jpg",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Acer%20palmatum%20cv%20waterfall%202.jpg",
+      "exactOriginalUrl": "https://upload.wikimedia.org/wikipedia/commons/9/9d/Acer_palmatum_cv_waterfall_2.jpg",
+      "commonsApiUrl": "https://commons.wikimedia.org/w/api.php?action=query&format=json&formatversion=2&prop=imageinfo&titles=File%3AAcer+palmatum+cv+waterfall+2.jpg&iiprop=url%7Csize%7Cmime%7Csha1%7Cextmetadata",
+      "creator": "Mark Pellegrini",
+      "rightsHolder": "Mark Pellegrini",
+      "licence": "CC BY-SA 2.5",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.5/",
+      "commonsSha1": "057e7e45a8539b8e3354156d9eeaea2c197d69bf",
+      "sourceSha256": "7116a36b91e0f52d84b0c98d304abe423a98cf714cc7bfba8ae6002df830775b",
+      "originalWidth": 1512,
+      "originalHeight": 2016,
+      "originalBytes": 1025339,
+      "description": "Pictures taken by myself at Longwood Gardens",
+      "dateTimeOriginal": "2009-04-26",
+      "role": "foliage-detail",
+      "primary": false,
+      "identityConfidence": "source-asserted",
+      "identityQualification": "Source-identified at Longwood Gardens; not independently authenticated by the Japanese Maple Atlas. Leaf form alone does not establish cultivar identity.",
+      "privacyTreatment": "Original preserved; public derivatives are pixel-decoded and re-encoded without EXIF, GPS or text metadata.",
+      "derivatives": [
+        {
+          "profile": "thumb",
+          "path": "/media/derivatives/catalogue/cul-000017/med-cul-000017-002-thumb.jpg",
+          "width": 173,
+          "height": 231,
+          "mimeType": "image/jpeg",
+          "sha256": "6dfe5fddd0df90f9e96f7af49eb8dc7bb0382dda6869033d84e5cf5367eb4e47",
+          "derivedFrom": "MED-CUL-000017-002"
+        },
+        {
+          "profile": "card",
+          "path": "/media/derivatives/catalogue/cul-000017/med-cul-000017-002-card.jpg",
+          "width": 303,
+          "height": 404,
+          "mimeType": "image/jpeg",
+          "sha256": "da6805b304129e9ce39e3c72cef04773c203cb9b364110405ea964f6ca3ac2d7",
+          "derivedFrom": "MED-CUL-000017-002"
+        },
+        {
+          "profile": "display",
+          "path": "/media/derivatives/catalogue/cul-000017/med-cul-000017-002-display.jpg",
+          "width": 519,
+          "height": 693,
+          "mimeType": "image/jpeg",
+          "sha256": "c296e70111d829eaea3f5f2c82108c1495bae3c29c5c5239f267ab0ad87d8ba1",
+          "derivedFrom": "MED-CUL-000017-002"
+        },
+        {
+          "profile": "archive",
+          "path": "/media/derivatives/catalogue/cul-000017/med-cul-000017-002-archive.jpg",
+          "width": 780,
+          "height": 1040,
+          "mimeType": "image/jpeg",
+          "sha256": "fb6aec7244cfd93bf07ab1428115841ad37f61b018edf8405a260b5e66ff7d0b",
+          "derivedFrom": "MED-CUL-000017-002"
+        }
+      ]
+    },
+    {
+      "mediaId": "MED-CUL-000017-003",
+      "cultivarId": "CUL-000017",
+      "fileTitle": "Acer palmatum 'Waterfall' JPG1.jpg",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Acer%20palmatum%20'Waterfall'%20JPG1.jpg",
+      "exactOriginalUrl": "https://upload.wikimedia.org/wikipedia/commons/4/41/Acer_palmatum_%27Waterfall%27_JPG1.jpg",
+      "commonsApiUrl": "https://commons.wikimedia.org/w/api.php?action=query&format=json&formatversion=2&prop=imageinfo&titles=File%3AAcer+palmatum+%27Waterfall%27+JPG1.jpg&iiprop=url%7Csize%7Cmime%7Csha1%7Cextmetadata",
+      "creator": "Jean-Pol GRANDMONT",
+      "rightsHolder": "Jean-Pol GRANDMONT",
+      "licence": "CC BY 3.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by/3.0/",
+      "commonsSha1": "06be92fadb96529b5e5a01638de4a037d7bcc657",
+      "sourceSha256": "8d3924d989f3838058c5019e4b1bd8099af15f1a6ff33c69e8ca8824efabfb47",
+      "originalWidth": 2496,
+      "originalHeight": 1664,
+      "originalBytes": 1970345,
+      "description": "Acer palmatum 'Watefall' leaves in the autumn Planting date : 1980 Precise location : (S48A – 205) Arboretum Robert Lenoir - Rendeux ( Belgium ).",
+      "dateTimeOriginal": "2008-10-04 14:49",
+      "role": "seasonal-diagnostic",
+      "primary": false,
+      "identityConfidence": "documented",
+      "identityQualification": "Documented as specimen S48A–205 at Arboretum Robert Lenoir; the image illustrates that specimen’s autumn expression, not a universal diagnostic colour.",
+      "privacyTreatment": "Original preserved; public derivatives are pixel-decoded and re-encoded without EXIF, GPS or text metadata.",
+      "derivatives": [
+        {
+          "profile": "thumb",
+          "path": "/media/derivatives/catalogue/cul-000017/med-cul-000017-003-thumb.jpg",
+          "width": 320,
+          "height": 213,
+          "mimeType": "image/jpeg",
+          "sha256": "6f13a909bc80cfe79bd678a542206e517eef890739529e219c9ad2ecd68f7376",
+          "derivedFrom": "MED-CUL-000017-003"
+        },
+        {
+          "profile": "card",
+          "path": "/media/derivatives/catalogue/cul-000017/med-cul-000017-003-card.jpg",
+          "width": 560,
+          "height": 373,
+          "mimeType": "image/jpeg",
+          "sha256": "9f3875f797986ac70524863a0061892ad56866fed6894319b880215b1ae858f9",
+          "derivedFrom": "MED-CUL-000017-003"
+        },
+        {
+          "profile": "display",
+          "path": "/media/derivatives/catalogue/cul-000017/med-cul-000017-003-display.jpg",
+          "width": 960,
+          "height": 640,
+          "mimeType": "image/jpeg",
+          "sha256": "14bf82ab3412bb4ae673152d522f424ea34c0323cfb45db71b18e72efea86454",
+          "derivedFrom": "MED-CUL-000017-003"
+        },
+        {
+          "profile": "archive",
+          "path": "/media/derivatives/catalogue/cul-000017/med-cul-000017-003-archive.jpg",
+          "width": 1439,
+          "height": 959,
+          "mimeType": "image/jpeg",
+          "sha256": "56f798ef89845c90b9f88ef50ab3760f3de266b081de1cff5d9735ad8803697d",
+          "derivedFrom": "MED-CUL-000017-003"
+        }
+      ]
+    }
+  ]
+}

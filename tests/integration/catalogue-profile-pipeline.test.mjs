@@ -90,7 +90,7 @@ test('canonical Catalogue directory compiles published C-001 and non-public C-00
   assert.equal(c002.every(record => record.catalogueProfile.review.approvalState === 'editorial-approved'), true);
   assert.deepEqual(c002.map(record => [record.cultivarId, record.mediaState]), [
     ['CUL-000016', 'approved-primary'],
-    ['CUL-000017', 'candidate-under-review'],
+    ['CUL-000017', 'approved-primary'],
     ['CUL-000018', 'candidate-under-review'],
     ['CUL-000019', 'approved-primary'],
     ['CUL-000020', 'candidate-under-review']
