@@ -1,0 +1,46 @@
+name: Temporary Waterfall alternate-source probe rerun
+
+on:
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    if: github.head_ref == 'media/visual-first-assets-wave-3'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: media/visual-first-assets-wave-3
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Download exact NC State Waterfall image
+        run: |
+          sed -n "/cat > .tmp-waterfall-probe.mjs <<'NODE'/,/^          NODE$/p" .github/workflows/asset-wave3-waterfall-probe.yml \
+            | sed '1d;$d;s/^          //' > .tmp-waterfall-probe.mjs
+          python - <<'PY'
+          from pathlib import Path
+          p = Path('.tmp-waterfall-probe.mjs')
+          text = p.read_text()
+          old = 'for (const required of ["Acer palmatum var. dissectum \'Waterfall\'", \'F. D. Richards\', \'CC-BY-SA 2.0\']) {'
+          new = "for (const required of ['Waterfall', 'F. D. Richards', 'CC-BY-SA 2.0']) {"
+          if old not in text:
+              raise SystemExit('expected evidence line not found')
+          p.write_text(text.replace(old, new))
+          PY
+          node .tmp-waterfall-probe.mjs
+          rm .tmp-waterfall-probe.mjs
+      - uses: actions/upload-artifact@v4
+        with:
+          name: waterfall-fd-richards-probe
+          retention-days: 2
+          if-no-files-found: error
+          path: |
+            waterfall-fd-richards-source.jpg
+            waterfall-fd-richards-source.json
