@@ -1,1 +1,217 @@
-{"cultivarId":"CUL-000019","programmeSlot":"019","slug":"shin-deshojo","acceptedWorkingName":"Shin-deshōjō","cultivarEpithet":"Shin-deshōjō","taxonId":"TAX-APAL","scientificName":"Acer palmatum ‘Shin-deshōjō’","publicationClass":"catalogue-profile","profileVersion":"1.0.0","catalogueState":"review-ready","riskLevel":"medium","riskReasons":["The same cultivar appears under diacritic, non-diacritic, hyphenated, spaced and joined romanised forms.","RHS and Missouri Botanical Garden support the same spring-red, compact Acer palmatum identity, but summer white speckling is stated by RHS and not repeated by Missouri Botanical Garden.","Separate accepted cultivars ‘Deshōjō’ and ‘Deshōjō-nishiki’ create a near-name risk that requires explicit non-synonym treatment."],"duplicateCheck":{"reviewedBy":"Japanese Maple Atlas editorial stream","reviewedAt":"2026-07-29T04:00:00Z","comparedIds":["RC-001","RC-002","RC-003","RC-004","RC-005","RC-006","RC-007","RC-008","RC-009","RC-010","CUL-000011","CUL-000012","CUL-000013","CUL-000014","CUL-000015","CUL-000016","CUL-000017","CUL-000018","CUL-000020","CUL-000021","CUL-000022","CUL-000023","CUL-000024","CUL-000025"],"comparedNames":["Bloodgood","Seiryu","Sango-kaku","Crimson Queen","Aureum","Osakazuki","Butterfly","Shishi-gashira","Katsura","Mikawa-yatsubusa","Orange Dream","Koto-no-ito","Inaba-shidare","Beni-kawa","Trompenburg","Autumn Moon","Waterfall","Aoyagi","Red Dragon","Tamukeyama","Orangeola","Higasa-yama","Arakawa","Red Pygmy","Shin-deshojo","Shindeshojo","Shin deshojo","Deshōjō","Deshojo","Deshōjō-nishiki"],"result":"unique","notes":"Compared with RC-001–RC-010 and all other approved Catalogue assignments. Shin-deshōjō, Shin-deshojo and Shindeshojo are orthographic forms of this one identity, not separate cultivars. RHS separately accepts ‘Deshōjō’ and ‘Deshōjō-nishiki’; neither is treated as a synonym. C0 resolves as unique with targeted romanisation review complete."},"namingVariants":["Shin-deshojo","Shindeshojo","Shin deshojo","Shin Deshojo"],"identityNotes":"The public working form is ‘Shin-deshōjō’, following the current RHS accepted heading and preserving the macrons and hyphen. Non-diacritic ‘Shin-deshojo’, joined ‘Shindeshojo’ and spaced label forms are search variants for the same cultivar. ‘Deshōjō’ and ‘Deshōjō-nishiki’ remain separate accepted cultivars.","content":{"summary":"A compact, bushy Japanese maple prized for an intense crimson-red spring flush that gradually shifts through reddish green to green in summer and returns to red and orange tones in autumn.","habit":"Compact, slow-growing, upright-rounded to bushy deciduous shrub or small tree. Published institutional ranges place it broadly around 1.5–3 m high and wide over time.","leafForm":"Small palmate leaves, commonly five to seven lobed, with ovate pointed lobes and serrated margins. The principal diagnostic interest is the spring colour sequence rather than an unusual leaf division.","seasonal":{"spring":"Leaves emerge bright crimson to showy red and may retain strong red colour for roughly a month, depending on climate and exposure.","summer":"Foliage fades through reddish green to green. RHS additionally reports white speckling, a feature not repeated in the Missouri Botanical Garden account and therefore retained as source-specific.","autumn":"Leaves turn reddish orange to mixed red and orange shades."},"size":{"height":"1.5–3 m","spread":"1.5–3 m","qualifier":"RHS gives 1.5–2.5 m high and wide over 10–20 years; Missouri Botanical Garden gives 5–7 ft commonly and up to about 10 ft over time. Preserve both as contextual ranges."},"cultivation":"Grow in moist but well-drained, preferably slightly acidic soil in a sheltered position. Partial shade helps preserve leaf quality and colour; full sun may be tolerated with reliable moisture. Protect early foliage from drying winds, scorch and late spring frost.","diagnostic":"The strongest comparison feature is the sustained vivid crimson spring flush on a compact bushy plant. Do not create separate identities from Shin-deshojo or Shindeshojo labels, and do not merge the cultivar with separately accepted ‘Deshōjō’ or ‘Deshōjō-nishiki’.","confidence":"High confidence that the principal romanised forms refer to one accepted Acer palmatum cultivar and in the broad spring-to-summer colour sequence. Moderate confidence in white summer speckling and mature size because the institutional descriptions differ.","unresolvedIssue":"The lean review did not locate a primary Japanese naming or introduction record. The frequency and diagnostic value of RHS-reported white summer speckling remain unresolved and must not be treated as mandatory for authentication."},"sources":[{"id":"SRC-CUL-000019-01","sourceClass":"institutional","title":"Acer palmatum 'Shin-deshōjō' (P) — plant profile","authority":"Royal Horticultural Society","url":"https://www.rhs.org.uk/plants/99981/acer-palmatum-shin-deshojo-p/details","accessedAt":"2026-07-29T04:00:00Z","locator":"Accepted-name profile: diacritic and non-diacritic display forms, habit, seasonal colour, size, cultivation, hardiness and propagation.","claimsSupported":["accepted identity","public working form","supported taxon","habit","seasonality","size","cultivation"],"limitations":"UK-centred profile; white summer speckling is not corroborated by every reviewed source and no primary romanisation history is supplied.","confidence":"high"},{"id":"SRC-CUL-000019-02","sourceClass":"institutional","title":"Acer palmatum 'Shindeshojo' — Plant Finder","authority":"Missouri Botanical Garden","url":"https://www.missouribotanicalgarden.org/PlantFinder/PlantFinderDetails.aspx?bt=4&isprofile=0&taxonid=241558","accessedAt":"2026-07-29T04:00:00Z","locator":"Cultivar profile under joined spelling: compact habit, dimensions, five- to seven-lobed leaves, crimson spring colour, summer transition, autumn colour and culture.","claimsSupported":["joined naming variant","supported taxon","habit","leaf form","seasonality","size","cultivation"],"limitations":"Uses a joined non-diacritic spelling and does not mention RHS-reported white speckling; origin language is secondary.","confidence":"high"},{"id":"SRC-CUL-000019-03","sourceClass":"institutional","title":"Acer palmatum 'Deshōjō' (P) — accepted profile","authority":"Royal Horticultural Society","url":"https://www.rhs.org.uk/plants/91829/acer-palmatum-deshojo-p/details","accessedAt":"2026-07-29T04:00:00Z","locator":"Accepted-name and descriptive profile for the separate cultivar ‘Deshōjō’.","claimsSupported":["duplicate review","separate accepted identity","near-name comparison"],"limitations":"Comparison source only; similar spring colour does not establish synonymy or support the content of ‘Shin-deshōjō’.","confidence":"high"},{"id":"SRC-CUL-000019-04","sourceClass":"institutional","title":"Acer palmatum 'Deshōjō-nishiki' (P) — accepted profile","authority":"Royal Horticultural Society","url":"https://www.rhs.org.uk/plants/209978/acer-palmatum-deshojo-nishiki-p/details","accessedAt":"2026-07-29T04:00:00Z","locator":"Accepted-name and descriptive profile for the separate near-name cultivar ‘Deshōjō-nishiki’.","claimsSupported":["duplicate review","separate accepted identity","near-name comparison"],"limitations":"Comparison source only; it does not support the main profile's morphology or seasonal synthesis.","confidence":"high"}],"media":{"state":"candidate-under-review","primaryMediaId":null,"candidateMediaIds":[],"governedGap":null,"visualComplete":false,"identityBasis":"asserted"},"review":{"reviewedBy":"Japanese Maple Atlas editorial stream","reviewedAt":"2026-07-29T04:00:00Z","approvalState":"editorial-approved","notes":"Targeted C0 romanisation and near-name review completed; C1 four-source package ready. The profile remains non-public and does not claim C2."},"batchId":"C-002","promotionStatus":"not-nominated","referenceStandardId":null,"publishedAt":null,"revisionHistory":[{"version":"1.0.0","date":"2026-07-29T04:00:00Z","actor":"Japanese Maple Atlas editorial stream","change":"Created the canonical non-public C-002 Catalogue Profile; completed targeted C0 romanisation/near-name review and C1 editorial/source review."}]}
+{
+  "cultivarId": "CUL-000019",
+  "programmeSlot": "019",
+  "slug": "shin-deshojo",
+  "acceptedWorkingName": "Shin-deshōjō",
+  "cultivarEpithet": "Shin-deshōjō",
+  "taxonId": "TAX-APAL",
+  "scientificName": "Acer palmatum ‘Shin-deshōjō’",
+  "publicationClass": "catalogue-profile",
+  "profileVersion": "1.1.0",
+  "catalogueState": "review-ready",
+  "riskLevel": "medium",
+  "riskReasons": [
+    "The same cultivar appears under diacritic, non-diacritic, hyphenated, spaced and joined romanised forms.",
+    "RHS and Missouri Botanical Garden support the same spring-red, compact Acer palmatum identity, but summer white speckling is stated by RHS and not repeated by Missouri Botanical Garden.",
+    "Separate accepted cultivars ‘Deshōjō’ and ‘Deshōjō-nishiki’ create a near-name risk that requires explicit non-synonym treatment."
+  ],
+  "duplicateCheck": {
+    "reviewedBy": "Japanese Maple Atlas editorial stream",
+    "reviewedAt": "2026-07-29T04:00:00Z",
+    "comparedIds": [
+      "RC-001",
+      "RC-002",
+      "RC-003",
+      "RC-004",
+      "RC-005",
+      "RC-006",
+      "RC-007",
+      "RC-008",
+      "RC-009",
+      "RC-010",
+      "CUL-000011",
+      "CUL-000012",
+      "CUL-000013",
+      "CUL-000014",
+      "CUL-000015",
+      "CUL-000016",
+      "CUL-000017",
+      "CUL-000018",
+      "CUL-000020",
+      "CUL-000021",
+      "CUL-000022",
+      "CUL-000023",
+      "CUL-000024",
+      "CUL-000025"
+    ],
+    "comparedNames": [
+      "Bloodgood",
+      "Seiryu",
+      "Sango-kaku",
+      "Crimson Queen",
+      "Aureum",
+      "Osakazuki",
+      "Butterfly",
+      "Shishi-gashira",
+      "Katsura",
+      "Mikawa-yatsubusa",
+      "Orange Dream",
+      "Koto-no-ito",
+      "Inaba-shidare",
+      "Beni-kawa",
+      "Trompenburg",
+      "Autumn Moon",
+      "Waterfall",
+      "Aoyagi",
+      "Red Dragon",
+      "Tamukeyama",
+      "Orangeola",
+      "Higasa-yama",
+      "Arakawa",
+      "Red Pygmy",
+      "Shin-deshojo",
+      "Shindeshojo",
+      "Shin deshojo",
+      "Deshōjō",
+      "Deshojo",
+      "Deshōjō-nishiki"
+    ],
+    "result": "unique",
+    "notes": "Compared with RC-001–RC-010 and all other approved Catalogue assignments. Shin-deshōjō, Shin-deshojo and Shindeshojo are orthographic forms of this one identity, not separate cultivars. RHS separately accepts ‘Deshōjō’ and ‘Deshōjō-nishiki’; neither is treated as a synonym. C0 resolves as unique with targeted romanisation review complete."
+  },
+  "namingVariants": [
+    "Shin-deshojo",
+    "Shindeshojo",
+    "Shin deshojo",
+    "Shin Deshojo"
+  ],
+  "identityNotes": "The public working form is ‘Shin-deshōjō’, following the current RHS accepted heading and preserving the macrons and hyphen. Non-diacritic ‘Shin-deshojo’, joined ‘Shindeshojo’ and spaced label forms are search variants for the same cultivar. ‘Deshōjō’ and ‘Deshōjō-nishiki’ remain separate accepted cultivars.",
+  "content": {
+    "summary": "A compact, bushy Japanese maple prized for an intense crimson-red spring flush that gradually shifts through reddish green to green in summer and returns to red and orange tones in autumn.",
+    "habit": "Compact, slow-growing, upright-rounded to bushy deciduous shrub or small tree. Published institutional ranges place it broadly around 1.5–3 m high and wide over time.",
+    "leafForm": "Small palmate leaves, commonly five to seven lobed, with ovate pointed lobes and serrated margins. The principal diagnostic interest is the spring colour sequence rather than an unusual leaf division.",
+    "seasonal": {
+      "spring": "Leaves emerge bright crimson to showy red and may retain strong red colour for roughly a month, depending on climate and exposure.",
+      "summer": "Foliage fades through reddish green to green. RHS additionally reports white speckling, a feature not repeated in the Missouri Botanical Garden account and therefore retained as source-specific.",
+      "autumn": "Leaves turn reddish orange to mixed red and orange shades."
+    },
+    "size": {
+      "height": "1.5–3 m",
+      "spread": "1.5–3 m",
+      "qualifier": "RHS gives 1.5–2.5 m high and wide over 10–20 years; Missouri Botanical Garden gives 5–7 ft commonly and up to about 10 ft over time. Preserve both as contextual ranges."
+    },
+    "cultivation": "Grow in moist but well-drained, preferably slightly acidic soil in a sheltered position. Partial shade helps preserve leaf quality and colour; full sun may be tolerated with reliable moisture. Protect early foliage from drying winds, scorch and late spring frost.",
+    "diagnostic": "The strongest comparison feature is the sustained vivid crimson spring flush on a compact bushy plant. Do not create separate identities from Shin-deshojo or Shindeshojo labels, and do not merge the cultivar with separately accepted ‘Deshōjō’ or ‘Deshōjō-nishiki’.",
+    "confidence": "High confidence that the principal romanised forms refer to one accepted Acer palmatum cultivar and in the broad spring-to-summer colour sequence. Moderate confidence in white summer speckling and mature size because the institutional descriptions differ.",
+    "unresolvedIssue": "The lean review did not locate a primary Japanese naming or introduction record. The frequency and diagnostic value of RHS-reported white summer speckling remain unresolved and must not be treated as mandatory for authentication."
+  },
+  "sources": [
+    {
+      "id": "SRC-CUL-000019-01",
+      "sourceClass": "institutional",
+      "title": "Acer palmatum 'Shin-deshōjō' (P) — plant profile",
+      "authority": "Royal Horticultural Society",
+      "url": "https://www.rhs.org.uk/plants/99981/acer-palmatum-shin-deshojo-p/details",
+      "accessedAt": "2026-07-29T04:00:00Z",
+      "locator": "Accepted-name profile: diacritic and non-diacritic display forms, habit, seasonal colour, size, cultivation, hardiness and propagation.",
+      "claimsSupported": [
+        "accepted identity",
+        "public working form",
+        "supported taxon",
+        "habit",
+        "seasonality",
+        "size",
+        "cultivation"
+      ],
+      "limitations": "UK-centred profile; white summer speckling is not corroborated by every reviewed source and no primary romanisation history is supplied.",
+      "confidence": "high"
+    },
+    {
+      "id": "SRC-CUL-000019-02",
+      "sourceClass": "institutional",
+      "title": "Acer palmatum 'Shindeshojo' — Plant Finder",
+      "authority": "Missouri Botanical Garden",
+      "url": "https://www.missouribotanicalgarden.org/PlantFinder/PlantFinderDetails.aspx?bt=4&isprofile=0&taxonid=241558",
+      "accessedAt": "2026-07-29T04:00:00Z",
+      "locator": "Cultivar profile under joined spelling: compact habit, dimensions, five- to seven-lobed leaves, crimson spring colour, summer transition, autumn colour and culture.",
+      "claimsSupported": [
+        "joined naming variant",
+        "supported taxon",
+        "habit",
+        "leaf form",
+        "seasonality",
+        "size",
+        "cultivation"
+      ],
+      "limitations": "Uses a joined non-diacritic spelling and does not mention RHS-reported white speckling; origin language is secondary.",
+      "confidence": "high"
+    },
+    {
+      "id": "SRC-CUL-000019-03",
+      "sourceClass": "institutional",
+      "title": "Acer palmatum 'Deshōjō' (P) — accepted profile",
+      "authority": "Royal Horticultural Society",
+      "url": "https://www.rhs.org.uk/plants/91829/acer-palmatum-deshojo-p/details",
+      "accessedAt": "2026-07-29T04:00:00Z",
+      "locator": "Accepted-name and descriptive profile for the separate cultivar ‘Deshōjō’.",
+      "claimsSupported": [
+        "duplicate review",
+        "separate accepted identity",
+        "near-name comparison"
+      ],
+      "limitations": "Comparison source only; similar spring colour does not establish synonymy or support the content of ‘Shin-deshōjō’.",
+      "confidence": "high"
+    },
+    {
+      "id": "SRC-CUL-000019-04",
+      "sourceClass": "institutional",
+      "title": "Acer palmatum 'Deshōjō-nishiki' (P) — accepted profile",
+      "authority": "Royal Horticultural Society",
+      "url": "https://www.rhs.org.uk/plants/209978/acer-palmatum-deshojo-nishiki-p/details",
+      "accessedAt": "2026-07-29T04:00:00Z",
+      "locator": "Accepted-name and descriptive profile for the separate near-name cultivar ‘Deshōjō-nishiki’.",
+      "claimsSupported": [
+        "duplicate review",
+        "separate accepted identity",
+        "near-name comparison"
+      ],
+      "limitations": "Comparison source only; it does not support the main profile's morphology or seasonal synthesis.",
+      "confidence": "high"
+    }
+  ],
+  "media": {
+    "state": "approved-primary",
+    "primaryMediaId": "MED-CUL-000019-001",
+    "candidateMediaIds": [
+      "MED-CUL-000019-002",
+      "MED-CUL-000019-003"
+    ],
+    "governedGap": null,
+    "visualComplete": true,
+    "identityBasis": "asserted"
+  },
+  "review": {
+    "reviewedBy": "Japanese Maple Atlas editorial stream",
+    "reviewedAt": "2026-07-29T04:00:00Z",
+    "approvalState": "editorial-approved",
+    "notes": "Targeted C0 romanisation and near-name review completed; C1 four-source package ready. The profile remains non-public and does not claim C2. A lawful three-role Visual-First gallery has completed media review; the profile remains non-public and publication is not claimed."
+  },
+  "batchId": "C-002",
+  "promotionStatus": "not-nominated",
+  "referenceStandardId": null,
+  "publishedAt": null,
+  "revisionHistory": [
+    {
+      "version": "1.0.0",
+      "date": "2026-07-29T04:00:00Z",
+      "actor": "Japanese Maple Atlas editorial stream",
+      "change": "Created the canonical non-public C-002 Catalogue Profile; completed targeted C0 romanisation/near-name review and C1 editorial/source review."
+    },
+    {
+      "version": "1.1.0",
+      "date": "2026-07-29T18:35:00Z",
+      "actor": "Japanese Maple Atlas media / visual-assets stream",
+      "change": "Added an approved lawful three-role Catalogue gallery with exact source preservation, Creative Commons attribution, source-asserted identity qualification, privacy-treated deterministic derivatives and canonical primary linkage; publication state remains unchanged."
+    }
+  ]
+}
