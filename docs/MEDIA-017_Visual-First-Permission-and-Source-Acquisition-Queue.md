@@ -93,8 +93,3 @@ All six items have exact source hashes, deterministic thumb/card/display/archive
 ## 7. Remaining controlled gaps
 
 CUL-000012 ‘Koto-no-ito’, CUL-000014 ‘Beni-kawa’ and CUL-000015 ‘Trompenburg’ remain incomplete. Permission-dependent candidates are still leads only and have not been copied into public display packages.
-
-## Wave 3 execution update — 2026-07-30
-
-- CUL-000017 Waterfall: three exact open-licence originals acquired, hashed, processed and linked as a complete non-public gallery.
-- JCRA remains an optional accession-mapped backfill route. No request sent and no permission claimed.
