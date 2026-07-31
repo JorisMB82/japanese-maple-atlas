@@ -7,8 +7,8 @@
   "taxonId": "TAX-APAL",
   "scientificName": "Acer palmatum ‘Shin-deshōjō’",
   "publicationClass": "catalogue-profile",
-  "profileVersion": "1.1.0",
-  "catalogueState": "review-ready",
+  "profileVersion": "1.2.0",
+  "catalogueState": "published",
   "riskLevel": "medium",
   "riskReasons": [
     "The same cultivar appears under diacritic, non-diacritic, hyphenated, spaced and joined romanised forms.",
@@ -101,7 +101,7 @@
       "qualifier": "RHS gives 1.5–2.5 m high and wide over 10–20 years; Missouri Botanical Garden gives 5–7 ft commonly and up to about 10 ft over time. Preserve both as contextual ranges."
     },
     "cultivation": "Grow in moist but well-drained, preferably slightly acidic soil in a sheltered position. Partial shade helps preserve leaf quality and colour; full sun may be tolerated with reliable moisture. Protect early foliage from drying winds, scorch and late spring frost.",
-    "diagnostic": "The strongest comparison feature is the sustained vivid crimson spring flush on a compact bushy plant. Do not create separate identities from Shin-deshojo or Shindeshojo labels, and do not merge the cultivar with separately accepted ‘Deshōjō’ or ‘Deshōjō-nishiki’.",
+    "diagnostic": "The strongest comparison feature is the sustained vivid crimson spring flush on a compact bushy plant. Do not create separate identities from Shin-deshojo or Shindeshojo labels, and do not merge the cultivar with separately accepted ‘Deshōjō’ or ‘Deshōjō-nishiki’. Red spring foliage or a bonsai label alone is not independent clonal authentication.",
     "confidence": "High confidence that the principal romanised forms refer to one accepted Acer palmatum cultivar and in the broad spring-to-summer colour sequence. Moderate confidence in white summer speckling and mature size because the institutional descriptions differ.",
     "unresolvedIssue": "The lean review did not locate a primary Japanese naming or introduction record. The frequency and diagnostic value of RHS-reported white summer speckling remain unresolved and must not be treated as mandatory for authentication."
   },
@@ -191,15 +191,15 @@
     "identityBasis": "asserted"
   },
   "review": {
-    "reviewedBy": "Japanese Maple Atlas editorial stream",
-    "reviewedAt": "2026-07-29T04:00:00Z",
-    "approvalState": "editorial-approved",
-    "notes": "Targeted C0 romanisation and near-name review completed; C1 four-source package ready. The profile remains non-public and does not claim C2. A lawful three-role Visual-First gallery has completed media review; the profile remains non-public and publication is not claimed."
+    "reviewedBy": "Project Owner",
+    "reviewedAt": "2026-07-30T16:15:00Z",
+    "approvalState": "batch-approved",
+    "notes": "C0 and C1 remain passed. The Project Owner authorised controlled C-002 Publication Tranche 01 for this profile with its approved three-role, source-asserted gallery. The separate late-July bonsai remains explicitly qualified and is not a same-plant seasonal sequence. C3 effectiveness remains subject to CTO review, protected validation, merge and production inspection."
   },
   "batchId": "C-002",
   "promotionStatus": "not-nominated",
   "referenceStandardId": null,
-  "publishedAt": null,
+  "publishedAt": "2026-07-30T16:15:00Z",
   "revisionHistory": [
     {
       "version": "1.0.0",
@@ -212,6 +212,12 @@
       "date": "2026-07-29T18:35:00Z",
       "actor": "Japanese Maple Atlas media / visual-assets stream",
       "change": "Added an approved lawful three-role Catalogue gallery with exact source preservation, Creative Commons attribution, source-asserted identity qualification, privacy-treated deterministic derivatives and canonical primary linkage; publication state remains unchanged."
+    },
+    {
+      "version": "1.2.0",
+      "date": "2026-07-30T16:15:00Z",
+      "actor": "Project Owner and Japanese Maple Atlas editorial stream",
+      "change": "Authorised controlled C-002 Publication Tranche 01, batch-approved the profile and initiated C3 publication with the existing approved identity-qualified gallery, including the separate-specimen bonsai limitation; final effectiveness remains subject to CTO review, protected merge and production inspection."
     }
   ]
 }
