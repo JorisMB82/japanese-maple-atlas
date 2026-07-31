@@ -76,7 +76,8 @@ test('published Catalogue profiles disclose approved galleries or controlled vis
     ['orange-dream', '000011'],
     ['inaba-shidare', '000013'],
     ['autumn-moon', '000016'],
-    ['shin-deshojo', '000019']
+    ['shin-deshojo', '000019'],
+    ['tamukeyama', '000021']
   ];
   for (const [slug, id] of approved) {
     const profile = htmlFor(`/cultivars/${slug}`);
@@ -104,8 +105,15 @@ test('Shin-deshōjō public gallery preserves the separate bonsai limitation', (
   assert.match(profile, /not a same-plant seasonal sequence/i);
 });
 
-test('profiles outside controlled C-002 tranche 01 remain absent from public routes', () => {
-  for (const slug of ['waterfall', 'aoyagi', 'red-dragon', 'tamukeyama', 'orangeola', 'higasa-yama', 'arakawa', 'red-pygmy']) {
+test('Tamukeyama public gallery preserves red-dissectum identity limitations', () => {
+  const profile = htmlFor('/cultivars/tamukeyama');
+  assert.match(profile, /Source-identified/i);
+  assert.match(profile, /not independently authenticated by the Japanese Maple Atlas/i);
+  assert.match(profile, /red dissectum|red laceleaf|visually confusable/i);
+});
+
+test('profiles outside controlled publication tranches remain absent from public routes', () => {
+  for (const slug of ['waterfall', 'aoyagi', 'red-dragon', 'orangeola', 'higasa-yama', 'arakawa', 'red-pygmy']) {
     assert.equal(routeFile(`/cultivars/${slug}`), undefined, `${slug} must remain non-public`);
   }
 });
@@ -117,6 +125,7 @@ test('visual library exposes lawful Catalogue photography and separates identity
   assert.match(media, /Inaba-shidare/i);
   assert.match(media, /Autumn Moon/i);
   assert.match(media, /Shin-deshōjō/i);
+  assert.match(media, /Tamukeyama/i);
   assert.match(media, /Whole plant · habit/i);
   assert.match(media, /Foliage detail/i);
   assert.match(media, /Seasonal · diagnostic/i);
