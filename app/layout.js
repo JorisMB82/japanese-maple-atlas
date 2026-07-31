@@ -5,6 +5,7 @@ import './search.css';
 import './graph.css';
 import './explorer.css';
 import './catalogue.css';
+import './map.css';
 import SiteHeader from '@/components/SiteHeader';
 
 export const metadata = {
