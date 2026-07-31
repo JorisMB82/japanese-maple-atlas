@@ -18,7 +18,7 @@ function CultivarLink({ cultivar, compact = false }) {
       {!compact && <small>{cultivar.displayId}</small>}
     </span>
     <span className="mapCultivarMeta">
-      {cultivar.hasApprovedVisual && <span className="mapVisualDot" title="Approved visual gallery" aria-label="Approved visual gallery">●</span>}
+      {cultivar.hasApprovedVisual && <span className="mapVisualDot" title="Approved governed visual" aria-label="Approved governed visual">●</span>}
       <PublicationBadge cultivar={cultivar} />
     </span>
   </a>;
