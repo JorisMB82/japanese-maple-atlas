@@ -91,3 +91,13 @@ Proposed `MED-CUL-######-###` identifiers below are reservations only. They beco
 3. Seek JCRA permission for CUL-000022 and CUL-000024 mapped sets.
 4. Resolve the identity conflict on MCAND-CUL-000024-002 before any acquisition.
 5. Continue contributor outreach for missing whole-plant and same-specimen seasonal coverage.
+
+## Wave 3 execution update — CUL-000021 Tamukeyama
+
+Three exact lawful originals completed the governed minimum gallery on 2026-07-30:
+
+- MED-CUL-000021-001 — habit-primary — Coker Arboretum — Mx. Granger — CC0 1.0.
+- MED-CUL-000021-002 — foliage-detail — Behnke Nurseries — David J. Stang — CC BY-SA 4.0.
+- MED-CUL-000021-003 — seasonal-diagnostic — Buncombe County early fall — Randy Harter — CC BY 4.0 via NC State Extension Gardener Plant Toolbox.
+
+All three items remain source-asserted. The gallery does not claim that red colour, dissected foliage or cascading form alone distinguishes Tamukeyama from Crimson Queen, Inaba-shidare, Red Dragon or Orangeola.

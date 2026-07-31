@@ -1,0 +1,263 @@
+{
+  "schemaVersion": "1.0.0",
+  "cultivarId": "CUL-000021",
+  "publicationClass": "catalogue-profile",
+  "status": "approved",
+  "assets": [
+    {
+      "id": "MED-CUL-000021-001",
+      "cultivarId": "CUL-000021",
+      "mediaType": "photograph",
+      "role": "habit-primary",
+      "isPrimary": true,
+      "status": "approved",
+      "assetPath": "/media/derivatives/catalogue/cul-000021/med-cul-000021-001-display.jpg",
+      "thumbnailPath": "/media/derivatives/catalogue/cul-000021/med-cul-000021-001-thumb.jpg",
+      "altText": "Source-identified ‘Tamukeyama’ Japanese maple showing its cascading whole-plant form at Coker Arboretum.",
+      "caption": "Whole-plant habit of a source-identified ‘Tamukeyama’ Japanese maple at Coker Arboretum.",
+      "creator": "Mx. Granger",
+      "rightsHolder": "Mx. Granger",
+      "rightsBasis": "public-domain",
+      "licence": "CC0 1.0",
+      "licenceUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Acer%20palmatum%20'Tamukeyama'%20at%20Coker%20Arboretum.jpg",
+      "sourceItemId": "Wikimedia Commons Acer palmatum 'Tamukeyama' at Coker Arboretum.jpg",
+      "attributionText": "Mx. Granger — CC0 1.0.",
+      "source": {
+        "path": "/atlas-repository/media-sources/catalogue/CUL-000021/MED-CUL-000021-001-source.jpg",
+        "sha256": "0270d78bd2c6f1bc2826ddae4499e2235b76d7ca418defbc1d962cb2027a2d65",
+        "preservation": "Exact original JPEG bytes downloaded from the governed source and retained without modification."
+      },
+      "identity": {
+        "confidence": "source-asserted",
+        "identificationBasis": "The Commons source identifies this named plant at Coker Arboretum.",
+        "limitations": "No accession or propagation record was recovered. Similar red dissectum cultivars cannot be authenticated by habit or colour alone.",
+        "publicQualification": "Source-identified at Coker Arboretum; not independently authenticated by the Japanese Maple Atlas. Similar red dissectum cultivars remain visually confusable."
+      },
+      "privacy": {
+        "status": "location-generalised",
+        "exifRetained": false,
+        "gpsRetained": false,
+        "locationGranularity": "Coker Arboretum, Chapel Hill, North Carolina, United States"
+      },
+      "derivatives": [
+        {
+          "profile": "thumb",
+          "path": "/media/derivatives/catalogue/cul-000021/med-cul-000021-001-thumb.jpg",
+          "width": 308,
+          "height": 231,
+          "mimeType": "image/jpeg",
+          "sha256": "f8e2f8ce5df18553dc1deea38b18d02e00534f89921239e685804f2c216b051e",
+          "derivedFrom": "MED-CUL-000021-001"
+        },
+        {
+          "profile": "card",
+          "path": "/media/derivatives/catalogue/cul-000021/med-cul-000021-001-card.jpg",
+          "width": 538,
+          "height": 404,
+          "mimeType": "image/jpeg",
+          "sha256": "a4cdba64ad249bfd92e52a537021b1935ccb482ab3aa2413240a901d7e188afe",
+          "derivedFrom": "MED-CUL-000021-001"
+        },
+        {
+          "profile": "display",
+          "path": "/media/derivatives/catalogue/cul-000021/med-cul-000021-001-display.jpg",
+          "width": 923,
+          "height": 693,
+          "mimeType": "image/jpeg",
+          "sha256": "0e3588c8220ec97541a8b9f18d453943838d5731d2835e23536a6b5eb9fa4939",
+          "derivedFrom": "MED-CUL-000021-001"
+        },
+        {
+          "profile": "archive",
+          "path": "/media/derivatives/catalogue/cul-000021/med-cul-000021-001-archive.jpg",
+          "width": 1386,
+          "height": 1040,
+          "mimeType": "image/jpeg",
+          "sha256": "3b1125a870cfd561aeda5d13ab42000039679bca22845ce9d5aa02b657bd977c",
+          "derivedFrom": "MED-CUL-000021-001"
+        }
+      ],
+      "approvalHistory": [
+        {
+          "status": "approved",
+          "date": "2026-07-30",
+          "authority": "Japanese Maple Atlas media / visual-assets stream",
+          "note": "Exact source rights, attribution, red-dissectum identity qualification, role, privacy treatment and deterministic derivatives reviewed under the Visual-First Catalogue contract."
+        }
+      ]
+    },
+    {
+      "id": "MED-CUL-000021-002",
+      "cultivarId": "CUL-000021",
+      "mediaType": "photograph",
+      "role": "foliage-detail",
+      "isPrimary": false,
+      "status": "approved",
+      "assetPath": "/media/derivatives/catalogue/cul-000021/med-cul-000021-002-display.jpg",
+      "thumbnailPath": "/media/derivatives/catalogue/cul-000021/med-cul-000021-002-thumb.jpg",
+      "altText": "Deeply dissected foliage on a source-identified ‘Tamukeyama’ Japanese maple photographed at Behnke Nurseries.",
+      "caption": "Attached foliage detail from a plant identified as ‘Tamukeyama’ at Behnke Nurseries.",
+      "creator": "David J. Stang",
+      "rightsHolder": "David J. Stang",
+      "rightsBasis": "creative-commons",
+      "licence": "CC BY-SA 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Acer%20palmatum%20var.%20dissectum%20Tamukeyama%200zz.jpg",
+      "sourceItemId": "Wikimedia Commons Acer palmatum var. dissectum Tamukeyama 0zz.jpg",
+      "attributionText": "David J. Stang — CC BY-SA 4.0.",
+      "source": {
+        "path": "/atlas-repository/media-sources/catalogue/CUL-000021/MED-CUL-000021-002-source.jpg",
+        "sha256": "4c93123977e73196a45dd3059aaf6f2e678d10ed11b25698430f8fa8890912f8",
+        "preservation": "Exact original JPEG bytes downloaded from the governed source and retained without modification."
+      },
+      "identity": {
+        "confidence": "source-asserted",
+        "identificationBasis": "David J. Stang identifies the photographed nursery plant as Acer palmatum var. dissectum ‘Tamukeyama’.",
+        "limitations": "The nursery identification is source assertion, and the historical taxon wording is not an Atlas taxonomic decision. Leaf colour alone is not diagnostic.",
+        "publicQualification": "Source-identified at Behnke Nurseries; not independently authenticated by the Japanese Maple Atlas. Similar red dissectum foliage must not be treated as cultivar proof."
+      },
+      "privacy": {
+        "status": "location-generalised",
+        "exifRetained": false,
+        "gpsRetained": false,
+        "locationGranularity": "Former Behnke Nurseries, Potomac, Maryland, United States"
+      },
+      "derivatives": [
+        {
+          "profile": "thumb",
+          "path": "/media/derivatives/catalogue/cul-000021/med-cul-000021-002-thumb.jpg",
+          "width": 320,
+          "height": 213,
+          "mimeType": "image/jpeg",
+          "sha256": "a7f0d5e4924eb92e21d0022804e7546a7d14652c09ffc38b5bcae1e1118a0af1",
+          "derivedFrom": "MED-CUL-000021-002"
+        },
+        {
+          "profile": "card",
+          "path": "/media/derivatives/catalogue/cul-000021/med-cul-000021-002-card.jpg",
+          "width": 560,
+          "height": 373,
+          "mimeType": "image/jpeg",
+          "sha256": "6ff761c41f786a9981f3cffc1ad249534ceb665b0dcae77086ae3d954c1e44fe",
+          "derivedFrom": "MED-CUL-000021-002"
+        },
+        {
+          "profile": "display",
+          "path": "/media/derivatives/catalogue/cul-000021/med-cul-000021-002-display.jpg",
+          "width": 960,
+          "height": 640,
+          "mimeType": "image/jpeg",
+          "sha256": "8ebdf460e551cdb30b35dbbbce0659a8d699cbd05fcebaf778f3cd90797c1f13",
+          "derivedFrom": "MED-CUL-000021-002"
+        },
+        {
+          "profile": "archive",
+          "path": "/media/derivatives/catalogue/cul-000021/med-cul-000021-002-archive.jpg",
+          "width": 1000,
+          "height": 667,
+          "mimeType": "image/jpeg",
+          "sha256": "0f053353a72c0c03e93a0037a7cf2ee6e9e4c526a87b5d658e250e99cba7cb7d",
+          "derivedFrom": "MED-CUL-000021-002"
+        }
+      ],
+      "approvalHistory": [
+        {
+          "status": "approved",
+          "date": "2026-07-30",
+          "authority": "Japanese Maple Atlas media / visual-assets stream",
+          "note": "Exact source rights, attribution, red-dissectum identity qualification, role, privacy treatment and deterministic derivatives reviewed under the Visual-First Catalogue contract."
+        }
+      ]
+    },
+    {
+      "id": "MED-CUL-000021-003",
+      "cultivarId": "CUL-000021",
+      "mediaType": "photograph",
+      "role": "seasonal-diagnostic",
+      "isPrimary": false,
+      "status": "approved",
+      "assetPath": "/media/derivatives/catalogue/cul-000021/med-cul-000021-003-display.jpg",
+      "thumbnailPath": "/media/derivatives/catalogue/cul-000021/med-cul-000021-003-thumb.jpg",
+      "altText": "Source-identified ‘Tamukeyama’ Japanese maple showing early-fall foliage and narrow dissected leaf context in Buncombe County, North Carolina.",
+      "caption": "Early-fall foliage of a source-identified ‘Tamukeyama’ Japanese maple in Buncombe County, North Carolina.",
+      "creator": "Randy Harter",
+      "rightsHolder": "Randy Harter",
+      "rightsBasis": "creative-commons",
+      "licence": "CC BY 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "sourceUrl": "https://plants.ces.ncsu.edu/plants/acer-palmatum-subsp-matsumurae/common-name/laceleaf-japanese-maple/",
+      "sourceItemId": "NC State Plant Toolbox early-fall Tamukeyama image",
+      "attributionText": "Randy Harter — CC BY 4.0.",
+      "source": {
+        "path": "/atlas-repository/media-sources/catalogue/CUL-000021/MED-CUL-000021-003-source.jpg",
+        "sha256": "54dd9b2885fa2e573b6cedb7f2105d2c69581e8f9458ea120fded6c2ba7adb49",
+        "preservation": "Exact original JPEG bytes downloaded from the governed source and retained without modification."
+      },
+      "identity": {
+        "confidence": "source-asserted",
+        "identificationBasis": "The NC State Extension Gardener Plant Toolbox identifies this frame as a ‘Tamukeyama’ form in Buncombe County, North Carolina, in early fall.",
+        "limitations": "The source uses form language and does not provide accession or propagation documentation. Similar red dissectum cultivars cannot be separated by colour alone.",
+        "publicQualification": "Source-identified by the NC State Extension Gardener Plant Toolbox; not independently authenticated by the Japanese Maple Atlas. Early-fall colour and narrow dissected foliage do not alone prove cultivar identity."
+      },
+      "privacy": {
+        "status": "location-generalised",
+        "exifRetained": false,
+        "gpsRetained": false,
+        "locationGranularity": "Buncombe County, North Carolina, United States"
+      },
+      "derivatives": [
+        {
+          "profile": "thumb",
+          "path": "/media/derivatives/catalogue/cul-000021/med-cul-000021-003-thumb.jpg",
+          "width": 320,
+          "height": 228,
+          "mimeType": "image/jpeg",
+          "sha256": "282bfa5189c69f098d8718847e08b8e284efd83d71e40c5e52de359e8f6347af",
+          "derivedFrom": "MED-CUL-000021-003"
+        },
+        {
+          "profile": "card",
+          "path": "/media/derivatives/catalogue/cul-000021/med-cul-000021-003-card.jpg",
+          "width": 442,
+          "height": 315,
+          "mimeType": "image/jpeg",
+          "sha256": "3debbc014a2b8a9bc2951303a795206f0f286a8a0e1bf90f79343d49623be2b0",
+          "derivedFrom": "MED-CUL-000021-003"
+        },
+        {
+          "profile": "display",
+          "path": "/media/derivatives/catalogue/cul-000021/med-cul-000021-003-display.jpg",
+          "width": 442,
+          "height": 315,
+          "mimeType": "image/jpeg",
+          "sha256": "3debbc014a2b8a9bc2951303a795206f0f286a8a0e1bf90f79343d49623be2b0",
+          "derivedFrom": "MED-CUL-000021-003"
+        },
+        {
+          "profile": "archive",
+          "path": "/media/derivatives/catalogue/cul-000021/med-cul-000021-003-archive.jpg",
+          "width": 442,
+          "height": 315,
+          "mimeType": "image/jpeg",
+          "sha256": "3debbc014a2b8a9bc2951303a795206f0f286a8a0e1bf90f79343d49623be2b0",
+          "derivedFrom": "MED-CUL-000021-003"
+        }
+      ],
+      "approvalHistory": [
+        {
+          "status": "approved",
+          "date": "2026-07-30",
+          "authority": "Japanese Maple Atlas media / visual-assets stream",
+          "note": "Exact source rights, attribution, red-dissectum identity qualification, role, privacy treatment and deterministic derivatives reviewed under the Visual-First Catalogue contract."
+        }
+      ]
+    }
+  ],
+  "roleException": null,
+  "review": {
+    "reviewedBy": "Japanese Maple Atlas media / visual-assets stream",
+    "reviewedAt": "2026-07-30T17:00:00Z",
+    "notes": "Complete three-role Visual-First gallery using Coker Arboretum habit, David Stang nursery foliage and NC State early-fall context. Every item retains explicit red-dissectum confusion controls."
+  }
+}

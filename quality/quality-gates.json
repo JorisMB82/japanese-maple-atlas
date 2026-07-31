@@ -12,8 +12,8 @@
     "objectTotal": 235,
     "cultivars": 5,
     "catalogueProfiles": 7,
-    "catalogueMediaSidecars": 4,
-    "catalogueMediaAssets": 12,
+    "catalogueMediaSidecars": 5,
+    "catalogueMediaAssets": 15,
     "stableCultivarIdentities": 25,
     "assertions": 110,
     "evidence": 35,
@@ -107,5 +107,9 @@
     "atlas-repository/media-coverage.json"
   ],
   "compilerVersion": "2.0.0",
-  "compilerScaleTargets": [20, 25, 150]
+  "compilerScaleTargets": [
+    20,
+    25,
+    150
+  ]
 }
