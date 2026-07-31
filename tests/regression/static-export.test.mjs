@@ -60,7 +60,7 @@ test('critical pages retain the remediated two-speed first-touch experience', ()
 
 test('navigation, repository, compare and records expose usability safeguards', () => {
   const home = htmlFor('/');
-  for (const destination of ['Explorer', 'Compare', 'Graph', 'Editorial', 'Contribute', 'Sources', 'Media', 'Repository', 'About']) assert.match(home, new RegExp(`>${destination}<`));
+  for (const destination of ['Explorer', 'Map', 'Compare', 'Graph', 'Editorial', 'Contribute', 'Sources', 'Media', 'Repository', 'About']) assert.match(home, new RegExp(`>${destination}<`));
   assert.match(home, /aria-controls="primary-navigation"/);
   assert.match(htmlFor('/repository'), /Copy repository hash/i);
   assert.match(htmlFor('/compare'), /Preparing the cultivar selectors/i);
@@ -69,6 +69,24 @@ test('navigation, repository, compare and records expose usability safeguards', 
   assert.match(cultivar, /Reference Standard/i);
   assert.match(cultivar, /Stable cultivar ID/i);
   assert.match(htmlFor('/graph'), /Try:/i);
+});
+
+test('Maple Map separates taxonomy, horticultural lenses and publication layers', () => {
+  const map = htmlFor('/map');
+  assert.match(map, /See where every published Japanese maple fits/i);
+  assert.match(map, /Genus → species → cultivar/i);
+  assert.match(map, /Acer palmatum/i);
+  assert.match(map, /Acer shirasawanum/i);
+  assert.match(map, /Bloodgood/i);
+  assert.match(map, /Autumn Moon/i);
+  assert.match(map, /Tamukeyama/i);
+  assert.match(map, /Horticultural types and visual character/i);
+  assert.match(map, /not formal botanical ranks/i);
+  assert.match(map, /Two publication layers/i);
+  assert.match(map, /Reference Standards/i);
+  assert.match(map, /Catalogue Profiles/i);
+  assert.match(map, /expands as new cultivars are released/i);
+  assert.doesNotMatch(map, /Waterfall/);
 });
 
 test('published Catalogue profiles disclose approved galleries or controlled visual gaps', () => {

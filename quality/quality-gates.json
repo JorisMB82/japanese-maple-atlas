@@ -1,5 +1,5 @@
 {
-  "schemaVersion": "1.9.0",
+  "schemaVersion": "2.0.0",
   "nodeVersion": 24,
   "applicationVersion": "0.11.5",
   "repositoryVersion": "0.11.0",
@@ -25,6 +25,7 @@
   "requiredRoutes": [
     "/",
     "/explorer",
+    "/map",
     "/compare",
     "/graph",
     "/editorial",
@@ -81,6 +82,7 @@
     "docs/DR-CATALOGUE-004_Owner-Approval-of-C-003-Publication-Tranche-01.md",
     "docs/DR-ENGINEERING-002_Catalogue-MVP-Data-Path.md",
     "docs/DR-ENGINEERING-003_Non-Public-Catalogue-Discovery-Boundary.md",
+    "docs/DR-ENGINEERING-004_Scalable-Maple-Map-View.md",
     "docs/HANDOFF-ENGINEERING-CATALOGUE-002_C-001-C3-Publication.md",
     "docs/HANDOFF-ENGINEERING-CATALOGUE-003_Visual-First-Media-Implementation.md",
     "docs/HANDOFF-EDITORIAL-CATALOGUE-007_C-002-Publication-Tranche-01.md",
