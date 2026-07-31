@@ -56,7 +56,7 @@ test('compiler detects duplicate slugs across Catalogue identities', () => {
   fs.rmSync(root, { recursive: true, force: true });
 });
 
-test('canonical Catalogue directory compiles published C-001 and non-public C-002 and C-003 profiles', () => {
+test('canonical Catalogue directory compiles C-001, controlled C-002 tranche 01 and remaining non-public profiles', () => {
   const inputDir = path.join(ROOT, 'atlas-repository/catalogue-profiles');
   const registryPath = path.join(inputDir, 'contract/cultivar-identity-registry.json');
   const result = compileCatalogueDirectory({ inputDir, schemaPath, registryPath, taxonIds: new Set(['TAX-APAL', 'TAX-ASHI']) });
@@ -68,6 +68,9 @@ test('canonical Catalogue directory compiles published C-001 and non-public C-00
   const c001 = cohort(11, 15);
   const c002 = cohort(16, 20);
   const c003 = cohort(21, 25);
+  const publishedC002Ids = new Set(['CUL-000016', 'CUL-000019']);
+  const publishedC002 = c002.filter(record => publishedC002Ids.has(record.cultivarId));
+  const remainingC002 = c002.filter(record => !publishedC002Ids.has(record.cultivarId));
 
   assert.deepEqual(result.records.map(record => record.cultivarId), expectedIds);
   assert.deepEqual(result.diagnostics.map(item => item.status), expectedIds.map(() => 'pass'));
@@ -84,17 +87,17 @@ test('canonical Catalogue directory compiles published C-001 and non-public C-00
     ['CUL-000015', 'governed-gap']
   ]);
 
-  assert.equal(c002.length, 5);
-  assert.equal(c002.every(record => record.catalogueProfile.state === 'review-ready'), true);
-  assert.equal(c002.every(record => record.catalogueProfile.publishedAt === null), true);
-  assert.equal(c002.every(record => record.catalogueProfile.review.approvalState === 'editorial-approved'), true);
-  assert.deepEqual(c002.map(record => [record.cultivarId, record.mediaState]), [
-    ['CUL-000016', 'approved-primary'],
-    ['CUL-000017', 'candidate-under-review'],
-    ['CUL-000018', 'candidate-under-review'],
-    ['CUL-000019', 'approved-primary'],
-    ['CUL-000020', 'candidate-under-review']
-  ]);
+  assert.deepEqual(publishedC002.map(record => record.cultivarId), ['CUL-000016', 'CUL-000019']);
+  assert.equal(publishedC002.every(record => record.catalogueProfile.state === 'published'), true);
+  assert.equal(publishedC002.every(record => Boolean(record.catalogueProfile.publishedAt)), true);
+  assert.equal(publishedC002.every(record => record.catalogueProfile.review.approvalState === 'batch-approved'), true);
+  assert.equal(publishedC002.every(record => record.mediaState === 'approved-primary'), true);
+
+  assert.deepEqual(remainingC002.map(record => record.cultivarId), ['CUL-000017', 'CUL-000018', 'CUL-000020']);
+  assert.equal(remainingC002.every(record => record.catalogueProfile.state === 'review-ready'), true);
+  assert.equal(remainingC002.every(record => record.catalogueProfile.publishedAt === null), true);
+  assert.equal(remainingC002.every(record => record.catalogueProfile.review.approvalState === 'editorial-approved'), true);
+  assert.equal(remainingC002.every(record => record.mediaState === 'candidate-under-review'), true);
 
   assert.equal(c003.length, 5);
   assert.equal(c003.every(record => record.catalogueProfile.state === 'review-ready'), true);

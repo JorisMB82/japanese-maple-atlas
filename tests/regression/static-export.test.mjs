@@ -72,13 +72,19 @@ test('navigation, repository, compare and records expose usability safeguards', 
 });
 
 test('published Catalogue profiles disclose approved galleries or controlled visual gaps', () => {
-  for (const slug of ['orange-dream', 'inaba-shidare']) {
+  const approved = [
+    ['orange-dream', '000011'],
+    ['inaba-shidare', '000013'],
+    ['autumn-moon', '000016'],
+    ['shin-deshojo', '000019']
+  ];
+  for (const [slug, id] of approved) {
     const profile = htmlFor(`/cultivars/${slug}`);
     assert.match(profile, /Catalogue Profile/i);
     assert.match(profile, /approved-gallery/i);
     assert.match(profile, /Source-identified|Community-identified/i);
     assert.match(profile, /not independently authenticated by the Japanese Maple Atlas/i);
-    assert.match(profile, new RegExp(`/media/derivatives/catalogue/cul-0000${slug === 'orange-dream' ? '11' : '13'}/`));
+    assert.match(profile, new RegExp(`/media/derivatives/catalogue/cul-${id}/`));
   }
 
   for (const slug of ['koto-no-ito', 'beni-kawa', 'trompenburg']) {
@@ -90,11 +96,27 @@ test('published Catalogue profiles disclose approved galleries or controlled vis
   }
 });
 
+test('Shin-deshōjō public gallery preserves the separate bonsai limitation', () => {
+  const profile = htmlFor('/cultivars/shin-deshojo');
+  assert.match(profile, /separate source-identified.*bonsai/i);
+  assert.match(profile, /bonsai form is not cultivar habit/i);
+  assert.match(profile, /not independently authenticated by the Japanese Maple Atlas/i);
+  assert.match(profile, /not a same-plant seasonal sequence/i);
+});
+
+test('profiles outside controlled C-002 tranche 01 remain absent from public routes', () => {
+  for (const slug of ['waterfall', 'aoyagi', 'red-dragon', 'tamukeyama', 'orangeola', 'higasa-yama', 'arakawa', 'red-pygmy']) {
+    assert.equal(routeFile(`/cultivars/${slug}`), undefined, `${slug} must remain non-public`);
+  }
+});
+
 test('visual library exposes lawful Catalogue photography and separates identity plates', () => {
   const media = htmlFor('/media');
   assert.match(media, /A growing library of lawful Japanese maple photographs/i);
   assert.match(media, /Orange Dream/i);
   assert.match(media, /Inaba-shidare/i);
+  assert.match(media, /Autumn Moon/i);
+  assert.match(media, /Shin-deshōjō/i);
   assert.match(media, /Whole plant · habit/i);
   assert.match(media, /Foliage detail/i);
   assert.match(media, /Seasonal · diagnostic/i);

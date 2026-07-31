@@ -1,5 +1,5 @@
 {
-  "schemaVersion": "1.7.0",
+  "schemaVersion": "1.8.0",
   "nodeVersion": 24,
   "applicationVersion": "0.11.5",
   "repositoryVersion": "0.11.0",
@@ -11,7 +11,7 @@
   "repositoryInvariants": {
     "objectTotal": 235,
     "cultivars": 5,
-    "catalogueProfiles": 5,
+    "catalogueProfiles": 7,
     "catalogueMediaSidecars": 5,
     "catalogueMediaAssets": 15,
     "stableCultivarIdentities": 25,
@@ -42,7 +42,9 @@
     "/cultivars/koto-no-ito",
     "/cultivars/inaba-shidare",
     "/cultivars/beni-kawa",
-    "/cultivars/trompenburg"
+    "/cultivars/trompenburg",
+    "/cultivars/autumn-moon",
+    "/cultivars/shin-deshojo"
   ],
   "requiredPackageScripts": [
     "test:unit",
@@ -74,10 +76,13 @@
     "docs/DR-STRATEGY-003_Visual-First-Catalogue-Owner-Approval.md",
     "docs/DR-CATALOGUE-001_Owner-Approval-of-Cultivar-Assignments-011-025.md",
     "docs/DR-CATALOGUE-002_Owner-Approval-of-C-001-Governed-Gaps-and-Publication.md",
+    "docs/DR-CATALOGUE-003_Owner-Approval-of-C-002-Publication-Tranche-01.md",
     "docs/DR-ENGINEERING-002_Catalogue-MVP-Data-Path.md",
     "docs/DR-ENGINEERING-003_Non-Public-Catalogue-Discovery-Boundary.md",
     "docs/HANDOFF-ENGINEERING-CATALOGUE-002_C-001-C3-Publication.md",
     "docs/HANDOFF-ENGINEERING-CATALOGUE-003_Visual-First-Media-Implementation.md",
+    "docs/HANDOFF-EDITORIAL-CATALOGUE-007_C-002-Publication-Tranche-01.md",
+    "docs/PROGRAMME-REGISTER_RC-001-RC-025.md",
     "docs/CATALOGUE-002_Visual-First-Catalogue-Media-Contract_v1.0.md",
     "docs/MEDIA-016_Visual-First-Catalogue-Policy_v1.0.md",
     "docs/COMPILER-002_Scalable-Reference-Standard-Ingestion_v1.0.md",
