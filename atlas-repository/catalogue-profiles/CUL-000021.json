@@ -7,8 +7,8 @@
   "taxonId": "TAX-APAL",
   "scientificName": "Acer palmatum ‘Tamukeyama’",
   "publicationClass": "catalogue-profile",
-  "profileVersion": "1.1.0",
-  "catalogueState": "review-ready",
+  "profileVersion": "1.2.0",
+  "catalogueState": "published",
   "riskLevel": "medium",
   "riskReasons": [
     "RHS treats ‘Beni-hagoromo’ as a synonym, but the historical scope and priority of that name were not established in the lean review.",
@@ -175,15 +175,15 @@
     "identityBasis": "asserted"
   },
   "review": {
-    "reviewedBy": "Japanese Maple Atlas editorial stream",
-    "reviewedAt": "2026-07-29T06:55:00Z",
-    "approvalState": "editorial-approved",
-    "notes": "C0 targeted synonym-scope review and C1 lean editorial/source review completed for Batch C-003. Profile remains non-public; no media approval, C2 or C3 is claimed. A lawful three-role Visual-First gallery has completed media review; the profile remains non-public and publication is not claimed."
+    "reviewedBy": "Project Owner",
+    "reviewedAt": "2026-07-31T01:43:00Z",
+    "approvalState": "batch-approved",
+    "notes": "C0 and C1 remain passed. The Project Owner authorised C-003 Publication Tranche 01 for this profile with its approved three-role, source-asserted gallery. All item-level rights, attribution and red-dissectum identity qualifications remain mandatory. C3 effectiveness remains subject to CTO review, protected validation, merge and production inspection."
   },
   "batchId": "C-003",
   "promotionStatus": "not-nominated",
   "referenceStandardId": null,
-  "publishedAt": null,
+  "publishedAt": "2026-07-31T01:43:00Z",
   "revisionHistory": [
     {
       "version": "1.0.0",
@@ -196,6 +196,12 @@
       "date": "2026-07-30T17:00:00Z",
       "actor": "Japanese Maple Atlas media / visual-assets stream",
       "change": "Added an approved lawful three-role Catalogue gallery with exact source preservation, Creative Commons and public-domain rights records, red-dissectum identity qualifications, privacy-treated deterministic derivatives and canonical primary linkage; publication state remains unchanged."
+    },
+    {
+      "version": "1.2.0",
+      "date": "2026-07-31T01:43:00Z",
+      "actor": "Project Owner and Japanese Maple Atlas editorial stream",
+      "change": "Authorised C-003 Publication Tranche 01, batch-approved the profile and initiated C3 publication with the existing approved identity-qualified gallery; final effectiveness remains subject to CTO review, protected merge and production inspection."
     }
   ]
 }
