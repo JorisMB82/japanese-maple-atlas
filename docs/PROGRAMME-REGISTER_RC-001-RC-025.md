@@ -11,14 +11,15 @@
 
 - Public Reference Standards: **5** — RC-001 through RC-005.
 - Non-public Reference Standard candidates: **5** — RC-006 through RC-010; all G4 PASS and G5 BLOCKED.
-- Public Catalogue Profiles after C-002 Publication Tranche 01: **7** — CUL-000011 through CUL-000016 and CUL-000019.
+- Public Catalogue Profiles after C-003 Publication Tranche 01: **8** — CUL-000011 through CUL-000016, CUL-000019 and CUL-000021.
 - Stable cultivar identities: **25** — CUL-000001 through CUL-000025.
 - CUL-000001 through CUL-000010 map to RC-001 through RC-010 without modifying frozen source records.
 - CUL-000011 through CUL-000025 remain Project Owner-approved Catalogue assignments under DR-CATALOGUE-001.
 - CUL-000011 through CUL-000015 are C0–C3 complete and published as Catalogue Batch C-001.
 - CUL-000016 and CUL-000019 are authorised as controlled C-002 Publication Tranche 01 under DR-CATALOGUE-003.
 - CUL-000017, CUL-000018 and CUL-000020 remain non-public C1-ready records.
-- CUL-000021 through CUL-000025 remain non-public C1-ready records.
+- CUL-000021 is authorised as C-003 Publication Tranche 01 under DR-CATALOGUE-004.
+- CUL-000022 through CUL-000025 remain non-public C1-ready records.
 - Stage 2 branch protection remains active.
 
 ## 2. Operating rule
@@ -61,7 +62,7 @@ Catalogue rights and specimen-identity confidence are governed separately. A sou
 | CUL-000018 | C-002 | *Acer palmatum* ‘Aoyagi’ | LOW | C1 READY | Permission-dependent | NOT PUBLIC | Secure labelled whole plant and dormant green-stem set. |
 | CUL-000019 | C-002 | *Acer palmatum* ‘Shin-deshōjō’ | MEDIUM | C3 PASS — controlled tranche 01 | Approved lawful three-role gallery | PUBLISHED | Perform production inspection; preserve romanisation and separate-bonsai qualification. |
 | CUL-000020 | C-002 | *Acer palmatum* ‘Red Dragon’ | LOW | C1 READY | Permission-dependent | NOT PUBLIC | Secure whole plant and same-specimen seasonal set. |
-| CUL-000021 | C-003 | *Acer palmatum* ‘Tamukeyama’ | MEDIUM | C1 READY | Two lawful candidates; third role missing | NOT PUBLIC | Complete a distinct third role and sidecar review. |
+| CUL-000021 | C-003 | *Acer palmatum* ‘Tamukeyama’ | MEDIUM | C3 PASS — controlled tranche 01 | Approved lawful three-role gallery | PUBLISHED | Perform production inspection; preserve red-dissectum identity qualifications. |
 | CUL-000022 | C-003 | *Acer palmatum* ‘Orangeola’ | LOW | C1 READY | Institutional permission route | NOT PUBLIC | Secure a coherent same-specimen seasonal set. |
 | CUL-000023 | C-003 | *Acer palmatum* ‘Higasa-yama’ | MEDIUM | C1 READY | Strong institutional permission route | NOT PUBLIC | Secure mapped habit and early/late foliage sequence. |
 | CUL-000024 | C-003 | *Acer palmatum* ‘Arakawa’ | MEDIUM | C1 READY | Landscape package required; one candidate conflict | NOT PUBLIC | Resolve the conflicting candidate and secure accession-mapped landscape views. |
@@ -71,7 +72,7 @@ Catalogue rights and specimen-identity confidence are governed separately. A sou
 
 - **C-001:** five published Catalogue Profiles; two approved galleries and three governed-gap backfills.
 - **C-002:** CUL-000016 and CUL-000019 form controlled Publication Tranche 01; the other three records remain non-public.
-- **C-003:** all five profiles are C1 ready and remain non-public pending media and later C3 authority.
+- **C-003:** CUL-000021 forms controlled Publication Tranche 01; the other four profiles remain non-public.
 - Approved cohort distribution remains **10 LOW, 5 MEDIUM, 0 HIGH**.
 
 ## 5. Visual-First Catalogue contract
@@ -87,7 +88,7 @@ Every displayed item requires a lawful reuse basis, source and attribution, item
 
 Controlled identity-confidence states are `documented`, `source-asserted` and `community-identified`. Rights-unresolved material remains candidate-only. A fewer-than-three role exception or governed visual gap must be explicit, temporary and measurable.
 
-Current public cultivar total after this tranche: **12** — five Reference Standards plus seven Catalogue Profiles.
+Current public cultivar total after this tranche: **13** — five Reference Standards plus eight Catalogue Profiles.
 
 ## 6. Media programme
 
@@ -101,11 +102,11 @@ Catalogue Visual-First flexibility applies to identity confidence, not copyright
 
 ## 7. Active production sequence
 
-1. Complete CTO review and protected merge for C-002 Publication Tranche 01.
-2. Inspect `/cultivars/autumn-moon` and `/cultivars/shin-deshojo` in production.
+1. Complete CTO review and protected merge for C-003 Publication Tranche 01.
+2. Inspect `/cultivars/tamukeyama` in production.
 3. Complete Waterfall’s gallery as the next C-002 media priority.
 4. Continue C-001 governed-gap backfill.
-5. Complete the shortest lawful C-003 gallery routes without publishing them prematurely.
+5. Complete the shortest lawful gallery routes for the remaining C-003 profiles without publishing them prematurely.
 6. Measure gallery coverage, rights basis, confidence states, exceptions and correction reports.
 
 Reference Standard G5 work continues in parallel, with RC-010 first and RC-009 second.
@@ -133,12 +134,20 @@ Reference Standard G5 work continues in parallel, with RC-010 first and RC-009 s
 - **Visual-First Catalogue amendment:** OWNER APPROVED.
 - **Assignments CUL-000011–CUL-000025:** OWNER APPROVED.
 - **C-001 publication:** PASS.
-- **C-002 Publication Tranche 01:** OWNER AUTHORISED; protected C3 implementation and CTO review required.
+- **C-002 Publication Tranche 01:** PASS.
+- **C-003 Publication Tranche 01:** OWNER AUTHORISED; protected C3 implementation and CTO review required.
 - **Remaining C-002 profiles:** C1 READY / NOT PUBLIC.
-- **C-003 profiles:** C1 READY / NOT PUBLIC.
+- **Remaining C-003 profiles:** C1 READY / NOT PUBLIC.
 - **Reference Standard Wave 1 publication:** BLOCKED at G5.
 
 ## 10. Status evidence
+
+### 2026-07-30 — C-003 Publication Tranche 01
+
+- Project Owner authorised CUL-000021 only.
+- The record retains its three-source C0/C1 package and approved lawful three-role gallery.
+- DR-CATALOGUE-004 records the scope, public red-dissectum identity controls and CTO-before-merge condition.
+- CUL-000022 through CUL-000025 remain non-public.
 
 ### 2026-07-30 — C-002 Publication Tranche 01
 
