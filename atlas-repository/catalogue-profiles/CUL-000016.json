@@ -7,8 +7,8 @@
   "taxonId": "TAX-ASHI",
   "scientificName": "Acer shirasawanum ‘Autumn Moon’",
   "publicationClass": "catalogue-profile",
-  "profileVersion": "1.1.0",
-  "catalogueState": "review-ready",
+  "profileVersion": "1.2.0",
+  "catalogueState": "published",
   "riskLevel": "medium",
   "riskReasons": [
     "Current institutional treatment supports Acer shirasawanum, but historical and commercial labels also place the cultivar under Acer palmatum or Acer japonicum.",
@@ -85,7 +85,7 @@
   "content": {
     "summary": "A bushy full-moon maple valued for rounded, many-lobed foliage that opens yellow to yellow-green with burnt-orange or salmon tones, develops greener or yellow-veined summer colour according to light, and turns orange-red in autumn.",
     "habit": "Bushy, spreading-branched deciduous large shrub or small tree. Institutional profiles range from an upright garden tree around 3.5 m to a broader long-term specimen approaching about 6 m.",
-    "leafForm": "Rounded palmate leaves, usually described with about nine to eleven shallow, sharply toothed lobes. The nearly circular outline separates the profile from ordinary Acer palmatum foliage and from deeply cut Acer japonicum cultivars.",
+    "leafForm": "Rounded palmate leaves, usually described with about nine to eleven shallow, sharply toothed lobes. The cultivar-specific visual preference is approximately eleven lobes; broader species-level variation must not be used by itself to authenticate ‘Autumn Moon’.",
     "seasonal": {
       "spring": "Leaves emerge clear yellow or yellow-green with burnt-orange, salmon or red-purple tones; the strength and distribution of the overlay vary with light and observation date.",
       "summer": "Foliage may remain yellow-green in partial shade or become greener with yellowish veins in stronger light, while retaining variable orange highlights.",
@@ -97,7 +97,7 @@
       "qualifier": "Chicago Botanic Garden reports about 12 ft high by 8 ft wide, while RHS describes a long-term plant up to about 6 m and places the ultimate range within 4–8 m. Treat these as contextual published estimates, not a fixed maximum."
     },
     "cultivation": "Grow in moist but well-drained, preferably acidic to neutral soil in a sheltered position. Partial shade is useful for preserving foliage quality, especially in hot or drying climates; stronger sun can alter colour and increase scorch risk if moisture is unreliable.",
-    "diagnostic": "Compare with RC-005 ‘Aureum’, another Acer shirasawanum with yellow foliage, but do not merge them: ‘Autumn Moon’ is characterised by a stronger orange or salmon overlay and a separately accepted cultivar identity. Taxon labels using Acer japonicum or Acer palmatum are not separate clones.",
+    "diagnostic": "Compare with RC-005 ‘Aureum’, another Acer shirasawanum with yellow foliage, but do not merge them: ‘Autumn Moon’ is characterised by a stronger orange or salmon overlay and a separately accepted cultivar identity. Taxon labels using Acer japonicum or Acer palmatum are not separate clones, and orange or yellow foliage alone is not cultivar authentication.",
     "confidence": "High confidence in the accepted working name, current Acer shirasawanum placement, rounded many-lobed foliage and broad seasonal sequence. Moderate confidence in mature dimensions and exact colour expression because institutional frameworks and exposure conditions differ.",
     "unresolvedIssue": "The lean review did not establish a primary nomenclatural history explaining every older Acer japonicum or Acer palmatum label. Commercial Acer japonicum usage remains a documented misapplication or legacy label rather than an accepted taxon treatment."
   },
@@ -189,15 +189,15 @@
     "identityBasis": "asserted"
   },
   "review": {
-    "reviewedBy": "Japanese Maple Atlas editorial stream",
-    "reviewedAt": "2026-07-29T04:00:00Z",
-    "approvalState": "editorial-approved",
-    "notes": "C0 targeted taxon and alias review completed; C1 content and four-source package ready. Profile remains non-public and C2 is not claimed. A lawful three-role Visual-First gallery has completed media review; the profile remains non-public and publication is not claimed."
+    "reviewedBy": "Project Owner",
+    "reviewedAt": "2026-07-30T16:15:00Z",
+    "approvalState": "batch-approved",
+    "notes": "C0 and C1 remain passed. The Project Owner authorised controlled C-002 Publication Tranche 01 for this profile with its approved three-role, source-asserted gallery. Identity qualifications remain mandatory. C3 effectiveness remains subject to CTO review, protected validation, merge and production inspection."
   },
   "batchId": "C-002",
   "promotionStatus": "not-nominated",
   "referenceStandardId": null,
-  "publishedAt": null,
+  "publishedAt": "2026-07-30T16:15:00Z",
   "revisionHistory": [
     {
       "version": "1.0.0",
@@ -210,6 +210,12 @@
       "date": "2026-07-29T18:35:00Z",
       "actor": "Japanese Maple Atlas media / visual-assets stream",
       "change": "Added an approved lawful three-role Catalogue gallery with exact source preservation, Creative Commons attribution, source-asserted identity qualification, privacy-treated deterministic derivatives and canonical primary linkage; publication state remains unchanged."
+    },
+    {
+      "version": "1.2.0",
+      "date": "2026-07-30T16:15:00Z",
+      "actor": "Project Owner and Japanese Maple Atlas editorial stream",
+      "change": "Authorised controlled C-002 Publication Tranche 01, batch-approved the profile and initiated C3 publication with the existing approved identity-qualified gallery; final effectiveness remains subject to CTO review, protected merge and production inspection."
     }
   ]
 }
